@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barn Burner Relics — Authentic Native American Artifacts</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0d0d0d;
+            color: #e8e0d8;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3, h4 { font-family: 'Georgia', 'Times New Roman', serif; font-weight: 700; letter-spacing: 0.02em; }
+        .price { font-family: 'Georgia', serif; color: #d4a853; font-weight: 700; }
+
+        /* Announcement bar */
+        .announcement {
+            background: #8b4513;
+            color: #f5f0e8;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .announcement strong { color: #ffd700; }
+
+        /* Header */
+        header {
+            background: #14110e;
+            border-bottom: 1px solid #2a2018;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo h1 {
+            font-size: 22px;
+            color: #f5f0e8;
+            line-height: 1.2;
+        }
+        .logo span {
+            display: block;
+            font-size: 11px;
+            color: #8b7355;
+            font-family: -apple-system, sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 13px;
+            color: #b8a88a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header-links a:hover { color: #d4a853; }
+        .header-links .cart-link {
+            background: #8b4513;
+            color: #f5f0e8;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .header-links .cart-link:hover { background: #a0522d; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: #e8e0d8; font-size: 24px; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
+            padding: 80px 24px 60px;
+            text-align: center;
+            border-bottom: 1px solid #2a2018;
+        }
+        .hero h1 { font-size: 42px; color: #f5f0e8; margin-bottom: 16px; letter-spacing: 0.5px; }
+        .hero p {
+            font-size: 17px; color: #b8a88a; max-width: 640px;
+            margin: 0 auto 32px; line-height: 1.7;
+        }
+        .hero-trust {
+            display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 40px;
+        }
+        .hero-trust-item { text-align: center; }
+        .hero-trust-item .num { font-size: 28px; font-weight: 700; color: #d4a853; font-family: 'Georgia', serif; }
+        .hero-trust-item .label { font-size: 12px; color: #8b7355; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        /* Section headers */
+        .section-header { text-align: center; padding: 60px 24px 40px; }
+        .section-header h2 { font-size: 32px; color: #f5f0e8; margin-bottom: 10px; }
+        .section-header p { color: #8b7355; font-size: 15px; }
+
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 0 24px 60px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: #1a1612;
+            border: 1px solid #2a2018;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: #8b4513;
+            box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+        }
+        .product-card .image-wrap {
+            aspect-ratio: 1;
+            background: #1f1a15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .product-card .image-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .product-card:hover .image-wrap img { transform: scale(1.05); }
+        .product-card .badge {
+            position: absolute; top: 12px; left: 12px;
+            background: #8b4513; color: #f5f0e8;
+            font-size: 11px; font-weight: 600;
+            padding: 4px 10px; border-radius: 4px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .product-card .badge.sold { background: #4a4a4a; }
+        .product-card .info { padding: 16px 18px 20px; }
+        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin-bottom: 4px; font-family: 'Georgia', serif; }
+        .product-card .info .subtitle { font-size: 12px; color: #8b7355; margin-bottom: 8px; }
+        .product-card .info .price-row { display: flex; align-items: center; justify-content: space-between; }
+        .product-card .info .price-row .price { font-size: 18px; }
+        .product-card .info .price-row .period { font-size: 11px; color: #6b5a45; }
+
+        /* Product detail overlay */
+        .product-detail-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 200;
+            overflow-y: auto;
+            padding: 40px 24px;
+            backdrop-filter: blur(4px);
+        }
+        .product-detail-overlay.active { display: block; }
+        .product-detail {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #16120e;
+            border: 1px solid #2a2018;
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .detail-close {
+            position: sticky; top: 0; float: right;
+            background: #2a2018; border: none;
+            color: #e8e0d8; font-size: 24px;
+            width: 44px; height: 44px; border-radius: 50%;
+            cursor: pointer; z-index: 10;
+            margin: 12px;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .detail-close:hover { background: #8b4513; }
+        .detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .detail-gallery { background: #1a1612; padding: 40px; }
+        .detail-gallery .main-image {
+            width: 100%; aspect-ratio: 1;
+            object-fit: cover; border-radius: 8px;
+            background: #1f1a15;
+        }
+        .detail-thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .detail-thumbs img {
+            width: 72px; height: 72px; object-fit: cover;
+            border-radius: 6px; cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s; background: #1f1a15;
+        }
+        .detail-thumbs img.active { border-color: #d4a853; }
+        .detail-thumbs img:hover { border-color: #8b7355; }
+        .detail-info { padding: 40px 40px 40px 0; }
+        .detail-info .breadcrumb { font-size: 12px; color: #6b5a45; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-info h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 4px; }
+        .detail-info .detail-period { font-size: 14px; color: #8b7355; margin-bottom: 16px; }
+        .detail-info .detail-price { font-size: 32px; margin-bottom: 24px; }
+        .detail-info .detail-price .label { font-size: 14px; color: #8b7355; font-family: -apple-system, sans-serif; font-weight: 400; }
+        .detail-info .desc { color: #c8bca8; font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
+        .detail-info .desc p { margin-bottom: 12px; }
+        .detail-meta {
+            background: #1a1612; border: 1px solid #2a2018;
+            border-radius: 8px; padding: 20px; margin-bottom: 24px;
+        }
+        .detail-meta h4 { font-size: 13px; color: #8b7355; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-meta table { width: 100%; border-collapse: collapse; }
+        .detail-meta td { padding: 8px 0; font-size: 14px; border-bottom: 1px solid #1f1a15; }
+        .detail-meta td:first-child { color: #8b7355; width: 40%; font-weight: 500; }
+        .detail-meta td:last-child { color: #e8e0d8; }
+        .detail-meta tr:last-child td { border-bottom: none; }
+        .btn-inquire {
+            display: inline-block;
+            background: #8b4513; color: #f5f0e8;
+            padding: 14px 36px; border-radius: 6px;
+            font-weight: 600; font-size: 15px;
+            border: none; cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-inquire:hover { background: #a0522d; }
+        .btn-inquire.secondary {
+            background: transparent; border: 1px solid #8b4513; color: #d4a853; margin-left: 12px;
+        }
+        .btn-inquire.secondary:hover { background: rgba(139,69,19,0.15); }
+
+        /* Email section */
+        .email-section {
+            background: linear-gradient(135deg, #1a1410 0%, #2c1f14 100%);
+            border-top: 1px solid #2a2018; border-bottom: 1px solid #2a2018;
+            padding: 60px 24px; text-align: center;
+        }
+        .email-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 10px; }
+        .email-section p { color: #8b7355; font-size: 15px; margin-bottom: 28px; }
+        .email-form { display: flex; max-width: 480px; margin: 0 auto; gap: 0; }
+        .email-form input {
+            flex: 1; padding: 14px 18px;
+            border: 1px solid #2a2018; border-right: none;
+            border-radius: 6px 0 0 6px;
+            background: #0d0d0d; color: #e8e0d8; font-size: 15px; outline: none;
+        }
+        .email-form input:focus { border-color: #8b4513; }
+        .email-form input::placeholder { color: #5a4a3a; }
+        .email-form button {
+            padding: 14px 28px; background: #8b4513; color: #f5f0e8;
+            border: none; border-radius: 0 6px 6px 0;
+            font-weight: 600; font-size: 14px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 1px;
+            transition: background 0.2s; white-space: nowrap;
+        }
+        .email-form button:hover { background: #a0522d; }
+        .email-section .disclaimer { font-size: 11px; color: #5a4a3a; margin-top: 14px; }
+
+        /* About */
+        .about-section { padding: 60px 24px; max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 16px; }
+        .about-section p { color: #b8a88a; font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
+        .about-section .signature { font-family: 'Georgia', serif; font-style: italic; color: #d4a853; font-size: 18px; margin-top: 24px; }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d; border-top: 1px solid #1a1612;
+            padding: 40px 24px; text-align: center;
+        }
+        footer .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
+        footer .links a { color: #6b5a45; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        footer .links a:hover { color: #d4a853; }
+        footer .copy { font-size: 12px; color: #3a3028; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 28px; }
+            .hero { padding: 50px 20px 40px; }
+            .hero-trust { gap: 24px; }
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; padding: 0 16px 40px; }
+            .product-card .info { padding: 12px 14px 16px; }
+            .product-card .info h3 { font-size: 14px; }
+            .detail-layout { grid-template-columns: 1fr; }
+            .detail-gallery { padding: 20px; }
+            .detail-info { padding: 20px; }
+            .detail-info h2 { font-size: 22px; }
+            .email-form { flex-direction: column; }
+            .email-form input { border-radius: 6px; border-right: 1px solid #2a2018; }
+            .email-form button { border-radius: 6px; margin-top: 8px; }
+            .section-header h2 { font-size: 26px; }
+            .section-header { padding: 40px 20px 28px; }
+        }
+        @media (max-width: 480px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 12px 30px; }
+            .hero h1 { font-size: 24px; }
+            .hero-trust-item .num { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="announcement">
+    ⚡ <strong>Live Auctions</strong> Every Saturday &amp; Monday at 5PM CST &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
+</div>
+
+<header>
+    <div class="header-inner">
+        <a href="#" onclick="closeDetail(); return false;" class="logo">
+            <h1>Barn Burner Relics</h1>
+            <span>Authentic Native American Artifacts</span>
+        </a>
+        <nav class="header-links">
+            <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
+            <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
+            <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
+            <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
+        </nav>
+        <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
+    <p>
+        Barn Burner Relics is the premier destination for authentic Native American artifacts.
+        Every piece is personally vetted by Nick Gatses — a lifetime guarantee of authenticity
+        with every purchase.
+    </p>
+    <a href="#" class="btn-inquire" onclick="closeDetail(); scrollToSection('shop'); return false;">Browse the Collection</a>
+    <div class="hero-trust">
+        <div class="hero-trust-item">
+            <div class="num">20+ Years</div>
+            <div class="label">In the Trade</div>
+        </div>
+        <div class="hero-trust-item">
+            <div class="num">100%</div>
+            <div class="label">Authenticity Guarantee</div>
+        </div>
+        <div class="hero-trust-item">
+            <div class="num">Lifetime</div>
+            <div class="label">Buy-Back Policy</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-header" id="shop">
+    <h2>Available &amp; Recent Pieces</h2>
+    <p>Click any piece for the full story, provenance, and multiple photos</p>
+</div>
+
+<div class="product-grid" id="productGrid"></div>
+
+<section class="email-section" id="email">
+    <h2>First Access to New Arrivals</h2>
+    <p>Get auction previews, provenance stories, and first look at fresh acquisitions — straight to your inbox.</p>
+    <form class="email-form" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email" required id="newsletterEmail">
+        <button type="button" onclick="subscribeNewsletter()">Subscribe</button>
+    </form>
+    <div class="disclaimer">No spam. Just artifacts. Unsubscribe anytime.</div>
+</section>
+
+<section class="about-section" id="about">
+    <h2>About Barn Burner Relics</h2>
+    <p>
+        Founded by Nick Gatses in Manhattan, Illinois, Barn Burner Relics has grown into one of the most trusted
+        names in the Native American artifact community. Nick's philosophy is simple: authenticity first, story always.
+    </p>
+    <p>
+        Every artifact that passes through his hands is meticulously documented — from find location and excavation
+        context to collection history and cultural significance. He personally guarantees every piece he sells for life.
+    </p>
+    <p>
+        Nick is a regular exhibitor at the Collinsville Prehistoric Artifact Show — the largest Native American
+        artifact show in the country — and his weekly Facebook auctions draw collectors from across the United States.
+    </p>
+    <div class="signature">— Nick Gatses, Proprietor</div>
+</section>
+
+<div class="product-detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+    <div class="product-detail">
+        <button class="detail-close" onclick="closeDetail()">✕</button>
+        <div class="detail-layout">
+            <div class="detail-gallery">
+                <img class="main-image" id="detailMainImage" src="" alt="">
+                <div class="detail-thumbs" id="detailThumbs"></div>
+            </div>
+            <div class="detail-info">
+                <div class="breadcrumb">Barn Burner Relics</div>
+                <h2 id="detailTitle"></h2>
+                <div class="detail-period" id="detailPeriod"></div>
+                <div class="detail-price" id="detailPrice"></div>
+                <div class="desc" id="detailDesc"></div>
+                <div class="detail-meta">
+                    <h4>Provenance &amp; Details</h4>
+                    <table id="detailMetaTable"></table>
+                </div>
+                <button class="btn-inquire" onclick="openInquiry()">Inquire About This Piece</button>
+                <button class="btn-inquire secondary" onclick="closeDetail(); scrollToSection('email');">Join the Newsletter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="links">
+        <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
+        <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
+        <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
+        <a href="https://www.facebook.com/groups/910205539314663/" target="_blank">Facebook Group</a>
+        <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank">Instagram</a>
+    </div>
+    <div class="copy">© 2026 Barn Burner Relics Inc. — Manhattan, IL &nbsp;·&nbsp; All artifacts guaranteed authentic for life.</div>
+</footer>
+
+<script>
+    const PHOTO_BASE = 'https://placehold.co/800x800/1f1a15/d4a853?text=';
+
+    const products = [
+        {
+            id: 'sioux-deer-pipe',
+            title: 'Sioux Deer Effigy Pipe',
+            subtitle: 'Catlinite · Early 1800s',
+            price: 'Inquire',
+            period: 'Early to Mid 1800s',
+            tag: 'Featured',
+            images: [PHOTO_BASE+'Sioux+Deer+Pipe+1', PHOTO_BASE+'Sioux+Deer+Pipe+2', PHOTO_BASE+'Sioux+Deer+Pipe+3', PHOTO_BASE+'Sioux+Deer+Pipe+4'],
+            description: '<p>A very detailed Sioux Deer Pipe from the early to mid 1800s. The pipe is crafted from one solid piece of Catlinite — red pipestone from the sacred quarries of Minnesota. The carving depicts an antelope or deer in full form, with remarkable attention to the animal\'s posture and anatomy.</p><p>Effigy pipes of this quality are exceptionally rare. They were not everyday objects — they were ceremonial pieces, used in rituals and councils. The Sioux people of the Dakotas crafted these from pipestone that was traded across the Great Plains for centuries.</p><p>This piece was recovered in the Dakotas and represents some of the finest Native American pipe carving from the Plains period. Effigy pipes like this are among the most sought-after categories in the collector market.</p>',
+            specs: {'Material':'Catlinite (Red Pipestone)','Origin':'Dakotas','Period':'Early to Mid 1800s','Culture':'Sioux / Plains','Type':'Effigy Pipe (Deer/Antelope)','Provenance':'Hansen Coll. → Slack Coll. → Tribbet Coll.','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'popeye-bird-stone',
+            title: 'Popeye Bird Stone',
+            subtitle: 'Solid Quartz · 3,000+ Years Old',
+            price: 'Inquire',
+            period: 'Archaic Period · ~3,000 BP',
+            tag: 'Featured',
+            images: [PHOTO_BASE+'Popeye+Bird+Stone+1', PHOTO_BASE+'Popeye+Bird+Stone+2', PHOTO_BASE+'Popeye+Bird+Stone+3', PHOTO_BASE+'Popeye+Bird+Stone+4'],
+            description: '<p>A solid quartz artifact recovered in Wisconsin — over 3,000 years old. This is a ridiculously rare Popeye bird stone, shaped entirely from a single piece of quartz by ancient indigenous craftsmen who transformed one of the most difficult materials to work into a masterpiece of prehistoric engineering.</p><p>Watch closely: when you give it a nudge, it perfectly balances and rocks for over a solid minute without tipping. The precision is mind-blowing. The curve of the base, the weight distribution between the protruding eyes and the tail — calculated to absolute perfection. If it were off by a single millimeter, it would just fall flat. Instead, it dances.</p><p>Quartz bird stones are exceptionally rare compared to their slate counterparts. The material is unforgiving — one wrong strike and the piece shatters. This surviving example is a testament to a master artisan who understood both the material and the physics of balance in a way that still impresses modern engineers.</p>',
+            specs: {'Material':'Solid Quartz','Origin':'Wisconsin','Period':'Archaic (~3,000 years old)','Culture':'Pre-Columbian / Woodland','Type':'Popeye Bird Stone (Atlatl Weight)','Feature':'Perfectly balanced — rocks 60+ seconds','Provenance':'Private Wisconsin collection','Status':'Inquire for Availability','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'banded-slate-bird-stone',
+            title: 'Glacial Banded Slate Bird Stone',
+            subtitle: 'Banded Slate · 8,000 Years Old',
+            price: '$35,200',
+            period: 'Archaic Period · ~8,000 BP',
+            tag: 'Sold',
+            images: [PHOTO_BASE+'Banded+Slate+Bird+1', PHOTO_BASE+'Banded+Slate+Bird+2', PHOTO_BASE+'Banded+Slate+Bird+3', PHOTO_BASE+'Banded+Slate+Bird+4'],
+            description: '<p>8,000 years ago, somewhere in the Ohio Valley, a master carver chose this exact piece of glacial banded slate and spent days shaping it — grinding, polishing, turning raw stone into a bird. A spirit object. Not made for hunting. Made for ceremony.</p><p>This isn\'t a carving you buy. It\'s a carving you inherit. The finest bird stone Nick Gatses has ever offered in his career. The banding is uninterrupted — that is almost impossible to find in glacial material. The wings, the taper of the tail, the slight curve of the breast — it\'s a bird in flight, frozen in stone.</p><p>Bird stones of this quality come from burial contexts across Ohio, Indiana, and the Great Lakes region. They served as atlatl weights — counterbalances on spear-throwers — but the effort put into this one says it was ceremonial. A chief\'s piece. The glaciers that ground this stone out of the Canadian Shield scattered it in riverbeds. Native peoples found it, recognized its beauty, and knew: this is not ordinary rock.</p><p><strong>Sold for $35,200 — a record price reflecting the finest example of its kind.</strong></p>',
+            specs: {'Material':'Glacial Came Banded Slate','Origin':'Ohio Valley','Period':'Archaic (~8,000 years old)','Culture':'Pre-Columbian / Archaic','Type':'Bird Stone (Atlatl Weight)','Provenance':'Long-term private collection','Sold For':'$35,200 — Auction Record','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'keokuk-grooved-axe',
+            title: 'Keokuk Grooved Axe',
+            subtitle: 'Serpentine · 6\u00bc\u2033 \u00d7 3\u2033',
+            price: 'Inquire',
+            period: 'Archaic to Woodland',
+            tag: 'Featured',
+            images: [PHOTO_BASE+'Keokuk+Axe+1', PHOTO_BASE+'Keokuk+Axe+2', PHOTO_BASE+'Keokuk+Axe+3'],
+            description: '<p>A museum-quality Keokuk grooved axe, measuring 6\u00bc inches by 3 inches, carved from serpentine stone. The Keokuk type is named after the distinctive style found through the Mississippi River Valley — characterized by a deep, well-defined groove and symmetrical bit.</p><p>This axe shows exceptional surface quality with the characteristic fibrous grain of serpentine. The groove is crisp and uniform, indicating expert craftsmanship. The bit retains its original edge — never re-sharpened, suggesting it was a ceremonial or status piece rather than a heavy-use tool.</p><p>Axes of this caliber are considered prestige objects in the collector community. The material alone — serpentine was highly valued for its color and workability — would have marked the owner as someone of importance within their community.</p>',
+            specs: {'Material':'Serpentine Stone','Origin':'Mississippi River Valley','Period':'Archaic to Woodland','Culture':'Pre-Columbian','Type':'Keokuk Grooved Axe','Dimensions':'6\u00bc\u2033 \u00d7 3\u2033','Condition':'Excellent — original edge, no restoration','Provenance':'Illinois private collection','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'hopewell-blade-core',
+            title: 'Hopewell Blade Core',
+            subtitle: 'Burlington Chert · ~200 AD',
+            price: 'Inquire',
+            period: 'Hopewell · ~200 AD',
+            tag: 'New',
+            images: [PHOTO_BASE+'Hopewell+Blade+1', PHOTO_BASE+'Hopewell+Blade+2', PHOTO_BASE+'Hopewell+Blade+3'],
+            description: '<p>A classic Hopewell blade core dating to roughly 200 AD, found in Grundy County, Illinois. The fine pressure flaking along both edges is textbook — each strike deliberate and controlled. The material is Burlington chert with the classic cream-to-grey coloration characteristic of the Missouri-Illinois river valleys.</p><p>What makes this piece significant is the basal grinding — evidence that this blade was once hafted to a handle. Blade cores like this were high-status trade goods within the Hopewell interaction sphere, a vast network that stretched from the Great Lakes to the Gulf of Mexico.</p><p>This piece came from the Jim Dawson collection out of Morris, Illinois. Dawson surface-collected it in the late 1980s after a heavy rain. It has never been offered publicly before now.</p>',
+            specs: {'Material':'Burlington Chert','Origin':'Grundy County, Illinois','Period':'Hopewell · ~200 AD','Culture':'Hopewell / Middle Woodland','Type':'Blade Core','Feature':'Basal grinding — hafted use','Provenance':'Jim Dawson Collection (Morris, IL)','Discovered':'Late 1980s, surface find after rain','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'mississippian-spade',
+            title: 'Mississippian Ceremonial Spade',
+            subtitle: 'Chert · 8\u2033 Length',
+            price: 'Inquire',
+            period: 'Mississippian · ~1200 AD',
+            tag: 'Featured',
+            images: [PHOTO_BASE+'Mississippian+Spade+1', PHOTO_BASE+'Mississippian+Spade+2', PHOTO_BASE+'Mississippian+Spade+3'],
+            description: '<p>A massive Mississippian ceremonial spade, measuring 8 inches in length — a piece that would have cleared the land at Cahokia 800 years ago. These oversized implements were not functional farming tools; they were ceremonial and status objects, often buried with elite members of Mississippian society.</p><p>Mississippian culture, centered at Cahokia near modern-day St. Louis, was the most complex pre-Columbian society north of Mexico. At its peak around 1100 AD, Cahokia was home to 10,000\u201320,000 people. Ceremonial spades like this one were symbols of agricultural abundance and the chief\'s role as provider.</p><p>The flaking on this piece is extraordinary — long, parallel percussion flakes that required immense skill to execute without breaking the piece. The material is high-quality Burlington chert, sourced from quarries that were actively mined for over 5,000 years.</p>',
+            specs: {'Material':'Burlington Chert','Origin':'Illinois — Cahokia region','Period':'Mississippian · ~1200 AD','Culture':'Mississippian / Cahokia','Type':'Ceremonial Spade','Dimensions':'8\u2033 length','Provenance':'Long-term Midwestern collection','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'thebes-point',
+            title: 'Thebes Projectile Point',
+            subtitle: 'Heat-Treated Chert · 4\u2033',
+            price: 'Inquire',
+            period: 'Early Archaic · ~8,000 BP',
+            tag: 'New',
+            images: [PHOTO_BASE+'Thebes+Point+1', PHOTO_BASE+'Thebes+Point+2', PHOTO_BASE+'Thebes+Point+3'],
+            description: '<p>A stunning 4-inch Thebes point, recovered in Pike County, Illinois — a classic example of one of the most iconic Early Archaic types in North America. Thebes points are characterized by their broad, triangular blades and deeply concave bases, representing some of the finest flintknapping of the Early Archaic period.</p><p>This example has been heat-treated, a technological innovation that improved the flaking characteristics of the chert. The resulting lustrous surface and uniform color are hallmarks of expert thermal pretreatment. The flaking is broad and regular — the work of a master knapper who understood the material\'s behavior under pressure.</p><p>Points like this were used on both darts (thrown with an atlatl) and later on arrows. The size and weight of this piece suggest it was mounted on a heavy spear or used as a knife — a multi-purpose tool for a people who followed game across the landscape of the early Holocene.</p>',
+            specs: {'Material':'Heat-Treated Chert','Origin':'Pike County, Illinois','Period':'Early Archaic (~8,000 years old)','Culture':'Pre-Columbian / Early Archaic','Type':'Thebes Projectile Point','Dimensions':'4\u2033 length','Feature':'Heat-treated — superior flaking quality','Provenance':'Southern Illinois private collection','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'cahokia-discoidal',
+            title: 'Cahokia Discoidal',
+            subtitle: 'Granite · 3\u00bc\u2033',
+            price: 'Inquire',
+            period: 'Mississippian · ~1200 AD',
+            tag: null,
+            images: [PHOTO_BASE+'Discoidal+1', PHOTO_BASE+'Discoidal+2', PHOTO_BASE+'Discoidal+3'],
+            description: '<p>A beautifully preserved Cahokia discoidal, 3\u00bc inches in diameter, carved from dense granite. Discoidals were used in the ancient game of chunkey — a sport played across the Mississippian world from the Great Lakes to the Gulf. Players would roll the stone disc and throw spears at the spot where they predicted it would stop.</p><p>Chunkey was more than a game. It was a social institution — gambling, competition, and community gathering. Cahokia\'s grand plaza included a dedicated chunkey court, and the finest discoidals were treasured objects.</p><p>Granite discoidals of this size and finish are uncommon. Most surviving examples show wear from repeated play; this one retains its original surface, suggesting careful handling or ceremonial use.</p>',
+            specs: {'Material':'Granite','Origin':'Cahokia region, Illinois','Period':'Mississippian (~1200 AD)','Culture':'Mississippian / Cahokia','Type':'Chunkey Discoidal','Dimensions':'3\u00bc\u2033 diameter','Condition':'Excellent — original surfaces preserved','Provenance':'Illinois estate collection','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'lost-lake-point',
+            title: 'Lost Lake Dovetail Point',
+            subtitle: 'Attica Chert · Restored',
+            price: 'Inquire',
+            period: 'Early Archaic · ~7,500 BP',
+            tag: null,
+            images: [PHOTO_BASE+'Lost+Lake+1', PHOTO_BASE+'Lost+Lake+2', PHOTO_BASE+'Lost+Lake+3'],
+            description: '<p>A classic Lost Lake dovetail point in Attica chert, expertly restored by master craftsman Charles Shewey. Lost Lake points are among the most collectible Early Archaic types — named after the Lost Lake site in Tennessee where they were first identified. Their distinctive dovetail or "eared" base is instantly recognizable.</p><p>The Attica chert is a high-quality material from western Indiana, known for its fine grain and consistent knapping qualities. The restoration work by Shewey is among the best in the field — done with such precision that only expert examination reveals it.</p><p>Dovetail points are believed to have served as both projectile points and knives. The "ears" on the base likely aided in hafting, creating a more secure attachment to the shaft than a simple stemmed point.</p>',
+            specs: {'Material':'Attica Chert','Origin':'Kentucky / Tennessee region','Period':'Early Archaic (~7,500 years old)','Culture':'Pre-Columbian / Early Archaic','Type':'Lost Lake Dovetail','Restoration':'Expert restoration by Charles Shewey','Provenance':'Kentucky private collection','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        },
+        {
+            id: 'hardin-point',
+            title: 'Hardin Projectile Point',
+            subtitle: 'Burlington Chert · 3\u2033',
+            price: 'Inquire',
+            period: 'Early Archaic · ~8,500 BP',
+            tag: 'New',
+            images: [PHOTO_BASE+'Hardin+Point+1', PHOTO_BASE+'Hardin+Point+2'],
+            description: '<p>A classic Hardin point in Burlington chert — a solid, honest piece for the Early Archaic collector. Hardin points are named after Hardin County, Illinois, where they are found in abundance, but good examples remain highly collectible due to their distinctive form and age.</p><p>This example shows the characteristic features: a slightly asymmetrical blade with contracting stem and moderate basal grinding. The Burlington chert has taken on a light cream patina from thousands of years in the soil. A completely genuine artifact with documented provenance.</p><p>The Hardin type bridges the transition from the earlier Dalton points to later Archaic forms, making it historically significant. A solid entry point for newer collectors or a reference example for an established collection.</p>',
+            specs: {'Material':'Burlington Chert','Origin':'Hardin County, Illinois','Period':'Early Archaic (~8,500 years old)','Culture':'Pre-Columbian / Early Archaic','Type':'Hardin Projectile Point','Dimensions':'3\u2033 length','Condition':'Good — genuine with full patina','Provenance':'Southern Illinois surface find','Status':'Available — Inquire for Price','Authenticity':'Lifetime Guarantee'}
+        }
+    ];
+
+    function renderGrid() {
+        const grid = document.getElementById('productGrid');
+        const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
+            '<rect width="800" height="800" fill="#1f1a15"/>' +
+            '<text x="400" y="380" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="20">Click to View</text>' +
+            '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
+            '</svg>'
+        );
+        grid.innerHTML = products.map(p => {
+            const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
+            const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : ''}">${p.tag}</span>` : '';
+            return `<div class="product-card" onclick="openDetail('${p.id}')">
+                <div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
+                <div class="info">
+                    <h3>${p.title}</h3>
+                    <div class="subtitle">${p.subtitle}</div>
+                    <div class="price-row">
+                        <span class="price">${p.price}</span>
+                        <span class="period">${p.period}</span>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    let currentProduct = null;
+
+    function openDetail(id) {
+        const p = products.find(x => x.id === id);
+        if (!p) return;
+        currentProduct = p;
+        const overlay = document.getElementById('detailOverlay');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        document.getElementById('detailTitle').textContent = p.title;
+        document.getElementById('detailPeriod').textContent = p.period;
+        const extra = p.tag === 'Sold' ? '— Sold' : (p.price === 'Inquire' ? '— Contact for pricing' : '');
+        document.getElementById('detailPrice').innerHTML = `${p.price} <span class="label">${extra}</span>`;
+        document.getElementById('detailDesc').innerHTML = p.description;
+
+        const mainImg = document.getElementById('detailMainImage');
+        const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
+            '<rect width="800" height="800" fill="#1f1a15"/>' +
+            '<text x="400" y="380" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="20">Click to View</text>' +
+            '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
+            '</svg>'
+        );
+        mainImg.src = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
+        const thumbs = document.getElementById('detailThumbs');
+        thumbs.innerHTML = '';
+        (p.images || [PLACEHOLDER]).forEach((img, i) => {
+            const thumb = document.createElement('img');
+            thumb.src = img;
+            thumb.alt = `${p.title} - Photo ${i+1}`;
+            if (i === 0) thumb.classList.add('active');
+            thumb.onclick = function() {
+                mainImg.src = img;
+                document.querySelectorAll('.detail-thumbs img').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            };
+            thumbs.appendChild(thumb);
+        });
+
+        const meta = document.getElementById('detailMetaTable');
+        meta.innerHTML = Object.entries(p.specs).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+    }
+
+    function closeDetail() {
+        document.getElementById('detailOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function openInquiry() {
+        const subject = currentProduct ? encodeURIComponent('Inquiry: ' + currentProduct.title) : encodeURIComponent('Inquiry: Barn Burner Relics');
+        window.location.href = 'mailto:barnburnerrelics@gmail.com?subject=' + subject;
+        closeDetail();
+    }
+
+    function subscribeNewsletter() {
+        const email = document.getElementById('newsletterEmail').value;
+        if (!email || !email.includes('@')) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        alert("Thanks for subscribing! You'll be the first to know about new arrivals and upcoming auctions.");
+        document.getElementById('newsletterEmail').value = '';
+    }
+
+    let mobileOpen = false;
+    function toggleMobile() {
+        const nav = document.querySelector('.header-links');
+        mobileOpen = !mobileOpen;
+        nav.style.display = mobileOpen ? 'flex' : '';
+        if (mobileOpen) {
+            nav.style.flexDirection = 'column';
+            nav.style.position = 'absolute';
+            nav.style.top = '100%';
+            nav.style.left = '0';
+            nav.style.right = '0';
+            nav.style.background = '#14110e';
+            nav.style.padding = '20px';
+            nav.style.borderBottom = '1px solid #2a2018';
+            nav.style.zIndex = '99';
+        } else {
+            nav.style = '';
+        }
+    }
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            const nav = document.querySelector('.header-links');
+            nav.style = '';
+            mobileOpen = false;
+        }
+    });
+
+    renderGrid();
+</script>
+</body>
+</html>
