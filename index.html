@@ -44,14 +44,26 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 24px;
+            padding: 12px 24px;
             max-width: 1280px;
             margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo .header-logo-img {
+            height: 56px;
+            width: auto;
+            display: block;
         }
         .logo h1 {
             font-size: 22px;
             color: #f5f0e8;
             line-height: 1.2;
+            margin: 0;
         }
         .logo span {
             display: block;
@@ -61,6 +73,15 @@
             font-weight: 400;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+        @media (max-width: 700px) {
+            .logo .header-logo-img { height: 44px; }
+            .logo h1 { font-size: 18px; }
+            .logo span { font-size: 10px; }
+        }
+        @media (max-width: 480px) {
+            .logo .header-logo-img { height: 38px; }
+            .logo h1 { display: none; }
         }
         .header-links {
             display: flex;
@@ -85,9 +106,22 @@
         /* Hero */
         .hero {
             background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
-            padding: 80px 24px 60px;
+            padding: 40px 24px 60px;
             text-align: center;
             border-bottom: 1px solid #2a2018;
+        }
+        .hero-banner-wrap {
+            max-width: 1000px;
+            margin: 0 auto 32px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            border: 1px solid #2a2018;
+        }
+        .hero-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         .hero h1 { font-size: 42px; color: #f5f0e8; margin-bottom: 16px; letter-spacing: 0.5px; }
         .hero p {
@@ -390,8 +424,11 @@
 <header>
     <div class="header-inner">
         <a href="#" onclick="closeDetail(); return false;" class="logo">
-            <h1>Barn Burner Relics</h1>
-            <span>Authentic Native American Artifacts</span>
+            <img src="images/header-banner.jpg" alt="Barn Burner Relics Inc" class="header-logo-img">
+            <div>
+                <h1>Barn Burner Relics</h1>
+                <span>Authentic Native American Artifacts</span>
+            </div>
         </a>
         <nav class="header-links">
             <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
@@ -404,6 +441,9 @@
 </header>
 
 <section class="hero">
+    <div class="hero-banner-wrap">
+        <img src="images/header-banner.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-banner-img">
+    </div>
     <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
     <p>
         Barn Burner Relics is the premier destination for authentic Native American artifacts.
