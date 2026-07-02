@@ -72,11 +72,6 @@
             gap: 12px;
             text-decoration: none;
         }
-        .logo .header-logo-img {
-            height: 56px;
-            width: auto;
-            display: block;
-        }
         .logo h1 {
             font-size: 22px;
             color: #f5f0e8;
@@ -93,13 +88,14 @@
             text-transform: uppercase;
         }
         @media (max-width: 700px) {
-            .logo .header-logo-img { height: 44px; }
             .logo h1 { font-size: 18px; }
             .logo span { font-size: 10px; }
+            .hero-script { font-size: 52px; }
+            .hero h1 { font-size: 28px; }
         }
         @media (max-width: 480px) {
-            .logo .header-logo-img { height: 38px; }
-            .logo h1 { display: none; }
+            .logo h1 { font-size: 16px; }
+            .hero-script { font-size: 42px; }
         }
         .header-links {
             display: flex;
@@ -128,23 +124,37 @@
             text-align: center;
             border-bottom: 1px solid #2a2018;
         }
-        .hero-banner-wrap {
-            max-width: 1000px;
-            margin: 0 auto 32px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            border: 1px solid #2a2018;
-        }
-        .hero-banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
         .hero h1 { font-size: 42px; color: #f5f0e8; margin-bottom: 16px; letter-spacing: 0.5px; }
         .hero p {
             font-size: 17px; color: #b8a88a; max-width: 640px;
             margin: 0 auto 32px; line-height: 1.7;
+        }
+        .hero-script {
+            font-family: 'Pinyon Script', 'Caveat', cursive;
+            font-size: 68px;
+            color: #d4a853;
+            margin: 0 auto 8px;
+            line-height: 1;
+            text-shadow: 0 0 24px rgba(212,168,83,0.08);
+        }
+        .hero-script-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            max-width: 520px;
+            margin: 0 auto 28px;
+            color: #8b7355;
+        }
+        .hero-script-divider .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4a853, transparent);
+            opacity: 0.5;
+        }
+        .hero-script-divider .diamond {
+            font-size: 8px;
+            color: #d4a853;
         }
         .hero-trust {
             display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 40px;
@@ -500,7 +510,6 @@
 <header>
     <div class="header-inner">
         <a href="#" onclick="closeDetail(); return false;" class="logo">
-            <img src="images/header-banner.jpg" alt="Barn Burner Relics Inc" class="header-logo-img">
             <div>
                 <h1>Barn Burner Relics</h1>
                 <span>Authentic Native American Artifacts</span>
@@ -517,8 +526,11 @@
 </header>
 
 <section class="hero">
-    <div class="hero-banner-wrap">
-        <img src="images/header-banner.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-banner-img">
+    <div class="hero-script">Barn Burner Relics</div>
+    <div class="hero-script-divider">
+        <span class="line"></span>
+        <span class="diamond">◆</span>
+        <span class="line"></span>
     </div>
     <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
     <p>
