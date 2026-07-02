@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barn Burner Relics — Authentic Native American Artifacts</title>
-    <style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barn Burner Relics — Authentic Native American Artifacts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
             background: #0d0d0d;
             color: #e8e0d8;
             line-height: 1.6;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
             -webkit-font-smoothing: antialiased;
         }
         img { max-width: 100%; display: block; }
         a { color: inherit; text-decoration: none; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        h1, h2, h3, h4 { font-family: 'Georgia', 'Times New Roman', serif; font-weight: 700; letter-spacing: 0.02em; }
-        .price { font-family: 'Georgia', serif; color: #d4a853; font-weight: 700; }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-weight: 700;
+            letter-spacing: 0.005em;
+            line-height: 1.2;
+        }
+        .price {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #d4a853;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
 
         /* Announcement bar */
         .announcement {
             background: #8b4513;
             color: #f5f0e8;
             text-align: center;
-            padding: 10px 16px;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+            padding: 11px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
             text-transform: uppercase;
+            font-family: 'Cormorant Garamond', Georgia, serif;
         }
-        .announcement strong { color: #ffd700; }
+        .announcement strong { color: #ffd700; font-weight: 700; }
 
         /* Header */
         header {
@@ -132,7 +150,7 @@
             display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 40px;
         }
         .hero-trust-item { text-align: center; }
-        .hero-trust-item .num { font-size: 28px; font-weight: 700; color: #d4a853; font-family: 'Georgia', serif; }
+        .hero-trust-item .num { font-size: 28px; font-weight: 700; color: #d4a853; font-family: 'Playfair Display', Georgia, serif; }
         .hero-trust-item .label { font-size: 12px; color: #8b7355; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 
         /* Section headers */
@@ -188,7 +206,7 @@
         .product-card.sold-card:hover { opacity: 0.75; }
         .product-card .info .price.sold-price { color: #8b7355; text-decoration: line-through; text-decoration-color: #6b5a45; }
         .product-card .info { padding: 16px 18px 20px; }
-        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin-bottom: 4px; font-family: 'Georgia', serif; }
+        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin-bottom: 4px; font-family: 'Playfair Display', Georgia, serif; }
         .product-card .info .subtitle { font-size: 12px; color: #8b7355; margin-bottom: 8px; }
         .product-card .info .price-row { display: flex; align-items: center; justify-content: space-between; }
         .product-card .info .price-row .price { font-size: 18px; }
@@ -376,7 +394,7 @@
         .about-section { padding: 60px 24px; max-width: 800px; margin: 0 auto; text-align: center; }
         .about-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 16px; }
         .about-section p { color: #b8a88a; font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
-        .about-section .signature { font-family: 'Georgia', serif; font-style: italic; color: #d4a853; font-size: 18px; margin-top: 24px; }
+        .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: #d4a853; font-size: 18px; margin-top: 24px; }
 
         /* Footer */
         footer {
@@ -418,7 +436,7 @@
 <body>
 
 <div class="announcement">
-    ⚡ <strong>Live Auctions</strong> Every Saturday &amp; Monday at 5PM CST &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
+    ⚡ <strong>Live Auctions</strong> Every Monday at 5PM CST &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
 <header>
