@@ -220,6 +220,31 @@
         .section-header h2 { font-size: 32px; color: #f5f0e8; margin-bottom: 10px; }
         .section-header p { color: #8b7355; font-size: 15px; }
 
+        /* Category filter — sits between section header and product grid */
+        .cat-filter {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 8px; padding: 0 24px 28px;
+            max-width: 900px; margin: 0 auto;
+        }
+        .cat-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #2a2018;
+            color: #c8a878;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 13px; font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 8px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .cat-btn:hover { background: rgba(255,255,255,0.08); border-color: #5a4a32; color: #f5e8c8; }
+        .cat-btn.active {
+            background: #8b6f3f;
+            border-color: #c8a878;
+            color: #16120e;
+        }
+
         /* Product grid */
         .product-grid {
             display: grid;
@@ -282,6 +307,51 @@
         .product-card .info .price-row { display: flex; align-items: center; justify-content: space-between; }
         .product-card .info .price-row .price { font-size: 18px; }
         .product-card .info .price-row .period { font-size: 11px; color: #6b5a45; }
+        .product-card .info .price-row .card-cat {
+            font-size: 10px; color: #c8a878;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+        }
+
+        /* Structured spec rows (origin / material / period / dimensions) */
+        .product-card .info .specs {
+            display: flex; flex-direction: column;
+            gap: 5px; margin: 10px 0 12px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.025);
+            border-left: 2px solid #8b6f3f;
+            border-radius: 2px;
+        }
+        .product-card .info .spec-row {
+            display: flex; align-items: baseline; gap: 8px;
+            font-size: 12px; line-height: 1.45;
+        }
+        .product-card .info .spec-label {
+            flex: 0 0 56px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 10px; font-weight: 600;
+            color: #a08866;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            -webkit-text-stroke: 0.2px rgba(255,255,255,0.25);
+        }
+        .product-card .info .spec-value {
+            flex: 1 1 auto;
+            color: #e8d8b8;
+            -webkit-text-stroke: 0.35px rgba(255,255,255,0.35);
+            text-shadow: 0 1px 2px rgba(255,255,255,0.10), 0 0 1px rgba(255,255,255,0.15);
+        }
+
+        /* Lifetime Authenticity Guarantee footer on each card */
+        .product-card .info .card-guarantee {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px dashed #5a4a32;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11px; color: #8b6f3f;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            text-align: center;
+        }
+        .product-card.sold-card .info .card-guarantee { display: none; }
 
         /* Product detail overlay */
         .product-detail-overlay {
@@ -513,6 +583,10 @@
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; padding: 0 16px 40px; }
             .product-card .info { padding: 12px 14px 16px; }
             .product-card .info h3 { font-size: 14px; }
+            .product-card .info .specs { padding: 8px 10px; gap: 4px; }
+            .product-card .info .spec-row { font-size: 11px; gap: 6px; }
+            .product-card .info .spec-label { flex: 0 0 48px; font-size: 9px; }
+            .product-card .info .card-guarantee { font-size: 9px; letter-spacing: 0.1em; }
             .detail-layout { grid-template-columns: 1fr; }
             .detail-gallery { padding: 20px; }
             .detail-info { padding: 20px; }
@@ -588,6 +662,15 @@
 <div class="section-header" id="shop">
     <h2>Available &amp; Recent Pieces</h2>
     <p>Click any piece for the full story, provenance, and multiple photos</p>
+</div>
+
+<div class="cat-filter" id="catFilter">
+    <button class="cat-btn active" data-cat="all">All</button>
+    <button class="cat-btn" data-cat="Points">Points</button>
+    <button class="cat-btn" data-cat="Pendants">Pendants &amp; Gorgets</button>
+    <button class="cat-btn" data-cat="Bannerstones">Bannerstones</button>
+    <button class="cat-btn" data-cat="Pottery">Pottery</button>
+    <button class="cat-btn" data-cat="Pipes">Pipes</button>
 </div>
 
 <div class="product-grid" id="productGrid"></div>
@@ -686,6 +769,13 @@
                 price: '$625',
                 period: 'Late Paleo · ~8,000 BP',
                 tag: 'Featured',
+                category: 'Points',
+                cardFields: {
+                    origin: 'Jackson Co., Wisconsin',
+                    material: 'Hixton Silicified Sandstone (translucent)',
+                    period: 'Late Paleo · ~8,000 BP',
+                    dimensions: '3⅛" length'
+                },
                 images: ['images/eden-1.jpg', 'images/eden-2.jpg', 'images/eden-3.jpg', 'images/eden-4.jpg'],
                 description: '<p>A 3⅛" Eared Eden point crafted from translucent Hixton silicified sandstone — the gold-standard material of the Upper Midwest relic world. This piece is a knockout: when held to the light it glows with that warm, waxy translucency that serious Hixton collectors pay premiums for. The blade is thin, the pressure flaking on both edges is crisp, and the ears at the base are intact and well-defined.</p><p>What separates this piece from the rest of the Eden market is the provenance depth and the documented collector history. This artifact bears the field-collector sticker "hohl 119" — catalog #119 from the collection of Frank Hohl, one of the most legendary Hixton collectors of the 20th century. His cataloging work on the Hixton quarry sites remains a foundational reference for collectors and archaeologists alike. A Hohl-numbered piece is a published-collection piece.</p><p>The full provenance chain reads: <strong>Al Kennedy → Vi Peoples → Gene Hynek → Jeb Taylor → Rivers of Time Collection → Barn Burner Relics</strong>. Five previous owners, four of them known by name in collector circles, each documented in the chain. This is the kind of paperwork that turns a nice artifact into a pedigreed investment.</p><p>Hixton Eden points are diagnostic of the Late Paleo/Early Archaic period (roughly 8,000 years ago) and represent some of the finest pressure-flaking work produced by ancient peoples in North America. Translucent examples like this — where the stone warms up and glows when held to a light source — are the holy grail of the Eden category. Few, very few, survive intact.</p>',
                 specs: {'Material':'Hixton Silicified Sandstone (translucent)','Origin':'Jackson County, Wisconsin','Period':'Late Paleo · ~8,000 BP','Culture':'Late Paleo / Early Archaic','Type':'Eared Eden Point','Dimensions':'3⅛" length','Hohl Catalog #':'hohl 119','Provenance':'Al Kennedy → Vi Peoples → Gene Hynek → Jeb Taylor → Rivers of Time → BBR','Notable Feature':'Field-collector sticker still present and legible','Price':'$625 shipped','Authenticity':'Lifetime Guarantee'}
@@ -697,6 +787,13 @@
                 price: '$850',
                 period: 'Late Archaic · ~3,000 BP',
                 tag: 'Featured',
+                category: 'Pendants',
+                cardFields: {
+                    origin: 'Hardin Co., Ohio',
+                    material: 'Banded Slate',
+                    period: 'Late Archaic · ~3,000 BP',
+                    dimensions: '4¼" length'
+                },
                 images: ['images/bell-pendant-1.jpg', 'images/bell-pendant-2.jpg', 'images/bell-pendant-3.jpg', 'images/bell-pendant-4.jpg'],
                 description: '<p>A 4¼" Bell Pendant cut from banded slate, recovered in Hardin County, Ohio. This is the textbook form — broad shoulders tapering to a softly rounded base, with a single drilled suspension hole at the top for cordage. The banded slate shows the kind of layered coloration (olive, tan, grey) that signals glacial origin material, pulled from the Canadian Shield and scattered across the Great Lakes by retreating ice.</p><p>The piece carries TWO previous-collection catalog stickers from named Ohio collectors: <strong>Norman Kley #3420</strong> on one face, and <strong>Rick Waibel #287</strong> on the reverse. Norman Kley was one of the most prolific slate collectors of the Ohio scene in the 1970s–80s; a Kley-numbered pendant carries an immediate recognition premium in the Ohio Valley collector market. The bottom edge of the pendant also carries the field-collection notation "HARDIN CO. OHIO" handwritten in the original collector\'s hand — provenance at its most direct.</p><p>This bell pendant has been pictured in published reference works including <strong>"Artifacts" magazine (Vol. 12 #1, 1982)</strong>, <strong>"Who\'s Who in Indian Relics" No. 10 (page 363)</strong>, and was offered in the Converse sale on 5/26/90 and 6/21/92 — a documented public appearance history that places it in the published record.</p><p>The provenance chain reads: <strong>Norman Kley (#3420) → Stanley Copeland → Rick Waibel (#287) → … → Barn Burner Relics</strong>. Both stickers remain on the piece and are intentionally left in place — provenance tags are part of the artifact\'s history.</p>',
                 specs: {'Material':'Banded Slate','Origin':'Hardin County, Ohio','Period':'Late Archaic · ~3,000 BP','Culture':'Late Archaic / Early Woodland','Type':'Bell Pendant (drilled suspension)','Dimensions':'4¼" length','Kley Catalog #':'3420','Waibel Catalog #':'287','Field ID':'"HARDIN CO. OHIO" handwritten on edge','Publication History':'Artifacts Vol. 12 #1 (1982); Who\'s Who in Indian Relics No. 10, p.363','Auction History':'Converse Sale 5/26/90; 6/21/92','Provenance':'Norman Kley → Stanley Copeland → Rick Waibel → BBR','Price':'$850 shipped','Authenticity':'Lifetime Guarantee'}
@@ -708,6 +805,13 @@
             price: '$2,250',
             period: 'Archaic · ~3,000 BP',
             tag: 'Featured',
+            category: 'Bannerstones',
+            cardFields: {
+                origin: 'Preble Co., Ohio',
+                material: 'Slate (glacial, layered)',
+                period: 'Archaic · ~3,000–5,000 BP',
+                dimensions: '4" length'
+            },
             images: ['images/wing-banner-1.jpg', 'images/wing-banner-2.jpg', 'images/wing-banner-3.jpg'],
             description: '<p>A 4" double-notch slate Wing Bannerstone recovered in Preble County, Ohio — a clean, well-balanced example of one of the most iconic Archaic hafted forms in the Midwest. This piece shows the textbook silhouette: two symmetrical wings with a narrowed central stem, deep side notches that fully separate each wing, and a drilled central perforation that would have taken a wooden haft and binding.</p><p>Wing bannerstones are interpreted as atlatl weights — counterbalance components used to add momentum and accuracy to the thrusting board (atlatl) that launched darts before the bow arrived in North America. They are diagnostic of the Archaic period, roughly 3,000–5,000 years old, with the double-notch winged form being particularly common in the Ohio Valley and Great Lakes regions.</p><p>The material is a dense, fine-grained slate with the layered greenish-grey banding typical of Canadian Shield-derived material that was distributed across Ohio and the Midwest by glacial action. The piece shows a smooth, river-tumbled polish on both faces with controlled flaking visible along the notches and around the central perforation — the signature of skilled Archaic-era lapidary work.</p><p><strong>Provenance chain:</strong> Andy Parks → Doug Hannan → Dan Bartlett → Barn Burner Relics. The piece surfaced in the <strong>Converse Sale on 6-21-98</strong> — a documented public appearance in one of the most active Midwestern artifact auctions of the 1990s. Each previous owner is a recognized name in the Ohio Valley collector market, giving this piece a four-deep, traceable paper trail.</p><p>Note: the ring-stack visible in the perforation in the edge-on photo is a modern display mount added for safe shipping — it is not part of the artifact and is removed for sale.</p><p><strong>Buy It Now at $2,250 shipped.</strong></p>',
             specs: {'Material':'Slate (glacial, layered greenish-grey)','Origin':'Preble County, Ohio','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Double Notch Wing Bannerstone (atlatl weight)','Dimensions':'4" length','Drilled Perforation':'Single central haft hole','Notable Feature':'Symmetrical wings, deep side notches, river-tumbled polish','Auction History':'Converse Sale, 6-21-98','Provenance':'Andy Parks → Doug Hannan → Dan Bartlett → Barn Burner Relics','Condition':'Solid — no restoration','Display Mount':'Modern ring-stack in perforation is for shipping only, removed for sale','Price':'$2,250 shipped (Buy It Now)','Authenticity':'Lifetime Guarantee'}
@@ -719,6 +823,13 @@
                 price: '$2,195',
                 period: 'Late Archaic · ~2,000 BP',
                 tag: 'New',
+                category: 'Pottery',
+                cardFields: {
+                    origin: 'Tennessee',
+                    material: 'Shell-tempered Ceramic',
+                    period: 'Late Archaic · ~2,000 BP',
+                    dimensions: '3⅜" × 3⅛"'
+                },
                 images: ['images/effigy-jar-3.jpg'],
                 description: '<p>A 3 3/8" diameter × 3 1/8" tall effigy jar featuring an applied <strong>human face</strong> (eye pellets, pinched nose ridge, mouth slit) and twin <strong>strap handles</strong> flanking the rim. The combination of an applied human face with strap handles is the rarest variation in the effigy jar world — most surviving examples feature owl, fish, or generic appliqués, and many have lost one or both eyes to handling breakage over thousands of years.</p><p>This example is solid: the eye pellets are proud and intact, the nose ridge is sharp, the mouth slit is clean. The strap handles show their original shape with no restoration and no significant chips. This is a museum-quality piece in terms of preservation.</p><p>Recovered in Tennessee and carrying a documented provenance chain: <strong>Kolt Petty → Sam Johnson → Barn Burner Relics</strong>. Both Kolt Petty and Sam Johnson are recognized names in Tennessee-collector circles, which gives this artifact a clean, traceable paper trail back to its find.</p><p>Effigy jars of this style are diagnostic of the late prehistoric Late Archaic / Early Woodland transition in the southeastern United States. They were not everyday storage vessels — they were ceremonial pieces, made for ritual use and likely held in kin-household context by communities living along the Tennessee, Cumberland, and Duck river valleys. The combination of preservation, complete appliqué face, intact handles, and clean provenance on this one makes it the standout effigy jar in our current lineup.</p><p><strong>Buy It Now at $2,195 shipped — available now.</strong></p>',
                 specs: {'Material':'Shell-tempered ceramic (Plainware tradition)','Origin':'Tennessee','Period':'Late Archaic / Early Woodland · ~2,000 BP','Culture':'Late Archaic / Early Woodland','Type':'Effigy Jar with human face + strap handles','Dimensions':'3 3/8" diameter × 3 1/8" tall','Face Detail':'Intact — both eye pellets, pinched nose, mouth slit all preserved','Handle Detail':'Both strap handles intact, no restoration','Provenance':'Kolt Petty → Sam Johnson → Barn Burner Relics','Condition':'Solid — no major cracks or repairs','Price':'$2,195 shipped (Buy It Now)','Authenticity':'Lifetime Guarantee'}
@@ -730,6 +841,13 @@
                 price: '$1,150',
                 period: 'Archaic · ~2,500 BP',
                 tag: 'Featured',
+                category: 'Pendants',
+                cardFields: {
+                    origin: 'Todd / Christian Co., Kentucky',
+                    material: 'Freshwater Mussel Shell',
+                    period: 'Archaic · ~2,500 BP',
+                    dimensions: '3" diameter'
+                },
                 images: ['images/gorget-1.jpg', 'images/gorget-2.jpg', 'images/gorget-3.jpg', 'images/gorget-4.jpg'],
                 description: '<p>A 3" freshwater mussel shell gorget recovered in Todd/Christian County, Kentucky — recovered from a documented Kentucky shell-gorget context, the kind of county pairing these artifact categories are named for. This disc shows the signature heavy iron/red staining and fossilized surface texture that comes from millennia in Mid-South river soils, plus subtle surface markings consistent with the original shell\'s muscular attachment scars.</p><p>This piece has been <strong>pictured in the published reference work "The Saga of Glover\'s Cave," page 236, Figure 266</strong> — appearing alongside other provenanced shell gorgets from the same site. Documentation in a published reference work of this kind is what separates a gorget from a pedigree gorget. The ownership trace into the present collection runs through the Veitzen Sale 4 (Lot 1861), Perry Hansen, and Mitch Lewis — a four-deep paper trail documented by reference.</p><p>The two drilled suspension holes are positioned along one side of the disc, allowing the gorget to be worn as a pendant or attached to a ceremonial garment. Two-hole designs are characteristic of Kentucky shell gorgets; the more decorative four-hole patterns are typical of Tennessee and Arkansas pieces. Condition is solid — the disc is intact, the holes are clean, with light chipping at the rim consistent with a piece that has survived thousands of years.</p><p><strong>Buy It Now at $1,150 shipped — published reference piece, documented provenance, intact condition.</strong></p>',
                 specs: {'Material':'Freshwater Mussel Shell','Origin':'Todd / Christian County, Kentucky','Period':'Archaic · ~2,500 BP','Culture':'Archaic','Type':'Shell Gorget (two-hole, drilled suspension)','Dimensions':'3" diameter','Publication History':'Pictured in "The Saga of Glover\'s Cave," p.236, Fig. 266','Auction Reference':'Veitzen Sale #4, Lot #1861','Provenance':'Veitzen Sale #4 → Perry Hansen → Mitch Lewis → Barn Burner Relics','Hole Configuration':'Two drilled suspension holes (Kentucky style)','Price':'$1,150 shipped (Buy It Now)','Authenticity':'Lifetime Guarantee'}
@@ -741,6 +859,13 @@
                 price: '$425',
                 period: 'Early Archaic · ~7,500 BP',
                 tag: 'New',
+                category: 'Points',
+                cardFields: {
+                    origin: 'Adams Co., Illinois',
+                    material: 'Translucent Honey Amber Chalcedony',
+                    period: 'Early Archaic · ~7,500 BP',
+                    dimensions: '1 15/16" length'
+                },
                 images: ['images/neuberger-2.jpg', 'images/neuberger-3.jpg', 'images/neuberger-4.jpg'],
                 description: '<p>A 1 15/16" <strong>Neuberger</strong> point cut from translucent honey amber chalcedony — a material that lights up like stained glass when held to a light source. This is one of the textbook examples of the type: side-notched base, wide barbs, and that narrow tapering needle tip that gives the Neuberger its reputation as one of the most refined point designs from the Early Archaic period.</p><p>What makes this piece pop is the contrast between its daylight and backlit personalities. In normal daylight it reads as a creamy off-white stone with subtle texture; backlit, it glows with warm honey-amber translucency and shows internal inclusions along the body and base. Many collectors prize Neubergers specifically for this translucency — it\'s the visual payoff that distinguishes a good one from a great one.</p><p>The artifact bears the field-collector sticker of <strong>Herb Mangold, catalog #4, inventory #6584, Adams Co. (IL)</strong>. Adams County, Illinois (the Quincy / lower Illinois River valley region) is known for high-quality translucent cherts and chalcedonies, and a Herb Mangold collection sticker is a documented, traceable provenance element. This piece traveled <strong>Herb Mangold (HM #4 / 6584) → Drake Terwelp → Barn Burner Relics</strong>.</p><p>Condition: needle tip intact, barbs crisp, flaking pattern shows skilled pressure-knapping. At a price point of $425, this is the rarest combination we have on the shelf right now — a properly documented, properly translucent, properly typed collection piece at an entry-point price. Good for new collectors building a paper trail, or for established collections filling a translucency gap.</p><p><strong>Buy It Now at $425 shipped.</strong></p>',
                 specs: {'Material':'Translucent Honey Amber Chalcedony','Origin':'Adams County, Illinois','Period':'Early Archaic · ~7,500 BP','Culture':'Early Archaic','Type':'Neuberger Projectile Point','Dimensions':'1 15/16" length','Catalog':'Herb Mangold #4 (inventory #6584) — sticker on artifact','Provenance':'Herb Mangold #4 → Drake Terwelp → Barn Burner Relics','Notable Feature':'Translucent honey-amber — lights up backlit','Condition':'Excellent — needle tip intact, barbs crisp','Price':'$425 shipped (Buy It Now)','Authenticity':'Lifetime Guarantee'}
@@ -752,6 +877,13 @@
                 price: '$7,500',
                 period: 'Early Archaic · ~7,500 BC',
                 tag: 'Featured',
+                category: 'Points',
+                cardFields: {
+                    origin: 'St. Clair Co., Illinois',
+                    material: 'Undetermined Chert (cream/tan)',
+                    period: 'Early Archaic · ~7,500 BC',
+                    dimensions: '5⅞" × 1⅞"'
+                },
                 images: ['images/hardin-point-1.jpg', 'images/hardin-point-2.jpg', 'images/hardin-point-3.jpg'],
                 description: '<p>An exceptional Hardin point from St. Clair County, Illinois — measuring 5⅞ inches in length with a 1⅞-inch blade width. This is a museum-grade example of one of the most iconic Early Archaic types in North America, documented and certified by renowned archaeologist Jerry T. Dickey of The Solid Rock (Certificate #2025-08-003).</p><p>Hardin points are characteristic of the Dalton horizon, dating to approximately 7,500 BC. They bear a close resemblance to the Scottsbluff type but are distinguished by a more expanded base with downward-pointing barbs developed from wide corner notching. This example exhibits textbook morphology: the broad, expanded base, prominent barbs, and finely controlled flaking along both edges.</p><p>What sets this piece apart is its exceptional provenance trail. Originally recovered in St. Clair County, Illinois, it passed through the collections of Addison Throop, Mitch Lewis, and Dave and Arron Kilander before entering the current collection. The piece is inscribed "ST. CLAIR CO. ILL." on the base with the collection number — traditional field documentation that serious collectors look for. Jerry Dickey’s evaluation notes: “A very nice example.”</p><p>The material is an undetermined high-quality chert with the characteristic cream-to-tan coloration and subtle iron staining consistent with long burial in Midwestern soils. The flaking is broad and regular — the work of a master knapper working within the Dalton tradition that produced some of the finest flintknapping in North American prehistory.</p><p><strong>Includes full Certificate of Authenticity from Jerry T. Dickey (The Solid Rock) — Certificate #2025-08-003, issued August 7, 2025.</strong></p>',
                 specs: {'Material':'Undetermined Chert (Cream/Tan)','Origin':'St. Clair County, Illinois','Period':'Early Archaic (~7,500 BC)','Culture':'Pre-Columbian / Early Archaic / Dalton Horizon','Type':'Hardin Projectile Point','Dimensions':'5⅞″ × 1⅞″','COA':'Jerry T. Dickey — The Solid Rock (#2025-08-003)','Provenance':'Addison Throop → Mitch Lewis → Dave/Arron Kilander','Collection ID':'Inscribed "ST. CLAIR CO. ILL." on base','Price':'$7,500','Authenticity':'Lifetime Guarantee + Certified COA'}
@@ -763,6 +895,13 @@
                 price: 'SOLD',
                 period: 'Early to Mid 1800s',
                 tag: 'Sold',
+                category: 'Pipes',
+                cardFields: {
+                    origin: 'Dakotas',
+                    material: 'Catlinite (Red Pipestone)',
+                    period: 'Early to Mid 1800s',
+                    dimensions: 'Deer / Antelope Effigy'
+                },
                 images: ['images/sioux-deer-pipe-1.jpg', 'images/sioux-deer-pipe-2.jpg', 'images/sioux-deer-pipe-3.jpg', 'images/sioux-deer-pipe-4.jpg'],
                 description: '<p>A very detailed Sioux Deer Pipe from the early to mid 1800s. The pipe is crafted from one solid piece of Catlinite — red pipestone from the sacred quarries of Minnesota. The carving depicts an antelope or deer in full form, with remarkable attention to the animal\'s posture and anatomy.</p><p>Effigy pipes of this quality are exceptionally rare. They were not everyday objects — they were ceremonial pieces, used in rituals and councils. The Sioux people of the Dakotas crafted these from pipestone that was traded across the Great Plains for centuries.</p><p>This piece was recovered in the Dakotas and represents some of the finest Native American pipe carving from the Plains period. Effigy pipes like this are among the most sought-after categories in the collector market.</p><p><strong>This piece has been sold. Reference photo retained for documentation and provenance history.</strong></p>',
                 specs: {'Material':'Catlinite (Red Pipestone)','Origin':'Dakotas','Period':'Early to Mid 1800s','Culture':'Sioux / Plains','Type':'Effigy Pipe (Deer/Antelope)','Provenance':'Hansen Coll. → Slack Coll. → Tribbet Coll.','Status':'SOLD','Authenticity':'Lifetime Guarantee'}
@@ -778,21 +917,31 @@
             '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
             '</svg>'
         );
-        grid.innerHTML = products.map(p => {
+        grid.innerHTML = products
+            .filter(p => currentCat === 'all' || p.category === currentCat)
+            .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : ''}">${p.tag}</span>` : '';
             const isSold = p.tag === 'Sold';
-            const cardClasses = 'product-card' + (isSold ? ' sold-card' : '');
+            const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '');
-            return `<div class="${cardClasses}" onclick="openDetail('${p.id}')">
+            // Card-front spec rows: origin / material / period / dimensions
+            const cf = p.cardFields || {};
+            const specRows = ['origin','material','period','dimensions']
+                .filter(k => cf[k])
+                .map(k => `<div class="spec-row"><span class="spec-label">${k}</span><span class="spec-value">${cf[k]}</span></div>`)
+                .join('');
+            const guaranteeHtml = isSold ? '' : '<div class="card-guarantee">Lifetime Authenticity Guarantee</div>';
+            return `<div class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">
                 <div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
                 <div class="info">
                     <h3>${p.title}</h3>
-                    <div class="subtitle">${p.subtitle}</div>
+                    ${specRows ? `<div class="specs">${specRows}</div>` : ''}
                     <div class="price-row">
                         <span class="${priceClass}">${p.price}</span>
-                        <span class="period">${p.period}</span>
+                        ${p.category ? `<span class="card-cat">${p.category}</span>` : ''}
                     </div>
+                    ${guaranteeHtml}
                 </div>
             </div>`;
         }).join('');
@@ -920,6 +1069,16 @@
             nav.style = '';
             mobileOpen = false;
         }
+    });
+
+    // Category filter handler — re-renders the grid with a category predicate
+    let currentCat = 'all';
+    document.getElementById('catFilter').addEventListener('click', (e) => {
+        const btn = e.target.closest('.cat-btn');
+        if (!btn) return;
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b === btn));
+        currentCat = btn.dataset.cat;
+        renderGrid();
     });
 
     renderGrid();
