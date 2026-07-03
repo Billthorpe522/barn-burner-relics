@@ -289,6 +289,8 @@
             text-transform: uppercase; letter-spacing: 0.5px;
         }
         .product-card .badge.sold { background: #4a4a4a; }
+        .product-card .badge.featured { background: #c9a24b; color: #1f1a15; }
+        .product-card .badge.new { background: #4a7c4f; }
         .product-card.sold-card { opacity: 0.55; filter: grayscale(0.5); }
         .product-card.sold-card:hover { opacity: 0.75; }
         .product-card .info .price.sold-price { color: #8b7355; text-decoration: line-through; text-decoration-color: #6b5a45; }
@@ -763,6 +765,24 @@
 <script>
     const products = [
             {
+                id: 'holland-dalton',
+                title: 'Exceptional 3" Holland Dalton Projectile Point',
+                subtitle: 'Pike County, Missouri · Ex: Tommy Beutell Collection',
+                price: '$2,000 (Buy It Now, Shipped)',
+                tag: 'Featured',
+                category: 'Points',
+                period: 'Paleoindian / Early Archaic (~8500–7900 B.P.)',
+                cardFields: {
+                    origin: 'Pike County, Missouri',
+                    material: 'Tan/Gray Chert (Two-Tone)',
+                    period: 'Paleoindian / Early Archaic',
+                    dimensions: '3" Dalton'
+                },
+                images: ['images/holland-dalton-1.jpg', 'images/holland-dalton-2.jpg', 'images/holland-dalton-3.jpg', 'images/holland-dalton-4.jpg'],
+                description: '<p>Exceptional 3" Holland Dalton projectile point from Pike County, Missouri. The blade displays striking two-tone coloration — a translucent honey-tan upper blade paired with a gray-purple lower blade — a hallmark of high-quality Dalton workmanship. Fine pressure-flaked edge serrations run clean along both lateral edges, and the basal thinning and flaking show expert reduction by a skilled Paleoindian craftsman.</p><p>Daltons are among the most iconic and collectible Paleoindian / Early Archaic point types in North America, dating roughly 8500–7900 B.P. They are recognized by their broad shouldered form, deeply notched base, lenticular cross-section, and frequently serrated lateral edges. Pieces displaying the distinctive two-material "exotic blade" coloration — like this one — are especially prized in the collector market, as they often indicate long-distance toolstone trade across the Midsouth.</p><p>Provenance: Ex Tommy Beutell Collection. Recovered from Pike County, Missouri.</p><p>Ships fully insured. Lifetime authenticity guarantee. All payment methods accepted.</p>',
+                specs: {'Material':'Tan/Gray Chert (Two-Tone)','Origin':'Pike County, Missouri','Period':'Paleoindian / Early Archaic (~8500–7900 B.P.)','Culture':'Dalton / Early Archaic','Type':'Holland Dalton Projectile Point','Length':'3"','Provenance':'Tommy Beutell Collection','Status':'Available','Authenticity':'Lifetime Guarantee'}
+            },
+            {
                 id: 'hixton-eden',
                 title: 'Hixton Eared Eden Point',
                 subtitle: 'Translucent Hixton Silicified Sandstone · Jackson Co., WI',
@@ -786,7 +806,7 @@
                 subtitle: 'Hardin Co., OH · Kley #3420 / Waibel #287',
                 price: '$850',
                 period: 'Late Archaic · ~3,000 BP',
-                tag: 'Featured',
+                tag: 'New',
                 category: 'Pendants',
                 cardFields: {
                     origin: 'Hardin Co., Ohio',
@@ -804,7 +824,6 @@
             subtitle: 'Slate · Preble Co., OH · Converse Sale Provenance',
             price: '$2,250',
             period: 'Archaic · ~3,000 BP',
-            tag: 'Featured',
             category: 'Bannerstones',
             cardFields: {
                 origin: 'Preble Co., Ohio',
@@ -840,7 +859,6 @@
                 subtitle: 'Todd/Christian Co., KY · Published Reference Piece',
                 price: '$1,150',
                 period: 'Archaic · ~2,500 BP',
-                tag: 'Featured',
                 category: 'Pendants',
                 cardFields: {
                     origin: 'Todd / Christian Co., Kentucky',
@@ -876,7 +894,6 @@
                 subtitle: 'Chert · St. Clair Co., IL',
                 price: '$7,500',
                 period: 'Early Archaic · ~7,500 BC',
-                tag: 'Featured',
                 category: 'Points',
                 cardFields: {
                     origin: 'St. Clair Co., Illinois',
@@ -921,7 +938,7 @@
             .filter(p => currentCat === 'all' || p.category === currentCat)
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
-            const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : ''}">${p.tag}</span>` : '';
+            const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '');
