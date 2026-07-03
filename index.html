@@ -78,6 +78,24 @@
             line-height: 1.2;
             margin: 0;
         }
+        .header-logo-img {
+            height: 56px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+        }
+        .hero-logo-wrap {
+            max-width: 720px;
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+        .hero-logo-img {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            display: inline-block;
+            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.6)) drop-shadow(0 0 60px rgba(212,168,83,0.15));
+        }
         .logo span {
             display: block;
             font-size: 11px;
@@ -90,10 +108,14 @@
         @media (max-width: 700px) {
             .logo h1 { font-size: 18px; }
             .logo span { font-size: 10px; }
+            .header-logo-img { height: 44px; }
+            .hero-logo-wrap { margin-bottom: 20px; }
             .hero h1 { font-size: 28px; }
         }
         @media (max-width: 480px) {
             .logo h1 { font-size: 16px; }
+            .header-logo-img { height: 38px; }
+            .hero-logo-wrap { margin-bottom: 16px; }
         }
         .header-links {
             display: flex;
@@ -517,10 +539,7 @@
 <header>
     <div class="header-inner">
         <a href="#" onclick="closeDetail(); return false;" class="logo">
-            <div>
-                <h1>Barn Burner Relics</h1>
-                <span>Authentic Native American Artifacts</span>
-            </div>
+            <img src="images/bbr-logo-header.jpg" alt="Barn Burner Relics Inc" class="header-logo-img">
         </a>
         <nav class="header-links">
             <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
@@ -533,6 +552,9 @@
 </header>
 
 <section class="hero">
+    <div class="hero-logo-wrap">
+        <img src="images/bbr-logo.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-logo-img">
+    </div>
     <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
     <p>
         Barn Burner Relics is the premier destination for authentic Native American artifacts.
