@@ -222,10 +222,22 @@
         .section-header p { color: #8b7355; font-size: 15px; }
 
         /* Category filter — sits between section header and product grid */
-        .cat-filter {
+        /* Two stacked filter rows: Period (above) + Category (below) */
+        .filter-block { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .filter-row {
             display: flex; flex-wrap: wrap; justify-content: center;
-            gap: 8px; padding: 0 24px 28px;
-            max-width: 900px; margin: 0 auto;
+            gap: 8px; padding: 8px 0;
+        }
+        .filter-row + .filter-row { padding-top: 0; padding-bottom: 28px; }
+        .filter-row-label {
+            flex: 0 0 100%;
+            text-align: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11px; font-weight: 600;
+            color: #8b7355;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 4px;
         }
         .cat-btn {
             background: rgba(255,255,255,0.04);
@@ -666,13 +678,24 @@
     <p>Click any piece for the full story, provenance, and multiple photos</p>
 </div>
 
-<div class="cat-filter" id="catFilter">
-    <button class="cat-btn active" data-cat="all">All</button>
-    <button class="cat-btn" data-cat="Points">Points</button>
-    <button class="cat-btn" data-cat="Pendants">Pendants &amp; Gorgets</button>
-    <button class="cat-btn" data-cat="Bannerstones">Bannerstones</button>
-    <button class="cat-btn" data-cat="Pottery">Pottery</button>
-    <button class="cat-btn" data-cat="Pipes">Pipes</button>
+<div class="filter-block">
+    <div class="filter-row" id="periodFilter">
+        <div class="filter-row-label">By Period</div>
+        <button class="cat-btn active" data-period="all">All</button>
+        <button class="cat-btn" data-period="paleo">Paleo</button>
+        <button class="cat-btn" data-period="archaic">Archaic</button>
+        <button class="cat-btn" data-period="woodland">Woodland</button>
+        <button class="cat-btn" data-period="historic">Historic</button>
+    </div>
+    <div class="filter-row" id="catFilter">
+        <div class="filter-row-label">By Type</div>
+        <button class="cat-btn active" data-cat="all">All</button>
+        <button class="cat-btn" data-cat="Points">Points</button>
+        <button class="cat-btn" data-cat="Pendants">Pendants &amp; Gorgets</button>
+        <button class="cat-btn" data-cat="Bannerstones">Bannerstones</button>
+        <button class="cat-btn" data-cat="Pottery">Pottery</button>
+        <button class="cat-btn" data-cat="Pipes">Pipes</button>
+    </div>
 </div>
 
 <div class="product-grid" id="productGrid"></div>
@@ -935,7 +958,8 @@
             '</svg>'
         );
         grid.innerHTML = products
-            .filter(p => currentCat === 'all' || p.category === currentCat)
+            .filter(p => (currentCat === 'all' || p.category === currentCat))
+            .filter(p => (currentPeriod === 'all' || classifyPeriod(p.period) === currentPeriod))
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
@@ -962,6 +986,18 @@
                 </div>
             </div>`;
         }).join('');
+
+        if (!grid.innerHTML) {
+            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:#8b7355;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;">No pieces match these filters yet. <a href="#" onclick="resetFilters();return false;" style="color:#c8a878;text-decoration:underline;">Reset filters</a></div>`;
+        }
+    }
+
+    function resetFilters() {
+        currentCat = 'all';
+        currentPeriod = 'all';
+        document.querySelectorAll('#catFilter .cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+        document.querySelectorAll('#periodFilter .cat-btn').forEach(b => b.classList.toggle('active', b.dataset.period === 'all'));
+        renderGrid();
     }
 
     let currentProduct = null;
@@ -1088,13 +1124,39 @@
         }
     });
 
-    // Category filter handler — re-renders the grid with a category predicate
+    // Classifier: turns a descriptive period label (e.g. "Late Archaic · ~3,000 BP"
+    // or "Paleoindian / Early Archaic (~8500–7900 B.P.)") into one of four buckets.
+    // Keep this in sync with the periodFilter buttons in the markup above.
+    function classifyPeriod(label) {
+        if (!label) return 'archaic';        // safe default for missing data
+        const s = label.toLowerCase();
+        if (/\bpaleo\b|paleoindian/.test(s)) return 'paleo';
+        // "Late Archaic / Early Woodland" still files under Archaic per dealer convention
+        // — assign the earlier of the two periods referenced.
+        if (/archaic/.test(s)) return 'archaic';
+        if (/\bwoodland\b/.test(s)) return 'woodland';
+        // Historic = anything post-1500: 1800s, Plains, Sioux, Civil War era, etc.
+        if (/1800|1700|1500|sioux|plains|historic|civil war|colonial/.test(s)) return 'historic';
+        return 'archaic';                    // safe fallback for new pieces Bill hasn't bucketed
+    }
+
+    // Two filter handlers — Period + Type compose (AND). Each keeps its own active state.
     let currentCat = 'all';
+    let currentPeriod = 'all';
+
     document.getElementById('catFilter').addEventListener('click', (e) => {
         const btn = e.target.closest('.cat-btn');
         if (!btn) return;
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('#catFilter .cat-btn').forEach(b => b.classList.toggle('active', b === btn));
         currentCat = btn.dataset.cat;
+        renderGrid();
+    });
+
+    document.getElementById('periodFilter').addEventListener('click', (e) => {
+        const btn = e.target.closest('.cat-btn');
+        if (!btn) return;
+        document.querySelectorAll('#periodFilter .cat-btn').forEach(b => b.classList.toggle('active', b === btn));
+        currentPeriod = btn.dataset.period;
         renderGrid();
     });
 
