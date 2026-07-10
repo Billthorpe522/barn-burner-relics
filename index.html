@@ -206,6 +206,30 @@
             letter-spacing: 2px;
             margin-top: 6px;
         }
+
+        /* Show badge — temporary, added Jul 10 2026 for Starved Rock weekend */
+        .show-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            padding: 8px 14px;
+            background: rgba(212, 168, 83, 0.08);
+            border: 1px solid rgba(212, 168, 83, 0.35);
+            border-radius: 999px;
+            color: #d4a853;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .show-pill:hover { background: rgba(212, 168, 83, 0.15); border-color: rgba(212, 168, 83, 0.6); }
+        .show-pill .dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: #d4a853; box-shadow: 0 0 8px rgba(212, 168, 83, 0.6);
+        }
+
         @media (max-width: 700px) {
             .signature-block { margin-top: 32px; padding: 18px 18px 14px; }
             .signature-block .handwritten { font-size: 19px; }
@@ -671,6 +695,11 @@
         <div class="signature">~ Nick Gatses</div>
         <div class="signed-by">Founder · Barn Burner Relics</div>
     </div>
+
+    <a href="https://billthorpe522.github.io/starved-rock-2026/" target="_blank" rel="noopener" class="show-pill">
+        <span class="dot"></span>
+        Exhibiting this weekend · 23rd Annual Starved Rock Artifact Show · Sun Jul 12 · Grand Bear Resort, Utica IL
+    </a>
 </section>
 
 <div class="section-header" id="shop">
@@ -721,8 +750,9 @@
         context to collection history and cultural significance. He personally guarantees every piece he sells for life.
     </p>
     <p>
-        Nick is a regular exhibitor at the Collinsville Prehistoric Artifact Show — the largest Native American
-        artifact show in the country — and his weekly Facebook auctions draw collectors from across the United States.
+        Nick is a regular exhibitor at the Collinsville Prehistoric Artifact Show and the 23rd annual Starved Rock
+        Native American Artifact Show — among the largest Native American artifact shows in the country — and his
+        weekly Facebook auctions draw collectors from across the United States.
     </p>
     <div class="signature">— Nick Gatses, Proprietor</div>
 </section>
