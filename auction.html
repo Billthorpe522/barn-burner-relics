@@ -274,18 +274,11 @@
 </section>
 
 <div class="section-label">
-    <h2>Tonight's Individual Lots</h2>
-    <p>11 photos · scroll to browse · click to enlarge</p>
+    <h2>Tonight's Offering</h2>
+    <p>14 photos · scroll to browse · click to enlarge</p>
 </div>
 
 <div class="photo-grid" id="photoGrid"></div>
-
-<div class="section-label">
-    <h2>Display Case Context</h2>
-    <p>3 photos · wider collection shots · not individual lots</p>
-</div>
-
-<div class="photo-grid" id="contextGrid"></div>
 
 <!-- Lightbox -->
 <div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this||event.target===document.getElementById('lbImage'))closeLightbox()">
@@ -309,54 +302,44 @@
 </footer>
 
 <script>
-    // Tonight's individual lots (alphabetical by slug — claims no hierarchy the photos can't back up)
-    const individualPhotos = [
-        { src: 'images/butterfly-banner-1.jpg', slug: 'butterfly-bannerstone', label: 'Quartz Butterfly Bannerstone' },
-        { src: 'images/incoming/clovis-6/photo-1.jpg', slug: 'clovis-6', label: 'Fluted Clovis Point #6' },
-        { src: 'images/incoming/clovis-large-adams-co/photo-1.jpg', slug: 'clovis-large-adams-co', label: 'Large Ohio Flint Ridge Clovis' },
-        { src: 'images/incoming/clovis-large-adams-co/photo-2.jpg', slug: 'clovis-large-adams-co', label: 'Large Ohio Flint Ridge Clovis (provenance back)' },
-        { src: 'images/incoming/fish-hook-group-of-4/photo-1.jpg', slug: 'fish-hook-group-of-4', label: 'Four Bone Fish Hooks (group)' },
-        { src: 'images/incoming/large-flint-biface-k98/photo-1.jpg', slug: 'large-flint-biface-k98', label: 'Large Translucent Flint Biface (K98)' },
-        { src: 'images/incoming/serrated-point-3/photo-1.jpg', slug: 'serrated-point-3', label: 'Serrated Point #3' },
-        { src: 'images/incoming/spotted-stone-pipe/photo-1.jpg', slug: 'spotted-stone-pipe', label: 'Spotted Stone Smoking Pipe' },
-        { src: 'images/incoming/stone-frog-effigy/photo-1.jpg', slug: 'stone-frog-effigy', label: 'Carved Stone Frog Effigy' },
-        { src: 'images/incoming/display-case-beaver-pipe/photo-1.jpg', slug: 'display-case-beaver-pipe', label: 'Beaver Effigy Pipe (in case)' },
-        { src: 'images/incoming/arrowhead-shouldered-1/photo-1.jpg', slug: 'arrowhead-shouldered-1', label: 'Shouldered Arrowhead, Cream Chert' },
+    // Tonight's offering — 3 group photos first (preview of what's coming),
+    // then 11 individual lots. No labels or badges — just photos.
+    const galleryPhotos = [
+        { src: 'images/incoming/display-case-bannerstones/photo-1.jpg' },
+        { src: 'images/incoming/display-case-points-misc/photo-1.jpg' },
+        { src: 'images/incoming/display-case-pottery/photo-1.jpg' },
+        { src: 'images/butterfly-banner-1.jpg' },
+        { src: 'images/incoming/clovis-6/photo-1.jpg' },
+        { src: 'images/incoming/clovis-large-adams-co/photo-1.jpg' },
+        { src: 'images/incoming/clovis-large-adams-co/photo-2.jpg' },
+        { src: 'images/incoming/fish-hook-group-of-4/photo-1.jpg' },
+        { src: 'images/incoming/large-flint-biface-k98/photo-1.jpg' },
+        { src: 'images/incoming/serrated-point-3/photo-1.jpg' },
+        { src: 'images/incoming/spotted-stone-pipe/photo-1.jpg' },
+        { src: 'images/incoming/stone-frog-effigy/photo-1.jpg' },
+        { src: 'images/incoming/display-case-beaver-pipe/photo-1.jpg' },
+        { src: 'images/incoming/arrowhead-shouldered-1/photo-1.jpg' },
     ];
 
-    // Display case context photos (separated, tagged visually so people know these aren't individual lots)
-    const contextPhotos = [
-        { src: 'images/incoming/display-case-bannerstones/photo-1.jpg', slug: 'display-case-bannerstones', label: 'Display case — bannerstones group' },
-        { src: 'images/incoming/display-case-points-misc/photo-1.jpg', slug: 'display-case-points-misc', label: 'Display case — mixed points/axes' },
-        { src: 'images/incoming/display-case-pottery/photo-1.jpg', slug: 'display-case-pottery', label: 'Display case — pottery vessels' },
-    ];
+    const grid = document.getElementById('photoGrid');
+    grid.innerHTML = galleryPhotos.map((p, idx) => `
+        <div class="photo-tile" onclick="openLightbox(${idx})">
+            <span class="tile-number">${idx + 1}</span>
+            <img src="${p.src}" alt="" loading="lazy">
+        </div>
+    `).join('');
 
-    let lightboxImages = [];
     let lightboxIndex = 0;
 
-    function renderGrid(containerId, photos, isContext) {
-        const grid = document.getElementById(containerId);
-        grid.innerHTML = photos.map((p, idx) => `
-            <div class="photo-tile" data-global-idx="${isContext ? individualPhotos.length + idx : idx}" data-src="${p.src}" data-label="${p.label}" onclick="openLightbox(this.dataset.globalIdx)">
-                <span class="tile-number">${isContext ? individualPhotos.length + idx + 1 : idx + 1}</span>
-                ${isContext ? '<span class="tile-context-tag">Context</span>' : ''}
-                <img src="${p.src}" alt="${p.label}" loading="lazy">
-            </div>
-        `).join('');
-    }
-
-    function openLightbox(globalIdx) {
-        const idx = parseInt(globalIdx);
-        lightboxImages = [...individualPhotos, ...contextPhotos];
+    function openLightbox(idx) {
         lightboxIndex = idx;
         showLightbox();
     }
 
     function showLightbox() {
-        const photo = lightboxImages[lightboxIndex];
+        const photo = galleryPhotos[lightboxIndex];
         document.getElementById('lbImage').src = photo.src;
-        document.getElementById('lbImage').alt = photo.label;
-        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${lightboxImages.length}`;
+        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}`;
         document.getElementById('lightbox').classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -367,7 +350,7 @@
     }
 
     function navigateLightbox(direction) {
-        lightboxIndex = (lightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
+        lightboxIndex = (lightboxIndex + direction + galleryPhotos.length) % galleryPhotos.length;
         showLightbox();
     }
 
@@ -377,9 +360,6 @@
         if (e.key === 'ArrowLeft') navigateLightbox(-1);
         if (e.key === 'ArrowRight') navigateLightbox(1);
     });
-
-    renderGrid('photoGrid', individualPhotos, false);
-    renderGrid('contextGrid', contextPhotos, true);
 </script>
 
 </body>
