@@ -670,6 +670,8 @@
         footer .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
         footer .links a { color: #6b5a45; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
         footer .links a:hover { color: #d4a853; }
+        footer .links a.gallery-link { color: #d4a853; font-weight: 600; }
+        footer .links a.gallery-link:hover { color: #ffd700; }
         footer .copy { font-size: 12px; color: #3a3028; }
 
         /* Responsive */
@@ -716,7 +718,7 @@
 
 <div class="announcement">
     ⚡ <strong>Live Auctions</strong> Every Monday at 5PM CST &nbsp;·&nbsp;
-    <a href="auction/" style="color:#d4a853; text-decoration: underline;">Watch Live / Bid Online</a>
+    <a href="auction.html" style="color:#d4a853; text-decoration: underline;">View Tonight's Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
@@ -877,6 +879,7 @@
 
 <footer>
     <div class="links">
+        <a href="auction.html" class="gallery-link">View Tonight's Auction Gallery →</a>
         <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
         <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
         <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
