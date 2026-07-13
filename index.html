@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barn Burner Relics — Authentic Native American Artifacts</title>
+<title>Barn Burner Relics — Working Draft Catalog</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,6 +35,50 @@
             color: #d4a853;
             font-weight: 600;
             letter-spacing: 0.02em;
+        }
+
+        /* Construction banner — test site under construction, feedback invited */
+        .construction-banner {
+            background: #1a1410;
+            border-bottom: 2px solid #8b4513;
+            padding: 40px 24px 36px;
+            text-align: center;
+            color: #d4c8a8;
+        }
+        .construction-banner .cb-headline {
+            color: #d4a853;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .construction-banner .cb-body {
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto;
+            color: #d4c8a8;
+            font-weight: 500;
+            letter-spacing: 0.015em;
+        }
+        .construction-banner .cb-body a {
+            color: #d4a853;
+            text-decoration: underline;
+            text-decoration-color: #8b4513;
+            text-underline-offset: 3px;
+        }
+        .construction-banner .cb-body a:hover {
+            color: #ffd700;
+        }
+        @media (max-width: 700px) {
+            .construction-banner { padding: 28px 18px 24px; }
+            .construction-banner .cb-headline { font-size: 17px; letter-spacing: 3px; }
+            .construction-banner .cb-body { font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+            .construction-banner .cb-headline { font-size: 15px; letter-spacing: 2.5px; }
         }
 
         /* Announcement bar */
@@ -326,6 +370,22 @@
             text-transform: uppercase; letter-spacing: 0.5px;
         }
         .product-card .badge.sold { background: #4a4a4a; }
+
+        /* Live-auction CTA badge — appears on products whose auctionLiveUrl is set */
+        .product-card .auction-badge {
+            position: absolute; top: 12px; right: 12px;
+            background: #a0252a; color: #fff;
+            font-size: 10px; letter-spacing: 0.06em; font-weight: 700;
+            padding: 5px 9px; border-radius: 3px;
+            text-transform: uppercase; z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,.4);
+            animation: livePulse 2.2s ease-in-out infinite;
+        }
+        @keyframes livePulse {
+            0%,100% { box-shadow: 0 0 0 0 rgba(160,37,42,.7); }
+            50%     { box-shadow: 0 0 0 6px rgba(160,37,42,0); }
+        }
+        .product-card .auction-badge:hover { background: #c13237; color: #fff; }
         .product-card .badge.featured { background: #c9a24b; color: #1f1a15; }
         .product-card .badge.new { background: #4a7c4f; }
         .product-card.sold-card { opacity: 0.55; filter: grayscale(0.5); }
@@ -645,8 +705,19 @@
 </head>
 <body>
 
+<div class="construction-banner">
+    <div class="cb-headline">Working Draft &middot; Not the Real Shop</div>
+    <div class="cb-body">
+        This is a test version of a possible Barn Burner Relics online catalog.
+        The real shop is at <a href="https://www.barnburnerrelics.net/" target="_blank" rel="noopener">barnburnerrelics.net</a>.
+        If a site like this would make you shop, we'd like to know.
+    </div>
+</div>
+
 <div class="announcement">
-    ⚡ <strong>Live Auctions</strong> Every Monday at 5PM CST &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
+    ⚡ <strong>Live Auctions</strong> Every Monday at 5PM CST &nbsp;·&nbsp;
+    <a href="auction/" style="color:#d4a853; text-decoration: underline;">Watch Live / Bid Online</a>
+    &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
 <header>
@@ -832,6 +903,7 @@
                         dimensions: 'TBD — measure on intake'
                     },
                     images: ['images/butterfly-banner-1.jpg', 'images/butterfly-banner-2.jpg', 'images/butterfly-banner-3.jpg', 'images/butterfly-banner-4.jpg'],
+                    auctionLiveUrl: 'auction.html',
                     description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Starting bid: $7,500.</strong> This piece is a T1 hero — featured in the Monday showcase auction, scheduled anchor slot. It is not available for buy-it-now; bidding is the only path to acquisition.</p>',
                     specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'TBD — measure on intake','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Starting Bid':'$7,500','Tier':'T1 — Hero / Showcase (no BIN)','Authenticity':'Lifetime Guarantee'}
                 },
@@ -1012,6 +1084,7 @@
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
+            const auctionBadge = p.auctionLiveUrl ? `<a href="${p.auctionLiveUrl}" class="auction-badge" onclick="event.stopPropagation();">Watch Live · Bid Mon 5PM</a>` : '';
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '');
@@ -1023,7 +1096,7 @@
                 .join('');
             const guaranteeHtml = isSold ? '' : '<div class="card-guarantee">Lifetime Authenticity Guarantee</div>';
             return `<div class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">
-                <div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
+                <div class="image-wrap">${tagHtml}${auctionBadge}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
                 <div class="info">
                     <h3>${p.title}</h3>
                     ${specRows ? `<div class="specs">${specRows}</div>` : ''}
