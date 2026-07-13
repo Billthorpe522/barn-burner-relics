@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tonight's Offering — Barn Burner Relics</title>
+<title>Tonight's Pieces — Barn Burner Relics</title>
 <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -11,21 +11,11 @@
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
             background: #0d0d0d;
             color: #e8e0d8;
-            line-height: 1.6;
-            font-size: 17px;
-            font-weight: 400;
-            letter-spacing: 0.01em;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
-        img { max-width: 100%; display: block; }
+        img { max-width: 100%; display: block; cursor: pointer; }
         a { color: inherit; text-decoration: none; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-            font-weight: 700;
-            letter-spacing: 0.005em;
-            line-height: 1.2;
-        }
 
         /* === HEADER === */
         header {
@@ -33,14 +23,14 @@
             border-bottom: 1px solid #2a2018;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 50;
         }
         .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 12px 24px;
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         .header-back {
@@ -62,380 +52,205 @@
         /* === HERO === */
         .hero {
             background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
-            padding: 60px 24px 50px;
+            padding: 50px 24px 40px;
             text-align: center;
             border-bottom: 1px solid #2a2018;
         }
         .hero h1 {
-            font-size: 48px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 44px;
             color: #f5f0e8;
-            margin-bottom: 12px;
+            font-weight: 700;
             letter-spacing: 0.5px;
+            margin-bottom: 10px;
         }
         .hero .hero-date {
-            font-size: 14px;
-            color: #c8a878;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            font-family: -apple-system, sans-serif;
-            font-weight: 600;
-        }
-        .hero .hero-tagline {
-            font-size: 18px;
-            color: #d4c8a8;
-            max-width: 720px;
-            margin: 0 auto 32px;
-            line-height: 1.7;
-            font-weight: 500;
-            letter-spacing: 0.015em;
-        }
-
-        /* === ANCHOR SCHEDULE BAR === */
-        .anchor-bar {
-            background: rgba(139, 69, 19, 0.15);
-            border: 1px solid rgba(212, 168, 83, 0.4);
-            border-radius: 8px;
-            max-width: 900px;
-            margin: 32px auto 0;
-            padding: 20px 28px;
-        }
-        .anchor-bar h3 {
-            font-size: 14px;
-            color: #d4a853;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-            font-family: -apple-system, sans-serif;
-            font-weight: 600;
-        }
-        .anchor-times {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-        .anchor-time-slot {
-            text-align: center;
-            padding: 12px 6px;
-            background: rgba(0,0,0,0.25);
-            border-radius: 6px;
-            border: 1px solid rgba(212, 168, 83, 0.2);
-        }
-        .anchor-time-slot .anchor-num {
-            font-family: 'Playfair Display', Georgia, serif;
             font-size: 13px;
-            color: #d4a853;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        .anchor-time-slot .anchor-time {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 20px;
-            color: #f5f0e8;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-        .anchor-time-slot .anchor-cst {
-            font-size: 10px;
-            color: #8b7355;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: 2px;
-            font-family: -apple-system, sans-serif;
-        }
-
-        /* === TIER SECTIONS === */
-        .tier-section {
-            padding: 60px 0 40px;
-        }
-        .tier-section + .tier-section {
-            border-top: 1px solid #1a1612;
-        }
-        .tier-header {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 16px;
-            padding: 0 24px;
-        }
-        .tier-header h2 {
-            font-size: 32px;
-            color: #f5f0e8;
-            margin-bottom: 8px;
-        }
-        .tier-header .tier-subtitle {
-            font-size: 12px;
+            color: #c8a878;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: #c8a878;
-            margin-bottom: 14px;
+            margin-bottom: 22px;
             font-family: -apple-system, sans-serif;
             font-weight: 600;
         }
-        .tier-header .tier-note {
-            font-size: 15px;
+        .hero .hero-note {
+            font-size: 16px;
             color: #b8a88a;
+            max-width: 640px;
+            margin: 0 auto;
             line-height: 1.7;
             font-style: italic;
         }
 
-        /* Tier accent borders */
-        #t1 .tier-header h2 { color: #d4a853; }
-        #t2 .tier-header h2 { color: #c8a878; }
-        #t3 .tier-header h2 { color: #a08866; }
-
-        /* === CARD GRID === */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            padding: 0 24px;
-            max-width: 1280px;
-            margin: 32px auto 0;
+        /* === SECTION DIVIDER === */
+        .section-label {
+            text-align: center;
+            padding: 40px 24px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-label h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            color: #d4a853;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .section-label p {
+            font-size: 12px;
+            color: #8b7355;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            font-family: -apple-system, sans-serif;
+            font-weight: 600;
         }
 
-        /* === CARD === */
-        .card {
+        /* === GRID === */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            padding: 20px 24px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .photo-tile {
+            position: relative;
             background: #1a1612;
             border: 1px solid #2a2018;
             border-radius: 8px;
             overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
             transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
-        .card:hover {
-            transform: translateY(-3px);
+        .photo-tile:hover {
+            transform: translateY(-2px);
             border-color: #8b4513;
-            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.12);
+            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
         }
-        .card-image {
-            aspect-ratio: 4/3;
-            background: #1f1a15;
-            position: relative;
-            overflow: hidden;
-        }
-        .card-image img {
+        .photo-tile img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .card-tier-badge {
+        .photo-tile .tile-number {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            padding: 5px 10px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            font-family: -apple-system, sans-serif;
-        }
-        .tier-t1 .card-tier-badge {
-            background: #c8943e;
-            color: #1a1410;
-        }
-        .tier-t2 .card-tier-badge {
-            background: #c8a878;
-            color: #1a1410;
-        }
-        .tier-t3 .card-tier-badge {
-            background: #8b6f3f;
-            color: #f5f0e8;
-        }
-        .card-status-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 5px 10px;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            font-family: -apple-system, sans-serif;
+            top: 10px;
+            left: 10px;
             background: rgba(0,0,0,0.7);
-            color: #c8a878;
-            border: 1px solid #5a4a32;
-        }
-        .card-body {
-            padding: 18px 20px 20px;
-        }
-        .card-title {
-            font-size: 17px;
-            color: #f5f0e8;
-            margin-bottom: 6px;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.25;
-        }
-        .card-subtitle {
-            font-size: 13px;
-            color: #d4b78a;
-            margin-bottom: 12px;
-            font-weight: 500;
-            letter-spacing: 0.025em;
-            line-height: 1.5;
-        }
-        .card-provenance {
-            font-size: 13px;
-            color: #b8a88a;
-            line-height: 1.55;
-            margin-bottom: 12px;
-        }
-        .card-provenance strong {
             color: #d4a853;
-        }
-        .card-placeholder {
             font-size: 11px;
-            color: #8b6e4e;
-            font-style: italic;
-            padding: 6px 10px;
-            background: rgba(212, 168, 83, 0.06);
-            border-left: 2px solid #5a4a32;
-            border-radius: 2px;
-            margin-top: 8px;
-            line-height: 1.5;
-        }
-        .card-anchor-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px dashed #5a4a32;
-        }
-        .card-anchor-label {
-            font-size: 10px;
-            color: #8b7355;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: -apple-system, sans-serif;
-            font-weight: 600;
-        }
-        .card-anchor-value {
-            font-size: 12px;
-            color: #d4a853;
             font-weight: 700;
-            font-family: 'Playfair Display', Georgia, serif;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: -apple-system, sans-serif;
+            letter-spacing: 1px;
         }
-        .card-price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-top: 10px;
-        }
-        .card-price-label {
+        .photo-tile .tile-context-tag {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(139, 90, 43, 0.85);
+            color: #f5f0e8;
             font-size: 10px;
-            color: #8b7355;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: -apple-system, sans-serif;
             font-weight: 600;
-        }
-        .card-price-value {
-            font-size: 15px;
-            color: #d4a853;
-            font-weight: 700;
-            font-family: 'Playfair Display', Georgia, serif;
-        }
-
-        /* === DISPLAY-CASE SECTION === */
-        .held-section {
-            max-width: 900px;
-            margin: 40px auto 0;
-            padding: 0 24px;
-        }
-        .held-section h2 {
-            font-size: 24px;
-            color: #a08866;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        .held-section .held-subtitle {
-            text-align: center;
-            font-size: 12px;
-            color: #6b5a45;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-family: -apple-system, sans-serif;
-        }
-        .held-card {
-            background: rgba(26, 22, 18, 0.5);
-            border: 1px dashed #5a4a32;
-            border-radius: 8px;
-            padding: 18px 22px;
-            margin-bottom: 12px;
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-        .held-card .held-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(212, 168, 83, 0.08);
-            border: 1px solid rgba(212, 168, 83, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #8b7355;
-            flex-shrink: 0;
-        }
-        .held-card .held-body h3 {
-            font-size: 16px;
-            color: #d4c8a8;
-            margin-bottom: 4px;
-        }
-        .held-card .held-body p {
-            font-size: 13px;
-            color: #8b7355;
-            line-height: 1.5;
-        }
-
-        /* === FOOTER === */
-        footer {
-            background: #0d0d0d;
-            border-top: 1px solid #1a1612;
-            padding: 40px 24px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        footer .links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        footer .links a {
-            color: #6b5a45;
-            font-size: 13px;
+            padding: 4px 8px;
+            border-radius: 4px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.2s;
+            font-family: -apple-system, sans-serif;
         }
-        footer .links a:hover { color: #d4a853; }
-        footer .copy {
-            font-size: 12px;
-            color: #3a3028;
+
+        /* === LIGHTBOX === */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.94);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            backdrop-filter: blur(4px);
         }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-content {
+            position: relative;
+            max-width: 95vw;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox-image {
+            max-width: 95vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .lightbox-counter {
+            color: #c8a878;
+            font-size: 13px;
+            margin-top: 14px;
+            letter-spacing: 2px;
+            font-family: -apple-system, sans-serif;
+            font-weight: 600;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(212, 168, 83, 0.15);
+            border: 1px solid rgba(212, 168, 83, 0.4);
+            color: #d4a853;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .lightbox-close:hover { background: rgba(212, 168, 83, 0.3); }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(212, 168, 83, 0.12);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            color: #d4a853;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .lightbox-nav:hover { background: rgba(212, 168, 83, 0.25); }
+        .lightbox-prev { left: -70px; }
+        .lightbox-next { right: -70px; }
 
         /* === RESPONSIVE === */
         @media (max-width: 768px) {
-            .hero { padding: 40px 20px 36px; }
-            .hero h1 { font-size: 36px; }
-            .hero .hero-tagline { font-size: 16px; }
-            .anchor-times { grid-template-columns: repeat(2, 1fr); }
-            .card-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; padding: 0 16px; }
-            .tier-section { padding: 40px 0 30px; }
-            .tier-header h2 { font-size: 26px; }
+            .hero { padding: 36px 20px 30px; }
+            .hero h1 { font-size: 34px; }
+            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; padding: 16px 16px 40px; }
+            .section-label { padding: 30px 16px 16px; }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+            .lightbox-nav { width: 40px; height: 40px; }
         }
         @media (max-width: 480px) {
-            .hero h1 { font-size: 30px; }
-            .anchor-bar { padding: 16px 18px; }
-            .card-grid { grid-template-columns: 1fr; gap: 14px; padding: 0 14px; }
+            .hero h1 { font-size: 28px; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px 12px 30px; }
             .header-title { display: none; }
         }
 </style>
@@ -445,585 +260,134 @@
 <header>
     <div class="header-inner">
         <a href="index.html" class="header-back">← Back to Catalog</a>
-        <span class="header-title">Tonight's Offering Preview</span>
+        <span class="header-title">Tonight's Pieces · Photo Gallery</span>
     </div>
 </header>
 
 <section class="hero">
     <div class="hero-date">Sunday · July 12, 2026</div>
-    <h1>Tonight's Offering</h1>
-    <p class="hero-tagline">
-        Tonight's showcase anchors and BIN-eligible pieces from the Barn Burner Relics collection.
-        Each hero piece receives a dedicated 60-minute window; bidding happens live in the Facebook Group.
+    <h1>Tonight's Pieces</h1>
+    <p class="hero-note">
+        A photo gallery of tonight's offering. Click any image to view full size.
+        Use the catalog or tonight's Facebook Group posts for descriptions, provenance, and bidding.
     </p>
-
-    <div class="anchor-bar">
-        <h3>4 Hero Anchor Slots Tonight</h3>
-        <div class="anchor-times">
-            <div class="anchor-time-slot">
-                <div class="anchor-num">Anchor #1</div>
-                <div class="anchor-time">5:30 PM</div>
-                <div class="anchor-cst">CST · 60 min</div>
-            </div>
-            <div class="anchor-time-slot">
-                <div class="anchor-num">Anchor #2</div>
-                <div class="anchor-time">7:30 PM</div>
-                <div class="anchor-cst">CST · 60 min</div>
-            </div>
-            <div class="anchor-time-slot">
-                <div class="anchor-num">Anchor #3</div>
-                <div class="anchor-time">9:30 PM</div>
-                <div class="anchor-cst">CST · 60 min</div>
-            </div>
-            <div class="anchor-time-slot">
-                <div class="anchor-num">Anchor #4 · Closer</div>
-                <div class="anchor-time">11:00 PM</div>
-                <div class="anchor-cst">CST · 60 min</div>
-            </div>
-        </div>
-    </div>
 </section>
 
-<!-- ====================================================== -->
-<!-- T1 HEROES (11 candidates, 4 anchor slots)              -->
-<!-- ====================================================== -->
-<section class="tier-section" id="t1">
-    <div class="tier-header">
-        <div class="tier-subtitle">Tier 1 · Hero / Showcase</div>
-        <h2>Tonight's Heroes</h2>
-        <p class="tier-note">
-            11 hero candidates tonight. 4 anchor slots filled at the times above — the rest rotate through upcoming Monday showcases.
-            Anchor assignments TBD.
-        </p>
+<div class="section-label">
+    <h2>Tonight's Individual Lots</h2>
+    <p>22 photos · scroll to browse · click to enlarge</p>
+</div>
+
+<div class="photo-grid" id="photoGrid"></div>
+
+<div class="section-label">
+    <h2>Display Case Context</h2>
+    <p>3 photos · wider collection shots · not individual lots</p>
+</div>
+
+<div class="photo-grid" id="contextGrid"></div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this||event.target===document.getElementById('lbImage'))closeLightbox()">
+    <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous">‹</button>
+        <img id="lbImage" class="lightbox-image" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next">›</button>
+        <div class="lightbox-counter" id="lbCounter"></div>
     </div>
+</div>
 
-    <div class="card-grid">
-
-        <!-- Butterfly Bannerstone (existing T1 hero, shipped earlier) -->
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/butterfly-banner-1.jpg" alt="Butterfly Bannerstone — Quartz">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Butterfly Bannerstone — Quartz</h3>
-                <p class="card-subtitle">Illinois · Cuckler #3287 · Quartz · Archaic</p>
-                <p class="card-provenance">
-                    Quartz — the rarest of bannerstone materials. Provenance chain:
-                    <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → BBR</strong>.
-                </p>
-                <div class="card-placeholder">
-                    Two small restoration spots by Cuckler (disclosed, photographed). Dimensions TBD.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">$7,500</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Large Ohio Flint Ridge Clovis -->
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-large-adams-co/photo-1.jpg" alt="Large Ohio Flint Ridge Clovis">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Large Ohio Flint Ridge Clovis</h3>
-                <p class="card-subtitle">Adams Co., IL · Huff Bluff Spring · Ohio Flint Ridge Chert · Paleoindian</p>
-                <p class="card-provenance">
-                    <strong>Named source:</strong> Adams Co., IL — Huff Bluff Spring.
-                    Material: Stone Surface Ridge Flint, Flint Ridge Flint, Flint Ridge CoA.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's full description (dimensions, additional provenance, exact find history).
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Six Clovis points (share single group photo, awaiting per-piece identification) -->
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-1/photo-1.jpg" alt="Fluted Clovis Point #1">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Fluted Clovis Point #1</h3>
-                <p class="card-subtitle">Fluted Clovis · one of six on velvet display</p>
-                <p class="card-provenance">
-                    Fluted Clovis from tonight's group offering. Material color and size vary slightly across the six.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification — which of the six is this? Individual photo + provenance needed.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-2/photo-1.jpg" alt="Fluted Clovis Point #2">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Fluted Clovis Point #2</h3>
-                <p class="card-subtitle">Fluted Clovis · one of six on velvet display</p>
-                <p class="card-provenance">Fluted Clovis from tonight's group offering.</p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification — which of the six is this? Individual photo + provenance needed.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-3/photo-1.jpg" alt="Fluted Clovis Point #3">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Fluted Clovis Point #3</h3>
-                <p class="card-subtitle">Fluted Clovis · one of six on velvet display</p>
-                <p class="card-provenance">Fluted Clovis from tonight's group offering.</p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification — which of the six is this? Individual photo + provenance needed.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-4/photo-1.jpg" alt="Fluted Clovis Point #4">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Fluted Clovis Point #4</h3>
-                <p class="card-subtitle">Fluted Clovis · one of six on velvet display</p>
-                <p class="card-provenance">Fluted Clovis from tonight's group offering.</p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification — which of the six is this? Individual photo + provenance needed.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-5/photo-1.jpg" alt="Fluted Clovis Point #5">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Fluted Clovis Point #5</h3>
-                <p class="card-subtitle">Fluted Clovis · one of six on velvet display</p>
-                <p class="card-provenance">Fluted Clovis from tonight's group offering.</p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification — which of the six is this? Individual photo + provenance needed.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/clovis-6/photo-1.jpg" alt="Fluted Clovis Point #6">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Fluted Clovis Point #6</h3>
-                <p class="card-subtitle">Fluted Clovis · one of six on velvet display</p>
-                <p class="card-provenance">Fluted Clovis from tonight's group offering.</p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification — which of the six is this? Individual photo + provenance needed.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Large Flint Biface (K98) -->
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/large-flint-biface-k98/photo-1.jpg" alt="Large Translucent Flint Biface">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Large Translucent Flint Biface (K98)</h3>
-                <p class="card-subtitle">Translucent milky-white flint · red "K98" provenance sticker</p>
-                <p class="card-provenance">
-                    Large ovate / leaf-shaped biface, possibly a cache blade or large knife.
-                    Red oval sticker on face: <strong>"K98"</strong> (catalog number, source TBD).
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's full description (origin, period, dimensions, K98 provenance meaning).
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stone Frog Effigy -->
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/stone-frog-effigy/photo-1.jpg" alt="Carved Stone Frog Effigy">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Carved Stone Frog Effigy</h3>
-                <p class="card-subtitle">Carved stone zoomorphic · possibly frog (or turtle — confirm)</p>
-                <p class="card-provenance">
-                    Carved stone effigy with two protruding eyes and rounded body.
-                    Pre-Columbian zoomorphic carving tradition.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's full description (material, origin, period, dimensions, animal confirmation).
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Beaver Effigy Pipe -->
-        <div class="card tier-t1">
-            <div class="card-image">
-                <img src="images/incoming/display-case-beaver-pipe/photo-1.jpg" alt="Beaver Effigy Pipe">
-                <span class="card-tier-badge">T1 Hero</span>
-                <span class="card-status-badge">Anchor: TBD</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Beaver Effigy Pipe</h3>
-                <p class="card-subtitle">Woodland · effigy pipe with visible COA</p>
-                <p class="card-provenance">
-                    Beaver/animal-form effigy pipe from a documented display case.
-                    COA card partially visible: "WOODLAND … 11.0 x 5.0 x 3.7/4".
-                </p>
-                <div class="card-placeholder">
-                    Needs closeup photo of COA card for full provenance transcription.
-                </div>
-                <div class="card-anchor-row">
-                    <span class="card-anchor-label">Anchor Slot</span>
-                    <span class="card-anchor-value">TBD</span>
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">Starting Bid</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
+<footer style="background:#0d0d0d;border-top:1px solid #1a1612;padding:30px 24px;text-align:center;">
+    <div style="font-size:12px;color:#3a3028;">
+        © 2026 Barn Burner Relics Inc. — Manhattan, IL · All artifacts guaranteed authentic for life.
     </div>
-</section>
-
-<!-- ====================================================== -->
-<!-- T2 BIN PREMIUM (5 pieces)                                -->
-<!-- ====================================================== -->
-<section class="tier-section" id="t2">
-    <div class="tier-header">
-        <div class="tier-subtitle">Tier 2 · BIN Premium</div>
-        <h2>Tonight's BIN Catalog</h2>
-        <p class="tier-note">
-            Strong pieces priced to move. Always-on availability — DM to inquire, no bidding required.
-        </p>
-    </div>
-
-    <div class="card-grid">
-
-        <!-- Fish Hook Group of 4 -->
-        <div class="card tier-t2">
-            <div class="card-image">
-                <img src="images/incoming/fish-hook-group-of-4/photo-1.jpg" alt="Four bone fish hooks">
-                <span class="card-tier-badge">T2 BIN</span>
-                <span class="card-status-badge">Group Lot</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Four Bone Fish Hooks (Group Lot)</h3>
-                <p class="card-subtitle">Plains/Mississippian · bone · sold as group, not split</p>
-                <p class="card-provenance">
-                    Four bone fish hooks, tan/cream colored. One has distinctive knob decoration at top.
-                    Some have file marks / carved decoration.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's full description (origin, period, dimensions per hook, group price, provenance).
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Spotted Stone Pipe -->
-        <div class="card tier-t2">
-            <div class="card-image">
-                <img src="images/incoming/spotted-stone-pipe/photo-1.jpg" alt="Spotted Stone Smoking Pipe">
-                <span class="card-tier-badge">T2 BIN</span>
-                <span class="card-status-badge">Has Visible Crack</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Spotted Stone Smoking Pipe</h3>
-                <p class="card-subtitle">Spotted/dappled stone (granite-type) · possibly zoomorphic</p>
-                <p class="card-provenance">
-                    Polished tan/brown with spotted/dappled texture. Possibly bird-like form or zoomorphic pipe.
-                </p>
-                <div class="card-placeholder">
-                    Visible crack across body — needs damage/restoration assessment from Cam.
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Three Serrated Points -->
-        <div class="card tier-t2">
-            <div class="card-image">
-                <img src="images/incoming/serrated-point-1/photo-1.jpg" alt="Serrated Point #1 (Honey Translucent)">
-                <span class="card-tier-badge">T2 BIN</span>
-                <span class="card-status-badge">Awaiting ID</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Serrated Point #1 (Honey Translucent)</h3>
-                <p class="card-subtitle">Honey-colored translucent material · Flint Ridge? · serrated edges</p>
-                <p class="card-provenance">
-                    Notched/serrated point. One of three serrated points from tonight's palm display.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification (origin, period, dimensions).
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t2">
-            <div class="card-image">
-                <img src="images/incoming/serrated-point-2/photo-1.jpg" alt="Serrated Point #2 (White Chert)">
-                <span class="card-tier-badge">T2 BIN</span>
-                <span class="card-status-badge">Awaiting ID</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Serrated Point #2 (White Chert)</h3>
-                <p class="card-subtitle">White chert · serrated edges</p>
-                <p class="card-provenance">
-                    Notched/serrated point. One of three serrated points from tonight's palm display.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification (origin, period, dimensions).
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card tier-t2">
-            <div class="card-image">
-                <img src="images/incoming/serrated-point-3/photo-1.jpg" alt="Serrated Point #3 (Tan Chert)">
-                <span class="card-tier-badge">T2 BIN</span>
-                <span class="card-status-badge">Awaiting ID</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Serrated Point #3 (Tan Chert)</h3>
-                <p class="card-subtitle">Tan chert · slightly smaller · serrated edges</p>
-                <p class="card-provenance">
-                    Notched/serrated point. One of three serrated points from tonight's palm display.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's per-piece identification (origin, period, dimensions).
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ====================================================== -->
-<!-- T3 BIN ACCESSIBLE (2 pieces)                             -->
-<!-- ====================================================== -->
-<section class="tier-section" id="t3">
-    <div class="tier-header">
-        <div class="tier-subtitle">Tier 3 · BIN Accessible</div>
-        <h2>Entry Points</h2>
-        <p class="tier-note">
-            Solid pieces at accessible prices. Perfect for new collectors building a paper trail or gift buyers.
-        </p>
-    </div>
-
-    <div class="card-grid">
-
-        <!-- Quartz Side-Notched Arrowhead -->
-        <div class="card tier-t3">
-            <div class="card-image">
-                <img src="images/incoming/arrowhead-quartz-notched-1/photo-1.jpg" alt="Quartz Side-Notched Arrowhead">
-                <span class="card-tier-badge">T3 BIN</span>
-                <span class="card-status-badge">Awaiting Description</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Quartz Side-Notched Arrowhead</h3>
-                <p class="card-subtitle">Quartz material · side-notched · serrated edges</p>
-                <p class="card-provenance">
-                    Cream/tan quartz side-notched arrowhead with serrated edges.
-                    Faint pencil field notation visible on face.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's full description (origin, period, dimensions, BIN price).
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Shouldered Arrowhead -->
-        <div class="card tier-t3">
-            <div class="card-image">
-                <img src="images/incoming/arrowhead-shouldered-1/photo-1.jpg" alt="Shouldered Arrowhead, Cream Chert">
-                <span class="card-tier-badge">T3 BIN</span>
-                <span class="card-status-badge">Awaiting Description</span>
-            </div>
-            <div class="card-body">
-                <h3 class="card-title">Shouldered Arrowhead, Cream Chert</h3>
-                <p class="card-subtitle">Cream/buff chert · tanged/shouldered · deep basal notch</p>
-                <p class="card-provenance">
-                    Shouldered arrowhead with deep basal notch.
-                    Faint pencil field notation visible.
-                </p>
-                <div class="card-placeholder">
-                    Awaiting Cam's full description (origin, period, dimensions, BIN price).
-                </div>
-                <div class="card-price-row">
-                    <span class="card-price-label">BIN Price</span>
-                    <span class="card-price-value">TBD</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ====================================================== -->
-<!-- HELD / NOT TONIGHT (display case groups needing closeups) -->
-<!-- ====================================================== -->
-<section class="held-section">
-    <h2>Held · Awaiting Closeup Photos</h2>
-    <div class="held-subtitle">Not tonight · per-piece identification needed</div>
-
-    <div class="held-card">
-        <div class="held-icon">📦</div>
-        <div class="held-body">
-            <h3>Display Case — Bannerstones (group)</h3>
-            <p>8+ bannerstones visible in display tray. Each needs an individual closeup to catalogue separately. Bannerstones are premium catalog items; splitting is mandatory.</p>
-        </div>
-    </div>
-
-    <div class="held-card">
-        <div class="held-icon">📦</div>
-        <div class="held-body">
-            <h3>Display Case — Misc Points (group)</h3>
-            <p>Mixed points and tools visible in case. Per-piece identification needed to determine which are Tonight's Offering vs. existing catalog vs. not-for-sale.</p>
-        </div>
-    </div>
-
-    <div class="held-card">
-        <div class="held-icon">📦</div>
-        <div class="held-body">
-            <h3>Display Case — Pottery (group)</h3>
-            <p>3+ pottery vessels visible in case. Per-piece identification and closeups needed before individual listings.</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="links">
-        <a href="index.html">← Back to Catalog</a>
-        <a href="newsletter.html">Newsletter Sample</a>
-    </div>
-    <div class="copy">© 2026 Barn Burner Relics Inc. — Manhattan, IL · All artifacts guaranteed authentic for life.</div>
 </footer>
+
+<script>
+    // Tonight's individual lots (alphabetical by slug — claims no hierarchy the photos can't back up)
+    const individualPhotos = [
+        { src: 'images/butterfly-banner-1.jpg', slug: 'butterfly-bannerstone', label: 'Quartz Butterfly Bannerstone' },
+        { src: 'images/butterfly-banner-2.jpg', slug: 'butterfly-bannerstone', label: 'Quartz Butterfly Bannerstone (profile)' },
+        { src: 'images/butterfly-banner-3.jpg', slug: 'butterfly-bannerstone', label: 'Quartz Butterfly Bannerstone (back face)' },
+        { src: 'images/butterfly-banner-4.jpg', slug: 'butterfly-bannerstone', label: 'Quartz Butterfly Bannerstone (backlit)' },
+        { src: 'images/incoming/clovis-1/photo-1.jpg', slug: 'clovis-1', label: 'Fluted Clovis Point #1' },
+        { src: 'images/incoming/clovis-2/photo-1.jpg', slug: 'clovis-2', label: 'Fluted Clovis Point #2' },
+        { src: 'images/incoming/clovis-3/photo-1.jpg', slug: 'clovis-3', label: 'Fluted Clovis Point #3' },
+        { src: 'images/incoming/clovis-4/photo-1.jpg', slug: 'clovis-4', label: 'Fluted Clovis Point #4' },
+        { src: 'images/incoming/clovis-5/photo-1.jpg', slug: 'clovis-5', label: 'Fluted Clovis Point #5' },
+        { src: 'images/incoming/clovis-6/photo-1.jpg', slug: 'clovis-6', label: 'Fluted Clovis Point #6' },
+        { src: 'images/incoming/clovis-large-adams-co/photo-1.jpg', slug: 'clovis-large-adams-co', label: 'Large Ohio Flint Ridge Clovis' },
+        { src: 'images/incoming/clovis-large-adams-co/photo-2.jpg', slug: 'clovis-large-adams-co', label: 'Large Ohio Flint Ridge Clovis (provenance back)' },
+        { src: 'images/incoming/fish-hook-group-of-4/photo-1.jpg', slug: 'fish-hook-group-of-4', label: 'Four Bone Fish Hooks (group)' },
+        { src: 'images/incoming/large-flint-biface-k98/photo-1.jpg', slug: 'large-flint-biface-k98', label: 'Large Translucent Flint Biface (K98)' },
+        { src: 'images/incoming/serrated-point-1/photo-1.jpg', slug: 'serrated-point-1', label: 'Serrated Point #1' },
+        { src: 'images/incoming/serrated-point-2/photo-1.jpg', slug: 'serrated-point-2', label: 'Serrated Point #2' },
+        { src: 'images/incoming/serrated-point-3/photo-1.jpg', slug: 'serrated-point-3', label: 'Serrated Point #3' },
+        { src: 'images/incoming/spotted-stone-pipe/photo-1.jpg', slug: 'spotted-stone-pipe', label: 'Spotted Stone Smoking Pipe' },
+        { src: 'images/incoming/stone-frog-effigy/photo-1.jpg', slug: 'stone-frog-effigy', label: 'Carved Stone Frog Effigy' },
+        { src: 'images/incoming/display-case-beaver-pipe/photo-1.jpg', slug: 'display-case-beaver-pipe', label: 'Beaver Effigy Pipe (in case)' },
+        { src: 'images/incoming/arrowhead-quartz-notched-1/photo-1.jpg', slug: 'arrowhead-quartz-notched-1', label: 'Quartz Side-Notched Arrowhead' },
+        { src: 'images/incoming/arrowhead-shouldered-1/photo-1.jpg', slug: 'arrowhead-shouldered-1', label: 'Shouldered Arrowhead, Cream Chert' },
+    ];
+
+    // Display case context photos (separated, tagged visually so people know these aren't individual lots)
+    const contextPhotos = [
+        { src: 'images/incoming/display-case-bannerstones/photo-1.jpg', slug: 'display-case-bannerstones', label: 'Display case — bannerstones group' },
+        { src: 'images/incoming/display-case-points-misc/photo-1.jpg', slug: 'display-case-points-misc', label: 'Display case — mixed points/axes' },
+        { src: 'images/incoming/display-case-pottery/photo-1.jpg', slug: 'display-case-pottery', label: 'Display case — pottery vessels' },
+    ];
+
+    let lightboxImages = [];
+    let lightboxIndex = 0;
+
+    function renderGrid(containerId, photos, isContext) {
+        const grid = document.getElementById(containerId);
+        grid.innerHTML = photos.map((p, idx) => `
+            <div class="photo-tile" data-global-idx="${isContext ? individualPhotos.length + idx : idx}" data-src="${p.src}" data-label="${p.label}" onclick="openLightbox(this.dataset.globalIdx)">
+                <span class="tile-number">${isContext ? individualPhotos.length + idx + 1 : idx + 1}</span>
+                ${isContext ? '<span class="tile-context-tag">Context</span>' : ''}
+                <img src="${p.src}" alt="${p.label}" loading="lazy">
+            </div>
+        `).join('');
+    }
+
+    function openLightbox(globalIdx) {
+        const idx = parseInt(globalIdx);
+        lightboxImages = [...individualPhotos, ...contextPhotos];
+        lightboxIndex = idx;
+        showLightbox();
+    }
+
+    function showLightbox() {
+        const photo = lightboxImages[lightboxIndex];
+        document.getElementById('lbImage').src = photo.src;
+        document.getElementById('lbImage').alt = photo.label;
+        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${lightboxImages.length}`;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(direction) {
+        lightboxIndex = (lightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
+        showLightbox();
+    }
+
+    document.addEventListener('keydown', e => {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    renderGrid('photoGrid', individualPhotos, false);
+    renderGrid('contextGrid', contextPhotos, true);
+</script>
 
 </body>
 </html>
