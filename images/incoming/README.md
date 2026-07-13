@@ -85,7 +85,20 @@ The `incoming/<piece-slug>/` folder can stay (provenance record) or be removed a
 | Slug | Title | Tier | Status |
 |---|---|---|---|
 | `butterfly-bannerstone` | Butterfly Bannerstone (Quartz, Cuckler #3287) | T1 | Shipped — awaiting dimensions + anchor time |
+| `clovis-large-adams-co` | Large Ohio Flint Ridge Clovis (Adams Co., IL — Huff Bluff Spring) | T1 | Photo staged — awaiting Cam's description |
+| `clovis-1` through `clovis-6` | Six Clovis points (Tonight's Offering) | T1 each | Photo staged — awaiting individual identification |
+| `large-flint-biface-k98` | Large Translucent Flint Biface (K98) | T1 | Photo staged — awaiting Cam's description |
+| `stone-frog-effigy` | Carved Stone Frog Effigy | T1 | Photo staged — awaiting Cam's description |
+| `display-case-beaver-pipe` | Beaver Effigy Pipe | T1 candidate | Photo staged — needs COA closeup |
+| `fish-hook-group-of-4` | Four bone fish hooks (group lot) | T2 | Photo staged — awaiting Cam's description |
+| `spotted-stone-pipe` | Spotted Stone Smoking Pipe | T2 | Photo staged — needs damage assessment |
+| `serrated-point-1`, `2`, `3` | Three serrated points | T2 each | Photo staged — awaiting per-piece identification |
+| `arrowhead-quartz-notched-1` | Quartz Side-Notched Arrowhead | T3 | Photo staged — awaiting Cam's description |
+| `arrowhead-shouldered-1` | Shouldered Arrowhead, Cream Chert | T3 | Photo staged — awaiting Cam's description |
+| `display-case-bannerstones` | Display case bannerstones (group) | TBD | Needs per-piece closeups to split |
+| `display-case-points-misc` | Display case misc points (group) | TBD | Needs per-piece identification |
+| `display-case-pottery` | Display case pottery vessels (group) | TBD | Needs per-piece identification |
 
 ---
 
-*Last updated: July 12, 2026*
+*Last updated: July 12, 2026 (Tonight's Offering intake batch — Cam's package)*
