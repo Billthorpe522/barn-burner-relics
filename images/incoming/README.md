@@ -58,10 +58,10 @@ When the product object is added to `index.html`:
 
 ```bash
 cd images/incoming/<piece-slug>/
-mv photo-1.jpg ../<slug>-1.jpg
-mv photo-2.jpg ../<slug>-2.jpg
+mv photo-1.jpg ../../<slug>-1.jpg
+mv photo-2.jpg ../../<slug>-2.jpg
 # ... etc
-cd ../../../
+cd ../../
 git add images/<slug>-*.jpg images/incoming/<piece-slug>/provenance.md
 git commit -m "Ship <piece title> to catalog (T<1|2|3>)"
 git push
@@ -84,7 +84,7 @@ The `incoming/<piece-slug>/` folder can stay (provenance record) or be removed a
 
 | Slug | Title | Tier | Status |
 |---|---|---|---|
-| `butterfly-bannerstone` | Butterfly Bannerstone (Quartz, Cuckler #3281) | T1 | Awaiting photos |
+| `butterfly-bannerstone` | Butterfly Bannerstone (Quartz, Cuckler #3287) | T1 | Shipped — awaiting dimensions + anchor time |
 
 ---
 

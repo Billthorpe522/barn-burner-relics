@@ -10,7 +10,7 @@ Quartz (rarest of bannerstone materials)
 Illinois
 
 ## Provenance chain
-Gary Cuckler Collection (Cuckler #3281) → Tommy Beutell → Perry Hansen → Barn Burner Relics
+Gary Cuckler Collection (Cuckler #3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics
 
 ## Tier call
 **T1 — Hero / Showcase**
@@ -38,7 +38,7 @@ $7,500
 ## Provenance depth (matches the Eugene Curtis / Gary Null model)
 This piece follows the same pattern as the existing catalog's strongest entries:
 - Multi-collector named chain (≥3 named collectors)
-- Visible catalog sticker(s) from at least one collector (Cuckler #3281 visible)
+- Visible catalog sticker(s) from at least one collector (Cuckler #3287 visible)
 - Documented auction/publication history when available
 - Restoration (if any) disclosed in plain language with photo reference
 
