@@ -208,6 +208,39 @@
             .photo-tile.lead-tile .lead-tag { top: 10px; right: 10px; padding: 6px 10px; font-size: 10px; }
         }
 
+        /* Sold tile — sorted to bottom by JS, desaturated, SOLD badge */
+        .photo-tile.sold-tile {
+            opacity: 0.55;
+            filter: grayscale(50%);
+        }
+        .photo-tile.sold-tile:hover {
+            opacity: 0.85;
+            filter: grayscale(20%);
+        }
+        .photo-tile.sold-tile img {
+            filter: grayscale(100%);
+        }
+        .photo-tile.sold-tile .sold-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #e8e8e8;
+            border: 1px solid #6b5a45;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-family: -apple-system, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        .photo-tile.sold-tile .tile-number {
+            background: rgba(0, 0, 0, 0.85);
+            color: #8b6f47;
+        }
+
         /* === LIGHTBOX === */
         .lightbox-overlay {
             display: none;
@@ -428,6 +461,15 @@
     // lead photo (lots going on, this is THE shot for today).
     // Then 3 group context shots, then 11 individual lots, then 4 more
     // preview tiles. No labels or badges — just photos.
+    //
+    // PER-PIECE STATUS:
+    //   - default:           active, in display order, full opacity
+    //   - { status: 'sold' }: sorted to the BOTTOM, desaturated, SOLD
+    //                        badge in the corner. To remove entirely,
+    //                        delete the entry from this array.
+    //
+    // To mark a piece as sold, add  status: 'sold'  to its entry, e.g.:
+    //   { src: 'images/incoming/stone-frog-effigy/photo-1.jpg', status: 'sold' },
     const galleryPhotos = [
         { src: 'images/incoming/2026-07-14-tuesday-auction/polished-bannerstone-collection.jpg', lead: true },
         { src: 'images/incoming/display-case-bannerstones/photo-1.jpg' },
@@ -450,15 +492,25 @@
         { src: 'images/incoming/2026-07-14-tuesday-auction/points-display-case-3.jpg' },
     ];
 
+    // Sort active pieces first (preserving their order), then sold
+    // pieces (preserving their order). Stable sort — manual implementation
+    // since Array.prototype.sort isn't guaranteed stable in older engines.
+    const activePhotos = galleryPhotos.filter(p => p.status !== 'sold');
+    const soldPhotos = galleryPhotos.filter(p => p.status === 'sold');
+    const sortedPhotos = activePhotos.concat(soldPhotos);
+
     const grid = document.getElementById('photoGrid');
-    grid.innerHTML = galleryPhotos.map((p, idx) => {
+    grid.innerHTML = sortedPhotos.map((p, idx) => {
         const isLead = p.lead === true;
-        const classes = 'photo-tile' + (isLead ? ' lead-tile' : '');
-        const tagHtml = isLead ? '<span class="lead-tag">Lead Photo · Tuesday</span>' : '';
+        const isSold = p.status === 'sold';
+        const classes = 'photo-tile' + (isLead ? ' lead-tile' : '') + (isSold ? ' sold-tile' : '');
+        const leadTagHtml = isLead ? '<span class="lead-tag">Lead Photo · Tuesday</span>' : '';
+        const soldTagHtml = isSold ? '<span class="sold-tag">Sold</span>' : '';
         return `
         <div class="${classes}" onclick="openLightbox(${idx})">
             <span class="tile-number">${idx + 1}</span>
-            ${tagHtml}
+            ${leadTagHtml}
+            ${soldTagHtml}
             <img src="${p.src}" alt="" loading="lazy">
         </div>
     `;
