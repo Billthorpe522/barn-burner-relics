@@ -51,10 +51,37 @@
 
         /* === HERO === */
         .hero {
-            background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
-            padding: 50px 24px 40px;
-            text-align: center;
-            border-bottom: 1px solid #2a2018;
+        background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
+        padding: 0 0 40px;
+        text-align: center;
+        border-bottom: 1px solid #2a2018;
+        }
+        .hero-image-wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 30px;
+        padding-top: 28px;
+        line-height: 0;
+        }
+        .hero-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+        border: 1px solid #3a2e22;
+        }
+        .hero-image-caption {
+        font-size: 12px;
+        color: #8a7a64;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 12px;
+        font-family: -apple-system, sans-serif;
+        font-weight: 500;
+        }
+        .hero-text {
+        padding: 0 24px;
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
@@ -225,20 +252,23 @@
         .lightbox-next { right: -70px; }
 
         /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            .hero { padding: 36px 20px 30px; }
+            @media (max-width: 768px) {
+            .hero { padding: 0 0 30px; }
+            .hero-image-wrap { padding-top: 20px; margin-bottom: 22px; }
             .hero h1 { font-size: 34px; }
             .photo-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; padding: 16px 16px 40px; }
             .section-label { padding: 30px 16px 16px; }
             .lightbox-prev { left: 10px; }
             .lightbox-next { right: 10px; }
             .lightbox-nav { width: 40px; height: 40px; }
-        }
-        @media (max-width: 480px) {
+            }
+            @media (max-width: 480px) {
+            .hero { padding: 0 0 22px; }
+            .hero-image-wrap { padding-top: 14px; margin-bottom: 18px; }
             .hero h1 { font-size: 28px; }
             .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px 12px 30px; }
             .header-title { display: none; }
-        }
+            }
 
         /* Facebook group CTA — button above footer links */
         .fb-cta {
@@ -312,12 +342,18 @@
 </header>
 
 <section class="hero">
-    <div class="hero-date">Monday · July 13, 2026 · 5:00 PM Central Standard Time</div>
-    <h1>Tonight's Pieces</h1>
-    <p class="hero-note">
-        A photo gallery of tonight's offering. Click any image to view full size.
-        Use the catalog or tonight's Facebook Group posts for descriptions, provenance, and bidding.
-    </p>
+    <div class="hero-image-wrap">
+        <img class="hero-image" src="images/bannerstones/collection-closeup-2026-07-13.jpg" alt="Barn Burner Relics bannerstone collection — pink slate and granite pieces, photographed for the Monday showcase">
+        <div class="hero-image-caption">Bannerstone Collection · Studio Shoot · July 13, 2026</div>
+    </div>
+    <div class="hero-text">
+        <div class="hero-date">Monday · July 13, 2026 · 5:00 PM Central Standard Time</div>
+        <h1>Tonight's Pieces</h1>
+        <p class="hero-note">
+            A photo gallery of tonight's offering. Click any image to view full size.
+            Use the catalog or tonight's Facebook Group posts for descriptions, provenance, and bidding.
+        </p>
+    </div>
 </section>
 
 <div class="section-label">
