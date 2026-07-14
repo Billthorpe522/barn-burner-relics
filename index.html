@@ -911,6 +911,25 @@
                     specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'TBD — measure on intake','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Starting Bid':'$7,500','Tier':'T1 — Hero / Showcase (no BIN)','Authenticity':'Lifetime Guarantee'}
                 },
                 {
+                    id: 'quartz-banner-cosach-1917',
+                    title: 'Quartz Butterfly Bannerstone — Pink Quartz',
+                    subtitle: 'Pink Translucent Quartz · Archaic · Provenance Stickers Preserved',
+                    price: 'Showcase — Anchor TBD',
+                    period: 'Archaic · ~3,000–5,000 BP',
+                    tag: 'Featured',
+                    category: 'Bannerstones',
+                    cardFields: {
+                        origin: 'TBD — provenance stickers preserved on piece',
+                        material: 'Pink Translucent Quartz (warm peach coloration)',
+                        period: 'Archaic · ~3,000–5,000 BP',
+                        dimensions: 'TBD — measure on intake (mid-sized, ~4–5\" estimate)'
+                    },
+                    images: ['images/quartz-banner-1.jpg', 'images/quartz-banner-2.jpg', 'images/quartz-banner-3.jpg', 'images/quartz-banner-4.jpg'],
+                    auctionLiveUrl: 'auction.html',
+                    description: '<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rarity-on-a-rarity. Quartz is the rarest of all bannerstone materials (hard, brittle, notoriously difficult to work), and butterfly is the rarest of bannerstone forms (requires bilateral symmetry refined enough to read as wings from any angle). Both rarities in a single piece is exceptional; a third rarity sits in the stone itself — the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. The piece shows subtle banding across both wings and a clean lenticular cross-section visible in profile.</p><p>The piece is sold with its <strong>documented collector stickers and tags preserved in place</strong> — a museum-record convention rather than a stripped-clean convention. Visible on the face: a red-bordered oval sticker reading "M.S.C." (institutional/collection tag), a handwritten pencil notation ("MIKE ECK" with partial number), and a white round sticker reading "1917" with "CUSICK" (or similar) and "CB50" — a numbered catalog tag from a previous collection. Visible on the back: a handwritten paper tag reading "7,500" (the prior asking price) and a smaller provenance tag reading "Ex Eckler / Owen." These tags are part of the artifact\'s documented history and have been intentionally left in place.</p><p>The central perforation is drilled biconically — visible in image #3 as the hourglass-shaped hole characteristic of Archaic-era drilling technique (the standard before conical drilling became dominant). This is the diagnostic knapping signature of the Archaic period, ~3,000–5,000 years before present.</p><p><strong>What we will not invent:</strong> this piece does not carry a third-party Certificate of Authenticity. The provenance chain beyond what\'s physically on the piece is not on file — we are documenting only what the stickers and tags show, not a multi-collector named chain we cannot verify. Lifetime Authenticity Guarantee applies; starting bid is set by Nick, not by an appraiser.</p><p><strong>Starting bid: $7,500.</strong> This piece is a T1 hero — featured in the showcase auction, scheduled anchor slot. It is not available for buy-it-now.</p>',
+                    specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'TBD — provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "M.S.C." tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK (or similar) / CB50"','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Starting Bid':'$7,500','Tier':'T1 — Hero / Showcase (no BIN)','Authentication Note':'No third-party COA on file; documented collector stickers/tags preserved as-is','Authenticity':'Lifetime Guarantee'}
+                },
+                {
                     id: 'hixton-eden',
                     title: 'Hixton Eared Eden Point',
                     subtitle: 'Translucent Hixton Silicified Sandstone · Jackson Co., WI',
@@ -1103,6 +1122,14 @@
         grid.innerHTML = products
             .filter(p => (currentCat === 'all' || p.category === currentCat))
             .filter(p => (currentPeriod === 'all' || classifyPeriod(p.period) === currentPeriod))
+            // Sort active pieces first (preserving their order), then sold pieces (preserving their order)
+            .slice() // copy so we don't mutate the source array
+            .sort((a, b) => {
+                const aSold = a.tag === 'Sold';
+                const bSold = b.tag === 'Sold';
+                if (aSold === bSold) return 0;  // stable within each group
+                return aSold ? 1 : -1;           // active (false) before sold (true)
+            })
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
