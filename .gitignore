@@ -1,0 +1,19 @@
+# Personal / draft / working-only artifacts — not for the public site
+/docs/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment / secrets (none expected, but defensive)
+.env
+.env.local
