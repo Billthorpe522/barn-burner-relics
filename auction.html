@@ -168,6 +168,46 @@
             letter-spacing: 1px;
         }
 
+        /* Lead photo (tile #1) — full-width, taller, gold border, glow */
+        .photo-tile.lead-tile {
+            grid-column: 1 / -1;
+            aspect-ratio: 16/9;
+            border: 2px solid #d4a853;
+            box-shadow: 0 12px 40px rgba(212, 168, 83, 0.18), 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .photo-tile.lead-tile:hover {
+            border-color: #ffd700;
+            box-shadow: 0 16px 56px rgba(212, 168, 83, 0.28), 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .photo-tile.lead-tile .tile-number {
+            top: 16px;
+            left: 16px;
+            font-size: 13px;
+            padding: 6px 12px;
+            background: rgba(212, 168, 83, 0.95);
+            color: #1a1410;
+            letter-spacing: 1.5px;
+        }
+        .photo-tile.lead-tile .lead-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(26, 20, 16, 0.92);
+            color: #d4a853;
+            border: 1px solid #d4a853;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: -apple-system, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            .photo-tile.lead-tile { aspect-ratio: 4/3; }
+            .photo-tile.lead-tile .lead-tag { top: 10px; right: 10px; padding: 6px 10px; font-size: 10px; }
+        }
+
         /* === LIGHTBOX === */
         .lightbox-overlay {
             display: none;
@@ -340,7 +380,8 @@
         <div class="hero-date">Tuesday · July 14, 2026 · 4:00 PM Central Standard Time</div>
         <h1>Tuesday's Pop-Up Pieces</h1>
         <p class="hero-note">
-            A photo gallery of the upcoming offering. Click any image to view full size.
+            The lead photo is the shot for today — there's a lot going on in this collection.
+            Scroll for individual pieces and additional previews.
             Use the catalog or the Facebook Group posts for descriptions, provenance, and bidding.
         </p>
     </div>
@@ -383,9 +424,12 @@
 </footer>
 
 <script>
-    // Tuesday pop-up offering — 3 group photos first (preview of what's coming),
-    // then 11 individual lots. No labels or badges — just photos.
+    // Tuesday pop-up offering — polished bannerstone collection is the
+    // lead photo (lots going on, this is THE shot for today).
+    // Then 3 group context shots, then 11 individual lots, then 4 more
+    // preview tiles. No labels or badges — just photos.
     const galleryPhotos = [
+        { src: 'images/incoming/2026-07-14-tuesday-auction/polished-bannerstone-collection.jpg', lead: true },
         { src: 'images/incoming/display-case-bannerstones/photo-1.jpg' },
         { src: 'images/incoming/display-case-points-misc/photo-1.jpg' },
         { src: 'images/incoming/display-case-pottery/photo-1.jpg' },
@@ -400,7 +444,6 @@
         { src: 'images/incoming/stone-frog-effigy/photo-1.jpg' },
         { src: 'images/incoming/display-case-beaver-pipe/photo-1.jpg' },
         { src: 'images/incoming/arrowhead-shouldered-1/photo-1.jpg' },
-        { src: 'images/incoming/2026-07-14-tuesday-auction/polished-bannerstone-collection.jpg' },
         { src: 'images/incoming/2026-07-14-tuesday-auction/clovis-blade-4388.jpg' },
         { src: 'images/incoming/2026-07-14-tuesday-auction/points-display-case-1.jpg' },
         { src: 'images/incoming/2026-07-14-tuesday-auction/points-display-case-2.jpg' },
@@ -408,12 +451,18 @@
     ];
 
     const grid = document.getElementById('photoGrid');
-    grid.innerHTML = galleryPhotos.map((p, idx) => `
-        <div class="photo-tile" onclick="openLightbox(${idx})">
+    grid.innerHTML = galleryPhotos.map((p, idx) => {
+        const isLead = p.lead === true;
+        const classes = 'photo-tile' + (isLead ? ' lead-tile' : '');
+        const tagHtml = isLead ? '<span class="lead-tag">Lead Photo · Tuesday</span>' : '';
+        return `
+        <div class="${classes}" onclick="openLightbox(${idx})">
             <span class="tile-number">${idx + 1}</span>
+            ${tagHtml}
             <img src="${p.src}" alt="" loading="lazy">
         </div>
-    `).join('');
+    `;
+    }).join('');
 
     let lightboxIndex = 0;
 
