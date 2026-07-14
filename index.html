@@ -717,8 +717,8 @@
 </div>
 
 <div class="announcement">
-    ⚡ <strong>Live Auctions</strong> Every Monday at 5PM CST &nbsp;·&nbsp;
-    <a href="auction.html" style="color:#d4a853; text-decoration: underline;">View Tonight's Auction Gallery →</a>
+    ⚡ <strong>Live Auctions</strong> Tuesdays at 4PM CST &nbsp;·&nbsp;
+    <a href="auction.html" style="color:#d4a853; text-decoration: underline;">View the Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
@@ -879,7 +879,7 @@
 
 <footer>
     <div class="links">
-        <a href="auction.html" class="gallery-link">View Tonight's Auction Gallery →</a>
+        <a href="auction.html" class="gallery-link">View the Auction Gallery →</a>
         <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
         <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
         <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
@@ -907,7 +907,7 @@
                     },
                     images: ['images/butterfly-banner-1.jpg', 'images/butterfly-banner-2.jpg', 'images/butterfly-banner-3.jpg', 'images/butterfly-banner-4.jpg'],
                     auctionLiveUrl: 'auction.html',
-                    description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Starting bid: $7,500.</strong> This piece is a T1 hero — featured in the Monday showcase auction, scheduled anchor slot. It is not available for buy-it-now; bidding is the only path to acquisition.</p>',
+                    description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Starting bid: $7,500.</strong> This piece is a T1 hero — featured in the showcase auction, scheduled anchor slot. It is not available for buy-it-now; bidding is the only path to acquisition.</p>',
                     specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'TBD — measure on intake','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Barn Burner Relics','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Starting Bid':'$7,500','Tier':'T1 — Hero / Showcase (no BIN)','Authenticity':'Lifetime Guarantee'}
                 },
                 {
@@ -1087,7 +1087,7 @@
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
-            const auctionBadge = p.auctionLiveUrl ? `<a href="${p.auctionLiveUrl}" class="auction-badge" onclick="event.stopPropagation();">Watch Live · Bid Mon 5PM</a>` : '';
+            const auctionBadge = p.auctionLiveUrl ? `<a href="${p.auctionLiveUrl}" class="auction-badge" onclick="event.stopPropagation();">Watch Live · Bid Tue 4PM</a>` : '';
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '');
