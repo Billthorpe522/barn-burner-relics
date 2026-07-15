@@ -42,6 +42,9 @@ T1 — Hero / Showcase
 ## Starting price
 $7,500
 
+## Condition (disclosed)
+Both wing tips are broken and have been glued back on. Repair is documented as-is, consistent with our restoration-disclosure policy on every catalog piece.
+
 ## Photo order (4 images shipped)
 1. photo-1-face.jpg — face-on, full wings visible, stickers on face (HERO)
 2. photo-2-edge.jpg — edge-on profile, lenticular cross-section visible
