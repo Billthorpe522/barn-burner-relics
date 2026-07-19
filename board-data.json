@@ -1,0 +1,373 @@
+{
+  "generated_at": "2026-07-19T10:22:09",
+  "totals": {
+    "awaiting": 16,
+    "needs_closeup": 4,
+    "ready": 0,
+    "live": 6,
+    "sold": 6
+  },
+  "columns": {
+    "awaiting": [
+      {
+        "slug": "stone-frog-effigy",
+        "title": "Carved Stone Frog Effigy",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's full description (material, origin, period, dimensions, animal confirmation)",
+        "status_text": "Awaiting Cam's full description (material, origin, period, dimensions, animal confirmation)",
+        "thumbnail": "images/incoming/stone-frog-effigy/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/stone-frog-effigy/provenance.md"
+      },
+      {
+        "slug": "clovis-1",
+        "title": "Clovis Point #1 (Tonight's Offering)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "thumbnail": "images/incoming/clovis-1/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-1/provenance.md"
+      },
+      {
+        "slug": "clovis-2",
+        "title": "Clovis Point #2 (Tonight's Offering)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "thumbnail": "images/incoming/clovis-2/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-2/provenance.md"
+      },
+      {
+        "slug": "clovis-3",
+        "title": "Clovis Point #3 (Tonight's Offering)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "thumbnail": "images/incoming/clovis-3/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-3/provenance.md"
+      },
+      {
+        "slug": "clovis-4",
+        "title": "Clovis Point #4 (Tonight's Offering)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "thumbnail": "images/incoming/clovis-4/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-4/provenance.md"
+      },
+      {
+        "slug": "clovis-5",
+        "title": "Clovis Point #5 (Tonight's Offering)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "thumbnail": "images/incoming/clovis-5/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-5/provenance.md"
+      },
+      {
+        "slug": "clovis-6",
+        "title": "Clovis Point #6 (Tonight's Offering)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the six Clovis is this? (origin, period, dimensions, provenance)",
+        "thumbnail": "images/incoming/clovis-6/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-6/provenance.md"
+      },
+      {
+        "slug": "clovis-large-adams-co",
+        "title": "Large Ohio Flint Ridge Clovis",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's full description (dimensions, exact find history, anchor slot recommendation)",
+        "status_text": "Awaiting Cam's full description (dimensions, exact find history, anchor slot recommendation)",
+        "thumbnail": "images/incoming/clovis-large-adams-co/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/clovis-large-adams-co/provenance.md"
+      },
+      {
+        "slug": "large-flint-biface-k98",
+        "title": "Large Translucent Flint Biface (K98)",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's full description (origin, period, dimensions, K98 provenance meaning)",
+        "status_text": "Awaiting Cam's full description (origin, period, dimensions, K98 provenance meaning)",
+        "thumbnail": "images/incoming/large-flint-biface-k98/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/large-flint-biface-k98/provenance.md"
+      },
+      {
+        "slug": "fish-hook-group-of-4",
+        "title": "Four Bone Fish Hooks (Tonight's Offering \u2014 Group Lot)",
+        "tier": "T2",
+        "blocker": "Awaiting Cam's full description (origin, period, dimensions per hook, group price, provenance)",
+        "status_text": "Awaiting Cam's full description (origin, period, dimensions per hook, group price, provenance)",
+        "thumbnail": "images/incoming/fish-hook-group-of-4/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/fish-hook-group-of-4/provenance.md"
+      },
+      {
+        "slug": "serrated-point-1",
+        "title": "Serrated Point #1 (Tonight's Offering)",
+        "tier": "T2",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the three serrated points is this? (origin, period, dimensions, material)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the three serrated points is this? (origin, period, dimensions, material)",
+        "thumbnail": "images/incoming/serrated-point-1/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/serrated-point-1/provenance.md"
+      },
+      {
+        "slug": "serrated-point-2",
+        "title": "Serrated Point #2 (Tonight's Offering)",
+        "tier": "T2",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the three serrated points is this? (origin, period, dimensions, material)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the three serrated points is this? (origin, period, dimensions, material)",
+        "thumbnail": "images/incoming/serrated-point-2/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/serrated-point-2/provenance.md"
+      },
+      {
+        "slug": "serrated-point-3",
+        "title": "Serrated Point #3 (Tonight's Offering)",
+        "tier": "T2",
+        "blocker": "Awaiting Cam's individual description \u2014 which of the three serrated points is this? (origin, period, dimensions, material)",
+        "status_text": "Awaiting Cam's individual description \u2014 which of the three serrated points is this? (origin, period, dimensions, material)",
+        "thumbnail": "images/incoming/serrated-point-3/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/serrated-point-3/provenance.md"
+      },
+      {
+        "slug": "spotted-stone-pipe",
+        "title": "Spotted Stone Smoking Pipe",
+        "tier": "T2",
+        "blocker": "Awaiting Cam's full description (origin, period, dimensions, confirmation of form, damage/restoration history)",
+        "status_text": "Awaiting Cam's full description (origin, period, dimensions, confirmation of form, damage/restoration history)",
+        "thumbnail": "images/incoming/spotted-stone-pipe/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/spotted-stone-pipe/provenance.md"
+      },
+      {
+        "slug": "arrowhead-quartz-notched-1",
+        "title": "Quartz Side-Notched Arrowhead",
+        "tier": "T3",
+        "blocker": "Awaiting Cam's full description (origin, period, dimensions, price)",
+        "status_text": "Awaiting Cam's full description (origin, period, dimensions, price)",
+        "thumbnail": "images/incoming/arrowhead-quartz-notched-1/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/arrowhead-quartz-notched-1/provenance.md"
+      },
+      {
+        "slug": "arrowhead-shouldered-1",
+        "title": "Shouldered Arrowhead, Cream Chert",
+        "tier": "T3",
+        "blocker": "Awaiting Cam's full description (origin, period, dimensions, price)",
+        "status_text": "Awaiting Cam's full description (origin, period, dimensions, price)",
+        "thumbnail": "images/incoming/arrowhead-shouldered-1/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/arrowhead-shouldered-1/provenance.md"
+      }
+    ],
+    "needs_closeup": [
+      {
+        "slug": "display-case-beaver-pipe",
+        "title": "Beaver Effigy Pipe",
+        "tier": "T1",
+        "blocker": "Awaiting Cam's full description (full COA text, exact dimensions, material, provenance chain)",
+        "status_text": "Awaiting Cam's full description (full COA text, exact dimensions, material, provenance chain)",
+        "thumbnail": "images/incoming/display-case-beaver-pipe/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/display-case-beaver-pipe/provenance.md"
+      },
+      {
+        "slug": "display-case-bannerstones",
+        "title": "Display Case \u2014 Bannerstones (group, needs splitting)",
+        "tier": "",
+        "blocker": "",
+        "status_text": "NEEDS CLOSEUPS \u2014 Cam needs to send individual photos of each bannerstone so each can be catalogued separately.",
+        "thumbnail": "images/incoming/display-case-bannerstones/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/display-case-bannerstones/provenance.md"
+      },
+      {
+        "slug": "display-case-points-misc",
+        "title": "Display Case \u2014 Misc Points (group, needs splitting)",
+        "tier": "",
+        "blocker": "",
+        "status_text": "NEEDS CLOSEUPS \u2014 Cam needs to identify which pieces are Tonight's Offering vs. existing catalog pieces vs. not-for-sale.",
+        "thumbnail": "images/incoming/display-case-points-misc/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/display-case-points-misc/provenance.md"
+      },
+      {
+        "slug": "display-case-pottery",
+        "title": "Display Case \u2014 Pottery (group, needs splitting)",
+        "tier": "",
+        "blocker": "",
+        "status_text": "NEEDS CLOSEUPS \u2014 Cam needs to identify which pots are Tonight's Offering and send per-piece photos.",
+        "thumbnail": "images/incoming/display-case-pottery/photo-1.jpg",
+        "price": "",
+        "in_catalog": false,
+        "provenance_url": "images/incoming/display-case-pottery/provenance.md"
+      }
+    ],
+    "ready": [],
+    "live": [
+      {
+        "slug": "quartz-banner-cosach-1917",
+        "title": "Quartz Butterfly Bannerstone \u2014 Pink Quartz",
+        "tier": "T1",
+        "blocker": "",
+        "status_text": "",
+        "thumbnail": "images/incoming/quartz-banner-cosach-1917/photo-1-face.jpg",
+        "price": "$7,500",
+        "in_catalog": true,
+        "provenance_url": "images/incoming/quartz-banner-cosach-1917/provenance.md"
+      },
+      {
+        "slug": "butterfly-bannerstone",
+        "title": "Butterfly Bannerstone \u2014 Quartz",
+        "tier": "",
+        "blocker": "",
+        "status_text": "",
+        "thumbnail": null,
+        "price": "Showcase \u2014 Anchor TBD",
+        "in_catalog": true,
+        "provenance_url": "images/incoming/butterfly-bannerstone/provenance.md"
+      },
+      {
+        "slug": "hardin-point",
+        "title": "Hardin Projectile Point",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "$7,500",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "effigy-jar",
+        "title": "Human Face Strap Handle Effigy Jar",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "$2,195",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "plainview-goshen-burlington",
+        "title": "Plainview-Goshen Point \u2014 Burlington Chert",
+        "tier": "",
+        "blocker": "",
+        "status_text": "",
+        "thumbnail": "images/incoming/plainview-goshen-burlington/photo-1-hero.jpg",
+        "price": "$1,500",
+        "in_catalog": true,
+        "provenance_url": "images/incoming/plainview-goshen-burlington/provenance.md"
+      },
+      {
+        "slug": "wing-banner",
+        "title": "Slate Double Notch Wing Banner",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "$2,250",
+        "in_catalog": true,
+        "provenance_url": null
+      }
+    ],
+    "sold": [
+      {
+        "slug": "bell-pendant",
+        "title": "Bell Pendant \u2014 Banded Slate",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "SOLD",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "holland-dalton",
+        "title": "Exceptional 3",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "SOLD",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "hixton-eden",
+        "title": "Hixton Eared Eden Point",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "SOLD",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "neuberger",
+        "title": "Neuberger Projectile Point",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "SOLD",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "shell-gorget",
+        "title": "Shell Gorget \u2014 3",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "SOLD",
+        "in_catalog": true,
+        "provenance_url": null
+      },
+      {
+        "slug": "sioux-deer-pipe",
+        "title": "Sioux Deer Effigy Pipe",
+        "tier": "",
+        "blocker": "",
+        "status_text": "(no intake folder \u2014 pre-workflow piece)",
+        "thumbnail": null,
+        "price": "SOLD",
+        "in_catalog": true,
+        "provenance_url": null
+      }
+    ]
+  }
+}
