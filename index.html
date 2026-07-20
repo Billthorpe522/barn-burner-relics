@@ -4,6 +4,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Barn Burner Relics — Authentic Native American Artifacts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -511,8 +515,8 @@
             background: linear-gradient(135deg, #00b2ff 0%, #0078ff 100%);
             border-radius: 50%;
         }
-        .messenger-btn .messenger-icon-sms {
-            background: linear-gradient(135deg, #34c759 0%, #1f8a3a 100%);
+        .messenger-btn .messenger-icon-email {
+            background: linear-gradient(135deg, #d4a853 0%, #8b6914 100%);
         }
         .messenger-btn strong {
             display: block;
@@ -623,7 +627,7 @@
 <body>
 
 <div class="announcement">
-    ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM CST &nbsp;·&nbsp;
+    ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM Central Time &nbsp;·&nbsp;
     <a href="gallery/" style="color:#d4a853; text-decoration: underline;">View the Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
@@ -751,11 +755,11 @@
                 <small>Primary channel — fastest reply</small>
             </div>
         </a>
-        <a id="messengerTextBtn" href="#" class="messenger-btn messenger-text">
-            <span class="messenger-icon messenger-icon-sms">📱</span>
+        <a id="messengerTextBtn" href="#" class="messenger-btn messenger-email">
+            <span class="messenger-icon messenger-icon-email">✉️</span>
             <div>
-                <strong>Text Nick at 630-824-8902</strong>
-                <small>Opens your messages app with a pre-filled inquiry</small>
+                <strong>Email Nick</strong>
+                <small>Opens your email app with a pre-filled inquiry</small>
             </div>
         </a>
         <button class="messenger-close" onclick="closeMessenger()">Close</button>
@@ -1030,11 +1034,11 @@
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // ========== Messenger / SMS wiring ==========
+    // ========== Messenger / Email wiring ==========
     // Facebook profile: facebook.com/nick.gatses (Messenger short-link: m.me/nick.gatses)
+    // Email: nickgatses1@gmail.com (public, from FB group description)
     const MESSENGER_NICK_URL = 'https://m.me/nick.gatses';
-    const NICK_SMS_NUMBER = '+16308248902';
-    const NICK_SMS_DISPLAY = '630-824-8902';
+    const NICK_EMAIL = 'nickgatses1@gmail.com';
 
     function openInquiry() {
         if (!currentProduct) {
@@ -1042,9 +1046,10 @@
         }
         document.getElementById('messengerPiece').textContent = currentProduct.title;
         document.getElementById('messengerNickBtn').href = MESSENGER_NICK_URL;
-        // SMS body is URL-encoded so the pre-fill survives on iOS/Android
-        const smsBody = encodeURIComponent('Hi Nick — interested in the ' + currentProduct.title + ' on barnburnerrelics.shop. Is it still available?');
-        document.getElementById('messengerTextBtn').href = 'sms:' + NICK_SMS_NUMBER + '?body=' + smsBody;
+        // Email with pre-filled subject + body
+        const emailSubject = encodeURIComponent('Inquiry: ' + currentProduct.title);
+        const emailBody = encodeURIComponent('Hi Nick — interested in the ' + currentProduct.title + ' on barnburnerrelics.shop. Is it still available?');
+        document.getElementById('messengerTextBtn').href = 'mailto:' + NICK_EMAIL + '?subject=' + emailSubject + '&body=' + emailBody;
         document.getElementById('messengerOverlay').classList.add('active');
         closeDetail();
     }

@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Monday Auction · Photo Gallery — Barn Burner Relics</title>
 <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -506,7 +510,7 @@
         </div>
     </div>
     <div class="hero-text">
-        <div class="hero-date">Monday · July 20, 2026 · 5:00 PM Central Standard Time</div>
+        <div class="hero-date">Monday · July 20, 2026 · 5:00 PM Central Time</div>
         <h1>Monday's Auction</h1>
         <p class="hero-note">
             Photos below are from last week's gallery — they will be updated when Monday's pieces are photographed and posted.
@@ -619,7 +623,7 @@
         const isLead = p.lead === true;
         const isSold = p.status === 'sold';
         const classes = 'photo-tile' + (isLead ? ' lead-tile' : '') + (isSold ? ' sold-tile' : '');
-        const leadTagHtml = isLead ? '<span class="lead-tag">Lead Photo · Monday</span>' : '';
+        const leadTagHtml = ''; // "Lead Photo · Monday" tag removed per request — lead-tile styling (gold border, full-width) preserved
         const soldTagHtml = isSold ? '<span class="sold-tag">Sold</span>' : '';
         return `
         <div class="${classes}" onclick="openLightbox(${idx})">
@@ -663,34 +667,62 @@
         if (e.key === 'ArrowRight') navigateLightbox(1);
     });
 
-    // ========== Countdown to next Monday 5:00 PM CST ==========
+    // ========== Countdown to next Monday 5:00 PM Central Time ==========
     // Rolling weekly: always points to the upcoming Monday auction.
-    // Site copy says "5:00 PM Central Standard Time" so we use UTC-6 year-round
-    // (matches the static date string; auction-time correctness is the user's
-    // calendar concern, not the page's job).
-    const CD_HOUR = 17; // 5 PM
-    const CD_TZ_OFFSET_HOURS = -6; // CST (UTC-6). Switch to -5 if copy changes to CDT.
-
+    // We compute "next Monday 5 PM in Chicago's current local time" using the
+    // browser's IANA timezone ("America/Chicago"), which auto-handles the
+    // CST/CDT switch. The static date string just says "Central Time" so we
+    // don't have to swap copy twice a year.
     function nextMondayAt5pm() {
-        // Get current instant in milliseconds
         const nowMs = Date.now();
-        // Compute what time it is in CST
-        const cstMs = nowMs + CD_TZ_OFFSET_HOURS * 3600000;
-        // Use UTC accessors on the shifted ms to read CST day-of-week and date components
-        // (treating the shifted ms as a UTC instant is equivalent to reading the CST fields)
-        const cstDow = new Date(cstMs).getUTCDay();
-        const cstDate = new Date(cstMs).getUTCDate();
-        const cstMonth = new Date(cstMs).getUTCMonth();
-        const cstYear = new Date(cstMs).getUTCFullYear();
-        // Days until next Monday in CST (0 if today is Monday)
-        const daysAhead = (1 - cstDow + 7) % 7;
-        // Build the target as a UTC instant: target CST date at 5 PM CST
-        // 5 PM CST = 17:00 CST = (17 - (-6)):00 UTC = 23:00 UTC
-        const targetHourUtc = CD_HOUR - CD_TZ_OFFSET_HOURS;
-        const target = new Date(Date.UTC(cstYear, cstMonth, cstDate + daysAhead, targetHourUtc, 0, 0, 0));
+        // Get the current date/time in Chicago using a formatter
+        const fmt = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Chicago',
+            weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const parts = fmt.formatToParts(new Date(nowMs));
+        const get = t => parts.find(p => p.type === t).value;
+        const weekdayShort = get('weekday'); // Mon/Tue/...
+        const monthStr = get('month');
+        const dayStr = get('day');
+        const yearStr = get('year');
+        // Map weekday to 0=Sun..6=Sat
+        const dowMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+        const cstDow = dowMap[weekdayShort];
+        const month = parseInt(monthStr, 10) - 1; // 0-indexed
+        const day = parseInt(dayStr, 10);
+        const year = parseInt(yearStr, 10);
+        // Days until next Monday in Chicago (0 if today is Monday)
+        let daysAhead = (1 - cstDow + 7) % 7;
+        // Build target by constructing an ISO-like string in 'America/Chicago'
+        // then passing to Date so it resolves correctly regardless of DST.
+        // JS trick: new Date('YYYY-MM-DDTHH:MM:SS-06:00') for CST, or -05:00 for CDT.
+        // Auto-pick the offset that matches the target date by using the same formatter.
+        let targetDate = new Date(year, month, day + daysAhead, 17, 0, 0, 0);
+        const targetFmt = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Chicago',
+            timeZoneName: 'shortOffset'
+        });
+        const tzParts = targetFmt.formatToParts(targetDate);
+        const tzn = tzParts.find(p => p.type === 'timeZoneName').value; // e.g., "GMT-5"
+        // Convert "GMT-5" or "GMT-6" to "−05:00" / "−06:00"
+        const m = tzn.match(/GMT([+-])(\d+)/);
+        const sign = m[1];
+        const offH = m[2].padStart(2, '0');
+        const tzIso = `${sign}${offH}:00`;
+        // Construct ISO string for the target wall-clock time in Chicago
+        const targetIso = `${year}-${String(month + 1).padStart(2, '0')}-${String(day + daysAhead).padStart(2, '0')}T17:00:00${tzIso}`;
+        let target = new Date(targetIso);
         // If target is at or before now, push to next Monday
         if (target.getTime() <= nowMs) {
-            target.setUTCDate(target.getUTCDate() + 7);
+            targetDate = new Date(year, month, day + daysAhead + 7, 17, 0, 0, 0);
+            const tp2 = targetFmt.formatToParts(targetDate);
+            const tzn2 = tp2.find(p => p.type === 'timeZoneName').value;
+            const m2 = tzn2.match(/GMT([+-])(\d+)/);
+            const tzIso2 = `${m2[1]}${m2[2].padStart(2, '0')}:00`;
+            const targetIso2 = `${year}-${String(month + 1).padStart(2, '0')}-${String(day + daysAhead + 7).padStart(2, '0')}T17:00:00${tzIso2}`;
+            target = new Date(targetIso2);
         }
         return target;
     }
