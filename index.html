@@ -304,20 +304,6 @@
         .product-card .badge.sold { background: #4a4a4a; }
 
         /* Live-auction CTA badge — appears on products whose auctionLiveUrl is set */
-        .product-card .auction-badge {
-            position: absolute; top: 12px; right: 12px;
-            background: #a0252a; color: #fff;
-            font-size: 10px; letter-spacing: 0.06em; font-weight: 700;
-            padding: 5px 9px; border-radius: 3px;
-            text-transform: uppercase; z-index: 2;
-            box-shadow: 0 2px 8px rgba(0,0,0,.4);
-            animation: livePulse 2.2s ease-in-out infinite;
-        }
-        @keyframes livePulse {
-            0%,100% { box-shadow: 0 0 0 0 rgba(160,37,42,.7); }
-            50%     { box-shadow: 0 0 0 6px rgba(160,37,42,0); }
-        }
-        .product-card .auction-badge:hover { background: #c13237; color: #fff; }
         .product-card .badge.featured { background: #c9a24b; color: #1f1a15; }
         .product-card .badge.new { background: #4a7c4f; }
         .product-card.sold-card { opacity: 0.55; filter: grayscale(0.5); }
@@ -840,7 +826,7 @@
                     id: 'butterfly-bannerstone',
                     title: 'Butterfly Bannerstone — Quartz',
                     subtitle: 'Illinois · Cuckler #3287 · Quartz (rarest of bannerstone materials)',
-                    price: 'Showcase — Anchor TBD',
+                    price: '$7,500',
                     period: 'Archaic · ~3,000–5,000 BP',
                     tag: 'Featured',
                     category: 'Bannerstones',
@@ -1076,12 +1062,11 @@
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
-            const auctionBadge = p.auctionLiveUrl ? `<a href="${p.auctionLiveUrl}" class="auction-badge" onclick="event.stopPropagation();">Watch Live · Bid Mon 5PM</a>` : '';
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '') + (p.price === 'Inquire' ? ' inquire-price' : '');
             return `<div class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">
-                <div class="image-wrap">${tagHtml}${auctionBadge}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
+                <div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
                 <div class="info">
                     <h3>${p.title}</h3>
                     <div class="price-row">
