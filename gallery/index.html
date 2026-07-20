@@ -100,6 +100,84 @@
             font-style: italic;
         }
 
+        /* === COUNTDOWN === */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0;
+            padding: 0 24px 28px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'SF Mono', 'Menlo', 'Consolas', 'Monaco', monospace;
+        }
+        .countdown .cd-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 6px 4px 8px;
+            border-bottom: 1px solid rgba(212, 168, 83, 0.35);
+        }
+        .countdown .cd-num {
+            font-size: 32px;
+            font-weight: 600;
+            color: #d4a853;
+            letter-spacing: 1px;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+        .countdown .cd-lbl {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8b7355;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+        .countdown .cd-cell-secs .cd-num {
+            animation: cdPulse 1s ease-in-out infinite;
+        }
+        @keyframes cdPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.55; }
+        }
+        .countdown.live {
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .countdown.live .cd-cell {
+            border-bottom: none;
+            padding: 4px 0;
+        }
+        .countdown.live .cd-num {
+            font-size: 22px;
+            color: #c8423b;
+            animation: cdLivePulse 1.4s ease-in-out infinite;
+        }
+        .countdown.live .cd-lbl {
+            font-size: 12px;
+            color: #c8423b;
+            margin-top: 0;
+            letter-spacing: 3px;
+        }
+        @keyframes cdLivePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        @media (max-width: 768px) {
+            .countdown { padding: 0 20px 22px; }
+            .countdown .cd-num { font-size: 26px; }
+        }
+        @media (max-width: 480px) {
+            .countdown { padding: 0 12px 18px; }
+            .countdown .cd-num { font-size: 22px; letter-spacing: 0.5px; }
+            .countdown .cd-lbl { font-size: 9px; letter-spacing: 1.5px; }
+        }
+
         /* === SECTION DIVIDER === */
         .section-label {
             text-align: center;
@@ -409,6 +487,24 @@
     <div class="hero-image-wrap">
         <img class="hero-image" src="/images/bannerstones/collection-closeup-2026-07-13.jpg" alt="Barn Burner Relics bannerstone collection — pink slate and granite pieces, photographed for the Monday showcase">
     </div>
+    <div class="countdown" id="countdown" aria-label="Countdown to the next Monday auction">
+        <div class="cd-cell">
+            <span class="cd-num" id="cdDays">--</span>
+            <span class="cd-lbl">Days</span>
+        </div>
+        <div class="cd-cell">
+            <span class="cd-num" id="cdHours">--</span>
+            <span class="cd-lbl">Hours</span>
+        </div>
+        <div class="cd-cell">
+            <span class="cd-num" id="cdMins">--</span>
+            <span class="cd-lbl">Mins</span>
+        </div>
+        <div class="cd-cell cd-cell-secs">
+            <span class="cd-num" id="cdSecs">--</span>
+            <span class="cd-lbl">Secs</span>
+        </div>
+    </div>
     <div class="hero-text">
         <div class="hero-date">Monday · July 20, 2026 · 5:00 PM Central Standard Time</div>
         <h1>Monday's Auction</h1>
@@ -553,6 +649,77 @@
         if (e.key === 'ArrowLeft') navigateLightbox(-1);
         if (e.key === 'ArrowRight') navigateLightbox(1);
     });
+
+    // ========== Countdown to next Monday 5:00 PM CST ==========
+    // Rolling weekly: always points to the upcoming Monday auction.
+    // Site copy says "5:00 PM Central Standard Time" so we use UTC-6 year-round
+    // (matches the static date string; auction-time correctness is the user's
+    // calendar concern, not the page's job).
+    const CD_HOUR = 17; // 5 PM
+    const CD_TZ_OFFSET_HOURS = -6; // CST (UTC-6). Switch to -5 if copy changes to CDT.
+
+    function nextMondayAt5pm() {
+        // Get current instant in milliseconds
+        const nowMs = Date.now();
+        // Compute what time it is in CST
+        const cstMs = nowMs + CD_TZ_OFFSET_HOURS * 3600000;
+        // Use UTC accessors on the shifted ms to read CST day-of-week and date components
+        // (treating the shifted ms as a UTC instant is equivalent to reading the CST fields)
+        const cstDow = new Date(cstMs).getUTCDay();
+        const cstDate = new Date(cstMs).getUTCDate();
+        const cstMonth = new Date(cstMs).getUTCMonth();
+        const cstYear = new Date(cstMs).getUTCFullYear();
+        // Days until next Monday in CST (0 if today is Monday)
+        const daysAhead = (1 - cstDow + 7) % 7;
+        // Build the target as a UTC instant: target CST date at 5 PM CST
+        // 5 PM CST = 17:00 CST = (17 - (-6)):00 UTC = 23:00 UTC
+        const targetHourUtc = CD_HOUR - CD_TZ_OFFSET_HOURS;
+        const target = new Date(Date.UTC(cstYear, cstMonth, cstDate + daysAhead, targetHourUtc, 0, 0, 0));
+        // If target is at or before now, push to next Monday
+        if (target.getTime() <= nowMs) {
+            target.setUTCDate(target.getUTCDate() + 7);
+        }
+        return target;
+    }
+
+    const cdEl = document.getElementById('countdown');
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMins = document.getElementById('cdMins');
+    const cdSecs = document.getElementById('cdSecs');
+    let cdTarget = nextMondayAt5pm();
+
+    function tickCountdown() {
+        const remaining = cdTarget.getTime() - Date.now();
+        if (remaining <= 0) {
+            // Switch to live state; refresh target for next week
+            cdEl.classList.add('live');
+            cdDays.textContent = '🔴';
+            cdHours.textContent = 'Live';
+            cdMins.textContent = 'now';
+            cdSecs.textContent = '';
+            cdSecs.parentElement.style.display = 'none';
+            // After 4 hours, advance to next Monday so the timer resets
+            if (remaining < -4 * 3600000) {
+                cdEl.classList.remove('live');
+                cdSecs.parentElement.style.display = '';
+                cdTarget = nextMondayAt5pm();
+            }
+            return;
+        }
+        const totalSec = Math.floor(remaining / 1000);
+        const d = Math.floor(totalSec / 86400);
+        const h = Math.floor((totalSec % 86400) / 3600);
+        const m = Math.floor((totalSec % 3600) / 60);
+        const s = totalSec % 60;
+        cdDays.textContent = String(d).padStart(2, '0');
+        cdHours.textContent = String(h).padStart(2, '0');
+        cdMins.textContent = String(m).padStart(2, '0');
+        cdSecs.textContent = String(s).padStart(2, '0');
+    }
+
+    tickCountdown();
+    setInterval(tickCountdown, 1000);
 </script>
 
 </body>
