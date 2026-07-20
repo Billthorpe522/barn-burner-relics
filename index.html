@@ -323,66 +323,21 @@
         .product-card.sold-card { opacity: 0.55; filter: grayscale(0.5); }
         .product-card.sold-card:hover { opacity: 0.75; }
         .product-card .info .price.sold-price { color: #8b7355; text-decoration: line-through; text-decoration-color: #6b5a45; }
-        .product-card .info { padding: 16px 18px 20px; }
-        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin-bottom: 4px; font-family: 'Playfair Display', Georgia, serif; }
-        .product-card .info .subtitle {
-            font-size: 13px;
-            color: #d4b78a;
-            margin-bottom: 10px;
-            font-weight: 500;
-            letter-spacing: 0.025em;
-            line-height: 1.55;
-            -webkit-text-stroke: 0.35px rgba(255,255,255,0.35);
-            text-shadow: 0 1px 2px rgba(255,255,255,0.12), 0 0 1px rgba(255,255,255,0.18);
+        .product-card .info { padding: 14px 16px 16px; }
+        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.35; }
+
+        .product-card .info .price-row {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 8px;
         }
-        .product-card .info .price-row { display: flex; align-items: center; justify-content: space-between; }
-        .product-card .info .price-row .price { font-size: 18px; }
+        .product-card .info .price-row .price { font-size: 17px; font-weight: 600; }
+        .product-card .info .price-row .price.inquire-price { color: #d4a853; font-style: italic; font-weight: 500; }
         .product-card .info .price-row .period { font-size: 11px; color: #6b5a45; }
         .product-card .info .price-row .card-cat {
             font-size: 10px; color: #c8a878;
             text-transform: uppercase; letter-spacing: 0.12em;
             font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
         }
-
-        /* Structured spec rows (origin / material / period / dimensions) */
-        .product-card .info .specs {
-            display: flex; flex-direction: column;
-            gap: 5px; margin: 10px 0 12px;
-            padding: 10px 12px;
-            background: rgba(255,255,255,0.025);
-            border-left: 2px solid #8b6f3f;
-            border-radius: 2px;
-        }
-        .product-card .info .spec-row {
-            display: flex; align-items: baseline; gap: 8px;
-            font-size: 12px; line-height: 1.45;
-        }
-        .product-card .info .spec-label {
-            flex: 0 0 56px;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 10px; font-weight: 600;
-            color: #a08866;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            -webkit-text-stroke: 0.2px rgba(255,255,255,0.25);
-        }
-        .product-card .info .spec-value {
-            flex: 1 1 auto;
-            color: #e8d8b8;
-            -webkit-text-stroke: 0.35px rgba(255,255,255,0.35);
-            text-shadow: 0 1px 2px rgba(255,255,255,0.10), 0 0 1px rgba(255,255,255,0.15);
-        }
-
-        /* Lifetime Authenticity Guarantee footer on each card */
-        .product-card .info .card-guarantee {
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px dashed #5a4a32;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 11px; color: #8b6f3f;
-            text-transform: uppercase; letter-spacing: 0.15em;
-            text-align: center;
-        }
-        .product-card.sold-card .info .card-guarantee { display: none; }
 
         /* Product detail overlay */
         .product-detail-overlay {
@@ -687,12 +642,9 @@
             .hero h1 { font-size: 28px; }
             .hero { padding: 50px 20px 40px; }
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; padding: 0 16px 40px; }
-            .product-card .info { padding: 12px 14px 16px; }
-            .product-card .info h3 { font-size: 14px; }
-            .product-card .info .specs { padding: 8px 10px; gap: 4px; }
-            .product-card .info .spec-row { font-size: 11px; gap: 6px; }
-            .product-card .info .spec-label { flex: 0 0 48px; font-size: 9px; }
-            .product-card .info .card-guarantee { font-size: 9px; letter-spacing: 0.1em; }
+            .product-card .info { padding: 12px 14px 14px; }
+            .product-card .info h3 { font-size: 15px; }
+            .product-card .info .price-row .price { font-size: 16px; }
             .detail-layout { grid-template-columns: 1fr; }
             .detail-gallery { padding: 20px; }
             .detail-info { padding: 20px; }
@@ -1127,24 +1079,15 @@
             const auctionBadge = p.auctionLiveUrl ? `<a href="${p.auctionLiveUrl}" class="auction-badge" onclick="event.stopPropagation();">Watch Live · Bid Mon 5PM</a>` : '';
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
-            const priceClass = 'price' + (isSold ? ' sold-price' : '');
-            // Card-front spec rows: origin / material / period / dimensions
-            const cf = p.cardFields || {};
-            const specRows = ['origin','material','period','dimensions']
-                .filter(k => cf[k])
-                .map(k => `<div class="spec-row"><span class="spec-label">${k}</span><span class="spec-value">${cf[k]}</span></div>`)
-                .join('');
-            const guaranteeHtml = isSold ? '' : '<div class="card-guarantee">Lifetime Authenticity Guarantee</div>';
+            const priceClass = 'price' + (isSold ? ' sold-price' : '') + (p.price === 'Inquire' ? ' inquire-price' : '');
             return `<div class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">
                 <div class="image-wrap">${tagHtml}${auctionBadge}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
                 <div class="info">
                     <h3>${p.title}</h3>
-                    ${specRows ? `<div class="specs">${specRows}</div>` : ''}
                     <div class="price-row">
                         <span class="${priceClass}">${p.price}</span>
                         ${p.category ? `<span class="card-cat">${p.category}</span>` : ''}
                     </div>
-                    ${guaranteeHtml}
                 </div>
             </div>`;
         }).join('');
