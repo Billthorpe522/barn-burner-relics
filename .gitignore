@@ -1,5 +1,8 @@
 # Personal / draft / working-only artifacts — not for the public site
 /docs/
+/obs/
+/images/incoming/
+construction-banner-draft.md
 
 # OS / editor noise
 .DS_Store
