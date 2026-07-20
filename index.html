@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barn Burner Relics — Working Draft Catalog</title>
+<title>Barn Burner Relics — Authentic Native American Artifacts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,49 +37,9 @@
             letter-spacing: 0.02em;
         }
 
-        /* Construction banner — test site under construction, feedback invited */
-        .construction-banner {
-            background: #1a1410;
-            border-bottom: 2px solid #8b4513;
-            padding: 40px 24px 36px;
-            text-align: center;
-            color: #d4c8a8;
-        }
-        .construction-banner .cb-headline {
-            color: #d4a853;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-        .construction-banner .cb-body {
-            font-size: 16px;
-            line-height: 1.7;
-            max-width: 720px;
-            margin: 0 auto;
-            color: #d4c8a8;
-            font-weight: 500;
-            letter-spacing: 0.015em;
-        }
-        .construction-banner .cb-body a {
-            color: #d4a853;
-            text-decoration: underline;
-            text-decoration-color: #8b4513;
-            text-underline-offset: 3px;
-        }
-        .construction-banner .cb-body a:hover {
-            color: #ffd700;
-        }
-        @media (max-width: 700px) {
-            .construction-banner { padding: 28px 18px 24px; }
-            .construction-banner .cb-headline { font-size: 17px; letter-spacing: 3px; }
-            .construction-banner .cb-body { font-size: 14px; }
-        }
-        @media (max-width: 480px) {
-            .construction-banner .cb-headline { font-size: 15px; letter-spacing: 2.5px; }
-        }
+        /* Hero trust stats removed Jul 19 2026 — replaced by Lifetime Authenticity Guarantee banner (TBD) */
+
+
 
         /* Announcement bar */
         .announcement {
@@ -196,13 +156,6 @@
             -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
-        .hero-trust {
-            display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 40px;
-        }
-        .hero-trust-item { text-align: center; }
-        .hero-trust-item .num { font-size: 28px; font-weight: 700; color: #d4a853; font-family: 'Playfair Display', Georgia, serif; }
-        .hero-trust-item .label { font-size: 12px; color: #8b7355; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-
         /* Personal guarantee — handwritten signature */
         .signature-block {
             max-width: 580px;
@@ -251,28 +204,7 @@
             margin-top: 6px;
         }
 
-        /* Show badge — temporary, added Jul 10 2026 for Starved Rock weekend */
-        .show-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 22px;
-            padding: 8px 14px;
-            background: rgba(212, 168, 83, 0.08);
-            border: 1px solid rgba(212, 168, 83, 0.35);
-            border-radius: 999px;
-            color: #d4a853;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            transition: background 0.2s, border-color 0.2s;
-        }
-        .show-pill:hover { background: rgba(212, 168, 83, 0.15); border-color: rgba(212, 168, 83, 0.6); }
-        .show-pill .dot {
-            width: 7px; height: 7px; border-radius: 50%;
-            background: #d4a853; box-shadow: 0 0 8px rgba(212, 168, 83, 0.6);
-        }
+        /* Show badge removed Jul 19 2026 — Starved Rock show has passed */
 
         @media (max-width: 700px) {
             .signature-block { margin-top: 32px; padding: 18px 18px 14px; }
@@ -680,7 +612,6 @@
             .mobile-menu-btn { display: block; }
             .hero h1 { font-size: 28px; }
             .hero { padding: 50px 20px 40px; }
-            .hero-trust { gap: 24px; }
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; padding: 0 16px 40px; }
             .product-card .info { padding: 12px 14px 16px; }
             .product-card .info h3 { font-size: 14px; }
@@ -701,23 +632,13 @@
         @media (max-width: 480px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 12px 30px; }
             .hero h1 { font-size: 24px; }
-            .hero-trust-item .num { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-<div class="construction-banner">
-    <div class="cb-headline">Working Draft &middot; Not the Real Shop</div>
-    <div class="cb-body">
-        This is a test version of a possible Barn Burner Relics online catalog.
-        The real shop is at <a href="https://www.barnburnerrelics.net/" target="_blank" rel="noopener">barnburnerrelics.net</a>.
-        If a site like this would make you shop, we'd like to know.
-    </div>
-</div>
-
 <div class="announcement">
-    ⚡ <strong>Live Auctions</strong> Tuesdays at 4PM CST &nbsp;·&nbsp;
+    ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM CST &nbsp;·&nbsp;
     <a href="gallery/" style="color:#d4a853; text-decoration: underline;">View the Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
@@ -748,31 +669,12 @@
         with every purchase.
     </p>
     <a href="#" class="btn-inquire" onclick="closeDetail(); scrollToSection('shop'); return false;">Browse the Collection</a>
-    <div class="hero-trust">
-        <div class="hero-trust-item">
-            <div class="num">20+ Years</div>
-            <div class="label">In the Trade</div>
-        </div>
-        <div class="hero-trust-item">
-            <div class="num">100%</div>
-            <div class="label">Authenticity Guarantee</div>
-        </div>
-        <div class="hero-trust-item">
-            <div class="num">Lifetime</div>
-            <div class="label">Buy-Back Policy</div>
-        </div>
-    </div>
 
     <div class="signature-block">
         <div class="handwritten">All Artifacts guaranteed for life</div>
         <div class="signature">~ Nick Gatses</div>
         <div class="signed-by">Founder · Barn Burner Relics</div>
     </div>
-
-    <a href="https://billthorpe522.github.io/starved-rock-2026/" target="_blank" rel="noopener" class="show-pill">
-        <span class="dot"></span>
-        Exhibiting this weekend · 23rd Annual Starved Rock Artifact Show · Sun Jul 12 · Grand Bear Resort, Utica IL
-    </a>
 </section>
 
 <div class="section-header" id="shop">
