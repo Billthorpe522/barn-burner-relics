@@ -420,11 +420,41 @@
         }
         .detail-close:hover { background: #8b4513; }
         .detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        /* Detail gallery */
         .detail-gallery { background: #1a1612; padding: 40px; }
         .detail-gallery .main-image {
             width: 100%; aspect-ratio: 1;
             object-fit: cover; border-radius: 8px;
             background: #1f1a15;
+        }
+
+        /* Video embed (inside product description) — 16:9 with gold border */
+        .video-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #0d0d0d;
+            border: 1px solid #8b4513;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+        .video-embed-caption {
+            font-size: 12px;
+            color: #8b7355;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin-top: -14px;
+            margin-bottom: 22px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
         }
         .detail-thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
         .detail-thumbs img {
@@ -828,6 +858,23 @@
                     images: ['images/quartz-banner-1.jpg', 'images/quartz-banner-2.jpg', 'images/quartz-banner-3.jpg', 'images/quartz-banner-4.jpg'],
                     description: '<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rare material in a rare form, with the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. Shows the documented Cusick Collection #1917 sticker, "MIKE ECK" handwritten note, M.S.C. / 83 institutional tag, and back tags "7,500" and "Ex Eckler / Owen." Provenance chain: <strong>Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Barn Burner Relics</strong>. Biconical perforation (Archaic-era drilling signature, ~3,000–5,000 BP).</p><p><strong>Condition:</strong> Both wing tips are broken and have been glued back on. Repair is documented here as-is, consistent with our restoration-disclosure policy on every catalog piece.</p><p>No third-party Certificate of Authenticity. Lifetime Authenticity Guarantee.</p><p><strong>Price: $7,500.</strong></p>',
                     specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'Provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "M.S.C. / 83" tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK / CB50" (Cusick catalog #1917, sub-code CB50)','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Provenance Chain':'Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Barn Burner Relics','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Condition':'Both wing tips broken and glued back on (disclosed)','Price':'$7,500','Authenticity':'Lifetime Authenticity Guarantee'}
+                },
+                {
+                    id: 'diorite-barrel-bannerstone',
+                    title: 'Rectangular Barrel Bannerstone — Diorite',
+                    subtitle: 'Diorite · Dunklin Co., MO · Byron Knoblock & Paul Titterington collections',
+                    price: 'Inquire',
+                    period: 'Archaic · ~3,000–5,000 BP',
+                    category: 'Bannerstones',
+                    cardFields: {
+                        origin: 'Dunklin County, Missouri',
+                        material: 'Diorite (coarse-grained, pinkish-tan with black speckling — collectors call this "granite" or "hard stone")',
+                        period: 'Archaic · ~3,000–5,000 BP',
+                        dimensions: 'TBD — measure on intake'
+                    },
+                    images: ['images/diorite-barrel-1.jpg', 'images/diorite-barrel-2.jpg', 'images/diorite-barrel-3.jpg', 'images/diorite-barrel-4.jpg'],
+                    description: '<div class="video-embed"><iframe src="https://www.youtube.com/embed/CWLbTf_DFwA?rel=0&modestbranding=1" title="Rectangular Barrel Diorite Bannerstone — Barn Burner Relics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="video-embed-caption">Watch on YouTube · 71 seconds · Barn Burner Relics</div><p>A <strong>rectangular barrel bannerstone</strong> cut from diorite — the warm pink-and-black speckled stone collectors call "granite" or "hard stone." This is the textbook form as referenced in the bannerstone book: a four-sided barrel with gently rounded corners, no perforation (barrel forms are unperforated by convention — distinct from butterfly and wing bannerstones). The polish on this piece is the kind of finish that takes a very long time on diorite, given the stone\'s hardness.</p><p><strong>Provenance chain:</strong> Byron Knoblock collection → Paul Titterington collection → Barn Burner Relics. Both previous collectors are well-known names in the relic hobby; both are no longer with us. This is a piece with a documented collector history.</p><p>Two provenance stickers preserved on the piece: red-bordered oval "B-32 / DUNKLIN / CO. MO" and white round handwritten "B36 / CA2600." Dunklin County, Missouri — southeastern Bootheel — is classic diorite-bannerstone territory.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message us for current pricing and condition details.</p>',
+                    specs: {'Material':'Diorite (pinkish-tan with dense black speckling — collectors call this "granite" or "hard stone")','Origin':'Dunklin County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Rectangular Barrel Bannerstone (unperforated, four-sided barrel form)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "B-32 / DUNKLIN CO. MO"; white round handwritten "B36 / CA2600"','Provenance Chain':'Byron Knoblock collection → Paul Titterington collection → Barn Burner Relics','Notable Feature':'Diorite (rarest bannerstone material class); rectangular barrel form (rarest bannerstone shape); both previous collectors are documented names in the hobby','Condition':'Excellent — described in video as "very tedious work especially to get a finish like that on a piece this nice"','Video':'https://youtube.com/shorts/CWLbTf_DFwA (71 seconds, BBR YouTube channel, uploaded 2026-07-15)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 },
                 {
                     id: 'hixton-eden',
