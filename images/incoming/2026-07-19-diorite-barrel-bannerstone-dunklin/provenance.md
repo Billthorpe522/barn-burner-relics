@@ -20,7 +20,7 @@
 - **Display mount:** Brass stand on acrylic base (not part of the artifact)
 - **Stickers visible on face (photo-3-stickers.jpg):**
   - Red-bordered oval: **"B-32 / DUNKLIN / CO. MO"** (Dunklin County, Missouri — southeastern Bootheel, classic for diorite bannerstones)
-  - White round sticker (handwritten blue ink): **"B36 / CA2600"** — likely catalog numbers; could be previous pricing; flagging for Bill/Nick to clarify before publishing publicly
+  - White round sticker (handwritten blue ink): **"B36 / CA3600"** — catalog number (verified against new high-res photo, supersedes earlier "CA2600" transcription from photo-3-stickers.jpg)
 
 ## Video transcript (71 seconds, full)
 
@@ -38,7 +38,7 @@
 
 ## Open items (for Nick to confirm when he sees the listing)
 
-- **"CA2600"** on the white sticker — catalog number, price tag, or initials+price? Likely catalog number based on relic-trade conventions but worth confirming.
+- **"CA3600"** on the white sticker — RESOLVED (2026-07-20): confirmed via new high-res photo `img_d6ca5dfbbfa8.jpg` (== `img_fa9e957cbfcc.jpg` == current diorite-barrel-1.jpg hero). Catalog number, not a price. Earlier "CA2600" transcription was a misread from the lower-res `photo-3-stickers.jpg`.
 - **Dimensions** — not yet measured (placeholder "TBD — measure on intake" in catalog entry)
 - **Period** — convention is Archaic for bannerstones but not stated explicitly by Nick; entry defaults to Archaic · ~3,000–5,000 BP
 - **No third-party COA** — Lifetime Authenticity Guarantee only
