@@ -545,6 +545,9 @@
             background: linear-gradient(135deg, #00b2ff 0%, #0078ff 100%);
             border-radius: 50%;
         }
+        .messenger-btn .messenger-icon-sms {
+            background: linear-gradient(135deg, #34c759 0%, #1f8a3a 100%);
+        }
         .messenger-btn strong {
             display: block;
             color: #f5f0e8;
@@ -766,7 +769,7 @@
                     <h4>Provenance &amp; Details</h4>
                     <table id="detailMetaTable"></table>
                 </div>
-                <button class="btn-inquire" onclick="openInquiry()">Message Us About This Piece</button>
+                <button class="btn-inquire" onclick="openInquiry()">Message Nick on Facebook</button>
                 <button class="btn-inquire secondary" onclick="closeDetail(); scrollToSection('email');">Join the Newsletter</button>
             </div>
         </div>
@@ -775,20 +778,20 @@
 
 <div class="messenger-overlay" id="messengerOverlay" onclick="if(event.target===this)closeMessenger()">
     <div class="messenger-modal">
-        <h3>How do you want to inquire?</h3>
-        <p>Send a direct message about <strong id="messengerPiece"></strong> to either of our team. Both threads are checked daily.</p>
+        <h3>Contact Nick about this piece</h3>
+        <p>Send a message about <strong id="messengerPiece"></strong> via either channel. Both go straight to Nick — same-day reply on weekdays.</p>
         <a id="messengerNickBtn" href="#" target="_blank" rel="noopener" class="messenger-btn messenger-nick">
-            <span class="messenger-icon">💬</span>
+            <span class="messenger-icon messenger-icon-fb">💬</span>
             <div>
                 <strong>Message Nick on Facebook</strong>
-                <small>Primary contact — same-day reply on weekdays</small>
+                <small>Primary channel — fastest reply</small>
             </div>
         </a>
-        <a id="messengerCamdenBtn" href="#" target="_blank" rel="noopener" class="messenger-btn messenger-camden">
-            <span class="messenger-icon">💬</span>
+        <a id="messengerTextBtn" href="#" class="messenger-btn messenger-text">
+            <span class="messenger-icon messenger-icon-sms">📱</span>
             <div>
-                <strong>Message Camden on Facebook</strong>
-                <small>Backup contact — replies within 24 hours</small>
+                <strong>Text Nick at 630-824-8902</strong>
+                <small>Opens your messages app with a pre-filled inquiry</small>
             </div>
         </a>
         <button class="messenger-close" onclick="closeMessenger()">Close</button>
@@ -830,7 +833,7 @@
                     id: 'butterfly-bannerstone',
                     title: 'Butterfly Bannerstone — Quartz',
                     subtitle: 'Illinois · Cuckler #3287 · Quartz (rarest of bannerstone materials)',
-                    price: '$7,500',
+                    price: 'Inquire',
                     period: 'Archaic · ~3,000–5,000 BP',
                     tag: 'Featured',
                     category: 'Bannerstones',
@@ -842,14 +845,14 @@
                     },
                     images: ['images/butterfly-banner-1.jpg', 'images/butterfly-banner-2.jpg', 'images/butterfly-banner-3.jpg', 'images/butterfly-banner-4.jpg'],
                     auctionLiveUrl: 'gallery/',
-                    description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Starting bid: $7,500.</strong> This piece is a T1 hero — featured in the showcase auction, scheduled anchor slot. It is not available for buy-it-now; bidding is the only path to acquisition.</p>',
-                    specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'TBD — measure on intake','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Starting Bid':'$7,500','Tier':'T1 — Hero / Showcase (no BIN)','Authenticity':'Lifetime Authenticity Guarantee'}
+                    description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>',
+                    specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'TBD — measure on intake','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 },
                 {
                     id: 'quartz-banner-cosach-1917',
                     title: 'Quartz Butterfly Bannerstone — Pink Quartz',
                     subtitle: 'Pink Translucent Quartz · Archaic · Cusick Collection #1917',
-                    price: '$7,500',
+                    price: 'Inquire',
                     period: 'Archaic · ~3,000–5,000 BP',
                     category: 'Bannerstones',
                     cardFields: {
@@ -859,8 +862,8 @@
                         dimensions: 'TBD — measure on intake (mid-sized, ~4–5\" estimate)'
                     },
                     images: ['images/quartz-banner-1.jpg', 'images/quartz-banner-2.jpg', 'images/quartz-banner-3.jpg', 'images/quartz-banner-4.jpg'],
-                    description: '<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rare material in a rare form, with the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. Shows the documented Cusick Collection #1917 sticker, "MIKE ECK" handwritten note, M.S.C. / 83 institutional tag, and back tags "7,500" and "Ex Eckler / Owen." Provenance chain: <strong>Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses</strong>. Biconical perforation (Archaic-era drilling signature, ~3,000–5,000 BP).</p><p><strong>Condition:</strong> Both wing tips are broken and have been glued back on. Repair is documented here as-is, consistent with our restoration-disclosure policy on every catalog piece.</p><p>No third-party Certificate of Authenticity. Lifetime Authenticity Guarantee.</p><p><strong>Price: $7,500.</strong></p>',
-                    specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'Provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "M.S.C. / 83" tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK / CB50" (Cusick catalog #1917, sub-code CB50)','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Provenance Chain':'Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Condition':'Both wing tips broken and glued back on (disclosed)','Price':'$7,500','Authenticity':'Lifetime Authenticity Guarantee'}
+                    description: '<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rare material in a rare form, with the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. Shows the documented Cusick Collection #1917 sticker, "MIKE ECK" handwritten note, M.S.C. / 83 institutional tag, and back tags "7,500" and "Ex Eckler / Owen." Provenance chain: <strong>Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses</strong>. Biconical perforation (Archaic-era drilling signature, ~3,000–5,000 BP).</p><p><strong>Condition:</strong> Both wing tips are broken and have been glued back on. Repair is documented here as-is, consistent with our restoration-disclosure policy on every catalog piece.</p><p>No third-party Certificate of Authenticity. Lifetime Authenticity Guarantee.</p><p><strong>Price: Inquire.</strong></p>',
+                    specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'Provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "M.S.C. / 83" tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK / CB50" (Cusick catalog #1917, sub-code CB50)','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Provenance Chain':'Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Condition':'Both wing tips broken and glued back on (disclosed)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 },
                 {
                     id: 'hixton-eden',
@@ -902,7 +905,7 @@
             id: 'wing-banner',
             title: 'Slate Double Notch Wing Banner',
             subtitle: 'Slate · Preble Co., OH · Converse Sale Provenance',
-            price: '$2,250',
+            price: 'Inquire',
             period: 'Archaic · ~3,000 BP',
             category: 'Bannerstones',
             cardFields: {
@@ -912,8 +915,8 @@
                 dimensions: '4" length'
             },
             images: ['images/wing-banner-1.jpg', 'images/wing-banner-2.jpg', 'images/wing-banner-3.jpg'],
-            description: '<p>A 4" double-notch slate Wing Bannerstone recovered in Preble County, Ohio — a clean, well-balanced example of one of the most iconic Archaic hafted forms in the Midwest. This piece shows the textbook silhouette: two symmetrical wings with a narrowed central stem, deep side notches that fully separate each wing, and a drilled central perforation that would have taken a wooden haft and binding.</p><p>Wing bannerstones are interpreted as atlatl weights — counterbalance components used to add momentum and accuracy to the thrusting board (atlatl) that launched darts before the bow arrived in North America. They are diagnostic of the Archaic period, roughly 3,000–5,000 years old, with the double-notch winged form being particularly common in the Ohio Valley and Great Lakes regions.</p><p>The material is a dense, fine-grained slate with the layered greenish-grey banding typical of Canadian Shield-derived material that was distributed across Ohio and the Midwest by glacial action. The piece shows a smooth, river-tumbled polish on both faces with controlled flaking visible along the notches and around the central perforation — the signature of skilled Archaic-era lapidary work.</p><p><strong>Provenance chain:</strong> Andy Parks → Doug Hannan → Dan Bartlett → Nick Gatses. The piece surfaced in the <strong>Converse Sale on 6-21-98</strong> — a documented public appearance in one of the most active Midwestern artifact auctions of the 1990s. Each previous owner is a recognized name in the Ohio Valley collector market, giving this piece a four-deep, traceable paper trail.</p><p>Note: the ring-stack visible in the perforation in the edge-on photo is a modern display mount added for safe shipping — it is not part of the artifact and is removed for sale.</p><p><strong>Buy It Now at $2,250 shipped.</strong></p>',
-            specs: {'Material':'Slate (glacial, layered greenish-grey)','Origin':'Preble County, Ohio','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Double Notch Wing Bannerstone (atlatl weight)','Dimensions':'4" length','Drilled Perforation':'Single central haft hole','Notable Feature':'Symmetrical wings, deep side notches, river-tumbled polish','Auction History':'Converse Sale, 6-21-98','Provenance':'Andy Parks → Doug Hannan → Dan Bartlett → Nick Gatses','Condition':'Solid — no restoration','Display Mount':'Modern ring-stack in perforation is for shipping only, removed for sale','Price':'$2,250 shipped (Buy It Now)','Authenticity':'Lifetime Authenticity Guarantee'}
+            description: '<p>A 4" double-notch slate Wing Bannerstone recovered in Preble County, Ohio — a clean, well-balanced example of one of the most iconic Archaic hafted forms in the Midwest. This piece shows the textbook silhouette: two symmetrical wings with a narrowed central stem, deep side notches that fully separate each wing, and a drilled central perforation that would have taken a wooden haft and binding.</p><p>Wing bannerstones are interpreted as atlatl weights — counterbalance components used to add momentum and accuracy to the thrusting board (atlatl) that launched darts before the bow arrived in North America. They are diagnostic of the Archaic period, roughly 3,000–5,000 years old, with the double-notch winged form being particularly common in the Ohio Valley and Great Lakes regions.</p><p>The material is a dense, fine-grained slate with the layered greenish-grey banding typical of Canadian Shield-derived material that was distributed across Ohio and the Midwest by glacial action. The piece shows a smooth, river-tumbled polish on both faces with controlled flaking visible along the notches and around the central perforation — the signature of skilled Archaic-era lapidary work.</p><p><strong>Provenance chain:</strong> Andy Parks → Doug Hannan → Dan Bartlett → Nick Gatses. The piece surfaced in the <strong>Converse Sale on 6-21-98</strong> — a documented public appearance in one of the most active Midwestern artifact auctions of the 1990s. Each previous owner is a recognized name in the Ohio Valley collector market, giving this piece a four-deep, traceable paper trail.</p><p>Note: the ring-stack visible in the perforation in the edge-on photo is a modern display mount added for safe shipping — it is not part of the artifact and is removed for sale.</p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>',
+            specs: {'Material':'Slate (glacial, layered greenish-grey)','Origin':'Preble County, Ohio','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Double Notch Wing Bannerstone (atlatl weight)','Dimensions':'4" length','Drilled Perforation':'Single central haft hole','Notable Feature':'Symmetrical wings, deep side notches, river-tumbled polish','Auction History':'Converse Sale, 6-21-98','Provenance':'Andy Parks → Doug Hannan → Dan Bartlett → Nick Gatses','Condition':'Solid — no restoration','Display Mount':'Modern ring-stack in perforation is for shipping only, removed for sale','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
         },
                 {
             id: 'effigy-jar',
@@ -1156,14 +1159,12 @@
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // ========== Messenger wiring ==========
-    // To activate, replace these placeholder handles with real Facebook usernames or full profile URLs.
-    // Examples that work:
-    //   'https://m.me/nick.gatses'
-    //   'https://m.me/CamdenBaker'
-    //   'https://www.facebook.com/messages/t/nick.gatses'
+    // ========== Messenger / SMS wiring ==========
+    // To activate the Facebook link, replace the placeholder handle with Nick's actual
+    // Facebook username (e.g. 'https://m.me/nick.gatses' or a full profile URL).
     const MESSENGER_NICK_URL = 'https://m.me/MESSENGER_NICK_HANDLE';
-    const MESSENGER_CAMDEN_URL = 'https://m.me/MESSENGER_CAMDEN_HANDLE';
+    const NICK_SMS_NUMBER = '+16308248902';
+    const NICK_SMS_DISPLAY = '630-824-8902';
 
     function openInquiry() {
         if (!currentProduct) {
@@ -1171,7 +1172,9 @@
         }
         document.getElementById('messengerPiece').textContent = currentProduct.title;
         document.getElementById('messengerNickBtn').href = MESSENGER_NICK_URL;
-        document.getElementById('messengerCamdenBtn').href = MESSENGER_CAMDEN_URL;
+        // SMS body is URL-encoded so the pre-fill survives on iOS/Android
+        const smsBody = encodeURIComponent('Hi Nick — interested in the ' + currentProduct.title + ' on barnburnerrelics.shop. Is it still available?');
+        document.getElementById('messengerTextBtn').href = 'sms:' + NICK_SMS_NUMBER + '?body=' + smsBody;
         document.getElementById('messengerOverlay').classList.add('active');
         closeDetail();
     }
