@@ -160,64 +160,30 @@
             -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
-        /* Personal guarantee — handwritten signature */
+        /* Personal guarantee — wood plaque image */
         .signature-block {
             max-width: 580px;
             margin: 40px auto 0;
-            padding: 22px 24px 18px;
+            padding: 0;
             text-align: center;
-            background: linear-gradient(180deg, rgba(212,168,83,0.015) 0%, rgba(212,168,83,0.004) 100%);
-            border-top: 1px solid rgba(212,168,83,0.10);
-            border-bottom: 1px solid rgba(212,168,83,0.06);
+            background: transparent;
+            border: none;
             position: relative;
         }
-        .signature-block .quote-mark {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 38px;
-            line-height: 0.5;
-            color: #d4a853;
-            opacity: 0.5;
+        .signature-block .plaque-img {
             display: block;
-            margin: 0 auto 4px;
-        }
-        .signature-block .handwritten {
-            font-family: 'Pinyon Script', 'Caveat', cursive;
-            font-size: 22px;
-            line-height: 1.25;
-            color: #f0e6d2;
-            font-weight: 400;
-            letter-spacing: 0.01em;
-            margin: 4px 0 12px;
-        }
-        .signature-block .signature {
-            font-family: 'Pinyon Script', 'Caveat', cursive;
-            font-size: 18px;
-            color: #d4a853;
-            display: inline-block;
-            border-bottom: 1px solid #d4a853;
-            padding: 0 10px 1px;
-            transform: rotate(-1.5deg);
-            margin-bottom: 6px;
-        }
-        .signature-block .signed-by {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 9px;
-            color: #8b7355;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 6px;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         /* Show badge removed Jul 19 2026 — Starved Rock show has passed */
 
         @media (max-width: 700px) {
-            .signature-block { margin-top: 32px; padding: 18px 18px 14px; }
-            .signature-block .handwritten { font-size: 19px; }
-            .signature-block .signature { font-size: 16px; }
+            .signature-block { margin-top: 32px; }
         }
         @media (max-width: 480px) {
-            .signature-block .handwritten { font-size: 17px; }
-            .signature-block .signature { font-size: 15px; }
         }
 
         /* Section headers */
@@ -690,9 +656,7 @@
     <a href="#" class="btn-inquire" onclick="closeDetail(); scrollToSection('shop'); return false;">Browse the Collection</a>
 
     <div class="signature-block">
-        <div class="handwritten">All Artifacts guaranteed for life</div>
-        <div class="signature">~ Nick Gatses</div>
-        <div class="signed-by">Founder · Barn Burner Relics</div>
+        <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
     </div>
 </section>
 
