@@ -323,7 +323,11 @@
             color: #8b6f47;
         }
 
-        /* === LIGHTBOX === */
+        /* === LIGHTBOX ===
+           The .lightbox-stage is a FIXED aspect-ratio container so the
+           prev/next arrows sit in a consistent position regardless of the
+           photo's actual dimensions. The image is letterboxed/pillarboxed
+           inside it with object-fit: contain — never cropped. */
         .lightbox-overlay {
             display: none;
             position: fixed;
@@ -338,17 +342,31 @@
         .lightbox-overlay.active { display: flex; }
         .lightbox-content {
             position: relative;
-            max-width: 95vw;
-            max-height: 92vh;
+            width: min(95vw, 1280px);
             display: flex;
             flex-direction: column;
             align-items: center;
+            touch-action: pan-y; /* allow vertical page scroll, horizontal swipe for nav */
+            user-select: none;
+        }
+        .lightbox-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;     /* STABLE box — arrows anchor to this */
+            max-height: 80vh;         /* never exceed viewport */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;         /* letterbox/pillarbox color matches overlay */
+            border-radius: 6px;
+            overflow: hidden;
         }
         .lightbox-image {
-            max-width: 95vw;
-            max-height: 80vh;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;       /* never crops, always fits inside the stage */
             border-radius: 6px;
+            -webkit-user-drag: none;
         }
         .lightbox-counter {
             color: #c8a878;
@@ -374,28 +392,40 @@
             align-items: center;
             justify-content: center;
             transition: background 0.2s;
+            z-index: 2;
         }
         .lightbox-close:hover { background: rgba(212, 168, 83, 0.3); }
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(212, 168, 83, 0.12);
-            border: 1px solid rgba(212, 168, 83, 0.3);
+            background: rgba(212, 168, 83, 0.18);
+            border: 1px solid rgba(212, 168, 83, 0.45);
             color: #d4a853;
-            width: 50px;
-            height: 50px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 26px;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.15s;
+            z-index: 3;
+            backdrop-filter: blur(2px);
         }
-        .lightbox-nav:hover { background: rgba(212, 168, 83, 0.25); }
-        .lightbox-prev { left: -70px; }
-        .lightbox-next { right: -70px; }
+        .lightbox-nav:hover { background: rgba(212, 168, 83, 0.32); }
+        .lightbox-nav:active { transform: translateY(-50%) scale(0.94); }
+        /* Anchored to the STAGE, not the image — so position is stable */
+        .lightbox-prev { left: -68px; }
+        .lightbox-next { right: -68px; }
+        /* On viewports too narrow for the buttons to sit outside the stage
+           (arrows would clip off-screen), pull them inside the stage edges. */
+        @media (max-width: 900px) {
+            .lightbox-prev { left: 12px; }
+            .lightbox-next { right: 12px; }
+        }
 
         /* === RESPONSIVE === */
             @media (max-width: 768px) {
@@ -532,9 +562,11 @@
 <div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this||event.target===document.getElementById('lbImage'))closeLightbox()">
     <div class="lightbox-content">
         <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
-        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous">‹</button>
-        <img id="lbImage" class="lightbox-image" src="" alt="">
-        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next">›</button>
+        <div class="lightbox-stage" id="lightboxStage">
+            <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous photo">‹</button>
+            <img id="lbImage" class="lightbox-image" src="" alt="">
+            <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next photo">›</button>
+        </div>
         <div class="lightbox-counter" id="lbCounter"></div>
     </div>
 </div>
@@ -670,6 +702,92 @@
         if (e.key === 'ArrowLeft') navigateLightbox(-1);
         if (e.key === 'ArrowRight') navigateLightbox(1);
     });
+
+    // ========== Mobile swipe-to-navigate in the lightbox ==========
+    // Tracks horizontal drag on the lightbox stage and triggers prev/next
+    // when the user swipes past a threshold. A small live translation on
+    // the image gives immediate visual feedback that the swipe registered.
+    // Vertical scroll is allowed (touch-action: pan-y on .lightbox-content)
+    // so the page can scroll behind the overlay if needed.
+    (function setupSwipe() {
+        const stage = document.getElementById('lightboxStage');
+        const img = document.getElementById('lbImage');
+        if (!stage || !img) return;
+
+        const SWIPE_THRESHOLD = 50;   // px of horizontal travel to trigger nav
+        const MAX_DRAG = 120;        // cap the visual drag offset so it doesn't fly off
+        let startX = 0, startY = 0, startTime = 0, dragging = false;
+        let axisLocked = null;        // 'x' or 'y' — first-move wins so vertical scroll isn't hijacked
+
+        stage.addEventListener('touchstart', e => {
+            if (e.touches.length !== 1) return;
+            const t = e.touches[0];
+            startX = t.clientX;
+            startY = t.clientY;
+            startTime = Date.now();
+            dragging = true;
+            axisLocked = null;
+            img.style.transition = 'none';
+        }, { passive: true });
+
+        stage.addEventListener('touchmove', e => {
+            if (!dragging) return;
+            const t = e.touches[0];
+            const dx = t.clientX - startX;
+            const dy = t.clientY - startY;
+            // Lock to whichever axis moves first (avoids fighting vertical scroll)
+            if (axisLocked === null) {
+                if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+                    axisLocked = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+                }
+            }
+            if (axisLocked !== 'x') return; // let vertical scroll proceed
+            // Live visual feedback: drag the image
+            const clamped = Math.max(-MAX_DRAG, Math.min(MAX_DRAG, dx));
+            img.style.transform = `translateX(${clamped}px)`;
+            // Hint: dim slightly as the user pulls further
+            const dim = 1 - Math.min(0.25, Math.abs(dx) / 400);
+            img.style.opacity = String(dim);
+        }, { passive: true });
+
+        function endDrag(e) {
+            if (!dragging) return;
+            dragging = false;
+            const t = (e.changedTouches && e.changedTouches[0]) || null;
+            if (!t) return reset();
+            const dx = t.clientX - startX;
+            const dt = Date.now() - startTime;
+            // Quick fling counts even if it doesn't cross threshold (under 300ms)
+            const fling = Math.abs(dx) > 20 && dt < 300 && Math.abs(dx) > SWIPE_THRESHOLD * 0.4;
+            const passed = Math.abs(dx) > SWIPE_THRESHOLD;
+            img.style.transition = 'transform 0.18s ease, opacity 0.18s ease';
+            if (fling || passed) {
+                if (dx < 0) navigateLightbox(1);
+                else navigateLightbox(-1);
+            }
+            reset();
+        }
+        function reset() {
+            img.style.transform = '';
+            img.style.opacity = '';
+            // remove the inline transition after it plays out
+            setTimeout(() => { img.style.transition = ''; }, 200);
+        }
+
+        stage.addEventListener('touchend', endDrag, { passive: true });
+        stage.addEventListener('touchcancel', endDrag, { passive: true });
+
+        // Optional: keyboard hint on the counter on first lightbox open
+        const counter = document.getElementById('lbCounter');
+        if (counter) {
+            const observer = new MutationObserver(() => {
+                if (document.getElementById('lightbox').classList.contains('active')) {
+                    counter.title = 'Swipe left/right or use arrow keys';
+                }
+            });
+            observer.observe(counter, { childList: true, characterData: true, subtree: true });
+        }
+    })();
 
     // ========== Countdown to next Monday 5:00 PM Central Time ==========
     // Rolling weekly: always points to the upcoming Monday auction.
