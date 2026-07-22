@@ -719,6 +719,68 @@
     <div class="signature">— Nick Gatses, Proprietor</div>
 </section>
 
+<!-- Quiet CTA: Nick actively buys collections and does appraisals.
+     Sits in the About section so it reads as part of Nick's stated services,
+     not as a banner ad. Same palette as the rest of the site (gold/oxblood)
+     but visually muted — italic serif copy, hairline border, no button. -->
+<style>
+    .services-cta {
+        max-width: 720px;
+        margin: 36px auto 0;
+        padding: 22px 28px;
+        background: rgba(26, 20, 16, 0.5);
+        border: 1px solid rgba(212, 168, 83, 0.28);
+        border-left: 3px solid #8b4513;
+        border-radius: 4px;
+        text-align: left;
+    }
+    .services-cta .services-line {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 17px;
+        line-height: 1.55;
+        color: #d4c8a8;
+        font-style: italic;
+        letter-spacing: 0.01em;
+    }
+    .services-cta .services-line strong {
+        color: #d4a853;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+    .services-cta .services-action {
+        margin-top: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        font-size: 12px;
+        color: #8b7355;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .services-cta .services-action a {
+        color: #d4a853;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(212, 168, 83, 0.4);
+        padding-bottom: 1px;
+    }
+    .services-cta .services-action a:hover {
+        color: #ffd700;
+        border-bottom-color: #ffd700;
+    }
+    @media (max-width: 600px) {
+        .services-cta { padding: 18px 20px; }
+        .services-cta .services-line { font-size: 16px; }
+    }
+</style>
+<div class="services-cta" id="services">
+    <div class="services-line">
+        <strong>Nick is actively buying.</strong> Single pieces, full collections, and estate accumulations —
+        quietly and confidentially. <strong>Appraisals</strong> available for insurance, estate, and donation.
+    </div>
+    <div class="services-action">
+        Thinking of selling or need an appraisal? <a href="#" onclick="closeDetail(); openInquiry(); return false;">Message Nick →</a>
+    </div>
+</div>
+
 <div class="product-detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
     <div class="product-detail">
         <button class="detail-close" onclick="closeDetail()">✕</button>
@@ -771,6 +833,7 @@
         <a href="gallery/" class="gallery-link">View the Auction Gallery →</a>
         <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
         <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
+        <a href="#" onclick="closeDetail(); scrollToSection('services'); return false;">Buying &amp; Appraisals</a>
         <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank">Facebook Group</a>
         <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank">Instagram</a>
