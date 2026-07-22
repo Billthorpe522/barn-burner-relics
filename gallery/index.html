@@ -575,10 +575,73 @@
             <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next photo">›</button>
         </div>
         <div class="lightbox-counter" id="lbCounter"></div>
-    </div>
-</div>
+        </div>
+        </div>
 
-<footer style="background:#0d0d0d;border-top:1px solid #1a1612;padding:30px 24px 22px;text-align:center;">
+        <!-- Quiet CTA: Nick is looking to buy collections + does appraisals.
+         Mirrors the services-cta block on the main site. Sits just above the
+         footer so it doesn't interrupt photo browsing. Action link goes to
+         the Facebook Group (the gallery's primary contact path; no inquiry
+         overlay exists on this page). -->
+        <style>
+        .services-cta {
+            max-width: 720px;
+            margin: 48px auto 36px;
+            padding: 22px 28px;
+            background: rgba(26, 20, 16, 0.5);
+            border: 1px solid rgba(212, 168, 83, 0.28);
+            border-left: 3px solid #8b4513;
+            border-radius: 4px;
+            text-align: left;
+        }
+        .services-cta .services-line {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 17px;
+            line-height: 1.55;
+            color: #d4c8a8;
+            font-style: italic;
+            letter-spacing: 0.01em;
+        }
+        .services-cta .services-line strong {
+            color: #d4a853;
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .services-cta .services-action {
+            margin-top: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            color: #8b7355;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .services-cta .services-action a {
+            color: #d4a853;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(212, 168, 83, 0.4);
+            padding-bottom: 1px;
+        }
+        .services-cta .services-action a:hover {
+            color: #ffd700;
+            border-bottom-color: #ffd700;
+        }
+        @media (max-width: 600px) {
+            .services-cta { padding: 18px 20px; }
+            .services-cta .services-line { font-size: 16px; }
+        }
+        </style>
+        <div class="services-cta">
+        <div class="services-line">
+            <strong>We are looking to buy.</strong> Single pieces, full collections, and estate accumulations —
+            quietly and confidentially. <strong>Appraisals</strong> available for insurance, estate, and donation.
+        </div>
+        <div class="services-action">
+            Thinking of selling or need an appraisal? <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Message Nick on Facebook →</a>
+        </div>
+        </div>
+
+        <footer style="background:#0d0d0d;border-top:1px solid #1a1612;padding:30px 24px 22px;text-align:center;">
     <div class="fb-cta">
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Join Barn Burner Relics on Facebook">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
