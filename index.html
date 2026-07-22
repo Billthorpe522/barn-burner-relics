@@ -587,6 +587,225 @@
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 12px 30px; }
             .hero h1 { font-size: 24px; }
         }
+
+        /* === 2026 Show Calendar (CSASI) === */
+        .shows-section {
+            background: linear-gradient(180deg, #1a1410 0%, #110d0a 100%);
+            border-top: 1px solid #2a2018;
+            border-bottom: 1px solid #2a2018;
+            padding: 60px 24px;
+        }
+        .shows-wrap { max-width: 1100px; margin: 0 auto; }
+        .shows-head { text-align: center; margin-bottom: 32px; }
+        .shows-head h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px; font-weight: 500;
+            color: #f5f0e8; margin-bottom: 8px; letter-spacing: 0.5px;
+        }
+        .shows-head h2 .acc { color: #d4a853; }
+        .shows-head p { color: #8b7355; font-size: 14px; max-width: 640px; margin: 0 auto; line-height: 1.6; }
+
+        /* Filter row */
+        .shows-filter-row {
+            display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+            background: rgba(0,0,0,0.25); border: 1px solid #2a2018; border-radius: 10px;
+            padding: 14px 16px; margin-bottom: 28px;
+        }
+        .shows-filter-row .state-pills {
+            display: flex; flex-wrap: wrap; gap: 6px; flex: 1; min-width: 0;
+        }
+        .show-state-pill {
+            background: #1a1612; color: #b8a88a;
+            border: 1px solid #2a2018; border-radius: 999px;
+            padding: 5px 12px; font-size: 12px; letter-spacing: 0.5px;
+            cursor: pointer; transition: all 0.15s; font-family: inherit;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .show-state-pill:hover { border-color: #d4a853; color: #d4a853; }
+        .show-state-pill.active {
+            background: #8b4513; color: #f5f0e8; border-color: #d4a853;
+            box-shadow: 0 0 0 1px rgba(212,168,83,0.4);
+        }
+        .show-state-pill .pill-count {
+            font-size: 10px; color: #6b5a45; background: rgba(0,0,0,0.3);
+            padding: 1px 6px; border-radius: 8px; min-width: 16px; text-align: center;
+        }
+        .show-state-pill.active .pill-count { color: #f5f0e8; background: rgba(0,0,0,0.35); }
+        .show-state-pill.all-pill .pill-count { display: none; }
+        .shows-filter-row input[type="text"] {
+            background: #0d0a08; color: #f5f0e8;
+            border: 1px solid #2a2018; border-radius: 8px;
+            padding: 8px 12px; font-size: 13px; font-family: inherit;
+            width: 200px; outline: none;
+        }
+        .shows-filter-row input[type="text"]:focus { border-color: #d4a853; }
+        .shows-filter-row input[type="text"]::placeholder { color: #5a4a3a; }
+        .shows-filter-row .filter-clear {
+            background: transparent; color: #8b7355; border: 1px solid #2a2018;
+            border-radius: 6px; padding: 6px 12px; font-size: 12px;
+            cursor: pointer; transition: all 0.15s; font-family: inherit;
+        }
+        .shows-filter-row .filter-clear:hover { color: #d4a853; border-color: #d4a853; }
+        .shows-filter-row .modal-trigger {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: #8b4513; color: #f5f0e8;
+            border: none; border-radius: 8px;
+            padding: 8px 14px; font-size: 13px; cursor: pointer;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+            font-family: inherit; transition: background 0.15s;
+        }
+        .shows-filter-row .modal-trigger:hover { background: #a0522d; }
+
+        /* Month accordion */
+        .shows-month { margin-bottom: 10px; }
+        .shows-month-head {
+            display: flex; align-items: center; justify-content: space-between;
+            background: linear-gradient(135deg, #1f1812 0%, #15110d 100%);
+            border: 1px solid #2a2018; border-radius: 8px;
+            padding: 14px 20px; cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .shows-month-head:hover { border-color: #d4a853; }
+        .shows-month-head .m-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px; color: #d4a853; letter-spacing: 1px;
+        }
+        .shows-month-head .m-meta { color: #6b5a45; font-size: 13px; }
+        .shows-month-head .m-toggle {
+            color: #d4a853; font-size: 20px; line-height: 1;
+            transition: transform 0.2s;
+        }
+        .shows-month.open .m-toggle { transform: rotate(180deg); }
+        .shows-month-body {
+            display: none; padding: 14px 4px 6px;
+        }
+        .shows-month.open .shows-month-body { display: block; }
+
+        /* Show card */
+        .show-card {
+            display: grid;
+            grid-template-columns: 88px 1fr auto;
+            gap: 18px; align-items: start;
+            background: #13100c; border: 1px solid #2a2018;
+            border-left: 3px solid #8b4513;
+            border-radius: 6px; padding: 14px 18px;
+            margin-bottom: 8px; transition: border-color 0.15s;
+        }
+        .show-card:hover { border-color: #d4a853; }
+        .show-card .sc-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px; color: #d4a853; line-height: 1.1;
+            font-weight: 500;
+        }
+        .show-card .sc-date .sc-day { display: block; font-size: 13px; color: #8b7355; letter-spacing: 1px; }
+        .show-card .sc-body { min-width: 0; }
+        .show-card .sc-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px; color: #f5f0e8; margin-bottom: 4px;
+        }
+        .show-card .sc-loc {
+            color: #b8a88a; font-size: 13px; margin-bottom: 6px;
+            display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+        }
+        .show-card .sc-loc .state-tag {
+            background: rgba(212,168,83,0.12); color: #d4a853;
+            border: 1px solid rgba(212,168,83,0.3); border-radius: 4px;
+            padding: 1px 8px; font-size: 11px; letter-spacing: 1px;
+        }
+        .show-card .sc-venue { color: #6b5a45; font-size: 12px; line-height: 1.4; }
+        .show-card .sc-phone {
+            color: #d4a853; font-size: 12px; white-space: nowrap;
+            text-align: right;
+        }
+        .show-card .sc-phone a { color: inherit; text-decoration: none; }
+        .show-card .sc-phone a:hover { text-decoration: underline; }
+
+        /* Empty state */
+        .shows-empty {
+            text-align: center; padding: 32px 20px;
+            color: #8b7355; font-size: 14px; line-height: 1.6;
+        }
+        .shows-empty .em-head { color: #d4a853; font-size: 16px; margin-bottom: 6px; }
+        .shows-empty .em-sub a {
+            color: #d4a853; text-decoration: underline; cursor: pointer;
+        }
+
+        /* Show calendar disclaimer */
+        .shows-foot {
+            margin-top: 28px; padding-top: 20px;
+            border-top: 1px solid #2a2018;
+            color: #5a4a3a; font-size: 11px; line-height: 1.5;
+            text-align: center;
+        }
+        .shows-foot a { color: #8b7355; text-decoration: underline; }
+
+        /* Filter modal (mirrors messenger-overlay) */
+        .shows-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 300;
+            overflow-y: auto;
+            padding: 40px 24px;
+            backdrop-filter: blur(4px);
+        }
+        .shows-overlay.active { display: flex; align-items: center; justify-content: center; }
+        .shows-modal {
+            max-width: 520px; width: 100%;
+            background: #16120e; border: 1px solid #2a2018;
+            border-radius: 12px; padding: 28px 26px;
+            animation: fadeIn 0.25s ease;
+        }
+        .shows-modal h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px; color: #f5f0e8; margin-bottom: 6px;
+        }
+        .shows-modal p { color: #b8a88a; font-size: 13px; line-height: 1.5; margin-bottom: 18px; }
+        .shows-modal .modal-pills {
+            display: flex; flex-wrap: wrap; gap: 6px;
+            max-height: 200px; overflow-y: auto; margin-bottom: 16px;
+            padding-right: 4px;
+        }
+        .shows-modal .modal-pills::-webkit-scrollbar { width: 6px; }
+        .shows-modal .modal-pills::-webkit-scrollbar-track { background: #1a1612; }
+        .shows-modal .modal-pills::-webkit-scrollbar-thumb { background: #3a3028; border-radius: 3px; }
+        .shows-modal input[type="text"] {
+            width: 100%; box-sizing: border-box;
+            background: #0d0d0d; color: #e8e0d8; font-size: 14px;
+            border: 1px solid #2a2018; border-radius: 6px;
+            padding: 11px 14px; outline: none; font-family: inherit;
+        }
+        .shows-modal input[type="text"]:focus { border-color: #d4a853; }
+        .shows-modal input[type="text"]::placeholder { color: #5a4a3a; }
+        .shows-modal-close {
+            display: block; width: 100%; margin-top: 14px;
+            background: transparent; color: #8b7355;
+            border: 1px solid #2a2018; border-radius: 6px;
+            padding: 11px; font-size: 13px; cursor: pointer;
+            transition: all 0.15s; font-family: inherit;
+        }
+        .shows-modal-close:hover { color: #d4a853; border-color: #8b7355; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+        /* Calendar responsive */
+        @media (max-width: 700px) {
+            .shows-section { padding: 44px 16px; }
+            .shows-head h2 { font-size: 26px; }
+            .shows-filter-row { padding: 12px; gap: 10px; }
+            .shows-filter-row input[type="text"] { width: 100%; }
+            .shows-filter-row .modal-trigger { width: 100%; justify-content: center; }
+            .show-card {
+                grid-template-columns: 1fr;
+                gap: 8px; padding: 12px 14px;
+            }
+            .show-card .sc-date { display: flex; gap: 6px; align-items: baseline; }
+            .show-card .sc-date .sc-day { font-size: 12px; }
+            .show-card .sc-phone { text-align: left; font-size: 11px; }
+        }
+        @media (max-width: 480px) {
+            .show-state-pill { padding: 4px 10px; font-size: 11px; }
+            .shows-modal { padding: 22px 18px; }
+        }
     </style>
 </head>
 <body>
@@ -781,12 +1000,47 @@
     </div>
 </div>
 
+<section class="shows-section" id="shows">
+    <div class="shows-wrap">
+        <div class="shows-head">
+            <h2>2026 <span class="acc">Show Calendar</span></h2>
+            <p>Upcoming artifact and primitive-skills shows across the Midwest, South, and Northeast. Filter by state or search your city to find what's near you.</p>
+        </div>
+
+        <div class="shows-filter-row">
+            <div class="state-pills" id="statePills"></div>
+            <input type="text" id="showSearch" placeholder="Search city or venue…">
+            <button class="filter-clear" id="filterClear">Clear</button>
+            <button class="modal-trigger" id="openshowFilterModal">📍 Filter by location</button>
+        </div>
+
+        <div id="showsCalendar"></div>
+
+        <div class="shows-foot">
+            Compiled from the CSASI 2026 Calendar of Events (Central States Archaeological Societies, 50th Anniversary 1976–2026).
+            Dates and venues are verified by show hosts; call the listed contact before traveling.
+            Barn Burner Relics is not affiliated with show organizers. <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Follow the FB Group for trip updates</a>.
+        </div>
+    </div>
+</section>
+
+<div class="shows-overlay" id="showFilterModal" onclick="if(event.target===this)closeShowFilterModal()">
+    <div class="shows-modal">
+        <h3>Filter by location</h3>
+        <p>Pick a state to narrow the list, or type your city to find what's closest to you.</p>
+        <div class="modal-pills" id="modalStatePills"></div>
+        <input type="text" id="modalShowSearch" placeholder="Type your city (e.g. Carthage, Winchester)…">
+        <button class="shows-modal-close" onclick="closeShowFilterModal()">Close</button>
+    </div>
+</div>
+
 <footer>
     <div class="links">
         <a href="gallery/" class="gallery-link">View the Auction Gallery →</a>
         <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
         <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
         <a href="#" onclick="closeDetail(); scrollToSection('services'); return false;">Buying &amp; Appraisals</a>
+        <a href="#" onclick="closeDetail(); scrollToSection('shows'); return false;">Show Calendar</a>
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank">Facebook Group</a>
         <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank">Instagram</a>
     </div>
@@ -1178,6 +1432,256 @@
     });
 
     renderGrid();
+
+    /* ===========================================================
+       2026 Show Calendar (CSASI)
+       21 confirmed future shows across 14 states, 5 months.
+       Source: CSASI 2026 Calendar of Events screenshot, parsed Jul 22 2026.
+       Rows with year=2025 (unverified for 2026) and rows with date<TODAY are excluded.
+       =========================================================== */
+    const SHOWS = [
+        {"date":"Jul 25","month":7,"day":25,"name":"Tennessee","city":"Smithville","state":"TN","venue":"DeKalb Co. Cmty. Complex","phone":"(615) 351-6132"},
+        {"date":"Aug 1","month":8,"day":1,"name":"Piedmont","city":"South Hill","state":"VA","venue":"Good Sh. Social H., 1664 N Mecklenburg Ave.","phone":"(434) 774-6778"},
+        {"date":"Aug 16","month":8,"day":16,"name":"Georgia","city":"Cartersville","state":"GA","venue":"Cartersville Civic Ctr. 435 West Main St.","phone":"(706) 506-1057"},
+        {"date":"Aug 22","month":8,"day":22,"name":"Indiana","city":"Monroe","state":"IN","venue":"Monroeville Com Park, 421 Monroe St.","phone":"(260) 667-8046"},
+        {"date":"Aug 22","month":8,"day":22,"name":"Wisconsin","city":"Johnson Creek","state":"WI","venue":"JC Conference Center, 725 Paradise Ln.","phone":"(414) 967-9727"},
+        {"date":"Aug 24","month":8,"day":24,"name":"Kentucky","city":"Elizabethtown","state":"KY","venue":"Barren Rvr. moved to Pritchard Com. Ctr.","phone":"(270) 791-0989"},
+        {"date":"Sep 1","month":9,"day":1,"name":"Northeast","city":"Corning","state":"NY","venue":"Crystal City VFW Post 524, 281 Baker St.","phone":"(419) 343-9412"},
+        {"date":"Sep 12","month":9,"day":12,"name":"Indiana","city":"Winchester","state":"IN","venue":"Randolph City Fairgrds, 1885 S. Us 27","phone":"(260) 415-9716"},
+        {"date":"Sep 13","month":9,"day":13,"name":"Iowa","city":"N. Keosauqua","state":"IA","venue":"Roberts Memorial Bldg, 20497 Hwy 1","phone":"(641) 919-8784"},
+        {"date":"Sep 26","month":9,"day":26,"name":"Indiana","city":"LaGrange","state":"IN","venue":"LaGrange Church of God, 77 N. Detroit St.","phone":"(260) 350-2446"},
+        {"date":"Sep 27","month":9,"day":27,"name":"Piedmont","city":"Albemarle","state":"NC","venue":"Stanly County Ag. Ctr. 26032 Newt Rd #B","phone":"(704) 984-1244"},
+        {"date":"Oct 3","month":10,"day":3,"name":"Colorado","city":"Loveland","state":"CO","venue":"The 92nd Stone Age Fair, The Ranch","phone":"(303) 903-0587"},
+        {"date":"Oct 3","month":10,"day":3,"name":"Mississippi","city":"Corinth","state":"MS","venue":"Crossroads Arena 2800 S Harper Road","phone":"(662) 397-1249"},
+        {"date":"Oct 17","month":10,"day":17,"name":"Oklahoma","city":"McAlester","state":"OK","venue":"SE Expo Center, 4500 West, 4500 US-270","phone":"(918) 448-4446"},
+        {"date":"Oct 18","month":10,"day":18,"name":"Alabama","city":"Rogersville","state":"AL","venue":"Joe Wheeler State Lodge, 4401 McLean Dr","phone":"(256) 710-7261"},
+        {"date":"Oct 18","month":10,"day":18,"name":"Northeast","city":"Leesport","state":"PA","venue":"Farmers Market 312 Gernants Church Road","phone":"(215) 416-7438"},
+        {"date":"Oct 23-24","month":10,"day":23,"endDay":24,"name":"Ohio","city":"Lawrenceburg","state":"IN","venue":"Lawrenceburg Event Ctr., 12 pm Fri - Sat 8 am","phone":"(513) 313-7273"},
+        {"date":"Oct 25","month":10,"day":25,"name":"Wisconsin","city":"Monticello","state":"WI","venue":"334 S. Main Street","phone":"(608) 329-4781"},
+        {"date":"Nov 1","month":11,"day":1,"name":"Tennessee","city":"Baxter","state":"TN","venue":"Boma Community Center","phone":"(931) 261-8323"},
+        {"date":"Nov 8","month":11,"day":8,"name":"Iowa","city":"Osceola","state":"IA","venue":"Clark County Fairgs, 2070 W. McLane St.","phone":"(641) 445-5550"},
+        {"date":"Nov 13-15","month":11,"day":13,"endDay":15,"name":"Kentucky","city":"Kentucky Dam Village","state":"KY","venue":"Kentucky Dam Village State Park, Fri 2 pm / Sat-Sun 8 am","phone":"(270) 791-0989"}
+    ];
+    const MONTH_NAMES = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+    const MONTH_ABBR = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    let showState = null;     // null = no state filter (all)
+    let showQuery = '';       // lowercase substring for city/venue match
+
+    function formatPhone(p) {
+        // Convert "(615) 351-6132" -> "tel:6153516132"
+        const digits = p.replace(/\D/g, '');
+        return digits ? `tel:${digits}` : '#';
+    }
+
+    function phoneDisplay(p) { return p; }
+
+    function showMatches(s) {
+        if (showState && s.state !== showState) return false;
+        if (showQuery) {
+            const hay = `${s.city} ${s.venue} ${s.name}`.toLowerCase();
+            if (!hay.includes(showQuery)) return false;
+        }
+        return true;
+    }
+
+    function renderStatePills(target, withAll) {
+        const tally = {};
+        SHOWS.forEach(s => { tally[s.state] = (tally[s.state] || 0) + 1; });
+        const states = Object.keys(tally).sort();
+        const html = [];
+        if (withAll) {
+            const total = SHOWS.length;
+            html.push(`<button type="button" class="show-state-pill all-pill ${showState === null ? 'active' : ''}" data-state="">All<span class="pill-count">${total}</span></button>`);
+        }
+        states.forEach(st => {
+            const active = showState === st ? 'active' : '';
+            html.push(`<button type="button" class="show-state-pill ${active}" data-state="${st}">${st}<span class="pill-count">${tally[st]}</span></button>`);
+        });
+        target.innerHTML = html.join('');
+    }
+
+    function renderCalendar() {
+        const cal = document.getElementById('showsCalendar');
+        // Group by month, preserving chronological order
+        const byMonth = new Map();
+        SHOWS.forEach(s => { if (!byMonth.has(s.month)) byMonth.set(s.month, []); byMonth.get(s.month).push(s); });
+        byMonth.forEach(arr => arr.sort((a, b) => a.day - b.day));
+
+        // Only render months that have at least one matching show, OR are between earliest
+        // and latest month with any show (keeps accordion skeleton quiet on out-of-range filters).
+        const monthsToRender = [...byMonth.keys()].sort((a, b) => a - b);
+
+        const blocks = monthsToRender.map(m => {
+            const matches = byMonth.get(m).filter(showMatches);
+            if (matches.length === 0) {
+                // Show empty placeholder so users see the month is "covered, just no matches here"
+                return `
+                    <div class="shows-month open" data-month="${m}">
+                        <div class="shows-month-head" data-toggle="${m}">
+                            <div>
+                                <div class="m-title">${MONTH_NAMES[m]}</div>
+                                <div class="m-meta">0 shows match</div>
+                            </div>
+                            <div class="m-toggle">▾</div>
+                        </div>
+                        <div class="shows-month-body">
+                            <div class="shows-empty">
+                                <div class="em-head">No matches in ${MONTH_NAMES[m]}</div>
+                                <div class="em-sub">Try clearing the location filter, or pick a different state.</div>
+                            </div>
+                        </div>
+                    </div>`;
+            }
+            const open = 'open';
+            const cards = matches.map(s => {
+                const endRange = s.endDay ? `–${s.endDay}` : '';
+                const dateLabel = `${MONTH_ABBR[s.month]} ${s.day}${endRange}`;
+                const dayHint = s.endDay ? `${MONTH_ABBR[s.month]} ${s.day}-${s.endDay}` : `${MONTH_ABBR[s.month]} ${s.day}`;
+                return `<div class="show-card">
+                    <div class="sc-date">${s.date}<span class="sc-day">${MONTH_NAMES[s.month]}</span></div>
+                    <div class="sc-body">
+                        <div class="sc-name">${s.name}</div>
+                        <div class="sc-loc"><span>${s.city}</span><span class="state-tag">${s.state}</span></div>
+                        <div class="sc-venue">${s.venue}</div>
+                    </div>
+                    <div class="sc-phone"><a href="${formatPhone(s.phone)}">${phoneDisplay(s.phone)}</a></div>
+                </div>`;
+            }).join('');
+            return `
+                <div class="shows-month ${open}" data-month="${m}">
+                    <div class="shows-month-head" data-toggle="${m}">
+                        <div>
+                            <div class="m-title">${MONTH_NAMES[m]}</div>
+                            <div class="m-meta">${matches.length} ${matches.length === 1 ? 'show' : 'shows'}</div>
+                        </div>
+                        <div class="m-toggle">▾</div>
+                    </div>
+                    <div class="shows-month-body">${cards}</div>
+                </div>`;
+        }).join('');
+
+        // Top-level empty state (no months rendered at all)
+        const totalMatches = SHOWS.filter(showMatches).length;
+        if (totalMatches === 0) {
+            cal.innerHTML = `
+                <div class="shows-empty">
+                    <div class="em-head">No shows match these filters yet.</div>
+                    <div class="em-sub">Try a different state, clear your search, or <a id="inlineReset">reset the filters</a>.</div>
+                </div>`;
+            const r = document.getElementById('inlineReset');
+            if (r) r.onclick = clearShowFilters;
+        } else {
+            cal.innerHTML = blocks;
+        }
+
+        // Wire up accordion toggles
+        cal.querySelectorAll('.shows-month-head').forEach(head => {
+            head.addEventListener('click', () => {
+                head.parentElement.classList.toggle('open');
+            });
+        });
+    }
+
+    function clearShowFilters() {
+        showState = null;
+        showQuery = '';
+        const mainSearch = document.getElementById('showSearch');
+        const modalSearch = document.getElementById('modalShowSearch');
+        if (mainSearch) mainSearch.value = '';
+        if (modalSearch) modalSearch.value = '';
+        renderStatePills(document.getElementById('statePills'), true);
+        renderStatePills(document.getElementById('modalStatePills'), false);
+        renderCalendar();
+    }
+
+    function setState(stateVal) {
+        // Tapping same state clears it (null).
+        showState = (showState === stateVal) ? null : stateVal;
+        renderStatePills(document.getElementById('statePills'), true);
+        renderStatePills(document.getElementById('modalStatePills'), false);
+        renderCalendar();
+    }
+
+    function setQuery(q) {
+        showQuery = q.trim().toLowerCase();
+        renderCalendar();
+    }
+
+    function wireShowFilterRow() {
+        renderStatePills(document.getElementById('statePills'), true);
+        renderStatePills(document.getElementById('modalStatePills'), false);
+        renderCalendar();
+
+        // Main row state pills
+        document.getElementById('statePills').addEventListener('click', e => {
+            const pill = e.target.closest('.show-state-pill');
+            if (!pill) return;
+            const st = pill.dataset.state || null;
+            setState(st);
+        });
+
+        // Main row search box
+        const mainSearch = document.getElementById('showSearch');
+        mainSearch.addEventListener('input', e => {
+            const m = document.getElementById('modalShowSearch');
+            if (m && m.value !== e.target.value) m.value = e.target.value;
+            setQuery(e.target.value);
+        });
+
+        // Clear button
+        document.getElementById('filterClear').addEventListener('click', clearShowFilters);
+
+        // Modal trigger
+        document.getElementById('openshowFilterModal').addEventListener('click', () => {
+            document.getElementById('showFilterModal').classList.add('active');
+            // Sync modal fields to current state
+            renderStatePills(document.getElementById('modalStatePills'), false);
+            const modalSearch = document.getElementById('modalShowSearch');
+            if (showState) {
+                document.querySelectorAll('#modalStatePills .show-state-pill').forEach(p => {
+                    p.classList.toggle('active', p.dataset.state === showState);
+                });
+            }
+            modalSearch.value = mainSearch.value;
+            setTimeout(() => modalSearch.focus(), 250);
+        });
+
+        // Modal pills
+        document.getElementById('modalStatePills').addEventListener('click', e => {
+            const pill = e.target.closest('.show-state-pill');
+            if (!pill) return;
+            setState(pill.dataset.state || null);
+            // Re-render modal pills (active state moves with current state)
+            renderStatePills(document.getElementById('modalStatePills'), false);
+            if (showState) {
+                document.querySelectorAll('#modalStatePills .show-state-pill').forEach(p => {
+                    p.classList.toggle('active', p.dataset.state === showState);
+                });
+            }
+        });
+
+        // Modal search box
+        const modalSearch = document.getElementById('modalShowSearch');
+        modalSearch.addEventListener('input', e => {
+            mainSearch.value = e.target.value;
+            setQuery(e.target.value);
+        });
+
+        // Close on Escape when modal open
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && document.getElementById('showFilterModal').classList.contains('active')) closeShowFilterModal();
+        });
+    }
+
+    function closeShowFilterModal() {
+        document.getElementById('showFilterModal').classList.remove('active');
+    }
+    // expose for inline onclick
+    window.closeShowFilterModal = closeShowFilterModal;
+    window.clearShowFilters = clearShowFilters;
+
+    wireShowFilterRow();
 </script>
 </body>
 </html>
