@@ -469,11 +469,6 @@
             text-transform: uppercase; letter-spacing: 1px;
         }
         .btn-inquire:hover { background: #a0522d; }
-        .btn-inquire.secondary {
-            background: transparent; border: 1px solid #8b4513; color: #d4a853; margin-left: 12px;
-        }
-        .btn-inquire.secondary:hover { background: rgba(139,69,19,0.15); }
-
         /* Messenger picker overlay */
         .messenger-overlay {
             display: none;
@@ -544,33 +539,6 @@
         }
         .messenger-close:hover { border-color: #8b7355; color: #e8e0d8; }
 
-        /* Email section */
-        .email-section {
-            background: linear-gradient(135deg, #1a1410 0%, #2c1f14 100%);
-            border-top: 1px solid #2a2018; border-bottom: 1px solid #2a2018;
-            padding: 60px 24px; text-align: center;
-        }
-        .email-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 10px; }
-        .email-section p { color: #8b7355; font-size: 15px; margin-bottom: 28px; }
-        .email-form { display: flex; max-width: 480px; margin: 0 auto; gap: 0; }
-        .email-form input {
-            flex: 1; padding: 14px 18px;
-            border: 1px solid #2a2018; border-right: none;
-            border-radius: 6px 0 0 6px;
-            background: #0d0d0d; color: #e8e0d8; font-size: 15px; outline: none;
-        }
-        .email-form input:focus { border-color: #8b4513; }
-        .email-form input::placeholder { color: #5a4a3a; }
-        .email-form button {
-            padding: 14px 28px; background: #8b4513; color: #f5f0e8;
-            border: none; border-radius: 0 6px 6px 0;
-            font-weight: 600; font-size: 14px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1px;
-            transition: background 0.2s; white-space: nowrap;
-        }
-        .email-form button:hover { background: #a0522d; }
-        .email-section .disclaimer { font-size: 11px; color: #5a4a3a; margin-top: 14px; }
-
         /* About */
         .about-section { padding: 60px 24px; max-width: 800px; margin: 0 auto; text-align: center; }
         .about-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 16px; }
@@ -612,9 +580,6 @@
             .detail-gallery { padding: 20px; }
             .detail-info { padding: 20px; }
             .detail-info h2 { font-size: 22px; }
-            .email-form { flex-direction: column; }
-            .email-form input { border-radius: 6px; border-right: 1px solid #2a2018; }
-            .email-form button { border-radius: 6px; margin-top: 8px; }
             .section-header h2 { font-size: 26px; }
             .section-header { padding: 40px 20px 28px; }
         }
@@ -640,7 +605,6 @@
         <nav class="header-links">
             <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
             <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
-            <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
             <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
         </nav>
         <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
@@ -690,16 +654,6 @@
 </div>
 
 <div class="product-grid" id="productGrid"></div>
-
-<section class="email-section" id="email">
-    <h2>First Access to New Arrivals</h2>
-    <p>Get auction previews, provenance stories, and first look at fresh acquisitions — straight to your inbox.</p>
-    <form class="email-form" onsubmit="return false;">
-        <input type="email" placeholder="Enter your email" required id="newsletterEmail">
-        <button type="button" onclick="subscribeNewsletter()">Subscribe</button>
-    </form>
-    <div class="disclaimer">No spam. Just artifacts. Unsubscribe anytime.</div>
-</section>
 
 <section class="about-section" id="about">
     <h2>About Barn Burner Relics</h2>
@@ -800,7 +754,6 @@
                     <table id="detailMetaTable"></table>
                 </div>
                 <button class="btn-inquire" onclick="openInquiry()">Message Nick on Facebook</button>
-                <button class="btn-inquire secondary" onclick="closeDetail(); scrollToSection('email');">Join the Newsletter</button>
             </div>
         </div>
     </div>
@@ -834,7 +787,6 @@
         <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
         <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
         <a href="#" onclick="closeDetail(); scrollToSection('services'); return false;">Buying &amp; Appraisals</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('email'); return false;">Newsletter</a>
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank">Facebook Group</a>
         <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank">Instagram</a>
     </div>
@@ -1092,8 +1044,7 @@
         document.getElementById('detailPrice').innerHTML = `${p.price} <span class="label">${extra}</span>`;
         document.getElementById('detailDesc').innerHTML = p.description;
 
-        // Hide the "Message Us About This Piece" button when item is sold.
-        // The Newsletter button stays visible for sold items.
+        // Hide the inquiry button when an item is sold.
         const inquireBtn = document.querySelector('.detail-info .btn-inquire');
         if (inquireBtn) {
             inquireBtn.style.display = (p.tag === 'Sold') ? 'none' : '';
@@ -1162,16 +1113,6 @@
         document.getElementById('messengerOverlay').classList.remove('active');
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('messengerOverlay').classList.contains('active')) closeMessenger(); });
-
-    function subscribeNewsletter() {
-        const email = document.getElementById('newsletterEmail').value;
-        if (!email || !email.includes('@')) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        alert("Thanks for subscribing! You'll be the first to know about new arrivals and upcoming auctions.");
-        document.getElementById('newsletterEmail').value = '';
-    }
 
     let mobileOpen = false;
     function toggleMobile() {
