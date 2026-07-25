@@ -250,6 +250,35 @@
             letter-spacing: 1px;
         }
 
+        /* Tile caption (lot title + short desc) — sits at the bottom of the tile */
+        .photo-tile .tile-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 18px 12px 10px;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0) 100%);
+            color: #f5f0e8;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            pointer-events: none;
+        }
+        .photo-tile .tile-caption-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #f5f0e8;
+        }
+        .photo-tile .tile-caption-desc {
+            font-family: -apple-system, sans-serif;
+            font-size: 10.5px;
+            color: #b8a88a;
+            line-height: 1.3;
+            letter-spacing: 0.2px;
+        }
+
         /* Lead photo (tile #1) — full-width, taller, gold border, glow */
         .photo-tile.lead-tile {
             grid-column: 1 / -1;
@@ -526,7 +555,7 @@
 
 <section class="hero">
     <div class="hero-image-wrap">
-        <img class="hero-image" src="/images/bannerstones/collection-closeup-2026-07-13.jpg" alt="Barn Burner Relics bannerstone collection — pink slate and granite pieces, photographed for the Monday showcase">
+        <img class="hero-image" src="/images/incoming/2026-07-27-monday-auction/05.jpg" alt="Large triangular point collection — 50+ pieces, the lead lot for the Monday July 27 auction">
     </div>
     <div class="countdown" id="countdown" aria-label="Countdown to the next Monday auction">
         <div class="cd-cell">
@@ -547,11 +576,11 @@
         </div>
     </div>
     <div class="hero-text">
-        <div class="hero-date">Monday · July 20, 2026 · 5:00 PM Central Time</div>
+        <div class="hero-date">Monday · July 27, 2026 · 5:00 PM Central Time</div>
         <h1>Monday's Auction</h1>
         <p class="hero-note">
-            Photos below are from last week's gallery — they will be updated when Monday's pieces are photographed and posted.
-            Scroll to browse; click any photo to enlarge.
+            Eight lots up for bid Monday — mostly curated case collections plus a few single-point pieces.
+            Each photo is one lot (the case + its contents). Scroll to browse; click any photo to enlarge.
             Use the catalog or the Facebook Group posts for descriptions, provenance, and bidding.
             For any piece, message Nick for additional photos or a short video — happy to send whatever helps you bid.
         </p>
@@ -560,7 +589,7 @@
 
 <div class="section-label">
     <h2>Monday's Auction</h2>
-    <p>39 photos · scroll to browse · click to enlarge</p>
+    <p>8 lots · scroll to browse · click to enlarge</p>
 </div>
 
 <div class="photo-grid" id="photoGrid"></div>
@@ -660,11 +689,12 @@
 </footer>
 
 <script>
-    // Monday auction offering — last week's photos pending replacement
-    // when Monday's pieces are photographed and posted. Lead photo is
-    // the polished bannerstone collection (THE shot from this week).
-    // Then 3 group context shots, then 11 individual lots, then 4 more
-    // preview tiles. No labels or badges — just photos.
+    // Monday Auction — July 27, 2026 (8 lots)
+    // Case-style lots: each photo is one auction lot (the case + its
+    // contents). Some have visible provenance tags / COAs (#2 Waldman
+    // Abenakian, #3 Ice Age Artifact COA, #7 C. Itoa's Seneca Village
+    // Site). Lead = #5 (large triangular point collection, highest
+    // visual impact). Photos 2 and 3 are second-tier featured.
     //
     // PER-PIECE STATUS:
     //   - default:           active, in display order, full opacity
@@ -672,49 +702,17 @@
     //                        badge in the corner. To remove entirely,
     //                        delete the entry from this array.
     //
-    // To mark a piece as sold, add  status: 'sold'  to its entry, e.g.:
-    //   { src: '/images/incoming/stone-frog-effigy/photo-1.jpg', status: 'sold' },
+    // Previous week's 36 photos archived to:
+    //   images/incoming/_archive/2026-07-25-pre-monday-rebuild/
     const galleryPhotos = [
-        { src: '/images/incoming/2026-07-20-tonight-auction/clovis-row-5-points.jpg', lead: true },
-        { src: '/images/incoming/2026-07-20-josh-davis-certs/pulaski-coa-13463.jpg' },
-        { src: '/images/incoming/2026-07-20-jerry-dickey-certs/nodena-coa-2025-12-075.jpg' },
-        { src: '/images/incoming/2026-07-20-josh-davis-certs/benton-blade-coa-13687.jpg' },
-        { src: '/images/incoming/2026-07-20-tonight-auction/specialty-points-display.jpg' },
-        { src: '/images/incoming/2026-07-20-tonight-auction/notched-three-prong-point.jpg' },
-        { src: '/images/incoming/2026-07-20-tonight-auction/red-velvet-arrowhead-tray.jpg' },
-        { src: '/images/incoming/2026-07-20-tonight-auction/display-case-full-cabinet.jpg' },
-        { src: '/images/incoming/2026-07-14-tuesday-auction/polished-bannerstone-collection.jpg' },
-        { src: '/images/incoming/display-case-bannerstones/photo-1.jpg' },
-        { src: '/images/incoming/display-case-points-misc/photo-1.jpg' },
-        { src: '/images/incoming/display-case-pottery/photo-1.jpg' },
-        { src: '/images/butterfly-banner-1.jpg' },
-        { src: '/images/incoming/clovis-6/photo-1.jpg' },
-        { src: '/images/incoming/clovis-large-adams-co/photo-1.jpg' },
-        { src: '/images/incoming/clovis-large-adams-co/photo-2.jpg' },
-        { src: '/images/incoming/fish-hook-group-of-4/photo-1.jpg' },
-        { src: '/images/incoming/large-flint-biface-k98/photo-1.jpg' },
-        { src: '/images/incoming/serrated-point-3/photo-1.jpg' },
-        { src: '/images/incoming/spotted-stone-pipe/photo-1.jpg' },
-        { src: '/images/incoming/stone-frog-effigy/photo-1.jpg' },
-        { src: '/images/incoming/display-case-beaver-pipe/photo-1.jpg' },
-        { src: '/images/incoming/arrowhead-shouldered-1/photo-1.jpg' },
-        { src: '/images/incoming/2026-07-14-tuesday-auction/clovis-blade-4388.jpg' },
-        { src: '/images/incoming/2026-07-14-tuesday-auction/points-display-case-1.jpg' },
-        { src: '/images/incoming/2026-07-14-tuesday-auction/points-display-case-2.jpg' },
-        { src: '/images/incoming/2026-07-14-tuesday-auction/points-display-case-3.jpg' },
-        { src: '/images/incoming/plainview-goshen-burlington/photo-1-hero.jpg' },
-        { src: '/images/incoming/2026-07-14-gallery-additions/quartz-banner-hero-closeup.jpg' },
-        { src: '/images/incoming/2026-07-14-gallery-additions/red-catlinite-pipe.jpg' },
-        { src: '/images/incoming/2026-07-14-gallery-additions/white-notched-arrowhead.jpg' },
-        { src: '/images/incoming/2026-07-14-gallery-additions/bannerstone-1735-gould.jpg' },
-        { src: '/images/incoming/2026-07-20-monday-additions/notched-point-1.jpg' },
-        { src: '/images/incoming/2026-07-20-monday-additions/polished-blade-1.jpg' },
-        { src: '/images/incoming/2026-07-20-monday-additions/translucent-point-1.jpg' },
-        { src: '/images/incoming/2026-07-20-monday-additions/pottery-bowl-fragment-1.jpg' },
-        { src: '/images/incoming/2026-07-20-bannerstones-set-2/bannerstone-dark-barrel-1.jpg' },
-        { src: '/images/incoming/2026-07-20-bannerstones-set-2/bannerstone-pink-pipe-1.jpg' },
-        { src: '/images/incoming/2026-07-20-bannerstones-set-2/bannerstone-catlinite-spool-1.jpg' },
-        { src: '/images/incoming/2026-07-20-bannerstones-set-2/bannerstone-backlit-1.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/05.jpg', lead: true, title: 'Large Triangular Point Collection', desc: '50+ triangular points — varied cherts, jaspers, materials' },
+        { src: '/images/incoming/2026-07-27-monday-auction/02.jpg', title: 'Waldman Abenakian Collection Case', desc: 'Pottery + labeled discoidals, macehead, plummets, groundstone' },
+        { src: '/images/incoming/2026-07-27-monday-auction/03.jpg', title: 'Documented Paleo Points (COAs in frame)', desc: 'Ice Age Artifact #1591 Burlington chert (Steimel) + Dickey COA + red jasper COA' },
+        { src: '/images/incoming/2026-07-27-monday-auction/01.jpg', title: 'Multi-Piece Prehistoric Tool Case', desc: 'Points, bannerstones, grooved mauls, plummets, celt, pottery, pipe' },
+        { src: '/images/incoming/2026-07-27-monday-auction/04.jpg', title: 'Points + Small Bannerstones Case', desc: '~20 pieces: arrowheads, 2 small bannerstones, pendants' },
+        { src: '/images/incoming/2026-07-27-monday-auction/06.jpg', title: 'Historic-Era Case (Civil War era)', desc: 'Spent cartridges, metal implements, US coin/token, marbles, points' },
+        { src: '/images/incoming/2026-07-27-monday-auction/07.jpg', title: 'Seneca Village Site Case (Itoa provenance)', desc: 'Bone awls, glass trade beads, hairpipes, bells, points — C. Itoa / Ted Siri' },
+        { src: '/images/incoming/2026-07-27-monday-auction/08.jpg', title: 'Smaller Curated Trade-Era Case', desc: 'Points, small pipe, trade beads, ground stone pieces' },
     ];
 
     // Sort active pieces first (preserving their order), then sold
@@ -736,7 +734,8 @@
             <span class="tile-number">${idx + 1}</span>
             ${leadTagHtml}
             ${soldTagHtml}
-            <img src="${p.src}" alt="" loading="lazy">
+            <img src="${p.src}" alt="${p.title || ''}" loading="lazy">
+            ${p.title ? `<div class="tile-caption"><span class="tile-caption-title">${p.title}</span>${p.desc ? `<span class="tile-caption-desc">${p.desc}</span>` : ''}</div>` : ''}
         </div>
     `;
     }).join('');
@@ -751,7 +750,8 @@
     function showLightbox() {
         const photo = galleryPhotos[lightboxIndex];
         document.getElementById('lbImage').src = photo.src;
-        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}`;
+        document.getElementById('lbImage').alt = photo.title || '';
+        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}${photo.title ? ' · ' + photo.title : ''}`;
         document.getElementById('lightbox').classList.add('active');
         document.body.style.overflow = 'hidden';
     }
