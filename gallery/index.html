@@ -579,9 +579,8 @@
         <div class="hero-date">Monday · July 27, 2026 · 5:00 PM Central Time</div>
         <h1>Monday's Auction</h1>
         <p class="hero-note">
-            Eight lots up for bid Monday — mostly curated case collections plus a few single-point pieces.
-            Each photo is one lot (the case + its contents). Scroll to browse; click any photo to enlarge.
-            Use the catalog or the Facebook Group posts for descriptions, provenance, and bidding.
+            Overview photos of all 8 lots up for bid Monday. Pieces will be individually priced and posted in the Facebook Group.
+            Scroll to browse; click any photo to enlarge.
             For any piece, message Nick for additional photos or a short video — happy to send whatever helps you bid.
         </p>
     </div>
@@ -589,7 +588,7 @@
 
 <div class="section-label">
     <h2>Monday's Auction</h2>
-    <p>8 lots · scroll to browse · click to enlarge</p>
+    <p>scroll to browse · click to enlarge</p>
 </div>
 
 <div class="photo-grid" id="photoGrid"></div>
@@ -689,30 +688,21 @@
 </footer>
 
 <script>
-    // Monday Auction — July 27, 2026 (8 lots)
-    // Case-style lots: each photo is one auction lot (the case + its
-    // contents). Some have visible provenance tags / COAs (#2 Waldman
-    // Abenakian, #3 Ice Age Artifact COA, #7 C. Itoa's Seneca Village
-    // Site). Lead = #5 (large triangular point collection, highest
-    // visual impact). Photos 2 and 3 are second-tier featured.
-    //
-    // PER-PIECE STATUS:
-    //   - default:           active, in display order, full opacity
-    //   - { status: 'sold' }: sorted to the BOTTOM, desaturated, SOLD
-    //                        badge in the corner. To remove entirely,
-    //                        delete the entry from this array.
+    // Monday Auction — July 27, 2026
+    // Overview photos of all 8 lots. No text overlays — the case photos
+    // speak for themselves. Click any to enlarge.
     //
     // Previous week's 36 photos archived to:
     //   images/incoming/_archive/2026-07-25-pre-monday-rebuild/
     const galleryPhotos = [
-        { src: '/images/incoming/2026-07-27-monday-auction/05.jpg', lead: true, title: 'Large Triangular Point Collection', desc: '50+ triangular points — varied cherts, jaspers, materials' },
-        { src: '/images/incoming/2026-07-27-monday-auction/02.jpg', title: 'Waldman Abenakian Collection Case', desc: 'Pottery + labeled discoidals, macehead, plummets, groundstone' },
-        { src: '/images/incoming/2026-07-27-monday-auction/03.jpg', title: 'Documented Paleo Points (COAs in frame)', desc: 'Ice Age Artifact #1591 Burlington chert (Steimel) + Dickey COA + red jasper COA' },
-        { src: '/images/incoming/2026-07-27-monday-auction/01.jpg', title: 'Multi-Piece Prehistoric Tool Case', desc: 'Points, bannerstones, grooved mauls, plummets, celt, pottery, pipe' },
-        { src: '/images/incoming/2026-07-27-monday-auction/04.jpg', title: 'Points + Small Bannerstones Case', desc: '~20 pieces: arrowheads, 2 small bannerstones, pendants' },
-        { src: '/images/incoming/2026-07-27-monday-auction/06.jpg', title: 'Historic-Era Case (Civil War era)', desc: 'Spent cartridges, metal implements, US coin/token, marbles, points' },
-        { src: '/images/incoming/2026-07-27-monday-auction/07.jpg', title: 'Seneca Village Site Case (Itoa provenance)', desc: 'Bone awls, glass trade beads, hairpipes, bells, points — C. Itoa / Ted Siri' },
-        { src: '/images/incoming/2026-07-27-monday-auction/08.jpg', title: 'Smaller Curated Trade-Era Case', desc: 'Points, small pipe, trade beads, ground stone pieces' },
+        { src: '/images/incoming/2026-07-27-monday-auction/01.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/02.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/03.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/04.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/05.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/06.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/07.jpg' },
+        { src: '/images/incoming/2026-07-27-monday-auction/08.jpg' },
     ];
 
     // Sort active pieces first (preserving their order), then sold
@@ -731,11 +721,9 @@
         const soldTagHtml = isSold ? '<span class="sold-tag">Sold</span>' : '';
         return `
         <div class="${classes}" onclick="openLightbox(${idx})">
-            <span class="tile-number">${idx + 1}</span>
             ${leadTagHtml}
             ${soldTagHtml}
-            <img src="${p.src}" alt="${p.title || ''}" loading="lazy">
-            ${p.title ? `<div class="tile-caption"><span class="tile-caption-title">${p.title}</span>${p.desc ? `<span class="tile-caption-desc">${p.desc}</span>` : ''}</div>` : ''}
+            <img src="${p.src}" alt="" loading="lazy">
         </div>
     `;
     }).join('');
@@ -750,11 +738,12 @@
     function showLightbox() {
         const photo = galleryPhotos[lightboxIndex];
         document.getElementById('lbImage').src = photo.src;
-        document.getElementById('lbImage').alt = photo.title || '';
-        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}${photo.title ? ' · ' + photo.title : ''}`;
+        document.getElementById('lbImage').alt = '';
+        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}`;
         document.getElementById('lightbox').classList.add('active');
         document.body.style.overflow = 'hidden';
     }
+
 
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('active');
