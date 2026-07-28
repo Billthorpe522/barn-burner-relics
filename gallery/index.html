@@ -873,64 +873,87 @@
         }
     })();
 
-    // ========== Countdown to next Monday 5:00 PM Central Time ==========
-    // Rolling weekly: always points to the upcoming Monday auction.
-    // We compute "next Monday 5 PM in Chicago's current local time" using the
-    // browser's IANA timezone ("America/Chicago"), which auto-handles the
-    // CST/CDT switch. The static date string just says "Central Time" so we
-    // don't have to swap copy twice a year.
-    function nextMondayAt5pm() {
-        const nowMs = Date.now();
-        // Get the current date/time in Chicago using a formatter
+    // ========== Countdown to next auction ==========
+    // AUCTION_DAYS controls which weekdays host auctions. JS weekday: 0=Sun..6=Sat.
+    //   Summer (current): Monday only — [1]
+    //   Winter (per Bill): Saturdays + Mondays — [6, 1]
+    //   To reconfigure for winter, change the value below to [6, 1].
+    // Time-of-day and timezone are fixed at 5:00 PM America/Chicago (CST/CDT auto).
+    // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
+    const AUCTION_DAYS = [1]; // Mon-only for now; winter becomes [6, 1] = Sat + Mon
+    const AUCTION_HOUR = 17;  // 5:00 PM in 24h
+    const CHICAGO_TZ = 'America/Chicago';
+
+    // Read the wall-clock components for a given UTC instant in America/Chicago.
+    // Returns {year, month (0-idx), day, weekday (0=Sun..6=Sat)}.
+    function chicagoPartsFromInstant(instantMs) {
         const fmt = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'America/Chicago',
-            weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit',
-            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            timeZone: CHICAGO_TZ,
+            weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit'
         });
-        const parts = fmt.formatToParts(new Date(nowMs));
+        const parts = fmt.formatToParts(new Date(instantMs));
         const get = t => parts.find(p => p.type === t).value;
-        const weekdayShort = get('weekday'); // Mon/Tue/...
-        const monthStr = get('month');
-        const dayStr = get('day');
-        const yearStr = get('year');
-        // Map weekday to 0=Sun..6=Sat
         const dowMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-        const cstDow = dowMap[weekdayShort];
-        const month = parseInt(monthStr, 10) - 1; // 0-indexed
-        const day = parseInt(dayStr, 10);
-        const year = parseInt(yearStr, 10);
-        // Days until next Monday in Chicago (0 if today is Monday)
-        let daysAhead = (1 - cstDow + 7) % 7;
-        // Build target by constructing an ISO-like string in 'America/Chicago'
-        // then passing to Date so it resolves correctly regardless of DST.
-        // JS trick: new Date('YYYY-MM-DDTHH:MM:SS-06:00') for CST, or -05:00 for CDT.
-        // Auto-pick the offset that matches the target date by using the same formatter.
-        let targetDate = new Date(year, month, day + daysAhead, 17, 0, 0, 0);
+        return {
+            year: parseInt(get('year'), 10),
+            month: parseInt(get('month'), 10) - 1,
+            day: parseInt(get('day'), 10),
+            weekday: dowMap[get('weekday')]
+        };
+    }
+
+    // Resolve "now" in Chicago to the wall-clock instant matching AUCTION_HOUR.
+    // Using new Date(y, m, d, H) and then *offset* is unreliable (the Date
+    // constructor interprets those args in the host's local tz, not Chicago).
+    // Instead: build the ISO string in Chicago and add Chicago's current offset.
+    function chicagoWallClockToInstant(year, month, day, hour) {
+        // Find the offset Chicago is using on the target day (handles DST).
         const targetFmt = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'America/Chicago',
-            timeZoneName: 'shortOffset'
+            timeZone: CHICAGO_TZ,
+            timeZoneName: 'shortOffset',
+            year: 'numeric'
         });
-        const tzParts = targetFmt.formatToParts(targetDate);
-        const tzn = tzParts.find(p => p.type === 'timeZoneName').value; // e.g., "GMT-5"
-        // Convert "GMT-5" or "GMT-6" to "−05:00" / "−06:00"
+        // Probe at noon to avoid DST transition ambiguity edge cases.
+        const probe = new Date(Date.UTC(year, month, day, 12, 0, 0));
+        const tzn = targetFmt.formatToParts(probe).find(p => p.type === 'timeZoneName').value; // e.g. "GMT-5"
         const m = tzn.match(/GMT([+-])(\d+)/);
-        const sign = m[1];
-        const offH = m[2].padStart(2, '0');
-        const tzIso = `${sign}${offH}:00`;
-        // Construct ISO string for the target wall-clock time in Chicago
-        const targetIso = `${year}-${String(month + 1).padStart(2, '0')}-${String(day + daysAhead).padStart(2, '0')}T17:00:00${tzIso}`;
-        let target = new Date(targetIso);
-        // If target is at or before now, push to next Monday
-        if (target.getTime() <= nowMs) {
-            targetDate = new Date(year, month, day + daysAhead + 7, 17, 0, 0, 0);
-            const tp2 = targetFmt.formatToParts(targetDate);
-            const tzn2 = tp2.find(p => p.type === 'timeZoneName').value;
-            const m2 = tzn2.match(/GMT([+-])(\d+)/);
-            const tzIso2 = `${m2[1]}${m2[2].padStart(2, '0')}:00`;
-            const targetIso2 = `${year}-${String(month + 1).padStart(2, '0')}-${String(day + daysAhead + 7).padStart(2, '0')}T17:00:00${tzIso2}`;
-            target = new Date(targetIso2);
+        const sign = m[1] === '-' ? -1 : 1;
+        const offH = parseInt(m[2], 10);
+        // ISO 8601 with the probed offset; Date() will parse to the right UTC instant.
+        const tzIso = (sign < 0 ? '-' : '+') + String(offH).padStart(2, '0') + ':00';
+        const iso = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}T${String(hour).padStart(2, '0')}:00:00${tzIso}`;
+        return new Date(iso).getTime();
+    }
+
+    // Return the next auction instant (a UTC ms timestamp) on or after `nowMs`.
+    // If today's auction slot hasn't started yet, return today's; otherwise the next.
+    function nextAuctionInstant(nowMs) {
+        const nowParts = chicagoPartsFromInstant(nowMs);
+        const sortedDays = [...AUCTION_DAYS].sort((a, b) => a - b);
+        let bestDelta = Infinity;
+        let bestInstant = null;
+        for (const targetDow of sortedDays) {
+            // Days forward from today (in Chicago) to the next occurrence of targetDow.
+            let delta = (targetDow - nowParts.weekday + 7) % 7;
+            // Use a temp Date with month-overflow allowed to roll the day forward.
+            const probe = new Date(nowParts.year, nowParts.month, nowParts.day + delta);
+            const probeMs = chicagoWallClockToInstant(
+                probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
+            );
+            if (probeMs > nowMs && (probeMs - nowMs) < bestDelta) {
+                bestDelta = probeMs - nowMs;
+                bestInstant = probeMs;
+            }
         }
-        return target;
+        // If nothing in the next 7 days is still in the future, push a full week
+        // from the soonest candidate (handles the case of AUCTION_DAYS being empty).
+        if (bestInstant === null) {
+            const probe = new Date(nowParts.year, nowParts.month, nowParts.day + 7);
+            bestInstant = chicagoWallClockToInstant(
+                probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
+            );
+        }
+        return bestInstant;
     }
 
     const cdEl = document.getElementById('countdown');
@@ -938,23 +961,23 @@
     const cdHours = document.getElementById('cdHours');
     const cdMins = document.getElementById('cdMins');
     const cdSecs = document.getElementById('cdSecs');
-    let cdTarget = nextMondayAt5pm();
+    let cdTarget = nextAuctionInstant(Date.now());
 
     function tickCountdown() {
-        const remaining = cdTarget.getTime() - Date.now();
+        let remaining = cdTarget - Date.now();
         if (remaining <= 0) {
-            // Switch to live state; refresh target for next week
+            // Auction is live. Hold the LIVE state for 4 hours, then advance
+            // to the next auction slot (handles back-to-back multi-day configs).
             cdEl.classList.add('live');
             cdDays.textContent = '🔴';
             cdHours.textContent = 'Live';
             cdMins.textContent = 'now';
             cdSecs.textContent = '';
             cdSecs.parentElement.style.display = 'none';
-            // After 4 hours, advance to next Monday so the timer resets
             if (remaining < -4 * 3600000) {
                 cdEl.classList.remove('live');
                 cdSecs.parentElement.style.display = '';
-                cdTarget = nextMondayAt5pm();
+                cdTarget = nextAuctionInstant(Date.now());
             }
             return;
         }
