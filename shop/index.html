@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <title>Barn Burner Shop — Everyday Relics · Shipped Daily</title>
+    <meta name="description" content="Single points, framed relics, and small artifacts from the Barn Burner Relics collection. $20-400. Real pieces, real provenance, shipped from Manhattan, IL.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #14110e;
+            --bg-card: #1f1a14;
+            --bg-card-hover: #2a2218;
+            --gold: #d4a853;
+            --gold-dim: #b08d3e;
+            --oxblood: #8b4513;
+            --cream: #f5f0e8;
+            --text: #d4c8a8;
+            --text-dim: #8b7355;
+            --border: rgba(212, 168, 83, 0.18);
+            --border-hover: rgba(212, 168, 83, 0.45);
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* Announcement strip */
+        .announcement {
+            background: #1a1611;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.02em;
+        }
+        .announcement strong { color: var(--gold); font-weight: 600; }
+        .announcement a { color: var(--gold); text-decoration: underline; margin-left: 6px; }
+
+        /* Header */
+        header {
+            background: var(--bg);
+            border-bottom: 1px solid #2a2018;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
+        }
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .header-links a { color: var(--text); text-decoration: none; transition: color 0.15s; }
+        .header-links a:hover { color: var(--gold); }
+        .header-links a.current { color: var(--gold); }
+        .header-links a.parent-site { color: var(--text-dim); font-size: 11px; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--gold); font-size: 24px; cursor: pointer; }
+
+        @media (max-width: 700px) {
+            .header-links { display: none; gap: 16px; }
+            .header-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; right: 0; left: 0; background: var(--bg); padding: 20px 24px; border-bottom: 1px solid #2a2018; }
+            .mobile-menu-btn { display: block; }
+            .logo-img { height: 36px; }
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 64px 24px 48px;
+            background: linear-gradient(180deg, rgba(26, 20, 16, 0.6) 0%, transparent 100%),
+                        radial-gradient(ellipse at center, rgba(212, 168, 83, 0.04) 0%, transparent 70%);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(32px, 6vw, 48px);
+            color: var(--cream);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .hero h1 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+        .hero-tagline {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 24px;
+            font-style: italic;
+        }
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-top: 24px;
+        }
+        .hero-meta span { display: flex; align-items: center; gap: 6px; }
+        .hero-meta strong { color: var(--gold); font-weight: 600; }
+
+        /* Band sections */
+        .band {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        .band-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        .band-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .band-header .band-sub {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .band-intro {
+            color: var(--text-dim);
+            font-style: italic;
+            margin-bottom: 32px;
+            max-width: 720px;
+        }
+
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        @media (max-width: 700px) {
+            .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+        }
+        @media (max-width: 420px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .product-card-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            aspect-ratio: 1 / 1;
+            background: #0a0807;
+            border-bottom: 1px solid var(--border);
+        }
+        .product-card-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .product-card-images img:first-child { border-right: 1px solid rgba(0,0,0,0.4); }
+        .product-card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        .product-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--cream);
+            line-height: 1.25;
+        }
+        .product-card-desc {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.4;
+            flex: 1;
+        }
+        .product-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+        .product-card-price {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+        .reserve-btn {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--bg);
+            background: var(--gold);
+            border: none;
+            padding: 8px 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .reserve-btn:hover { background: var(--cream); }
+
+        /* Empty state */
+        .empty-band {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--text-dim);
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        /* Parent site CTA */
+        .parent-cta {
+            background: linear-gradient(180deg, transparent 0%, rgba(26, 20, 16, 0.6) 100%);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 48px 24px;
+            margin-top: 48px;
+        }
+        .parent-cta p {
+            color: var(--text-dim);
+            font-size: 17px;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .parent-cta a {
+            display: inline-block;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid var(--border-hover);
+            padding: 12px 24px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+        .parent-cta a:hover { background: var(--gold); color: var(--bg); }
+
+        /* Footer */
+        footer {
+            background: #0a0807;
+            border-top: 1px solid var(--border);
+            padding: 32px 24px 24px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+        footer .links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        footer .links a { color: var(--text); text-decoration: none; transition: color 0.15s; }
+        footer .links a:hover { color: var(--gold); }
+        footer .copy {
+            font-size: 11px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="announcement">
+    ⚡ <strong>Everyday relics, shipped from Manhattan, IL.</strong> Lifetime authenticity guarantee on every piece.
+    &nbsp;·&nbsp; <a href="../">Looking for the rare & vault pieces? Visit Barn Burner Relics →</a>
+</div>
+
+<header>
+    <div class="header-inner">
+        <a href="./" class="logo">
+            <img src="images/bbshop-logo-horizontal.png" alt="Barn Burner Shop" class="logo-img">
+        </a>
+        <nav class="header-links" id="headerLinks">
+            <a href="#bargain" class="current">Bargain Bin</a>
+            <a href="#curated">Curated</a>
+            <a href="../" class="parent-site">Main Site ↗</a>
+        </nav>
+        <button class="mobile-menu-btn" onclick="document.getElementById('headerLinks').classList.toggle('open')">☰</button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Single points. Framed relics.<br><em>Shipped daily.</em></h1>
+    <p class="hero-tagline">Real artifacts from a working collection — not a museum replica. Provenance documented. Guaranteed authentic for life.</p>
+    <div class="hero-meta">
+        <span>💰 <strong>$20–$400</strong></span>
+        <span>📦 <strong>Flat $8 shipping</strong></span>
+        <span>✅ <strong>Lifetime guarantee</strong></span>
+    </div>
+</section>
+
+<section class="band" id="bargain">
+    <div class="band-header">
+        <h2>Bargain Bin · Under $50</h2>
+        <span class="band-sub">For impulse buyers & first-time collectors</span>
+    </div>
+    <p class="band-intro">Smaller points, frame-fillers, and beginner pieces. Real artifacts with real provenance — priced for the collector just starting out, not the one filling a vault.</p>
+    <div class="product-grid" id="bargain-grid">
+        <!-- Bargain Bin products get rendered here -->
+        <div class="empty-band">No bargain-bin pieces yet. New inventory drops weekly.</div>
+    </div>
+</section>
+
+<section class="band" id="curated">
+    <div class="band-header">
+        <h2>Curated · $50–$400</h2>
+        <span class="band-sub">The better pieces, still accessible</span>
+    </div>
+    <p class="band-intro">Better materials, better condition, better provenance. Still not museum-grade — that's what the main site is for — but the kind of pieces a serious collector is proud to own.</p>
+    <div class="product-grid" id="curated-grid">
+        <!-- Curated products get rendered here -->
+        <div class="empty-band">No curated pieces yet. New inventory drops weekly.</div>
+    </div>
+</section>
+
+<div class="parent-cta">
+    <p>Looking for the rare, museum-grade bannerstones and Paleo material?</p>
+    <a href="../">Visit Barn Burner Relics — The Main Vault →</a>
+</div>
+
+<footer>
+    <div class="links">
+        <a href="../">Main Site</a>
+        <a href="../gallery/">Auction Gallery</a>
+        <a href="../#about">About</a>
+        <a href="https://www.facebook.com/share/g/1HEbpnPhcQ/" target="_blank" rel="noopener">Facebook Auctions</a>
+    </div>
+    <div class="copy">© 2026 Barn Burner Shop · A storefront of Barn Burner Relics Inc · Manhattan, IL · Every piece guaranteed authentic for life.</div>
+</footer>
+
+<!--
+    ============================================================
+    PRODUCT DATA — Edit this array to add/remove inventory.
+    Each product: { id, band ('bargain'|'curated'), title, desc, price, photo1, photo2 }
+    Photos live in /shop/images/items/<id>-1.jpg and <id>-2.jpg
+    ============================================================
+-->
+<script>
+const PRODUCTS = [
+    // Example shape (commented out — uncomment + add photos to test):
+    // {
+    //     id: 'sample-knife-001',
+    //     band: 'bargain',
+    //     title: 'Dover Chert Corner-Cut Knife',
+    //     desc: 'Tight 1¾" Archaic knife, Dover chert, Missouri origin. Unrestored.',
+    //     price: 35,
+    //     photo1: 'images/items/sample-knife-001-1.jpg',
+    //     photo2: 'images/items/sample-knife-001-2.jpg',
+    // },
+];
+
+function renderProducts() {
+    const bands = { bargain: document.getElementById('bargain-grid'), curated: document.getElementById('curated-grid') };
+    // Clear empty states if we have products
+    const counts = { bargain: 0, curated: 0 };
+    for (const p of PRODUCTS) {
+        if (!bands[p.band]) continue;
+        if (counts[p.band] === 0) bands[p.band].innerHTML = '';
+        counts[p.band]++;
+        bands[p.band].insertAdjacentHTML('beforeend', `
+            <article class="product-card" data-id="${p.id}">
+                <div class="product-card-images">
+                    <img src="${p.photo1}" alt="${p.title} — photo 1" loading="lazy">
+                    <img src="${p.photo2}" alt="${p.title} — photo 2" loading="lazy">
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-card-title">${p.title}</h3>
+                    <p class="product-card-desc">${p.desc}</p>
+                    <div class="product-card-footer">
+                        <span class="product-card-price">$${p.price}</span>
+                        <button class="reserve-btn" onclick="reserveItem('${p.id}')">Reserve</button>
+                    </div>
+                </div>
+            </article>
+        `);
+    }
+}
+
+function reserveItem(id) {
+    // TODO: replace with Shopify product URL when migrated
+    const product = PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+    const subject = encodeURIComponent(`Reserve: ${product.title} ($${product.price})`);
+    const body = encodeURIComponent(`Hi Nick,\n\nI'd like to reserve the ${product.title} ($${product.price}) from barnburnerrelics.shop/shop.\n\nMy name:\nShipping address:\nAny questions:\n\nThanks!`);
+    window.location.href = `mailto:nick@barnburnerrelics.com?subject=${subject}&body=${body}`;
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
