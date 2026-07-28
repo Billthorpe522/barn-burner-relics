@@ -553,6 +553,23 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
         .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: #d4a853; font-size: 18px; margin-top: 24px; }
+        .about-video { margin-top: 36px; max-width: 720px; margin-left: auto; margin-right: auto; }
+        .about-video-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid rgba(212, 168, 83, 0.32);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            background: #000;
+        }
+        .about-video-frame iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
 
         /* Footer */
         footer {
@@ -671,6 +688,17 @@
         country — and his weekly Facebook auctions draw collectors from across the United States.
         </p>
     <div class="signature">— Nick Gatses, Proprietor</div>
+    <div class="about-video">
+        <div class="about-video-frame">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/Np3t4Zg8ckM?rel=0"
+                title="Welcome to the Barn Burner Relics YouTube channel"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"></iframe>
+        </div>
+    </div>
 </section>
 
 <!-- Quiet CTA: Nick actively buys collections and does appraisals.
