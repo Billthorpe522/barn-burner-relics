@@ -516,12 +516,21 @@ function renderProducts() {
 }
 
 function reserveItem(id) {
-    // TODO: replace with Shopify product URL when migrated
+    // BBR Shop → Shopify reserve. The Shopify product handle is the same
+    // as our static `id` slugified (matches the script's title → handle logic).
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    const subject = encodeURIComponent(`Reserve: ${product.title} ($${product.price})`);
-    const body = encodeURIComponent(`Hi Nick,\n\nI'd like to reserve the ${product.title} ($${product.price}) from barnburnerrelics.shop/shop.\n\nMy name:\nShipping address:\nAny questions:\n\nThanks!`);
-    window.location.href = `mailto:nick@barnburnerrelics.com?subject=${subject}&body=${body}`;
+    const handle = (product.title || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 100);
+    // Hand off to the Shopify draft product for that handle. Falls back to mailto
+    // (Nick's existing reserve email) if the handle isn't mirrored yet — keeps
+    // pre-migration pieces reachable via the same button.
+    const shopifyUrl = `https://0fde0c-md.myshopify.com/products/${handle}`;
+    // Open the Shopify product page in the same tab so checkout is one click away.
+    window.location.href = shopifyUrl;
 }
 
 renderProducts();
