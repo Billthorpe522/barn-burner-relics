@@ -199,20 +199,36 @@
             border-color: var(--border-hover);
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
-        .product-card-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .product-card-image {
+            position: relative;
             aspect-ratio: 1 / 1;
             background: #0a0807;
             border-bottom: 1px solid var(--border);
+            cursor: zoom-in;
+            overflow: hidden;
         }
-        .product-card-images img {
+        .product-card-image:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+        .product-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.18s ease;
         }
-        .product-card-images img:first-child { border-right: 1px solid rgba(0,0,0,0.4); }
+        .product-card-image:hover img { transform: scale(1.02); }
+        .product-card-image .photo-count {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            background: rgba(0,0,0,0.75);
+            color: #f0e8d0;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.02em;
+        }
         .product-card-body {
             padding: 22px 20px;
             display: flex;
@@ -341,6 +357,92 @@
             letter-spacing: 1px;
             opacity: 0.7;
         }
+
+        /* Photo gallery overlay (one-hero-per-card, click to expand) */
+        .photo-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 6, 4, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .photo-overlay.active { display: flex; }
+        .photo-overlay-inner {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            max-height: calc(100vh - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .photo-overlay-close {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: rgba(0,0,0,0.6);
+            color: #f0e8d0;
+            border: 1px solid var(--border-hover);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            transition: background 0.15s ease;
+        }
+        .photo-overlay-close:hover { background: var(--accent); color: #1a140d; }
+        .photo-overlay-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            margin: 0;
+        }
+        .photo-overlay-main-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 0;
+        }
+        .photo-overlay-main {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            background: #0a0807;
+        }
+        .photo-overlay-thumbs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .photo-overlay-thumbs img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.15s ease, transform 0.15s ease;
+        }
+        .photo-overlay-thumbs img:hover { transform: scale(1.05); }
+        .photo-overlay-thumbs img.active { border-color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .photo-overlay-thumbs img { width: 52px; height: 52px; }
+            .photo-overlay-title { font-size: 18px; }
+        }
     </style>
 </head>
 <body>
@@ -356,7 +458,7 @@
             <img src="images/bbshop-logo-horizontal.png" alt="Barn Burner Shop" class="logo-img">
         </a>
         <nav class="header-links" id="headerLinks">
-            <a href="#bargain" class="current">Bargain Bin</a>
+            <a href="#bargain" class="current">Great Deals</a>
             <a href="#curated">Curated</a>
             <a href="../" class="parent-site">Main Site ↗</a>
         </nav>
@@ -376,13 +478,13 @@
 
 <section class="band" id="bargain">
     <div class="band-header">
-        <h2>Bargain Bin · Under $50</h2>
+        <h2>Great Deals · Under $50</h2>
         <span class="band-sub">Smaller pieces, real artifacts</span>
     </div>
     <p class="band-intro">Single points, frame-fillers, and everyday relics. Real artifacts with real provenance — same authentication and lifetime guarantee as everything else in the shop, just at lower price points.</p>
     <div class="product-grid" id="bargain-grid">
-        <!-- Bargain Bin products get rendered here -->
-        <div class="empty-band">No bargain-bin pieces yet. New inventory drops weekly.</div>
+        <!-- Great Deals products get rendered here -->
+        <div class="empty-band">No great-deals pieces yet. New inventory drops weekly.</div>
     </div>
 </section>
 
@@ -428,8 +530,10 @@ const PRODUCTS = [
         title: 'Ground-stone celt',
         desc: 'Dark speckled greenish-gray ground-stone celt (~7" length), classic tapered form with rounded bit and tapered poll. Pecked and ground facets visible across both faces. Ex-George Flick collection → ex-Lewis, acquired 1985. Provenance tag preserved on piece. Hefty in hand, polished working surface, unrestored.',
         price: 250,
-        photo1: 'images/items/celt-geo-flick-001-1.jpg',
-        photo2: 'images/items/celt-geo-flick-001-2.jpg',
+        photos: [
+            'images/items/celt-geo-flick-001-1.jpg',
+            'images/items/celt-geo-flick-001-2.jpg',
+        ],
     },
     {
         id: 'kaolin-point-001',
@@ -437,8 +541,10 @@ const PRODUCTS = [
         title: 'Kaolin dart point',
         desc: 'Translucent cream-and-honey chalcedony-like stone side-notched dart point (~3½", likely Big Sandy or Quad form). Highly translucent material that backlights beautifully, with subtle iron-staining veining visible when held to light. Crisp pressure flaking across both faces, original surfaces, unrestored.',
         price: 75,
-        photo1: 'images/items/kaolin-point-001-1.jpg',
-        photo2: 'images/items/kaolin-point-001-2.jpg',
+        photos: [
+            'images/items/kaolin-point-001-1.jpg',
+            'images/items/kaolin-point-001-2.jpg',
+        ],
     },
     {
         id: 'corner-notch-williams-co-oh-001',
@@ -446,8 +552,10 @@ const PRODUCTS = [
         title: 'Corner notch dart point',
         desc: 'Reddish-brown pipestone (likely Catlinite) corner-notch dart point, Williams County, Ohio. ~3½" length with deep corner notches and slightly contracting stem. Ex-Theron Clymer collection (pronounced "FAIR-en"), with original Williams Co. Ohio / T. Clymer collector tag. Rare red-stone material, unrestored, original surfaces.',
         price: 75,
-        photo1: 'images/items/corner-notch-williams-co-oh-001-1.jpg',
-        photo2: 'images/items/corner-notch-williams-co-oh-001-2.jpg',
+        photos: [
+            'images/items/corner-notch-williams-co-oh-001-1.jpg',
+            'images/items/corner-notch-williams-co-oh-001-2.jpg',
+        ],
     },
     {
         id: 'kramer-johnson-co-ind-001',
@@ -455,8 +563,10 @@ const PRODUCTS = [
         title: 'Kramer dart point',
         desc: 'Burlington chert Kramer dart point, Johnson County, Indiana. ~3½" length, classic Early Archaic side-notched form with slightly expanding stem. Original Johnson Co. IND collector tag on blade. Crisp pressure flaking, original surfaces, unrestored.',
         price: 75,
-        photo1: 'images/items/kramer-johnson-co-ind-001-1.jpg',
-        photo2: 'images/items/kramer-johnson-co-ind-001-2.jpg',
+        photos: [
+            'images/items/kramer-johnson-co-ind-001-1.jpg',
+            'images/items/kramer-johnson-co-ind-001-2.jpg',
+        ],
     },
     {
         id: 'stillwell-warren-mo-001',
@@ -464,8 +574,10 @@ const PRODUCTS = [
         title: 'Stillwell dart point',
         desc: 'Translucent white flint or Burlington chert Stillwell dart point, Warren County, Missouri. ~5½" length with deeply serrated edges, pronounced flared barbed stem, and original collector ink provenance on blade ("WARREN CO. MO." with catalog C-31). Classic Archaic form, unrestored, original surfaces intact.',
         price: 475,
-        photo1: 'images/items/stillwell-warren-mo-001-1.jpg',
-        photo2: 'images/items/stillwell-warren-mo-001-2.jpg',
+        photos: [
+            'images/items/stillwell-warren-mo-001-1.jpg',
+            'images/items/stillwell-warren-mo-001-2.jpg',
+        ],
     },
     {
         id: 'adena-hornstone-001',
@@ -473,18 +585,23 @@ const PRODUCTS = [
         title: 'Adena point',
         desc: 'Translucent gray hornstone Adena point with intact cortex base — likely southern Indiana. 3" length, crisp pressure flaking across both faces, original surfaces, unrestored.',
         price: 50,
-        photo1: 'images/items/adena-hornstone-001-1.jpg',
-        photo2: 'images/items/adena-hornstone-001-2.jpg',
+        photos: [
+            'images/items/adena-hornstone-001-1.jpg',
+            'images/items/adena-hornstone-001-2.jpg',
+        ],
     },
-    // Example shape (commented out — uncomment + add photos to test):
+    // Example shape (commented out — uncomment + add photos to test a 3-photo hero):
     // {
     //     id: 'sample-knife-001',
     //     band: 'bargain',
     //     title: 'Dover Chert Corner-Cut Knife',
     //     desc: 'Tight 1¾" Archaic knife, Dover chert, Missouri origin. Unrestored.',
     //     price: 35,
-    //     photo1: 'images/items/sample-knife-001-1.jpg',
-    //     photo2: 'images/items/sample-knife-001-2.jpg',
+    //     photos: [
+    //         'images/items/sample-knife-001-1.jpg',
+    //         'images/items/sample-knife-001-2.jpg',
+    //         'images/items/sample-knife-001-3.jpg',
+    //     ],
     // },
 ];
 
@@ -496,11 +613,14 @@ function renderProducts() {
         if (!bands[p.band]) continue;
         if (counts[p.band] === 0) bands[p.band].innerHTML = '';
         counts[p.band]++;
+        const hero = p.photos && p.photos[0] ? p.photos[0] : '';
+        const extra = (p.photos || []).length - 1;
+        const extraBadge = extra > 0 ? `<span class="photo-count">+${extra}</span>` : '';
         bands[p.band].insertAdjacentHTML('beforeend', `
             <article class="product-card" data-id="${p.id}">
-                <div class="product-card-images">
-                    <img src="${p.photo1}" alt="${p.title} — photo 1" loading="lazy">
-                    <img src="${p.photo2}" alt="${p.title} — photo 2" loading="lazy">
+                <div class="product-card-image" data-action="open" data-pid="${p.id}" role="button" tabindex="0" aria-label="View ${p.title} photos">
+                    <img src="${hero}" alt="${p.title} — hero photo" loading="lazy">
+                    ${extraBadge}
                 </div>
                 <div class="product-card-body">
                     <h3 class="product-card-title">${p.title}</h3>
@@ -513,6 +633,49 @@ function renderProducts() {
             </article>
         `);
     }
+    // Wire up the click-to-open affordance on every photo tile
+    document.querySelectorAll('.product-card-image[data-action="open"]').forEach(el => {
+        el.addEventListener('click', e => openPhotoOverlay(el.dataset.pid));
+        el.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPhotoOverlay(el.dataset.pid); }
+        });
+    });
+}
+
+let photoOverlayPid = null;
+function openPhotoOverlay(pid) {
+    const p = PRODUCTS.find(x => x.id === pid);
+    if (!p || !p.photos || !p.photos.length) return;
+    photoOverlayPid = pid;
+    const overlay = document.getElementById('photoOverlay');
+    const main = document.getElementById('photoOverlayMain');
+    const thumbs = document.getElementById('photoOverlayThumbs');
+    const title = document.getElementById('photoOverlayTitle');
+    title.textContent = p.title;
+    main.src = p.photos[0];
+    main.alt = `${p.title} — photo 1`;
+    thumbs.innerHTML = '';
+    p.photos.forEach((src, i) => {
+        const t = document.createElement('img');
+        t.src = src;
+        t.alt = `${p.title} — photo ${i + 1}`;
+        if (i === 0) t.classList.add('active');
+        t.addEventListener('click', () => {
+            main.src = src;
+            main.alt = `${p.title} — photo ${i + 1}`;
+            thumbs.querySelectorAll('img').forEach(x => x.classList.remove('active'));
+            t.classList.add('active');
+        });
+        thumbs.appendChild(t);
+    });
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePhotoOverlay() {
+    const overlay = document.getElementById('photoOverlay');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    photoOverlayPid = null;
 }
 
 function reserveItem(id) {
@@ -534,7 +697,26 @@ function reserveItem(id) {
 }
 
 renderProducts();
+
+// Esc closes the photo overlay
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('photoOverlay').classList.contains('active')) {
+        closePhotoOverlay();
+    }
+});
 </script>
+
+<!-- Photo gallery overlay (one hero per product, click to expand) -->
+<div class="photo-overlay" id="photoOverlay" role="dialog" aria-modal="true" aria-labelledby="photoOverlayTitle">
+    <button class="photo-overlay-close" type="button" aria-label="Close" onclick="closePhotoOverlay()">×</button>
+    <div class="photo-overlay-inner">
+        <h3 class="photo-overlay-title" id="photoOverlayTitle"></h3>
+        <div class="photo-overlay-main-wrap">
+            <img class="photo-overlay-main" id="photoOverlayMain" src="" alt="">
+        </div>
+        <div class="photo-overlay-thumbs" id="photoOverlayThumbs"></div>
+    </div>
+</div>
 
 </body>
 </html>
