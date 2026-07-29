@@ -542,9 +542,80 @@
         .fb-cta-btn svg { width: 20px; height: 20px; }
         .fb-cta-sub { font-size: 12px; padding: 0 8px; }
         }
+
+        /* Cross-site top nav (identical block on / and /shop/) */
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: linear-gradient(90deg, #0a0807 0%, #14110e 50%, #0a0807 100%);
+            border-bottom: 1px solid #2a2018;
+            padding: 9px 24px;
+            font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            font-size: 13px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: #8b7355;
+            flex-wrap: wrap;
+        }
+        .site-nav-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d4a853;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+        .site-nav-brand-mark {
+            background: #8b4513;
+            color: #f5f0e8;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            padding: 3px 8px;
+            border-radius: 2px;
+            border: 1px solid #d4a853;
+        }
+        .site-nav-brand-text { font-size: 13px; }
+        .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+        .site-nav-links a {
+            color: #8b7355;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 0;
+            border-bottom: 1px solid transparent;
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
+        .site-nav-links a[data-key="fb"] { color: #1877f2; }
+        .site-nav-links a[data-key="fb"]:hover { color: #5ea3ff; border-bottom-color: #5ea3ff; }
+        .site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
+        @media (max-width: 540px) {
+            .site-nav { padding: 8px 14px; }
+            .site-nav-brand-text { display: none; }
+            .site-nav-links { gap: 14px; font-size: 11px; letter-spacing: 1px; }
+        }
     </style>
 </head>
 <body>
+
+<!-- Cross-site nav. Identical block lives on / and /shop/ with paths adjusted to depth. -->
+<nav class="site-nav" aria-label="Barn Burner Relics surfaces">
+  <a class="site-nav-brand" href="../">
+    <span class="site-nav-brand-mark">BBR</span>
+    <span class="site-nav-brand-text">Barn Burner Relics</span>
+  </a>
+  <div class="site-nav-links">
+    <a href="../"          data-key="sales"   >Vault &amp; Sales</a>
+    <a href="../shop/"     data-key="shop"    >BBR Shop</a>
+    <a href="../gallery/"  data-key="gallery" class="active">Monday Auction</a>
+    <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" data-key="fb">Facebook ↗</a>
+  </div>
+</nav>
 
 <header>
     <div class="header-inner">
@@ -679,8 +750,8 @@
         <div class="fb-cta-divider"></div>
     </div>
     <div style="margin-bottom:14px;display:flex;flex-direction:column;align-items:center;gap:10px;">
-        <a href="https://barnburnerrelics.shop/" target="_blank" rel="noopener" style="color:#d4a853;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid #8b4513;padding-bottom:2px;">Visit barnburnerrelics.shop →</a>
-        <a href="../" style="color:#d4a853;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid #8b4513;padding-bottom:2px;">Check out our store →</a>
+        <a href="../" style="color:#d4a853;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid #8b4513;padding-bottom:2px;">Visit barnburnerrelics.shop →</a>
+        <a href="../shop/" style="color:#d4a853;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid #8b4513;padding-bottom:2px;">Check out our store →</a>
     </div>
     <div style="font-size:12px;color:#3a3028;">
         © 2026 Barn Burner Relics Inc. — Manhattan, IL · All artifacts guaranteed authentic for life.
