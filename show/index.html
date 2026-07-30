@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Collinsville Show — Authentic Prehistoric Artifact Show</title>
+<meta name="description" content="The 40th Annual Collinsville Prehistoric Artifact Show. March 12-14, 2027 at the Gateway Convention Center, Collinsville, IL. Organized by Nick Gatses.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   The Collinsville Show — site scaffold v0.1
+   Brand: mirrors barnburnerrelics.shop palette + type
+   - bg #0d0d0d / cream #f5f0e8 / gold #d4a853 / oxblood #8b4513 / taupe #8b7355
+   - Headlines: Playfair Display · Body: Cormorant Garamond
+   ============================================================ */
+
+:root {
+    --bg: #0d0d0d;
+    --bg-soft: #14110e;
+    --bg-card: #1a1410;
+    --border: #2a2018;
+    --cream: #f5f0e8;
+    --cream-dim: #d4c8a8;
+    --gold: #d4a853;
+    --gold-bright: #ffd700;
+    --oxblood: #8b4513;
+    --oxblood-bright: #a0522d;
+    --taupe: #8b7355;
+    --warm-grey: #b8a88a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-bright); }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- NAV ---------- */
+.nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--cream); letter-spacing: 0.5px;
+}
+.nav-brand small {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; font-weight: 400; color: var(--taupe);
+    letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+    color: var(--warm-grey); font-size: 14px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    font-family: -apple-system, Arial, sans-serif; font-weight: 600;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+    background: var(--oxblood); color: var(--cream);
+    padding: 8px 18px; border-radius: 2px;
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+}
+.nav-cta:hover { background: var(--oxblood-bright); color: var(--cream); }
+
+/* ---------- HERO ---------- */
+.hero {
+    position: relative;
+    min-height: 86vh;
+    background:
+        linear-gradient(180deg, rgba(13,13,13,0.4) 0%, rgba(13,13,13,0.85) 70%, var(--bg) 100%),
+        url('https://images.unsplash.com/photo-1565017228812-bf8d7d9c0e8b?w=2400&q=80') center/cover no-repeat;
+    background-color: #1a1410;
+    display: flex; align-items: flex-end;
+    padding: 80px 32px 64px;
+}
+.hero-content { max-width: 980px; margin: 0 auto; width: 100%; }
+
+.hero-eyebrow {
+    display: inline-block;
+    color: var(--gold); font-size: 13px;
+    font-family: -apple-system, Arial, sans-serif;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+    padding-bottom: 6px; border-bottom: 1px solid var(--oxblood);
+    margin-bottom: 24px;
+}
+.hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(40px, 7vw, 84px);
+    font-weight: 700; line-height: 1.05;
+    color: var(--cream); margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+.hero h1 em {
+    font-style: italic; font-weight: 400; color: var(--gold);
+}
+.hero-sub {
+    font-size: 19px; color: var(--cream-dim);
+    max-width: 680px; margin-bottom: 36px;
+}
+.hero-meta {
+    display: flex; flex-wrap: wrap; gap: 24px;
+    padding: 20px 0; margin-bottom: 32px;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.hero-meta-label {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600;
+}
+.hero-meta-value {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    color: var(--cream); font-weight: 500;
+}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    border-radius: 2px; border: 1px solid transparent;
+    transition: all 0.18s ease; cursor: pointer;
+}
+.btn-primary { background: var(--gold); color: #1a1410; }
+.btn-primary:hover { background: var(--gold-bright); color: #1a1410; }
+.btn-secondary { background: transparent; color: var(--cream); border-color: var(--oxblood); }
+.btn-secondary:hover { border-color: var(--oxblood-bright); color: var(--gold); }
+
+/* ---------- QUICK FACTS STRIP ---------- */
+.facts {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 48px 32px;
+}
+.facts-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 32px; text-align: center;
+}
+.fact-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 600; color: var(--gold);
+    line-height: 1; margin-bottom: 8px;
+}
+.fact-label {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600;
+}
+
+/* ---------- SECTIONS ---------- */
+.section { padding: 96px 32px; max-width: 1100px; margin: 0 auto; }
+.section-narrow { max-width: 780px; }
+.section-eyebrow {
+    color: var(--gold); font-size: 12px;
+    font-family: -apple-system, Arial, sans-serif;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+    margin-bottom: 16px;
+}
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600; line-height: 1.15;
+    margin-bottom: 24px; color: var(--cream);
+}
+.section h2 em { font-style: italic; font-weight: 400; color: var(--gold); }
+.section .lede {
+    font-size: 19px; color: var(--cream-dim);
+    margin-bottom: 28px; max-width: 720px;
+}
+.section p { margin-bottom: 18px; color: var(--cream-dim); }
+.section strong { color: var(--cream); }
+
+/* ---------- ABOUT GRID ---------- */
+.about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: start;
+}
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+.about-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 32px; border-radius: 2px;
+}
+.about-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; color: var(--gold);
+    margin-bottom: 14px;
+}
+.about-card p { font-size: 16px; line-height: 1.6; }
+.signature {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--gold); font-size: 17px;
+    margin-top: 24px;
+}
+.quote-block {
+    border-left: 3px solid var(--gold);
+    padding: 12px 0 12px 28px;
+    margin: 32px 0;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 22px; line-height: 1.5;
+    color: var(--cream);
+}
+.quote-block cite {
+    display: block; margin-top: 12px;
+    font-family: -apple-system, sans-serif; font-style: normal;
+    font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--taupe);
+}
+
+/* ---------- CAHOKIA HERO CARD ---------- */
+.cahokia {
+    background:
+        linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.95) 100%),
+        url('https://images.unsplash.com/photo-1605338803420-21a86cf2b9e1?w=2400&q=80') center/cover no-repeat;
+    background-color: #1a1410;
+    padding: 120px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.cahokia-inner { max-width: 900px; margin: 0 auto; }
+.cahokia h2 { color: var(--cream); }
+.cahokia p { color: var(--cream-dim); font-size: 18px; }
+.cahokia .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px; margin-top: 40px;
+}
+.cahokia .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 600; color: var(--gold); line-height: 1;
+}
+.cahokia .stat-label {
+    font-family: -apple-system, sans-serif;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--cream-dim); font-weight: 600; margin-top: 6px;
+}
+
+/* ---------- THINGS-TO-DO CARDS ---------- */
+.cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; margin-top: 40px;
+}
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 32px; border-radius: 2px;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.card:hover { border-color: var(--oxblood); transform: translateY(-2px); }
+.card-eyebrow {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--taupe); font-weight: 700; margin-bottom: 12px;
+}
+.card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 600; color: var(--gold);
+    margin-bottom: 12px;
+}
+.card p { font-size: 15px; line-height: 1.55; }
+.card-distance {
+    display: inline-block; margin-top: 16px;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px; letter-spacing: 1px;
+    color: var(--warm-grey); font-weight: 600;
+    padding-top: 12px; border-top: 1px solid var(--border);
+}
+
+/* ---------- HOTELS TABLE ---------- */
+.hotels { margin-top: 40px; }
+.hotel-tier {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px; margin-bottom: 16px;
+    border-radius: 2px;
+}
+.hotel-tier h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--cream);
+    margin-bottom: 4px;
+}
+.hotel-tier .tier-label {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 16px;
+}
+.hotel-tier ul { list-style: none; padding: 0; }
+.hotel-tier li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; flex-wrap: wrap;
+    font-size: 16px;
+}
+.hotel-tier li:last-child { border-bottom: 0; }
+.hotel-tier li .name { color: var(--cream); }
+.hotel-tier li .meta { color: var(--taupe); font-size: 14px; }
+
+/* ---------- VISIT GUIDE LIST ---------- */
+.guide-list {
+    list-style: none; padding: 0;
+    counter-reset: item;
+}
+.guide-list li {
+    counter-increment: item;
+    padding: 20px 0 20px 56px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+.guide-list li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute; left: 0; top: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; color: var(--gold);
+    font-style: italic;
+}
+.guide-list li strong {
+    font-family: 'Playfair Display', serif; font-weight: 600;
+    color: var(--cream); display: block; margin-bottom: 4px; font-size: 18px;
+}
+.guide-list li p { font-size: 15px; margin: 0; }
+
+/* ---------- CTA BAND ---------- */
+.cta-band {
+    background: linear-gradient(135deg, var(--oxblood) 0%, #5c2c0c 100%);
+    padding: 80px 32px; text-align: center;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.cta-band h2 {
+    color: var(--cream); font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px); margin-bottom: 20px; font-weight: 600;
+}
+.cta-band p { color: var(--cream-dim); max-width: 640px; margin: 0 auto 32px; font-size: 17px; }
+
+/* ---------- FOOTER ---------- */
+.footer {
+    background: var(--bg-soft);
+    padding: 48px 32px 32px;
+    border-top: 1px solid var(--border);
+}
+.footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px; margin-bottom: 32px;
+}
+@media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--cream);
+    margin-bottom: 12px;
+}
+.footer p { font-size: 14px; color: var(--taupe); }
+.footer h4 {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 16px;
+}
+.footer ul { list-style: none; padding: 0; }
+.footer li { margin-bottom: 10px; }
+.footer a { color: var(--cream-dim); font-size: 14px; }
+.footer a:hover { color: var(--gold); }
+.footer-bottom {
+    max-width: 1100px; margin: 32px auto 0;
+    padding-top: 24px; border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px; color: var(--taupe);
+    letter-spacing: 1px;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { min-height: 70vh; padding: 60px 24px 48px; }
+    .hero-meta { gap: 16px; }
+    .section { padding: 64px 24px; }
+}
+
+/* ---------- PLACEHOLDER IMAGES (work in progress) ---------- */
+.placeholder-img {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #2a1f15 100%);
+    border: 1px dashed var(--taupe);
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--taupe); font-family: -apple-system, sans-serif;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 32px; border-radius: 2px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav">
+    <a href="#" class="nav-brand">
+        The Collinsville Show
+        <small>40th Annual · March 12-14, 2027</small>
+    </a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#visit">Plan Your Visit</a>
+        <a href="#cahokia">Cahokia Mounds</a>
+        <a href="#exhibitors">Exhibitors</a>
+        <a href="https://barnburnerrelics.shop/" class="nav-cta">Barn Burner Relics →</a>
+    </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+    <div class="hero-content">
+        <span class="hero-eyebrow">40th Annual · Authentic Prehistoric Artifacts Only</span>
+        <h1>The Collinsville<br>Prehistoric <em>Artifact Show</em></h1>
+        <p class="hero-sub">
+            Forty years running. Nearly two hundred exhibitors. The largest gathering of serious
+            collectors, dealers, and authentic prehistoric Native American artifacts in the central
+            United States — minutes from Cahokia Mounds, the largest pre-Columbian city north of Mexico.
+        </p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Dates</span>
+                <span class="hero-meta-value">March 12–14, 2027</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Venue</span>
+                <span class="hero-meta-value">Gateway Convention Center</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Admission</span>
+                <span class="hero-meta-value">$5 daily</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Parking</span>
+                <span class="hero-meta-value">Free</span>
+            </div>
+        </div>
+        <div class="hero-ctas">
+            <a href="#visit" class="btn btn-primary">Plan Your Visit</a>
+            <a href="#exhibitors" class="btn btn-secondary">Become an Exhibitor</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- ============================================================
+     QUICK FACTS STRIP
+     ============================================================ -->
+<section class="facts">
+    <div class="facts-grid">
+        <div>
+            <div class="fact-value">40</div>
+            <div class="fact-label">Years Running</div>
+        </div>
+        <div>
+            <div class="fact-value">~200</div>
+            <div class="fact-label">Exhibitors</div>
+        </div>
+        <div>
+            <div class="fact-value">21</div>
+            <div class="fact-label">Hours on the Floor</div>
+        </div>
+        <div>
+            <div class="fact-value">5 mi</div>
+            <div class="fact-label">to Cahokia Mounds</div>
+        </div>
+        <div>
+            <div class="fact-value">25 mi</div>
+            <div class="fact-label">to St. Louis Lambert</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section" id="about">
+    <div class="section-eyebrow">About the Show</div>
+    <h2>Forty years of <em>the real thing.</em></h2>
+    <p class="lede">
+        The Collinsville Prehistoric Artifact Show has run every March since 1988 — first as a regional
+        Midwest gathering, now a coast-to-coast event that draws the country's top collectors, dealers,
+        and authenticators to a single convention center floor in southern Illinois.
+    </p>
+
+    <div class="quote-block">
+        "It's literally the biggest show — the Super Bowl of artifacts."
+        <cite>— Nick Gatses, Organizer</cite>
+    </div>
+
+    <div class="about-grid">
+        <div>
+            <p>
+                The show is invitation-only for dealers and exhibitors. Every piece on the floor
+                is required to be authentic — prehistoric, or pre-1900 historic Native American.
+                No contemporary material. No reproductions. The strictness is the point.
+            </p>
+            <p>
+                That's why collectors come back. It's why Mitch Lewis, who's bought and sold
+                collections from Grotte, Williams, Anderson, and a dozen other named Midwest estates,
+                sets up here every year. It's why the people running the country's top auction
+                houses make the drive.
+            </p>
+            <div class="signature">— Nick Gatses, Organizer</div>
+        </div>
+
+        <div class="about-card">
+            <h3>What you can expect</h3>
+            <p><strong>~200 exhibitors</strong> of authentic prehistoric artifacts — points, bannerstones, knives, celts, pottery, pipes, beads, discoidals.</p>
+            <p style="margin-top:14px;"><strong>All weekend long</strong> on the floor with the country's best collectors, with downtime for serious conversation in the aisles.</p>
+            <p style="margin-top:14px;"><strong>Walkable from any of nine hotels</strong> in the Gateway Convention Center hospitality district.</p>
+            <p style="margin-top:14px;"><strong>Five miles from Cahokia Mounds</strong> — the largest pre-Columbian city north of Mexico. If you're making the trip, climb Monks Mound.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     VISIT / LOGISTICS
+     ============================================================ -->
+<section class="section section-narrow" id="visit">
+    <div class="section-eyebrow">Plan Your Visit</div>
+    <h2>Out-of-town? <em>Here's what you need.</em></h2>
+    <p class="lede">
+        Collinsville is small, easy, and built for this weekend. Within walking distance of the venue:
+        nine hotels, twenty restaurants, free parking, and Cahokia Mounds five miles south.
+    </p>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);margin-top:48px;margin-bottom:24px;">The hours</h3>
+    <table style="width:100%;border-collapse:collapse;font-family:-apple-system,Arial,sans-serif;font-size:15px;">
+        <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:14px 0;color:var(--cream);font-weight:600;">Friday, March 12</td>
+            <td style="padding:14px 0;color:var(--cream-dim);text-align:right;">3:00 PM – 7:00 PM</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:14px 0;color:var(--cream);font-weight:600;">Saturday, March 13</td>
+            <td style="padding:14px 0;color:var(--cream-dim);text-align:right;">8:00 AM – 5:00 PM</td>
+        </tr>
+        <tr>
+            <td style="padding:14px 0;color:var(--cream);font-weight:600;">Sunday, March 14</td>
+            <td style="padding:14px 0;color:var(--cream-dim);text-align:right;">8:00 AM – 2:00 PM</td>
+        </tr>
+    </table>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);margin-top:48px;margin-bottom:24px;">Where to stay</h3>
+    <p>
+        Nine hotels, more than 900 rooms, all walking distance from the venue. Book early — March
+        weekends in Collinsville fill up four to six weeks out, and the Drury and DoubleTree are
+        the first to sell out.
+    </p>
+
+    <div class="hotels">
+        <div class="hotel-tier">
+            <h3>Premium — comfort and amenities</h3>
+            <div class="tier-label">For collectors who want a real room</div>
+            <ul>
+                <li><span class="name">DoubleTree by Hilton Collinsville – St. Louis</span><span class="meta">~0.5 mi · 618-345-2800</span></li>
+                <li><span class="name">Drury Inn & Suites Collinsville</span><span class="meta">602 N Bluff Rd · 618-345-7700 · free Kickback dinner</span></li>
+                <li><span class="name">Fairfield by Marriott Collinsville</span><span class="meta">618-346-0607</span></li>
+                <li><span class="name">Hampton Inn Collinsville</span><span class="meta">618-346-4400</span></li>
+            </ul>
+        </div>
+
+        <div class="hotel-tier">
+            <h3>Mid-range — solid, no frills</h3>
+            <div class="tier-label">For collectors who work the show floor</div>
+            <ul>
+                <li><span class="name">Comfort Inn Collinsville</span><span class="meta">~0.5 km · 618-346-4900</span></li>
+                <li><span class="name">La Quinta Inn & Suites</span><span class="meta">618-855-8400 · pet-friendly</span></li>
+            </ul>
+        </div>
+
+        <div class="hotel-tier">
+            <h3>Budget — just a bed</h3>
+            <div class="tier-label">For the budget-conscious traveler</div>
+            <ul>
+                <li><span class="name">Days Inn</span><span class="meta">618-345-2000</span></li>
+                <li><span class="name">Super 8</span><span class="meta">618-345-8008</span></li>
+                <li><span class="name">Americas Best Value Inn</span><span class="meta">618-345-9500</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);margin-top:48px;margin-bottom:24px;">Getting there</h3>
+    <ul class="guide-list">
+        <li>
+            <strong>Fly into St. Louis Lambert (STL)</strong>
+            <p>25 miles / 30 minutes from the venue. All major car rental brands on-site. Uber/Lyft averages $54. Direct flights from most US hubs.</p>
+        </li>
+        <li>
+            <strong>Driving from anywhere in the Midwest</strong>
+            <p>Chicago 5h · Indianapolis 4h · Nashville 5h · Memphis 4.5h · Kansas City 4h · Louisville 4h. I-55 and I-70 converge at Collinsville. Free parking at the venue.</p>
+        </li>
+        <li>
+            <strong>Amtrak to St. Louis</strong>
+            <p>Lincoln Service from Chicago (4× daily) or Texas Eagle from San Antonio. From Gateway Station, Uber to Collinsville ~25 min, ~$40.</p>
+        </li>
+    </ul>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);margin-top:48px;margin-bottom:24px;">What to bring</h3>
+    <ul class="guide-list">
+        <li>
+            <strong>Cash in small bills + checks</strong>
+            <p>Many vendors don't take cards. Don't be the guy at the table fumbling for a $100.</p>
+        </li>
+        <li>
+            <strong>A 10× loupe and calipers</strong>
+            <p>You'll use both. Make sure your loupe is actually clean.</p>
+        </li>
+        <li>
+            <strong>A notebook for provenance</strong>
+            <p>The best pieces come with a story. Write it down. Photo the COA before you put the piece in your case.</p>
+        </li>
+        <li>
+            <strong>A padded case</strong>
+            <p>If you're buying, you need something to carry it home in. Don't pack a Clovis in your coat pocket.</p>
+        </li>
+        <li>
+            <strong>Patience for Saturday morning</strong>
+            <p>Doors open at 8 AM. The serious buyers are lined up at 7:45. Be one of them.</p>
+        </li>
+    </ul>
+</section>
+
+
+<!-- ============================================================
+     CAHOKIA MOUNDS
+     ============================================================ -->
+<section class="cahokia" id="cahokia">
+    <div class="cahokia-inner">
+        <div class="section-eyebrow">Five miles from the show</div>
+        <h2>Stand on top of a city of <em>twenty thousand people.</em></h2>
+        <p>
+            Cahokia Mounds is the largest pre-Columbian settlement north of Mexico. At its peak around
+            1100 CE, it covered 4,000 acres, included 120 earthen mounds, and had a population of
+            between ten and twenty thousand — larger than London was at the same time.
+        </p>
+        <p>
+            Then it was abandoned. Then it was built over, plowed under, forgotten. Then, in 1982,
+            UNESCO made it a World Heritage Site.
+        </p>
+        <p>
+            Today, the centerpiece is Monks Mound — the largest prehistoric earthen mound in the
+            Americas, 100 feet tall, four terraces, climbable. There's a stairway. At the top, the
+            view explains why this was a city: the river confluence is right there, the bottomland
+            is fertile, and the mound commands everything.
+        </p>
+
+        <div class="stats">
+            <div>
+                <div class="stat-value">100 ft</div>
+                <div class="stat-label">Monks Mound height</div>
+            </div>
+            <div>
+                <div class="stat-value">120</div>
+                <div class="stat-label">Original mounds</div>
+            </div>
+            <div>
+                <div class="stat-value">4,000</div>
+                <div class="stat-label">Acres at peak</div>
+            </div>
+            <div>
+                <div class="stat-value">20,000</div>
+                <div class="stat-label">Peak population</div>
+            </div>
+            <div>
+                <div class="stat-value">1982</div>
+                <div class="stat-label">UNESCO designation</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     THINGS TO DO
+     ============================================================ -->
+<section class="section" id="things-to-do">
+    <div class="section-eyebrow">Beyond the show</div>
+    <h2>You're already here. <em>Stay a day.</em></h2>
+    <p class="lede">
+        Between the show and the mounds, the area has more than you'd expect. Here's how to
+        spend the time that's not on the convention center floor.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-eyebrow">If you have 3 hours</div>
+            <h3>Cahokia Mounds</h3>
+            <p>Climb Monks Mound. Walk the Grand Plaza. See Woodhenge — the wooden solar calendar. Then drive back to the hotel and pretend you're not exhausted.</p>
+            <span class="card-distance">5 mi · 10 min from venue</span>
+        </div>
+
+        <div class="card">
+            <div class="card-eyebrow">If you have a half-day</div>
+            <h3>St. Louis</h3>
+            <p>Cross the river. Forest Park and the Saint Louis Art Museum have one of the finest Mississippian artifact collections in any museum — Cahokia-era pieces excavated from Mound 72. Then Italian on The Hill.</p>
+            <span class="card-distance">12 mi · 15 min from venue</span>
+        </div>
+
+        <div class="card">
+            <div class="card-eyebrow">If you have a full day</div>
+            <h3>St. Louis + Forest Park</h3>
+            <p>Gateway Arch in the morning, Forest Park in the afternoon (the Art Museum is free, the Zoo is free), Pappy's Smokehouse or Italian on The Hill for dinner. The Hill is worth the trip by itself.</p>
+            <span class="card-distance">All under 30 min from venue</span>
+        </div>
+
+        <div class="card">
+            <div class="card-eyebrow">For the family of a collector</div>
+            <h3>Things that aren't artifacts</h3>
+            <p>The Hill (Italian neighborhood). The Gateway Arch. Forest Park Zoo. The City Museum — bizarre, brilliant, adults-only spaces upstairs. Cahokia Mounds itself is a stunning walk.</p>
+            <span class="card-distance">St. Louis · 15 min</span>
+        </div>
+
+        <div class="card">
+            <div class="card-eyebrow">Pre-show</div>
+            <h3>Breakfast in Collinsville</h3>
+            <p>Spring Garden Family Restaurant opens at 6 AM. Lottie's Cafe and Old Herald Brewery & Bistro are also solid. Don't try to find a decent breakfast at the venue.</p>
+            <span class="card-distance">All walking distance</span>
+        </div>
+
+        <div class="card">
+            <div class="card-eyebrow">Post-show dinner</div>
+            <h3>Local food, real food</h3>
+            <p>Bandana's BBQ for casual. Porter's Steakhouse for celebration. Ravanelli's for Italian-American comfort food. Horseshoe Restaurant for late-night sports bar. Don't sleep on the local diners.</p>
+            <span class="card-distance">Walking distance from venue</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     EXHIBITORS
+     ============================================================ -->
+<section class="section section-narrow" id="exhibitors">
+    <div class="section-eyebrow">For Exhibitors</div>
+    <h2>The floor is by <em>invitation.</em></h2>
+    <p class="lede">
+        The Collinsville show is invitation-only for dealers and exhibitors. We keep the floor
+        small enough that every piece is known, vetted, and authentic. That's the whole point.
+    </p>
+    <p>
+        If you've exhibited at major artifact shows and want to be considered for the 40th Annual,
+        reach out. We're typically fully booked by mid-November for the following March, but we
+        occasionally have openings from cancellations or expanded sections.
+    </p>
+
+    <ul class="guide-list" style="margin-top:32px;">
+        <li>
+            <strong>Strict authenticity standards</strong>
+            <p>Only authentic prehistoric or pre-1900 historic Native American artifacts may be displayed or sold. No contemporary Native American material.</p>
+        </li>
+        <li>
+            <strong>Setup logistics</strong>
+            <p>Load-in is the Thursday before the show. Details go to confirmed exhibitors in February.</p>
+        </li>
+        <li>
+            <strong>Hotel block</strong>
+            <p>We hold a small block at the Drury Inn for traveling exhibitors. Mention "Collinsville show exhibitor block" when booking.</p>
+        </li>
+        <li>
+            <strong>To inquire</strong>
+            <p>Contact Nick Gatses via the Barn Burner Relics site (below). He'll respond within a week.</p>
+        </li>
+    </ul>
+
+    <div style="text-align:center;margin-top:48px;">
+        <a href="https://barnburnerrelics.shop/" class="btn btn-primary">Message Nick →</a>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     CTA BAND
+     ============================================================ -->
+<section class="cta-band">
+    <h2>March 12–14, 2027 · Collinsville, IL</h2>
+    <p>
+        Forty years. The Super Bowl of artifacts. Five miles from the largest pre-Columbian
+        city north of Mexico. See you on the floor.
+    </p>
+    <a href="https://barnburnerrelics.shop/" class="btn btn-primary">Visit Barn Burner Relics →</a>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">The Collinsville Show</div>
+            <p>
+                Organized by Nick Gatses. In partnership with the Illinois State Archaeological
+                Society. Held annually at the Gateway Convention Center in Collinsville, Illinois.
+            </p>
+        </div>
+        <div>
+            <h4>Visit</h4>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#visit">Plan Your Visit</a></li>
+                <li><a href="#cahokia">Cahokia Mounds</a></li>
+                <li><a href="#things-to-do">Things to Do</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <ul>
+                <li><a href="https://barnburnerrelics.shop/">Barn Burner Relics</a></li>
+                <li><a href="https://www.gatewaycenter.com/">Gateway Convention Center</a></li>
+                <li><a href="https://cahokiamounds.org/">Cahokia Mounds</a></li>
+                <li><a href="https://illinoisstatearchaeologicalsociety.com/">ISAS</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 The Collinsville Show · A Barn Burner Relics property
+    </div>
+</footer>
+
+</body>
+</html>
