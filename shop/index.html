@@ -335,6 +335,77 @@
         }
         .parent-cta a:hover { background: var(--gold); color: var(--bg); }
 
+        /* Show CTA — drives traffic from shop to the live annual event */
+        .show-cta {
+            position: relative;
+            background:
+                linear-gradient(180deg, rgba(10,8,7,0.78) 0%, rgba(10,8,7,0.92) 100%),
+                url('../show/img/monks-mound-bill-thorpe.jpg') center/cover no-repeat;
+            background-color: #0a0807;
+            text-align: center;
+            padding: 72px 24px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .show-cta-eyebrow {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: inline-block;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #8b4513;
+        }
+        .show-cta h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            font-size: clamp(28px, 5vw, 44px);
+            color: var(--cream);
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        .show-cta h2 em { font-style: italic; color: var(--gold); font-weight: 400; }
+        .show-cta .show-cta-meta {
+            display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--text-dim);
+            margin: 24px 0 32px;
+        }
+        .show-cta .show-cta-meta strong { color: var(--gold); font-weight: 600; }
+        .show-cta p.show-cta-quote {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 19px;
+            color: var(--cream);
+            max-width: 600px;
+            margin: 0 auto 24px;
+            line-height: 1.5;
+        }
+        .show-cta a {
+            display: inline-block;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #1a1410;
+            background: var(--gold);
+            padding: 14px 28px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.15s, transform 0.15s;
+        }
+        .show-cta a:hover { background: var(--cream); transform: translateY(-1px); }
+        @media (max-width: 540px) {
+            .show-cta { padding: 48px 20px; }
+            .show-cta .show-cta-meta { gap: 16px; font-size: 10px; }
+        }
+
         /* Footer */
         footer {
             background: #0a0807;
@@ -578,6 +649,25 @@
     <p>Looking for the rare, museum-grade bannerstones and Paleo material?</p>
     <a href="../">Visit Barn Burner Relics — The Main Vault →</a>
 </div>
+
+<!-- ============================================================
+     SHOW CTA — drives shop traffic to the live annual event.
+     Background is the show page's hero photo (Bill Thorpe, Monks
+     Mound aerial) so the cross-sell reads as connected, not bolted-on.
+     ============================================================ -->
+<section class="show-cta">
+    <span class="show-cta-eyebrow">40th Annual · Authentic Prehistoric Artifacts Only</span>
+    <h2>The Collinsville Prehistoric <em>Artifact Show</em></h2>
+    <p class="show-cta-quote">
+        "It's literally the biggest show — the Super Bowl of artifacts."
+    </p>
+    <div class="show-cta-meta">
+        <span><strong>Dates</strong> · March 12–14, 2027</span>
+        <span><strong>Venue</strong> · Gateway Convention Center, Collinsville, IL</span>
+        <span><strong>Admission</strong> · $5 daily</span>
+    </div>
+    <a href="../show/">Plan Your Visit →</a>
+</section>
 
 <footer>
     <div class="links">
