@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<!-- cache-bust: 2026-07-03T11:40Z -->
+<!-- cache-bust: 2026-07-30T21:45Z -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -17,12 +18,36 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <style>
+:root {
+    --bg: #0d0d0d;
+    --bg-soft: #14110e;
+    --bg-card: #1a1410;
+    --border: #2a2018;
+    --cream: #f5f0e8;
+    --cream-dim: #d4c8a8;
+    --gold: #d4a853;
+    --gold-bright: #ffd700;
+    --oxblood: #8b4513;
+    --oxblood-bright: #a0522d;
+    --taupe: #8b7355;
+    --warm-grey: #b8a88a;
+
+    /* page-level additions (recurring values w/o show token) */
+    --cream-soft: #e8e0d8;
+    --sand: #c8a878;
+    --bg-elev: #1f1a15;
+    --bg-panel: #1a1612;
+    --border-soft: #3a3028;
+    --taupe-dim: #6b5a45;
+    --bg-deep: #16120e;
+}
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-            background: #0d0d0d;
-            color: #e8e0d8;
+            background: var(--bg);
+            color: var(--cream-soft);
             line-height: 1.6;
             font-size: 17px;
             font-weight: 400;
@@ -40,19 +65,19 @@
         }
         .price {
             font-family: 'Playfair Display', Georgia, serif;
-            color: #d4a853;
+            color: var(--gold);
             font-weight: 600;
             letter-spacing: 0.02em;
         }
 
-        /* Hero trust stats removed Jul 19 2026 — replaced by Lifetime Authenticity Guarantee banner (TBD) */
+        /* Hero trust stats removed Jul 19 2026 — replaced by Lifetime Authenticity Guarantee banner */
 
 
 
         /* Announcement bar */
         .announcement {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             text-align: center;
             padding: 11px 16px;
             font-size: 14px;
@@ -61,12 +86,12 @@
             text-transform: uppercase;
             font-family: 'Cormorant Garamond', Georgia, serif;
         }
-        .announcement strong { color: #ffd700; font-weight: 700; }
+        .announcement strong { color: var(--gold-bright); font-weight: 700; }
 
         /* Header */
         header {
-            background: #14110e;
-            border-bottom: 1px solid #2a2018;
+            background: var(--bg-soft);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -87,7 +112,7 @@
         }
         .logo h1 {
             font-size: 22px;
-            color: #f5f0e8;
+            color: var(--cream);
             line-height: 1.2;
             margin: 0;
         }
@@ -112,7 +137,7 @@
         .logo span {
             display: block;
             font-size: 11px;
-            color: #8b7355;
+            color: var(--taupe);
             font-family: -apple-system, sans-serif;
             font-weight: 400;
             letter-spacing: 1px;
@@ -135,31 +160,31 @@
             align-items: center;
             gap: 28px;
             font-size: 13px;
-            color: #b8a88a;
+            color: var(--warm-grey);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .header-links a:hover { color: #d4a853; }
+        .header-links a:hover { color: var(--gold); }
         .header-links .cart-link {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             padding: 8px 18px;
             border-radius: 4px;
             font-weight: 600;
         }
-        .header-links .cart-link:hover { background: #a0522d; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: #e8e0d8; font-size: 24px; cursor: pointer; }
+        .header-links .cart-link:hover { background: var(--oxblood-bright); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--cream-soft); font-size: 24px; cursor: pointer; }
 
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
+            background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
             padding: 40px 24px 60px;
             text-align: center;
-            border-bottom: 1px solid #2a2018;
+            border-bottom: 1px solid var(--border);
         }
-        .hero h1 { font-size: 42px; color: #f5f0e8; margin-bottom: 16px; letter-spacing: 0.5px; }
+        .hero h1 { font-size: 42px; color: var(--cream); margin-bottom: 16px; letter-spacing: 0.5px; }
         .hero p {
-            font-size: 17px; color: #d4c8a8; max-width: 640px;
+            font-size: 17px; color: var(--cream-dim); max-width: 640px;
             margin: 0 auto 32px; line-height: 1.85; font-weight: 500; letter-spacing: 0.015em;
             -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
@@ -192,8 +217,8 @@
 
         /* Section headers */
         .section-header { text-align: center; padding: 60px 24px 40px; }
-        .section-header h2 { font-size: 32px; color: #f5f0e8; margin-bottom: 10px; }
-        .section-header p { color: #8b7355; font-size: 15px; }
+        .section-header h2 { font-size: 32px; color: var(--cream); margin-bottom: 10px; }
+        .section-header p { color: var(--taupe); font-size: 15px; }
 
         /* Category filter — sits between section header and product grid */
         /* Two stacked filter rows: Period (above) + Category (below) */
@@ -208,15 +233,15 @@
             text-align: center;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 11px; font-weight: 600;
-            color: #8b7355;
+            color: var(--taupe);
             text-transform: uppercase;
             letter-spacing: 0.18em;
             margin-bottom: 4px;
         }
         .cat-btn {
             background: rgba(255,255,255,0.04);
-            border: 1px solid #2a2018;
-            color: #c8a878;
+            border: 1px solid var(--border);
+            color: var(--sand);
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 13px; font-weight: 600;
             letter-spacing: 0.06em;
@@ -228,8 +253,8 @@
         .cat-btn:hover { background: rgba(255,255,255,0.08); border-color: #5a4a32; color: #f5e8c8; }
         .cat-btn.active {
             background: #8b6f3f;
-            border-color: #c8a878;
-            color: #16120e;
+            border-color: var(--sand);
+            color: var(--bg-deep);
         }
 
         /* Product grid */
@@ -242,8 +267,8 @@
             margin: 0 auto;
         }
         .product-card {
-            background: #1a1612;
-            border: 1px solid #2a2018;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
@@ -251,12 +276,12 @@
         }
         .product-card:hover {
             transform: translateY(-4px);
-            border-color: #8b4513;
+            border-color: var(--oxblood);
             box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
         }
         .product-card .image-wrap {
             aspect-ratio: 1;
-            background: #1f1a15;
+            background: var(--bg-elev);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -270,7 +295,7 @@
         .product-card:hover .image-wrap img { transform: scale(1.05); }
         .product-card .badge {
             position: absolute; top: 12px; left: 12px;
-            background: #8b4513; color: #f5f0e8;
+            background: var(--oxblood); color: var(--cream);
             font-size: 11px; font-weight: 600;
             padding: 4px 10px; border-radius: 4px;
             text-transform: uppercase; letter-spacing: 0.5px;
@@ -278,23 +303,23 @@
         .product-card .badge.sold { background: #4a4a4a; }
 
         /* Featured / Sold / New badge colors — triggered by p.tag in render code */
-        .product-card .badge.featured { background: #c9a24b; color: #1f1a15; }
+        .product-card .badge.featured { background: #c9a24b; color: var(--bg-elev); }
         .product-card .badge.new { background: #4a7c4f; }
         .product-card.sold-card { opacity: 0.55; filter: grayscale(0.5); }
         .product-card.sold-card:hover { opacity: 0.75; }
-        .product-card .info .price.sold-price { color: #8b7355; text-decoration: line-through; text-decoration-color: #6b5a45; }
+        .product-card .info .price.sold-price { color: var(--taupe); text-decoration: line-through; text-decoration-color: var(--taupe-dim); }
         .product-card .info { padding: 14px 16px 16px; }
-        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.35; }
+        .product-card .info h3 { font-size: 16px; color: var(--cream); margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.35; }
 
         .product-card .info .price-row {
             display: flex; align-items: center; justify-content: space-between;
             margin-top: 8px;
         }
         .product-card .info .price-row .price { font-size: 17px; font-weight: 600; }
-        .product-card .info .price-row .price.inquire-price { color: #d4a853; font-style: italic; font-weight: 500; }
-        .product-card .info .price-row .period { font-size: 11px; color: #6b5a45; }
+        .product-card .info .price-row .price.inquire-price { color: var(--gold); font-style: italic; font-weight: 500; }
+        .product-card .info .price-row .period { font-size: 11px; color: var(--taupe-dim); }
         .product-card .info .price-row .card-cat {
-            font-size: 10px; color: #c8a878;
+            font-size: 10px; color: var(--sand);
             text-transform: uppercase; letter-spacing: 0.12em;
             font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
         }
@@ -313,8 +338,8 @@
         .product-detail {
             max-width: 1100px;
             margin: 0 auto;
-            background: #16120e;
-            border: 1px solid #2a2018;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
             animation: fadeIn 0.25s ease;
@@ -325,22 +350,22 @@
         }
         .detail-close {
             position: sticky; top: 0; float: right;
-            background: #2a2018; border: none;
-            color: #e8e0d8; font-size: 24px;
+            background: var(--border); border: none;
+            color: var(--cream-soft); font-size: 24px;
             width: 44px; height: 44px; border-radius: 50%;
             cursor: pointer; z-index: 10;
             margin: 12px;
             display: flex; align-items: center; justify-content: center;
             transition: background 0.2s;
         }
-        .detail-close:hover { background: #8b4513; }
+        .detail-close:hover { background: var(--oxblood); }
         .detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
         /* Detail gallery */
-        .detail-gallery { background: #1a1612; padding: 40px; }
+        .detail-gallery { background: var(--bg-panel); padding: 40px; }
         .detail-gallery .main-image {
             width: 100%; aspect-ratio: 1;
-            object-fit: cover; border-radius: 8px;
-            background: #1f1a15;
+            object-fit: contain; border-radius: 8px;
+            background: var(--bg-elev);
         }
 
         /* Video link card (replaces iframe embed for mobile-friendliness) */
@@ -349,9 +374,9 @@
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 */
-            background: #0d0d0d
+            background: var(--bg)
                 var(--video-thumb, url('https://i.ytimg.com/vi/CWLbTf_DFwA/hqdefault.jpg')) center/cover no-repeat;
-            border: 1px solid #8b4513;
+            border: 1px solid var(--oxblood);
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 18px;
@@ -367,7 +392,7 @@
             width: 0; height: 0;
             border-style: solid;
             border-width: 22px 0 22px 36px;
-            border-color: transparent transparent transparent #d4a853;
+            border-color: transparent transparent transparent var(--gold);
             filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7));
         }
         .video-link::after {
@@ -383,7 +408,7 @@
             position: absolute;
             bottom: 10px; right: 12px;
             background: rgba(0,0,0,0.85);
-            color: #f5f0e8;
+            color: var(--cream);
             font-size: 11px;
             font-weight: 600;
             padding: 3px 7px;
@@ -395,7 +420,7 @@
         .video-link .video-title {
             position: absolute;
             bottom: 10px; left: 14px; right: 80px;
-            color: #f5f0e8;
+            color: var(--cream);
             font-size: 13px;
             font-weight: 500;
             font-family: 'Cormorant Garamond', Georgia, serif;
@@ -404,7 +429,7 @@
         }
         .video-link-caption {
             font-size: 12px;
-            color: #8b7355;
+            color: var(--taupe);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             text-align: center;
@@ -420,13 +445,13 @@
             width: 72px; height: 72px; object-fit: cover;
             border-radius: 6px; cursor: pointer;
             border: 2px solid transparent;
-            transition: border-color 0.2s; background: #1f1a15;
+            transition: border-color 0.2s; background: var(--bg-elev);
         }
-        .detail-thumbs img.active { border-color: #d4a853; }
-        .detail-thumbs img:hover { border-color: #8b7355; }
+        .detail-thumbs img.active { border-color: var(--gold); }
+        .detail-thumbs img:hover { border-color: var(--taupe); }
         .detail-info { padding: 40px 40px 40px 0; }
-        .detail-info .breadcrumb { font-size: 12px; color: #6b5a45; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .detail-info h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 4px; }
+        .detail-info .breadcrumb { font-size: 12px; color: var(--taupe-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-info h2 { font-size: 28px; color: var(--cream); margin-bottom: 4px; }
         .detail-info .detail-period {
             font-size: 15px;
             color: #c8b48a;
@@ -437,9 +462,9 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
         .detail-info .detail-price { font-size: 32px; margin-bottom: 24px; }
-        .detail-info .detail-price .label { font-size: 14px; color: #8b7355; font-family: -apple-system, sans-serif; font-weight: 400; }
+        .detail-info .detail-price .label { font-size: 14px; color: var(--taupe); font-family: -apple-system, sans-serif; font-weight: 400; }
         .detail-info .desc {
-            color: #d4c8a8;
+            color: var(--cream-dim);
             font-size: 16px;
             line-height: 1.85;
             margin-bottom: 24px;
@@ -450,25 +475,43 @@
         }
         .detail-info .desc p { margin-bottom: 12px; }
         .detail-meta {
-            background: #1a1612; border: 1px solid #2a2018;
+            background: var(--bg-panel); border: 1px solid var(--border);
             border-radius: 8px; padding: 20px; margin-bottom: 24px;
         }
-        .detail-meta h4 { font-size: 13px; color: #8b7355; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-meta h4 { font-size: 13px; color: var(--taupe); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .detail-meta table { width: 100%; border-collapse: collapse; }
-        .detail-meta td { padding: 8px 0; font-size: 14px; border-bottom: 1px solid #1f1a15; }
-        .detail-meta td:first-child { color: #8b7355; width: 40%; font-weight: 500; }
-        .detail-meta td:last-child { color: #e8e0d8; }
+        .detail-meta td { padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg-elev); }
+        .detail-meta td:first-child { color: var(--taupe); width: 40%; font-weight: 500; }
+        .detail-meta td:last-child { color: var(--cream-soft); }
         .detail-meta tr:last-child td { border-bottom: none; }
+        .bridge-band {
+            max-width: 720px; margin: 56px auto 8px; padding: 44px 32px;
+            text-align: center;
+            background: linear-gradient(180deg, #141008 0%, var(--bg) 100%);
+            border: 1px solid rgba(212, 168, 83, 0.35);
+            border-radius: 4px;
+        }
+        .bridge-band .bridge-eyebrow {
+            font-family: -apple-system, Arial, sans-serif; font-size: 11px; font-weight: 600;
+            letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+        }
+        .bridge-band h3 {
+            font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 600;
+            color: var(--cream); margin-bottom: 12px;
+        }
+        .bridge-band p:not(.bridge-eyebrow) {
+            font-size: 16px; color: var(--cream-dim); line-height: 1.6; margin-bottom: 22px;
+        }
         .btn-inquire {
             display: inline-block;
-            background: #8b4513; color: #f5f0e8;
+            background: var(--oxblood); color: var(--cream);
             padding: 14px 36px; border-radius: 6px;
             font-weight: 600; font-size: 15px;
             border: none; cursor: pointer;
             transition: background 0.2s;
             text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-inquire:hover { background: #a0522d; }
+        .btn-inquire:hover { background: var(--oxblood-bright); }
         /* Messenger picker overlay */
         .messenger-overlay {
             display: none;
@@ -482,27 +525,27 @@
         .messenger-overlay.active { display: flex; align-items: center; justify-content: center; }
         .messenger-modal {
             max-width: 480px; width: 100%;
-            background: #16120e;
-            border: 1px solid #2a2018;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 32px 28px;
             text-align: center;
             animation: fadeIn 0.25s ease;
         }
-        .messenger-modal h3 { font-size: 22px; color: #f5f0e8; margin-bottom: 10px; }
-        .messenger-modal p { color: #b8a88a; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
-        .messenger-modal p strong { color: #d4a853; }
+        .messenger-modal h3 { font-size: 22px; color: var(--cream); margin-bottom: 10px; }
+        .messenger-modal p { color: var(--warm-grey); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+        .messenger-modal p strong { color: var(--gold); }
         .messenger-btn {
             display: flex; align-items: center; gap: 14px;
-            background: #1a1612;
-            border: 1px solid #2a2018;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 16px 18px;
             margin-bottom: 12px;
             text-align: left;
             transition: border-color 0.2s, transform 0.15s;
         }
-        .messenger-btn:hover { border-color: #d4a853; transform: translateY(-2px); }
+        .messenger-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
         .messenger-btn .messenger-icon {
             font-size: 28px; flex-shrink: 0;
             width: 44px; height: 44px;
@@ -511,24 +554,24 @@
             border-radius: 50%;
         }
         .messenger-btn .messenger-icon-email {
-            background: linear-gradient(135deg, #d4a853 0%, #8b6914 100%);
+            background: linear-gradient(135deg, var(--gold) 0%, #8b6914 100%);
         }
         .messenger-btn strong {
             display: block;
-            color: #f5f0e8;
+            color: var(--cream);
             font-size: 15px;
             margin-bottom: 2px;
         }
         .messenger-btn small {
             display: block;
-            color: #8b7355;
+            color: var(--taupe);
             font-size: 12px;
             font-family: -apple-system, sans-serif;
         }
         .messenger-close {
             background: transparent;
-            border: 1px solid #2a2018;
-            color: #8b7355;
+            border: 1px solid var(--border);
+            color: var(--taupe);
             padding: 10px 24px;
             border-radius: 6px;
             font-size: 13px;
@@ -537,13 +580,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .messenger-close:hover { border-color: #8b7355; color: #e8e0d8; }
+        .messenger-close:hover { border-color: var(--taupe); color: var(--cream-soft); }
 
         /* About */
         .about-section { padding: 60px 24px; max-width: 800px; margin: 0 auto; text-align: center; }
-        .about-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 16px; }
+        .about-section h2 { font-size: 28px; color: var(--cream); margin-bottom: 16px; }
         .about-section p {
-            color: #d4c8a8;
+            color: var(--cream-dim);
             font-size: 16px;
             line-height: 1.85;
             margin-bottom: 16px;
@@ -552,21 +595,21 @@
             -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
-        .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: #d4a853; font-size: 18px; margin-top: 24px; }
+        .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: var(--gold); font-size: 18px; margin-top: 24px; }
         .about-video { margin-top: 36px; max-width: 720px; margin-left: auto; margin-right: auto; }
         .about-video .video-link { border-color: rgba(212, 168, 83, 0.32); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
         /* Footer */
         footer {
-            background: #0d0d0d; border-top: 1px solid #1a1612;
+            background: var(--bg); border-top: 1px solid var(--bg-panel);
             padding: 40px 24px; text-align: center;
         }
         footer .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
-        footer .links a { color: #d4a853; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-        footer .links a:hover { color: #ffd700; }
-        footer .links a.gallery-link { color: #ffd700; font-weight: 600; }
+        footer .links a { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        footer .links a:hover { color: var(--gold-bright); }
+        footer .links a.gallery-link { color: var(--gold-bright); font-weight: 600; }
         footer .links a.gallery-link:hover { color: #ffffff; }
-        footer .copy { font-size: 12px; color: #8b7355; font-style: italic; }
+        footer .copy { font-size: 12px; color: var(--taupe); font-style: italic; }
 
         /* Cross-site top nav (identical block on /shop/ and /gallery/) */
         .site-nav {
@@ -574,51 +617,51 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            background: linear-gradient(90deg, #0a0807 0%, #14110e 50%, #0a0807 100%);
-            border-bottom: 1px solid #2a2018;
+            background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+            border-bottom: 1px solid var(--border);
             padding: 9px 24px;
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
             font-size: 13px;
             letter-spacing: 1.4px;
             text-transform: uppercase;
-            color: #8b7355;
+            color: var(--taupe);
             flex-wrap: wrap;
         }
         .site-nav-brand {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #d4a853;
+            color: var(--gold);
             text-decoration: none;
             font-weight: 700;
             letter-spacing: 1.5px;
             white-space: nowrap;
         }
         .site-nav-brand-mark {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 2px;
             padding: 3px 8px;
             border-radius: 2px;
-            border: 1px solid #d4a853;
+            border: 1px solid var(--gold);
         }
         .site-nav-brand-text { font-size: 13px; }
         .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
         .site-nav-links a {
-            color: #8b7355;
+            color: var(--taupe);
             text-decoration: none;
             font-weight: 500;
             padding: 6px 0;
             border-bottom: 1px solid transparent;
             transition: color 0.15s ease, border-color 0.15s ease;
         }
-        .site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
+        .site-nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
         .site-nav-links a[data-key="fb"] { color: #1877f2; }
         .site-nav-links a[data-key="fb"]:hover { color: #5ea3ff; border-bottom-color: #5ea3ff; }
-        .site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
+        .site-nav-links a.active { color: var(--cream); border-bottom-color: var(--gold); }
         @media (max-width: 540px) {
             .site-nav { padding: 8px 14px; }
             .site-nav-brand-text { display: none; }
@@ -652,7 +695,7 @@
 
 <div class="announcement">
     ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM Central Time &nbsp;·&nbsp;
-    <a href="gallery/" style="color:#d4a853; text-decoration: underline;">View the Auction Gallery →</a>
+    <a href="gallery/" style="color:var(--gold); text-decoration: underline;">View the Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
@@ -666,19 +709,20 @@
     <a href="./"         data-key="sales"   class="active">Vault &amp; Sales</a>
     <a href="shop/"      data-key="shop"    >BBR Shop</a>
     <a href="gallery/"   data-key="gallery" >Monday Auction</a>
+    <a href="show/"      data-key="show"    >Collinsville Show</a>
     <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" data-key="fb">Facebook ↗</a>
   </div>
 </nav>
 
 <header>
     <div class="header-inner">
-        <a href="#" onclick="closeDetail(); return false;" class="logo">
+        <a href="./" class="logo">
             <img src="images/bbr-logo-header.jpg" alt="Barn Burner Relics Inc" class="header-logo-img">
         </a>
         <nav class="header-links">
-            <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
-            <a href="shop/" style="color:#d4a853;">Everyday Shop ↗</a>
-            <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
+            <a href="#shop" onclick="closeDetail();">Shop</a>
+            <a href="shop/" style="color:var(--gold);">Everyday Shop ↗</a>
+            <a href="#about" onclick="closeDetail();">About</a>
             <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
         </nav>
         <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
@@ -695,7 +739,7 @@
         Every piece is personally vetted by Nick Gatses — a lifetime guarantee of authenticity
         with every purchase.
     </p>
-    <a href="#" class="btn-inquire" onclick="closeDetail(); scrollToSection('shop'); return false;">Browse the Collection</a>
+    <a href="#shop" class="btn-inquire" onclick="closeDetail();">Browse the Collection</a>
 
     <div class="signature-block">
         <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
@@ -728,6 +772,12 @@
 </div>
 
 <div class="product-grid" id="productGrid"></div>
+<div class="bridge-band">
+    <p class="bridge-eyebrow">New to relics?</p>
+    <h3>Real pieces from $20 — same lifetime guarantee.</h3>
+    <p>The vault above is museum-grade. The Barn Burner Shop is where collectors start: single points and framed relics, priced plainly, shipped weekly.</p>
+    <a href="shop/" class="btn-inquire">Browse the Everyday Shop →</a>
+</div>
 
 <section class="about-section" id="about">
     <h2>About Barn Burner Relics</h2>
@@ -740,7 +790,12 @@
         context to collection history and cultural significance. He personally guarantees every piece he sells for life.
     </p>
     <p>
-        Nick organizes the <a href="show/" style="color:#d4a853;border-bottom:1px solid #8b4513;padding-bottom:2px;text-decoration:none;">Collinsville Prehistoric Artifact Show</a> — among the largest prehistoric artifact shows in the country — and is a regular exhibitor at the annual Starved Rock Native American Artifact Show. His weekly Facebook auctions draw collectors from across the United States.
+        <em>The guarantee, in plain terms:</em> if any piece we sell is ever shown not to be authentic,
+        we refund the full purchase price — no time limit, no fine print. Every piece ships with its
+        documented provenance.
+    </p>
+    <p>
+        Nick organizes the <a href="show/" style="color:var(--gold);border-bottom:1px solid var(--oxblood);padding-bottom:2px;text-decoration:none;">Collinsville Prehistoric Artifact Show</a> — among the largest prehistoric artifact shows in the country — and is a regular exhibitor at the annual Starved Rock Native American Artifact Show. His weekly Facebook auctions draw collectors from across the United States.
         </p>
     <div class="signature">— Nick Gatses, Proprietor</div>
     <div class="about-video">
@@ -763,7 +818,7 @@
         padding: 22px 28px;
         background: rgba(26, 20, 16, 0.5);
         border: 1px solid rgba(212, 168, 83, 0.28);
-        border-left: 3px solid #8b4513;
+        border-left: 3px solid var(--oxblood);
         border-radius: 4px;
         text-align: left;
     }
@@ -771,12 +826,12 @@
         font-family: 'Cormorant Garamond', Georgia, serif;
         font-size: 17px;
         line-height: 1.55;
-        color: #d4c8a8;
+        color: var(--cream-dim);
         font-style: italic;
         letter-spacing: 0.01em;
     }
     .services-cta .services-line strong {
-        color: #d4a853;
+        color: var(--gold);
         font-style: normal;
         font-weight: 600;
         letter-spacing: 0.02em;
@@ -785,19 +840,19 @@
         margin-top: 10px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         font-size: 12px;
-        color: #8b7355;
+        color: var(--taupe);
         letter-spacing: 1.5px;
         text-transform: uppercase;
     }
     .services-cta .services-action a {
-        color: #d4a853;
+        color: var(--gold);
         text-decoration: none;
         border-bottom: 1px solid rgba(212, 168, 83, 0.4);
         padding-bottom: 1px;
     }
     .services-cta .services-action a:hover {
-        color: #ffd700;
-        border-bottom-color: #ffd700;
+        color: var(--gold-bright);
+        border-bottom-color: var(--gold-bright);
     }
     @media (max-width: 600px) {
         .services-cta { padding: 18px 20px; }
@@ -863,9 +918,9 @@
 <footer>
     <div class="links">
         <a href="gallery/" class="gallery-link">View the Auction Gallery →</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('services'); return false;">Buying &amp; Appraisals</a>
+        <a href="#shop" onclick="closeDetail();">Shop</a>
+        <a href="#about" onclick="closeDetail();">About</a>
+        <a href="#services" onclick="closeDetail();">Buying &amp; Appraisals</a>
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a>
         <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank" rel="noopener">Instagram</a>
@@ -884,7 +939,7 @@
                     category: 'Bannerstones',
                     images: ['images/quartz-bottle-banner-hero.jpg', 'images/quartz-bottle-banner-1.png', 'images/quartz-bottle-banner-2.png', 'images/quartz-bottle-banner-3.jpg'],
                     description: '<a href="https://youtube.com/shorts/2WHWPNRgd9k" target="_blank" rel="noopener" class="video-link" style="--video-thumb: url(\'https://i.ytimg.com/vi/2WHWPNRgd9k/hq2.jpg\');" aria-label="Watch the Quartz Bottle Bannerstone video on YouTube"><span class="video-title">Quartz Bottle Bannerstone</span><span class="video-duration">1:05</span></a><div class="video-link-caption">Watch the video · 1 minute 5 seconds</div><p>A <strong>translucent peachy-pink quartz bottle bannerstone</strong> recovered from Buchanan County, Missouri — and a piece with the kind of paper trail you almost never see anymore. Bottle bannerstones are rare in any material. In <strong>quartz</strong> — the rarest bannerstone material class — they sit at the absolute top of the Archaic lapidary hierarchy. The stone is hard, brittle, and notoriously difficult to work; the bottle form requires the four-knob profile to read clearly from any angle; and the fully drilled biconical perforation has to survive the process intact. This piece checks every one of those boxes.</p><p>What separates this piece from anything else in the current bannerstone market is the <strong>published, documented five-owner provenance chain</strong> — not just a chain, but one that ties back-to-back into <em>Who\'s Who in Indian Relics</em> on two separate pages:</p><p><strong>Provenance chain:</strong> Finder (Buchanan County, MO) → <strong>Ed Buel</strong> (purchased direct from finder; Buel collection pictured in <em>Who\'s Who</em>, page 40) → <strong>Joe Kinker</strong> → <strong>Floyd Ritter</strong> (Ritter spread pictured in <em>Who\'s Who</em>, page 6 — the bottle is the centerpiece of the collection case shown on that page, with the inscription "B RITTER / BUCHANAN CO / MO" visible on the piece itself) → <strong>Terry Stumpf</strong> → <strong>Barn Burner Relics</strong>.</p><p>The piece carries an engraved collector inscription on its lower face: "<strong>B. RITTER / BUCHANAN / MO</strong>" — Floyd Ritter\'s own hand, marking it as part of his published Buchanan County, Missouri collection. The display-case photograph (image #3) is the actual page-6 spread from <em>Who\'s Who in Indian Relics</em>: thirteen bannerstones arranged in a fitted black-foam case, with this bottle sitting in the center middle position. The piece is pictured twice in the reference — once on its own, and once as the focal point of the Ritter spread.</p><p>Five owners over the last fifty years. Three of them published in the same reference book. Two consecutive page references (page 6, page 40). One piece of quartz that\'s been passed hand to hand across the Midwest, with the paper trail to prove it. This is not provenance as a footnote — provenance as the whole pitch.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>',
-                    specs: {'Material':'Translucent Quartz (peachy-pink coloration, subtle banding — rarest of all bannerstone material classes)','Origin':'Buchanan County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Bottle Bannerstone (four-knob bottle form with fully drilled biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Inscription on Piece':'"B. RITTER / BUCHANAN / MO" engraved on lower face (Floyd Ritter\'s hand)','Publication History':'Pictured on the Floyd Ritter spread in "Who\'s Who in Indian Relics," page 6 (bottle is centerpiece of the 13-piece display case); Ed Buel collection pictured on page 40 of the same reference','Provenance Chain':'Finder (Buchanan Co., MO) → Ed Buel → Joe Kinker → Floyd Ritter → Terry Stumpf → Barn Burner Relics','Notable Feature':'Quartz (rarest bannerstone material) in bottle form (rarest bannerstone type); biconical perforation (Archaic-era drilling signature); engraved collector inscription on piece; published in two consecutive pages of Who\'s Who in Indian Relics (pp. 6 & 40)','Condition':'Excellent — surface intact, perforation clean, no restoration visible','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
+                    specs: {'Material':'Translucent Quartz (peachy-pink coloration, subtle banding — rarest of all bannerstone material classes)','Origin':'Buchanan County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Bottle Bannerstone (four-knob bottle form with fully drilled biconical perforation)','Dimensions':'Full dimensions on request','Provenance Inscription on Piece':'"B. RITTER / BUCHANAN / MO" engraved on lower face (Floyd Ritter\'s hand)','Publication History':'Pictured on the Floyd Ritter spread in "Who\'s Who in Indian Relics," page 6 (bottle is centerpiece of the 13-piece display case); Ed Buel collection pictured on page 40 of the same reference','Provenance Chain':'Finder (Buchanan Co., MO) → Ed Buel → Joe Kinker → Floyd Ritter → Terry Stumpf → Barn Burner Relics','Notable Feature':'Quartz (rarest bannerstone material) in bottle form (rarest bannerstone type); biconical perforation (Archaic-era drilling signature); engraved collector inscription on piece; published in two consecutive pages of Who\'s Who in Indian Relics (pp. 6 & 40)','Condition':'Excellent — surface intact, perforation clean, no restoration visible','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 },
                 {
                     id: 'diorite-barrel-bannerstone',
@@ -894,7 +949,7 @@
                     category: 'Bannerstones',
                     images: ['images/diorite-barrel-2.jpg', 'images/diorite-barrel-stickers.jpg', 'images/diorite-barrel-3.jpg', 'images/diorite-barrel-1.jpg', 'images/diorite-barrel-4.jpg'],
                     description: '<a href="https://youtube.com/shorts/CWLbTf_DFwA" target="_blank" rel="noopener" class="video-link" aria-label="Watch the Rectangular Barrel Diorite Bannerstone video on YouTube"><span class="video-title">Rectangular Barrel Diorite Bannerstone</span><span class="video-duration">1:11</span></a><div class="video-link-caption">Watch the video · 1 minute 11 seconds</div><p>A <strong>rectangular barrel bannerstone</strong> cut from diorite — the warm pink-and-black speckled stone collectors call "granite" or "hard stone." This is the textbook form as referenced in the bannerstone book: a four-sided barrel with gently rounded corners and a fully drilled biconical perforation (tapered bore, drilled from both faces to meet in the middle — the classic bannerstone perforation technique). The polish on this piece is the kind of finish that takes a very long time on diorite, given the stone\'s hardness.</p><p><strong>Provenance chain:</strong> Byron Knoblock collection → Paul Titterington collection → Nick Gatses. Both previous collectors are well-known names in the relic hobby; both are no longer with us. This is a piece with a documented collector history.</p><p>Two provenance stickers preserved on the piece: red-bordered oval "B-32 / DUNKLIN / CO. MO" and white round handwritten "B36 / CA3600." Dunklin County, Missouri — southeastern Bootheel — is classic diorite-bannerstone territory.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message us for current pricing and condition details.</p>',
-                    specs: {'Material':'Diorite (pinkish-tan with dense black speckling — collectors call this "granite" or "hard stone")','Origin':'Dunklin County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Rectangular Barrel Bannerstone (four-sided barrel form with fully drilled biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "B-32 / DUNKLIN CO. MO"; white round handwritten "B36 / CA3600"','Provenance Chain':'Byron Knoblock collection → Paul Titterington collection → Nick Gatses','Notable Feature':'Diorite (rarest bannerstone material class); rectangular barrel form (rarest bannerstone shape); fully drilled biconical perforation; both previous collectors are documented names in the hobby','Condition':'Excellent — described in video as "very tedious work especially to get a finish like that on a piece this nice"','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
+                    specs: {'Material':'Diorite (pinkish-tan with dense black speckling — collectors call this "granite" or "hard stone")','Origin':'Dunklin County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Rectangular Barrel Bannerstone (four-sided barrel form with fully drilled biconical perforation)','Dimensions':'Full dimensions on request','Provenance Stickers on Piece':'Red-bordered oval "B-32 / DUNKLIN CO. MO"; white round handwritten "B36 / CA3600"','Provenance Chain':'Byron Knoblock collection → Paul Titterington collection → Nick Gatses','Notable Feature':'Diorite (rarest bannerstone material class); rectangular barrel form (rarest bannerstone shape); fully drilled biconical perforation; both previous collectors are documented names in the hobby','Condition':'Excellent — described in video as "very tedious work especially to get a finish like that on a piece this nice"','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 },
                 {
                     id: 'butterfly-bannerstone',
@@ -905,7 +960,7 @@
                     category: 'Bannerstones',
                     images: ['images/butterfly-banner-1.jpg', 'images/butterfly-banner-2.jpg', 'images/butterfly-banner-3.jpg', 'images/butterfly-banner-4.jpg'],
                     description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>',
-                    specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'TBD — measure on intake','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
+                    specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'Full dimensions on request','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 },
                 {
                     id: 'quartz-banner-cosach-1917',
@@ -915,7 +970,7 @@
                     category: 'Bannerstones',
                     images: ['images/quartz-banner-1.jpg', 'images/quartz-banner-2.jpg', 'images/quartz-banner-3.jpg', 'images/quartz-banner-4.jpg'],
                     description: '<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rare material in a rare form, with the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. Shows the documented Cusick Collection #1917 sticker, "MIKE ECK" handwritten note, M.S.C. / 83 institutional tag, and back tags "7,500" and "Ex Eckler / Owen." Provenance chain: <strong>Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses</strong>. Biconical perforation (Archaic-era drilling signature, ~3,000–5,000 BP).</p><p><strong>Condition:</strong> Both wing tips are broken and have been glued back on. Repair is documented here as-is, consistent with our restoration-disclosure policy on every catalog piece.</p><p>No third-party Certificate of Authenticity. Lifetime Authenticity Guarantee.</p><p><strong>Price: Inquire.</strong></p>',
-                    specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'Provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'TBD — measure on intake','Provenance Stickers on Piece':'Red-bordered oval "M.S.C. / 83" tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK / CB50" (Cusick catalog #1917, sub-code CB50)','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Provenance Chain':'Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Condition':'Both wing tips broken and glued back on (disclosed)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
+                    specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'Provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'Full dimensions on request','Provenance Stickers on Piece':'Red-bordered oval "M.S.C. / 83" tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK / CB50" (Cusick catalog #1917, sub-code CB50)','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Provenance Chain':'Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Condition':'Both wing tips broken and glued back on (disclosed)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
                 }
     ];
 
@@ -923,9 +978,9 @@
         const grid = document.getElementById('productGrid');
         const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
             '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
-            '<rect width="800" height="800" fill="#1f1a15"/>' +
-            '<text x="400" y="380" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="20">Click to View</text>' +
-            '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
+            '<rect width="800" height="800" fill="var(--bg-elev)"/>' +
+            '<text x="400" y="380" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="20">Click to View</text>' +
+            '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
             '</svg>'
         );
         grid.innerHTML = products
@@ -958,7 +1013,7 @@
         }).join('');
 
         if (!grid.innerHTML) {
-            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:#8b7355;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;">No pieces match these filters yet. <a href="#" onclick="resetFilters();return false;" style="color:#c8a878;text-decoration:underline;">Reset filters</a></div>`;
+            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--taupe);font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;">No pieces match these filters yet. <a href="#" onclick="resetFilters();return false;" style="color:var(--sand);text-decoration:underline;">Reset filters</a></div>`;
         }
     }
 
@@ -995,9 +1050,9 @@
         const mainImg = document.getElementById('detailMainImage');
         const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
             '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
-            '<rect width="800" height="800" fill="#1f1a15"/>' +
-            '<text x="400" y="380" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="20">Click to View</text>' +
-            '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
+            '<rect width="800" height="800" fill="var(--bg-elev)"/>' +
+            '<text x="400" y="380" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="20">Click to View</text>' +
+            '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
             '</svg>'
         );
         mainImg.src = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
@@ -1067,9 +1122,9 @@
             nav.style.top = '100%';
             nav.style.left = '0';
             nav.style.right = '0';
-            nav.style.background = '#14110e';
+            nav.style.background = 'var(--bg-soft)';
             nav.style.padding = '20px';
-            nav.style.borderBottom = '1px solid #2a2018';
+            nav.style.borderBottom = '1px solid var(--border)';
             nav.style.zIndex = '99';
         } else {
             nav.style = '';
