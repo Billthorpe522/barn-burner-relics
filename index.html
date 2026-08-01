@@ -18,12 +18,36 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <style>
+:root {
+    --bg: #0d0d0d;
+    --bg-soft: #14110e;
+    --bg-card: #1a1410;
+    --border: #2a2018;
+    --cream: #f5f0e8;
+    --cream-dim: #d4c8a8;
+    --gold: #d4a853;
+    --gold-bright: #ffd700;
+    --oxblood: #8b4513;
+    --oxblood-bright: #a0522d;
+    --taupe: #8b7355;
+    --warm-grey: #b8a88a;
+
+    /* page-level additions (recurring values w/o show token) */
+    --cream-soft: #e8e0d8;
+    --sand: #c8a878;
+    --bg-elev: #1f1a15;
+    --bg-panel: #1a1612;
+    --border-soft: #3a3028;
+    --taupe-dim: #6b5a45;
+    --bg-deep: #16120e;
+}
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-            background: #0d0d0d;
-            color: #e8e0d8;
+            background: var(--bg);
+            color: var(--cream-soft);
             line-height: 1.6;
             font-size: 17px;
             font-weight: 400;
@@ -41,7 +65,7 @@
         }
         .price {
             font-family: 'Playfair Display', Georgia, serif;
-            color: #d4a853;
+            color: var(--gold);
             font-weight: 600;
             letter-spacing: 0.02em;
         }
@@ -52,8 +76,8 @@
 
         /* Announcement bar */
         .announcement {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             text-align: center;
             padding: 11px 16px;
             font-size: 14px;
@@ -62,12 +86,12 @@
             text-transform: uppercase;
             font-family: 'Cormorant Garamond', Georgia, serif;
         }
-        .announcement strong { color: #ffd700; font-weight: 700; }
+        .announcement strong { color: var(--gold-bright); font-weight: 700; }
 
         /* Header */
         header {
-            background: #14110e;
-            border-bottom: 1px solid #2a2018;
+            background: var(--bg-soft);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -88,7 +112,7 @@
         }
         .logo h1 {
             font-size: 22px;
-            color: #f5f0e8;
+            color: var(--cream);
             line-height: 1.2;
             margin: 0;
         }
@@ -113,7 +137,7 @@
         .logo span {
             display: block;
             font-size: 11px;
-            color: #8b7355;
+            color: var(--taupe);
             font-family: -apple-system, sans-serif;
             font-weight: 400;
             letter-spacing: 1px;
@@ -136,31 +160,31 @@
             align-items: center;
             gap: 28px;
             font-size: 13px;
-            color: #b8a88a;
+            color: var(--warm-grey);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .header-links a:hover { color: #d4a853; }
+        .header-links a:hover { color: var(--gold); }
         .header-links .cart-link {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             padding: 8px 18px;
             border-radius: 4px;
             font-weight: 600;
         }
-        .header-links .cart-link:hover { background: #a0522d; }
-        .mobile-menu-btn { display: none; background: none; border: none; color: #e8e0d8; font-size: 24px; cursor: pointer; }
+        .header-links .cart-link:hover { background: var(--oxblood-bright); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--cream-soft); font-size: 24px; cursor: pointer; }
 
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
+            background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
             padding: 40px 24px 60px;
             text-align: center;
-            border-bottom: 1px solid #2a2018;
+            border-bottom: 1px solid var(--border);
         }
-        .hero h1 { font-size: 42px; color: #f5f0e8; margin-bottom: 16px; letter-spacing: 0.5px; }
+        .hero h1 { font-size: 42px; color: var(--cream); margin-bottom: 16px; letter-spacing: 0.5px; }
         .hero p {
-            font-size: 17px; color: #d4c8a8; max-width: 640px;
+            font-size: 17px; color: var(--cream-dim); max-width: 640px;
             margin: 0 auto 32px; line-height: 1.85; font-weight: 500; letter-spacing: 0.015em;
             -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
@@ -193,8 +217,8 @@
 
         /* Section headers */
         .section-header { text-align: center; padding: 60px 24px 40px; }
-        .section-header h2 { font-size: 32px; color: #f5f0e8; margin-bottom: 10px; }
-        .section-header p { color: #8b7355; font-size: 15px; }
+        .section-header h2 { font-size: 32px; color: var(--cream); margin-bottom: 10px; }
+        .section-header p { color: var(--taupe); font-size: 15px; }
 
         /* Category filter — sits between section header and product grid */
         /* Two stacked filter rows: Period (above) + Category (below) */
@@ -209,15 +233,15 @@
             text-align: center;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 11px; font-weight: 600;
-            color: #8b7355;
+            color: var(--taupe);
             text-transform: uppercase;
             letter-spacing: 0.18em;
             margin-bottom: 4px;
         }
         .cat-btn {
             background: rgba(255,255,255,0.04);
-            border: 1px solid #2a2018;
-            color: #c8a878;
+            border: 1px solid var(--border);
+            color: var(--sand);
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 13px; font-weight: 600;
             letter-spacing: 0.06em;
@@ -229,8 +253,8 @@
         .cat-btn:hover { background: rgba(255,255,255,0.08); border-color: #5a4a32; color: #f5e8c8; }
         .cat-btn.active {
             background: #8b6f3f;
-            border-color: #c8a878;
-            color: #16120e;
+            border-color: var(--sand);
+            color: var(--bg-deep);
         }
 
         /* Product grid */
@@ -243,8 +267,8 @@
             margin: 0 auto;
         }
         .product-card {
-            background: #1a1612;
-            border: 1px solid #2a2018;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
@@ -252,12 +276,12 @@
         }
         .product-card:hover {
             transform: translateY(-4px);
-            border-color: #8b4513;
+            border-color: var(--oxblood);
             box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
         }
         .product-card .image-wrap {
             aspect-ratio: 1;
-            background: #1f1a15;
+            background: var(--bg-elev);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -271,7 +295,7 @@
         .product-card:hover .image-wrap img { transform: scale(1.05); }
         .product-card .badge {
             position: absolute; top: 12px; left: 12px;
-            background: #8b4513; color: #f5f0e8;
+            background: var(--oxblood); color: var(--cream);
             font-size: 11px; font-weight: 600;
             padding: 4px 10px; border-radius: 4px;
             text-transform: uppercase; letter-spacing: 0.5px;
@@ -279,23 +303,23 @@
         .product-card .badge.sold { background: #4a4a4a; }
 
         /* Featured / Sold / New badge colors — triggered by p.tag in render code */
-        .product-card .badge.featured { background: #c9a24b; color: #1f1a15; }
+        .product-card .badge.featured { background: #c9a24b; color: var(--bg-elev); }
         .product-card .badge.new { background: #4a7c4f; }
         .product-card.sold-card { opacity: 0.55; filter: grayscale(0.5); }
         .product-card.sold-card:hover { opacity: 0.75; }
-        .product-card .info .price.sold-price { color: #8b7355; text-decoration: line-through; text-decoration-color: #6b5a45; }
+        .product-card .info .price.sold-price { color: var(--taupe); text-decoration: line-through; text-decoration-color: var(--taupe-dim); }
         .product-card .info { padding: 14px 16px 16px; }
-        .product-card .info h3 { font-size: 16px; color: #f5f0e8; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.35; }
+        .product-card .info h3 { font-size: 16px; color: var(--cream); margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.35; }
 
         .product-card .info .price-row {
             display: flex; align-items: center; justify-content: space-between;
             margin-top: 8px;
         }
         .product-card .info .price-row .price { font-size: 17px; font-weight: 600; }
-        .product-card .info .price-row .price.inquire-price { color: #d4a853; font-style: italic; font-weight: 500; }
-        .product-card .info .price-row .period { font-size: 11px; color: #6b5a45; }
+        .product-card .info .price-row .price.inquire-price { color: var(--gold); font-style: italic; font-weight: 500; }
+        .product-card .info .price-row .period { font-size: 11px; color: var(--taupe-dim); }
         .product-card .info .price-row .card-cat {
-            font-size: 10px; color: #c8a878;
+            font-size: 10px; color: var(--sand);
             text-transform: uppercase; letter-spacing: 0.12em;
             font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
         }
@@ -314,8 +338,8 @@
         .product-detail {
             max-width: 1100px;
             margin: 0 auto;
-            background: #16120e;
-            border: 1px solid #2a2018;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
             animation: fadeIn 0.25s ease;
@@ -326,22 +350,22 @@
         }
         .detail-close {
             position: sticky; top: 0; float: right;
-            background: #2a2018; border: none;
-            color: #e8e0d8; font-size: 24px;
+            background: var(--border); border: none;
+            color: var(--cream-soft); font-size: 24px;
             width: 44px; height: 44px; border-radius: 50%;
             cursor: pointer; z-index: 10;
             margin: 12px;
             display: flex; align-items: center; justify-content: center;
             transition: background 0.2s;
         }
-        .detail-close:hover { background: #8b4513; }
+        .detail-close:hover { background: var(--oxblood); }
         .detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
         /* Detail gallery */
-        .detail-gallery { background: #1a1612; padding: 40px; }
+        .detail-gallery { background: var(--bg-panel); padding: 40px; }
         .detail-gallery .main-image {
             width: 100%; aspect-ratio: 1;
             object-fit: contain; border-radius: 8px;
-            background: #1f1a15;
+            background: var(--bg-elev);
         }
 
         /* Video link card (replaces iframe embed for mobile-friendliness) */
@@ -350,9 +374,9 @@
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 */
-            background: #0d0d0d
+            background: var(--bg)
                 var(--video-thumb, url('https://i.ytimg.com/vi/CWLbTf_DFwA/hqdefault.jpg')) center/cover no-repeat;
-            border: 1px solid #8b4513;
+            border: 1px solid var(--oxblood);
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 18px;
@@ -368,7 +392,7 @@
             width: 0; height: 0;
             border-style: solid;
             border-width: 22px 0 22px 36px;
-            border-color: transparent transparent transparent #d4a853;
+            border-color: transparent transparent transparent var(--gold);
             filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7));
         }
         .video-link::after {
@@ -384,7 +408,7 @@
             position: absolute;
             bottom: 10px; right: 12px;
             background: rgba(0,0,0,0.85);
-            color: #f5f0e8;
+            color: var(--cream);
             font-size: 11px;
             font-weight: 600;
             padding: 3px 7px;
@@ -396,7 +420,7 @@
         .video-link .video-title {
             position: absolute;
             bottom: 10px; left: 14px; right: 80px;
-            color: #f5f0e8;
+            color: var(--cream);
             font-size: 13px;
             font-weight: 500;
             font-family: 'Cormorant Garamond', Georgia, serif;
@@ -405,7 +429,7 @@
         }
         .video-link-caption {
             font-size: 12px;
-            color: #8b7355;
+            color: var(--taupe);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             text-align: center;
@@ -421,13 +445,13 @@
             width: 72px; height: 72px; object-fit: cover;
             border-radius: 6px; cursor: pointer;
             border: 2px solid transparent;
-            transition: border-color 0.2s; background: #1f1a15;
+            transition: border-color 0.2s; background: var(--bg-elev);
         }
-        .detail-thumbs img.active { border-color: #d4a853; }
-        .detail-thumbs img:hover { border-color: #8b7355; }
+        .detail-thumbs img.active { border-color: var(--gold); }
+        .detail-thumbs img:hover { border-color: var(--taupe); }
         .detail-info { padding: 40px 40px 40px 0; }
-        .detail-info .breadcrumb { font-size: 12px; color: #6b5a45; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .detail-info h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 4px; }
+        .detail-info .breadcrumb { font-size: 12px; color: var(--taupe-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-info h2 { font-size: 28px; color: var(--cream); margin-bottom: 4px; }
         .detail-info .detail-period {
             font-size: 15px;
             color: #c8b48a;
@@ -438,9 +462,9 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
         .detail-info .detail-price { font-size: 32px; margin-bottom: 24px; }
-        .detail-info .detail-price .label { font-size: 14px; color: #8b7355; font-family: -apple-system, sans-serif; font-weight: 400; }
+        .detail-info .detail-price .label { font-size: 14px; color: var(--taupe); font-family: -apple-system, sans-serif; font-weight: 400; }
         .detail-info .desc {
-            color: #d4c8a8;
+            color: var(--cream-dim);
             font-size: 16px;
             line-height: 1.85;
             margin-bottom: 24px;
@@ -451,43 +475,43 @@
         }
         .detail-info .desc p { margin-bottom: 12px; }
         .detail-meta {
-            background: #1a1612; border: 1px solid #2a2018;
+            background: var(--bg-panel); border: 1px solid var(--border);
             border-radius: 8px; padding: 20px; margin-bottom: 24px;
         }
-        .detail-meta h4 { font-size: 13px; color: #8b7355; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-meta h4 { font-size: 13px; color: var(--taupe); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .detail-meta table { width: 100%; border-collapse: collapse; }
-        .detail-meta td { padding: 8px 0; font-size: 14px; border-bottom: 1px solid #1f1a15; }
-        .detail-meta td:first-child { color: #8b7355; width: 40%; font-weight: 500; }
-        .detail-meta td:last-child { color: #e8e0d8; }
+        .detail-meta td { padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg-elev); }
+        .detail-meta td:first-child { color: var(--taupe); width: 40%; font-weight: 500; }
+        .detail-meta td:last-child { color: var(--cream-soft); }
         .detail-meta tr:last-child td { border-bottom: none; }
         .bridge-band {
             max-width: 720px; margin: 56px auto 8px; padding: 44px 32px;
             text-align: center;
-            background: linear-gradient(180deg, #141008 0%, #0d0d0d 100%);
+            background: linear-gradient(180deg, #141008 0%, var(--bg) 100%);
             border: 1px solid rgba(212, 168, 83, 0.35);
             border-radius: 4px;
         }
         .bridge-band .bridge-eyebrow {
             font-family: -apple-system, Arial, sans-serif; font-size: 11px; font-weight: 600;
-            letter-spacing: 2.5px; text-transform: uppercase; color: #d4a853; margin-bottom: 10px;
+            letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
         }
         .bridge-band h3 {
             font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 600;
-            color: #f5f0e8; margin-bottom: 12px;
+            color: var(--cream); margin-bottom: 12px;
         }
         .bridge-band p:not(.bridge-eyebrow) {
-            font-size: 16px; color: #d4c8a8; line-height: 1.6; margin-bottom: 22px;
+            font-size: 16px; color: var(--cream-dim); line-height: 1.6; margin-bottom: 22px;
         }
         .btn-inquire {
             display: inline-block;
-            background: #8b4513; color: #f5f0e8;
+            background: var(--oxblood); color: var(--cream);
             padding: 14px 36px; border-radius: 6px;
             font-weight: 600; font-size: 15px;
             border: none; cursor: pointer;
             transition: background 0.2s;
             text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-inquire:hover { background: #a0522d; }
+        .btn-inquire:hover { background: var(--oxblood-bright); }
         /* Messenger picker overlay */
         .messenger-overlay {
             display: none;
@@ -501,27 +525,27 @@
         .messenger-overlay.active { display: flex; align-items: center; justify-content: center; }
         .messenger-modal {
             max-width: 480px; width: 100%;
-            background: #16120e;
-            border: 1px solid #2a2018;
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 32px 28px;
             text-align: center;
             animation: fadeIn 0.25s ease;
         }
-        .messenger-modal h3 { font-size: 22px; color: #f5f0e8; margin-bottom: 10px; }
-        .messenger-modal p { color: #b8a88a; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
-        .messenger-modal p strong { color: #d4a853; }
+        .messenger-modal h3 { font-size: 22px; color: var(--cream); margin-bottom: 10px; }
+        .messenger-modal p { color: var(--warm-grey); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+        .messenger-modal p strong { color: var(--gold); }
         .messenger-btn {
             display: flex; align-items: center; gap: 14px;
-            background: #1a1612;
-            border: 1px solid #2a2018;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 16px 18px;
             margin-bottom: 12px;
             text-align: left;
             transition: border-color 0.2s, transform 0.15s;
         }
-        .messenger-btn:hover { border-color: #d4a853; transform: translateY(-2px); }
+        .messenger-btn:hover { border-color: var(--gold); transform: translateY(-2px); }
         .messenger-btn .messenger-icon {
             font-size: 28px; flex-shrink: 0;
             width: 44px; height: 44px;
@@ -530,24 +554,24 @@
             border-radius: 50%;
         }
         .messenger-btn .messenger-icon-email {
-            background: linear-gradient(135deg, #d4a853 0%, #8b6914 100%);
+            background: linear-gradient(135deg, var(--gold) 0%, #8b6914 100%);
         }
         .messenger-btn strong {
             display: block;
-            color: #f5f0e8;
+            color: var(--cream);
             font-size: 15px;
             margin-bottom: 2px;
         }
         .messenger-btn small {
             display: block;
-            color: #8b7355;
+            color: var(--taupe);
             font-size: 12px;
             font-family: -apple-system, sans-serif;
         }
         .messenger-close {
             background: transparent;
-            border: 1px solid #2a2018;
-            color: #8b7355;
+            border: 1px solid var(--border);
+            color: var(--taupe);
             padding: 10px 24px;
             border-radius: 6px;
             font-size: 13px;
@@ -556,13 +580,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        .messenger-close:hover { border-color: #8b7355; color: #e8e0d8; }
+        .messenger-close:hover { border-color: var(--taupe); color: var(--cream-soft); }
 
         /* About */
         .about-section { padding: 60px 24px; max-width: 800px; margin: 0 auto; text-align: center; }
-        .about-section h2 { font-size: 28px; color: #f5f0e8; margin-bottom: 16px; }
+        .about-section h2 { font-size: 28px; color: var(--cream); margin-bottom: 16px; }
         .about-section p {
-            color: #d4c8a8;
+            color: var(--cream-dim);
             font-size: 16px;
             line-height: 1.85;
             margin-bottom: 16px;
@@ -571,21 +595,21 @@
             -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
-        .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: #d4a853; font-size: 18px; margin-top: 24px; }
+        .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: var(--gold); font-size: 18px; margin-top: 24px; }
         .about-video { margin-top: 36px; max-width: 720px; margin-left: auto; margin-right: auto; }
         .about-video .video-link { border-color: rgba(212, 168, 83, 0.32); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
         /* Footer */
         footer {
-            background: #0d0d0d; border-top: 1px solid #1a1612;
+            background: var(--bg); border-top: 1px solid var(--bg-panel);
             padding: 40px 24px; text-align: center;
         }
         footer .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
-        footer .links a { color: #d4a853; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-        footer .links a:hover { color: #ffd700; }
-        footer .links a.gallery-link { color: #ffd700; font-weight: 600; }
+        footer .links a { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        footer .links a:hover { color: var(--gold-bright); }
+        footer .links a.gallery-link { color: var(--gold-bright); font-weight: 600; }
         footer .links a.gallery-link:hover { color: #ffffff; }
-        footer .copy { font-size: 12px; color: #8b7355; font-style: italic; }
+        footer .copy { font-size: 12px; color: var(--taupe); font-style: italic; }
 
         /* Cross-site top nav (identical block on /shop/ and /gallery/) */
         .site-nav {
@@ -593,51 +617,51 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            background: linear-gradient(90deg, #0a0807 0%, #14110e 50%, #0a0807 100%);
-            border-bottom: 1px solid #2a2018;
+            background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+            border-bottom: 1px solid var(--border);
             padding: 9px 24px;
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
             font-size: 13px;
             letter-spacing: 1.4px;
             text-transform: uppercase;
-            color: #8b7355;
+            color: var(--taupe);
             flex-wrap: wrap;
         }
         .site-nav-brand {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #d4a853;
+            color: var(--gold);
             text-decoration: none;
             font-weight: 700;
             letter-spacing: 1.5px;
             white-space: nowrap;
         }
         .site-nav-brand-mark {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 2px;
             padding: 3px 8px;
             border-radius: 2px;
-            border: 1px solid #d4a853;
+            border: 1px solid var(--gold);
         }
         .site-nav-brand-text { font-size: 13px; }
         .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
         .site-nav-links a {
-            color: #8b7355;
+            color: var(--taupe);
             text-decoration: none;
             font-weight: 500;
             padding: 6px 0;
             border-bottom: 1px solid transparent;
             transition: color 0.15s ease, border-color 0.15s ease;
         }
-        .site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
+        .site-nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
         .site-nav-links a[data-key="fb"] { color: #1877f2; }
         .site-nav-links a[data-key="fb"]:hover { color: #5ea3ff; border-bottom-color: #5ea3ff; }
-        .site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
+        .site-nav-links a.active { color: var(--cream); border-bottom-color: var(--gold); }
         @media (max-width: 540px) {
             .site-nav { padding: 8px 14px; }
             .site-nav-brand-text { display: none; }
@@ -671,7 +695,7 @@
 
 <div class="announcement">
     ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM Central Time &nbsp;·&nbsp;
-    <a href="gallery/" style="color:#d4a853; text-decoration: underline;">View the Auction Gallery →</a>
+    <a href="gallery/" style="color:var(--gold); text-decoration: underline;">View the Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
@@ -697,7 +721,7 @@
         </a>
         <nav class="header-links">
             <a href="#shop" onclick="closeDetail();">Shop</a>
-            <a href="shop/" style="color:#d4a853;">Everyday Shop ↗</a>
+            <a href="shop/" style="color:var(--gold);">Everyday Shop ↗</a>
             <a href="#about" onclick="closeDetail();">About</a>
             <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
         </nav>
@@ -771,7 +795,7 @@
         documented provenance.
     </p>
     <p>
-        Nick organizes the <a href="show/" style="color:#d4a853;border-bottom:1px solid #8b4513;padding-bottom:2px;text-decoration:none;">Collinsville Prehistoric Artifact Show</a> — among the largest prehistoric artifact shows in the country — and is a regular exhibitor at the annual Starved Rock Native American Artifact Show. His weekly Facebook auctions draw collectors from across the United States.
+        Nick organizes the <a href="show/" style="color:var(--gold);border-bottom:1px solid var(--oxblood);padding-bottom:2px;text-decoration:none;">Collinsville Prehistoric Artifact Show</a> — among the largest prehistoric artifact shows in the country — and is a regular exhibitor at the annual Starved Rock Native American Artifact Show. His weekly Facebook auctions draw collectors from across the United States.
         </p>
     <div class="signature">— Nick Gatses, Proprietor</div>
     <div class="about-video">
@@ -794,7 +818,7 @@
         padding: 22px 28px;
         background: rgba(26, 20, 16, 0.5);
         border: 1px solid rgba(212, 168, 83, 0.28);
-        border-left: 3px solid #8b4513;
+        border-left: 3px solid var(--oxblood);
         border-radius: 4px;
         text-align: left;
     }
@@ -802,12 +826,12 @@
         font-family: 'Cormorant Garamond', Georgia, serif;
         font-size: 17px;
         line-height: 1.55;
-        color: #d4c8a8;
+        color: var(--cream-dim);
         font-style: italic;
         letter-spacing: 0.01em;
     }
     .services-cta .services-line strong {
-        color: #d4a853;
+        color: var(--gold);
         font-style: normal;
         font-weight: 600;
         letter-spacing: 0.02em;
@@ -816,19 +840,19 @@
         margin-top: 10px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         font-size: 12px;
-        color: #8b7355;
+        color: var(--taupe);
         letter-spacing: 1.5px;
         text-transform: uppercase;
     }
     .services-cta .services-action a {
-        color: #d4a853;
+        color: var(--gold);
         text-decoration: none;
         border-bottom: 1px solid rgba(212, 168, 83, 0.4);
         padding-bottom: 1px;
     }
     .services-cta .services-action a:hover {
-        color: #ffd700;
-        border-bottom-color: #ffd700;
+        color: var(--gold-bright);
+        border-bottom-color: var(--gold-bright);
     }
     @media (max-width: 600px) {
         .services-cta { padding: 18px 20px; }
@@ -954,9 +978,9 @@
         const grid = document.getElementById('productGrid');
         const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
             '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
-            '<rect width="800" height="800" fill="#1f1a15"/>' +
-            '<text x="400" y="380" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="20">Click to View</text>' +
-            '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
+            '<rect width="800" height="800" fill="var(--bg-elev)"/>' +
+            '<text x="400" y="380" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="20">Click to View</text>' +
+            '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
             '</svg>'
         );
         grid.innerHTML = products
@@ -989,7 +1013,7 @@
         }).join('');
 
         if (!grid.innerHTML) {
-            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:#8b7355;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;">No pieces match these filters yet. <a href="#" onclick="resetFilters();return false;" style="color:#c8a878;text-decoration:underline;">Reset filters</a></div>`;
+            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--taupe);font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;">No pieces match these filters yet. <a href="#" onclick="resetFilters();return false;" style="color:var(--sand);text-decoration:underline;">Reset filters</a></div>`;
         }
     }
 
@@ -1026,9 +1050,9 @@
         const mainImg = document.getElementById('detailMainImage');
         const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
             '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
-            '<rect width="800" height="800" fill="#1f1a15"/>' +
-            '<text x="400" y="380" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="20">Click to View</text>' +
-            '<text x="400" y="420" text-anchor="middle" fill="#3a3028" font-family="Georgia" font-size="14">Artifact Photo</text>' +
+            '<rect width="800" height="800" fill="var(--bg-elev)"/>' +
+            '<text x="400" y="380" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="20">Click to View</text>' +
+            '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
             '</svg>'
         );
         mainImg.src = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
@@ -1098,9 +1122,9 @@
             nav.style.top = '100%';
             nav.style.left = '0';
             nav.style.right = '0';
-            nav.style.background = '#14110e';
+            nav.style.background = 'var(--bg-soft)';
             nav.style.padding = '20px';
-            nav.style.borderBottom = '1px solid #2a2018';
+            nav.style.borderBottom = '1px solid var(--border)';
             nav.style.zIndex = '99';
         } else {
             nav.style = '';

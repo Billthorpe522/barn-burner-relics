@@ -12,12 +12,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+:root {
+    --bg: #0d0d0d;
+    --bg-soft: #14110e;
+    --bg-card: #1a1410;
+    --border: #2a2018;
+    --cream: #f5f0e8;
+    --cream-dim: #d4c8a8;
+    --gold: #d4a853;
+    --gold-bright: #ffd700;
+    --oxblood: #8b4513;
+    --oxblood-bright: #a0522d;
+    --taupe: #8b7355;
+    --warm-grey: #b8a88a;
+
+    /* page-level additions (recurring values w/o show token) */
+    --cream-soft: #e8e0d8;
+    --sand: #c8a878;
+    --bg-elev: #1f1a15;
+    --bg-panel: #1a1612;
+    --border-soft: #3a3028;
+    --taupe-dim: #6b5a45;
+    --bg-deep: #16120e;
+}
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-            background: #0d0d0d;
-            color: #f5f0e8;
+            background: var(--bg);
+            color: var(--cream);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
@@ -26,8 +50,8 @@
 
         /* === HEADER === */
         header {
-            background: #14110e;
-            border-bottom: 1px solid #2a2018;
+            background: var(--bg-soft);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 50;
@@ -41,15 +65,15 @@
             margin: 0 auto;
         }
         .header-back {
-            color: #b8a88a;
+            color: var(--warm-grey);
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.2s;
         }
-        .header-back:hover { color: #d4a853; }
+        .header-back:hover { color: var(--gold); }
         .header-title {
-            color: #8b7355;
+            color: var(--taupe);
             font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -58,10 +82,10 @@
 
         /* === HERO === */
         .hero {
-        background: linear-gradient(135deg, #1a1410 0%, #2c1f14 50%, #1a1410 100%);
+        background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
         padding: 0 0 40px;
         text-align: center;
-        border-bottom: 1px solid #2a2018;
+        border-bottom: 1px solid var(--border);
         }
         .hero-image-wrap {
         width: 100%;
@@ -84,14 +108,14 @@
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 44px;
-            color: #f5f0e8;
+            color: var(--cream);
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 10px;
         }
         .hero .hero-date {
             font-size: 13px;
-            color: #c8a878;
+            color: var(--sand);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 22px;
@@ -100,7 +124,7 @@
         }
         .hero .hero-note {
             font-size: 16px;
-            color: #b8a88a;
+            color: var(--warm-grey);
             max-width: 640px;
             margin: 0 auto;
             line-height: 1.7;
@@ -130,7 +154,7 @@
         .countdown .cd-num {
             font-size: 32px;
             font-weight: 600;
-            color: #d4a853;
+            color: var(--gold);
             letter-spacing: 1px;
             line-height: 1;
             font-variant-numeric: tabular-nums;
@@ -140,7 +164,7 @@
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #8b7355;
+            color: var(--taupe);
             margin-top: 6px;
             font-weight: 600;
         }
@@ -195,13 +219,13 @@
         .section-label h2 {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 22px;
-            color: #d4a853;
+            color: var(--gold);
             font-weight: 600;
             letter-spacing: 0.5px;
         }
         .section-label p {
             font-size: 12px;
-            color: #8b7355;
+            color: var(--taupe);
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 8px;
@@ -221,8 +245,8 @@
 
         .photo-tile {
             position: relative;
-            background: #1a1612;
-            border: 1px solid #2a2018;
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
             aspect-ratio: 4/3;
@@ -231,7 +255,7 @@
         }
         .photo-tile:hover {
             transform: translateY(-2px);
-            border-color: #8b4513;
+            border-color: var(--oxblood);
             box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
         }
         .photo-tile img {
@@ -244,7 +268,7 @@
             top: 10px;
             left: 10px;
             background: rgba(0,0,0,0.7);
-            color: #d4a853;
+            color: var(--gold);
             font-size: 11px;
             font-weight: 700;
             padding: 4px 8px;
@@ -261,7 +285,7 @@
             bottom: 0;
             padding: 18px 12px 10px;
             background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0) 100%);
-            color: #f5f0e8;
+            color: var(--cream);
             display: flex;
             flex-direction: column;
             gap: 2px;
@@ -272,12 +296,12 @@
             font-size: 14px;
             font-weight: 600;
             line-height: 1.25;
-            color: #f5f0e8;
+            color: var(--cream);
         }
         .photo-tile .tile-caption-desc {
             font-family: -apple-system, sans-serif;
             font-size: 10.5px;
-            color: #b8a88a;
+            color: var(--warm-grey);
             line-height: 1.3;
             letter-spacing: 0.2px;
         }
@@ -286,11 +310,11 @@
         .photo-tile.lead-tile {
             grid-column: 1 / -1;
             aspect-ratio: 16/9;
-            border: 2px solid #d4a853;
+            border: 2px solid var(--gold);
             box-shadow: 0 12px 40px rgba(212, 168, 83, 0.18), 0 2px 8px rgba(0,0,0,0.4);
         }
         .photo-tile.lead-tile:hover {
-            border-color: #ffd700;
+            border-color: var(--gold-bright);
             box-shadow: 0 16px 56px rgba(212, 168, 83, 0.28), 0 4px 12px rgba(0,0,0,0.5);
         }
         .photo-tile.lead-tile .tile-number {
@@ -299,7 +323,7 @@
             font-size: 13px;
             padding: 6px 12px;
             background: rgba(212, 168, 83, 0.95);
-            color: #1a1410;
+            color: var(--bg-card);
             letter-spacing: 1.5px;
         }
         .photo-tile.lead-tile .lead-tag {
@@ -307,8 +331,8 @@
             top: 16px;
             right: 16px;
             background: rgba(26, 20, 16, 0.92);
-            color: #d4a853;
-            border: 1px solid #d4a853;
+            color: var(--gold);
+            border: 1px solid var(--gold);
             padding: 8px 14px;
             border-radius: 4px;
             font-family: -apple-system, sans-serif;
@@ -340,7 +364,7 @@
             right: 10px;
             background: rgba(0, 0, 0, 0.85);
             color: #e8e8e8;
-            border: 1px solid #6b5a45;
+            border: 1px solid var(--taupe-dim);
             padding: 4px 10px;
             border-radius: 3px;
             font-family: -apple-system, sans-serif;
@@ -401,7 +425,7 @@
             -webkit-user-drag: none;
         }
         .lightbox-counter {
-            color: #c8a878;
+            color: var(--sand);
             font-size: 13px;
             margin-top: 14px;
             letter-spacing: 2px;
@@ -414,7 +438,7 @@
             right: 0;
             background: rgba(212, 168, 83, 0.15);
             border: 1px solid rgba(212, 168, 83, 0.4);
-            color: #d4a853;
+            color: var(--gold);
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -433,7 +457,7 @@
             transform: translateY(-50%);
             background: rgba(26, 20, 16, 0.75);
             border: 1.5px solid rgba(212, 168, 83, 0.7);
-            color: #d4a853;
+            color: var(--gold);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -451,7 +475,7 @@
         }
         .lightbox-nav:hover {
             background: rgba(212, 168, 83, 0.45);
-            border-color: #ffd700;
+            border-color: var(--gold-bright);
         }
         .lightbox-nav:active { transform: translateY(-50%) scale(0.94); }
         /* Anchored to the STAGE, not the image — so position is stable */
@@ -525,7 +549,7 @@
         }
         .fb-cta-sub {
         font-size: 13px;
-        color: #d4c8a8;
+        color: var(--cream-dim);
         font-style: italic;
         letter-spacing: 0.3px;
         margin-top: 2px;
@@ -537,7 +561,7 @@
         width: 60%;
         max-width: 200px;
         height: 1px;
-        background: linear-gradient(to right, transparent, #8b4513, transparent);
+        background: linear-gradient(to right, transparent, var(--oxblood), transparent);
         margin: 4px auto 0;
         }
         @media (max-width: 600px) {
@@ -552,51 +576,51 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            background: linear-gradient(90deg, #0a0807 0%, #14110e 50%, #0a0807 100%);
-            border-bottom: 1px solid #2a2018;
+            background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+            border-bottom: 1px solid var(--border);
             padding: 9px 24px;
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
             font-size: 13px;
             letter-spacing: 1.4px;
             text-transform: uppercase;
-            color: #8b7355;
+            color: var(--taupe);
             flex-wrap: wrap;
         }
         .site-nav-brand {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #d4a853;
+            color: var(--gold);
             text-decoration: none;
             font-weight: 700;
             letter-spacing: 1.5px;
             white-space: nowrap;
         }
         .site-nav-brand-mark {
-            background: #8b4513;
-            color: #f5f0e8;
+            background: var(--oxblood);
+            color: var(--cream);
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 2px;
             padding: 3px 8px;
             border-radius: 2px;
-            border: 1px solid #d4a853;
+            border: 1px solid var(--gold);
         }
         .site-nav-brand-text { font-size: 13px; }
         .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
         .site-nav-links a {
-            color: #8b7355;
+            color: var(--taupe);
             text-decoration: none;
             font-weight: 500;
             padding: 6px 0;
             border-bottom: 1px solid transparent;
             transition: color 0.15s ease, border-color 0.15s ease;
         }
-        .site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
+        .site-nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
         .site-nav-links a[data-key="fb"] { color: #1877f2; }
         .site-nav-links a[data-key="fb"]:hover { color: #5ea3ff; border-bottom-color: #5ea3ff; }
-        .site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
+        .site-nav-links a.active { color: var(--cream); border-bottom-color: var(--gold); }
         @media (max-width: 540px) {
             .site-nav { padding: 8px 14px; }
             .site-nav-brand-text { display: none; }
@@ -693,7 +717,7 @@
             padding: 22px 28px;
             background: rgba(26, 20, 16, 0.5);
             border: 1px solid rgba(212, 168, 83, 0.28);
-            border-left: 3px solid #8b4513;
+            border-left: 3px solid var(--oxblood);
             border-radius: 4px;
             text-align: left;
         }
@@ -701,12 +725,12 @@
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 17px;
             line-height: 1.55;
-            color: #d4c8a8;
+            color: var(--cream-dim);
             font-style: italic;
             letter-spacing: 0.01em;
         }
         .services-cta .services-line strong {
-            color: #d4a853;
+            color: var(--gold);
             font-style: normal;
             font-weight: 600;
             letter-spacing: 0.02em;
@@ -715,19 +739,19 @@
             margin-top: 10px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             font-size: 12px;
-            color: #8b7355;
+            color: var(--taupe);
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
         .services-cta .services-action a {
-            color: #d4a853;
+            color: var(--gold);
             text-decoration: none;
             border-bottom: 1px solid rgba(212, 168, 83, 0.4);
             padding-bottom: 1px;
         }
         .services-cta .services-action a:hover {
-            color: #ffd700;
-            border-bottom-color: #ffd700;
+            color: var(--gold-bright);
+            border-bottom-color: var(--gold-bright);
         }
         @media (max-width: 600px) {
             .services-cta { padding: 18px 20px; }
@@ -744,14 +768,14 @@
         </div>
         </div>
 
-        <footer style="background:#0d0d0d;border-top:1px solid #1a1612;padding:30px 24px 22px;text-align:center;">
+        <footer style="background:var(--bg);border-top:1px solid var(--bg-panel);padding:30px 24px 22px;text-align:center;">
     <div class="fb-cta">
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Join Barn Burner Relics on Facebook">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             <span>Join the Facebook Group</span>
         </a>
-        <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Watch Barn Burner Relics on YouTube" style="margin-top:10px;background:#1a1612;border-color:#d4a853;color:#d4a853;">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="fill:#d4a853;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Watch Barn Burner Relics on YouTube" style="margin-top:10px;background:var(--bg-panel);border-color:var(--gold);color:var(--gold);">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="fill:var(--gold);"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             <span>Watch on YouTube</span>
         </a>
         <div class="fb-cta-sub" style="margin-top:8px;">Videos, bannerstone spotlights, and collector stories</div>
@@ -759,10 +783,10 @@
         <div class="fb-cta-divider"></div>
     </div>
     <div style="margin-bottom:14px;display:flex;flex-direction:column;align-items:center;gap:10px;">
-        <a href="../" style="color:#d4a853;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid #8b4513;padding-bottom:2px;">Back to the Vault →</a>
-        <a href="../shop/" style="color:#d4a853;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid #8b4513;padding-bottom:2px;">Check out our store →</a>
+        <a href="../" style="color:var(--gold);font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid var(--oxblood);padding-bottom:2px;">Back to the Vault →</a>
+        <a href="../shop/" style="color:var(--gold);font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-family:-apple-system,Arial,sans-serif;font-weight:600;border-bottom:1px solid var(--oxblood);padding-bottom:2px;">Check out our store →</a>
     </div>
-    <div style="font-size:12px;color:#3a3028;">
+    <div style="font-size:12px;color:var(--border-soft);">
         © 2026 Barn Burner Relics Inc. — Manhattan, IL · All artifacts guaranteed authentic for life.
     </div>
 </footer>
