@@ -107,11 +107,26 @@
         }
         .hero h1 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 44px;
+            font-size: clamp(40px, 7vw, 84px);
+            line-height: 1.05;
             color: var(--cream);
             font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+        }
+        .hero h1 em {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--gold);
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            color: var(--gold); font-size: 13px;
+            font-family: -apple-system, Arial, sans-serif;
+            letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+            padding-bottom: 6px; border-bottom: 1px solid #8b4513;
+            margin-bottom: 24px;
         }
         .hero .hero-date {
             font-size: 13px;
@@ -675,8 +690,9 @@
         </div>
     </div>
     <div class="hero-text">
+        <div class="hero-eyebrow">Weekly Facebook auctions</div>
         <div class="hero-date" id="heroDate">Next auction · Monday · 5:00 PM Central Time</div>
-        <h1>Monday's Auction</h1>
+        <h1>Monday's <em>Auction</em></h1>
         <p class="hero-note">
             Overview of everything that will be available on Monday. Each piece will be auctioned individually.
             Scroll to browse; click any photo to enlarge.

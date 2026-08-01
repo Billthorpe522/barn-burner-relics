@@ -203,12 +203,19 @@
             filter: drop-shadow(0 8px 32px rgba(0,0,0,0.6)) drop-shadow(0 0 60px rgba(212,168,83,0.15));
         }
         .hero h1 {
-            font-size: clamp(32px, 4.4vw, 48px);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(36px, 5.5vw, 64px);
             color: var(--cream);
             margin-bottom: 18px;
-            letter-spacing: 0.5px;
-            line-height: 1.1;
+            letter-spacing: -0.5px;
+            line-height: 1.05;
             font-weight: 700;
+        }
+        .hero h1 em {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--gold);
         }
         .hero p {
             font-size: 17px;
@@ -957,7 +964,7 @@
             <div class="hero-logo-wrap">
                 <img src="images/bbr-logo.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-logo-img">
             </div>
-            <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
+            <h1>Ancient Artifacts.<br>Authenticated. Documented. <em>Guaranteed.</em></h1>
             <p>
                 Barn Burner Relics is the premier destination for authentic Native American artifacts.
                 Every piece is personally vetted by Nick Gatses — a lifetime guarantee of authenticity

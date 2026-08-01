@@ -96,23 +96,32 @@
         /* Hero */
         .hero {
             text-align: center;
-            padding: 64px 24px 48px;
+            padding: 80px 24px 64px;
             background: linear-gradient(180deg, rgba(26, 20, 16, 0.6) 0%, transparent 100%),
                         radial-gradient(ellipse at center, rgba(212, 168, 83, 0.04) 0%, transparent 70%);
         }
+        .hero-eyebrow {
+            display: inline-block;
+            color: var(--gold); font-size: 13px;
+            font-family: -apple-system, Arial, sans-serif;
+            letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+            padding-bottom: 6px; border-bottom: 1px solid #8b4513;
+            margin-bottom: 24px;
+        }
         .hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', Georgia, serif;
             font-weight: 700;
-            font-size: clamp(32px, 6vw, 48px);
+            font-size: clamp(40px, 7vw, 84px);
+            line-height: 1.05;
             color: var(--cream);
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
         }
         .hero h1 em {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
-            color: var(--gold);
             font-weight: 400;
+            color: var(--gold);
         }
         .hero-tagline {
             font-size: 18px;
@@ -135,6 +144,10 @@
         }
         .hero-meta span { display: flex; align-items: center; gap: 6px; }
         .hero-meta strong { color: var(--gold); font-weight: 600; }
+        @media (max-width: 700px) {
+            .hero { padding: 56px 20px 48px; }
+            .hero h1 { font-size: clamp(32px, 8vw, 44px); }
+        }
 
         /* Band sections */
         .band {
@@ -612,6 +625,7 @@
 </header>
 
 <section class="hero">
+    <span class="hero-eyebrow">Everyday relics · shipped weekly</span>
     <h1>Single points. Framed relics.<br><em>Shipped weekly.</em></h1>
     <p class="hero-tagline">Real artifacts from a working collection — not a museum replica. Provenance documented. Guaranteed authentic for life.</p>
     <div class="hero-meta">
