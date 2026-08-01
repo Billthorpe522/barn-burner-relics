@@ -251,6 +251,10 @@
             line-height: 1.5;
             flex: 1;
         }
+        .card-reserve-sub { margin-top: 8px; font-size: 12px; color: var(--text-dim); font-family: -apple-system, Arial, sans-serif; }
+        .card-reserve-sub a { color: var(--gold); text-decoration: none; }
+        .card-reserve-sub a:hover { text-decoration: underline; }
+        .footer-policy { max-width: 560px; margin: 14px auto 0; font-size: 14px; color: var(--text); font-style: italic; text-align: center; }
         .product-card-footer {
             display: flex;
             align-items: center;
@@ -506,7 +510,6 @@
 
 <div class="announcement">
     ⚡ <strong>Everyday relics, shipped from Manhattan, IL.</strong> Lifetime authenticity guarantee on every piece.
-    &nbsp;·&nbsp; <a href="../">Looking for the rare & vault pieces? Visit Barn Burner Relics →</a>
 </div>
 
 <!-- Cross-site nav. Identical block lives on / and /gallery/ with paths adjusted to depth. -->
@@ -519,6 +522,7 @@
     <a href="../"          data-key="sales"   >Vault &amp; Sales</a>
     <a href="../shop/"     data-key="shop"    class="active">BBR Shop</a>
     <a href="../gallery/"  data-key="gallery" >Monday Auction</a>
+    <a href="../show/"     data-key="show"    >Collinsville Show</a>
     <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" data-key="fb">Facebook ↗</a>
   </div>
 </nav>
@@ -531,7 +535,6 @@
         <nav class="header-links" id="headerLinks">
             <a href="#bargain" class="current">Great Deals</a>
             <a href="#curated">Curated</a>
-            <a href="../" class="parent-site">Main Site ↗</a>
         </nav>
         <button class="mobile-menu-btn" onclick="document.getElementById('headerLinks').classList.toggle('open')">☰</button>
     </div>
@@ -542,7 +545,7 @@
     <p class="hero-tagline">Real artifacts from a working collection — not a museum replica. Provenance documented. Guaranteed authentic for life.</p>
     <div class="hero-meta">
         <span>💰 <strong>$20–$500</strong></span>
-        <span>📦 <strong>Flat $8 shipping</strong></span>
+        <span>📦 <strong>Flat $8 shipping</strong> · ships within 1 business day</span>
         <span>✅ <strong>Lifetime guarantee</strong></span>
     </div>
 </section>
@@ -581,9 +584,10 @@
         <a href="../">Main Site</a>
         <a href="../gallery/">Auction Gallery</a>
         <a href="../#about">About</a>
-        <a href="https://www.facebook.com/share/g/1HEbpnPhcQ/" target="_blank" rel="noopener">Facebook Auctions</a>
+        <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Auctions</a>
         <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a>
     </div>
+    <p class="footer-policy">If any piece we sell is ever shown not to be authentic, we refund the full purchase price — no time limit, no fine print. That's the lifetime guarantee.</p>
     <div class="copy">© 2026 Barn Burner Shop · A storefront of Barn Burner Relics Inc · Manhattan, IL · Every piece guaranteed authentic for life.</div>
 </footer>
 
@@ -715,6 +719,7 @@ function renderProducts() {
                         <span class="product-card-price">$${p.price}</span>
                         <button class="reserve-btn" onclick="reserveItem('${p.id}')">Reserve</button>
                     </div>
+                    <div class="card-reserve-sub">Secure checkout · or <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">reserve by Facebook message</a></div>
                 </div>
             </article>
         `);
