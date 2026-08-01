@@ -8,6 +8,9 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Monday Auction · Photo Gallery — Barn Burner Relics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -647,7 +650,7 @@
         </div>
     </div>
     <div class="hero-text">
-        <div class="hero-date">Monday · July 27, 2026 · 5:00 PM Central Time</div>
+        <div class="hero-date" id="heroDate">Next auction · Monday · 5:00 PM Central Time</div>
         <h1>Monday's Auction</h1>
         <p class="hero-note">
             Overview of everything that will be available on Monday. Each piece will be auctioned individually.
@@ -1039,6 +1042,20 @@
     const cdSecs = document.getElementById('cdSecs');
     let cdTarget = nextAuctionInstant(Date.now());
 
+    // Render the hero date from the same target the countdown uses — one
+    // source of truth, never rots. Format: "Monday · August 3, 2026 · 5:00 PM Central Time"
+    function renderHeroDate() {
+        const el = document.getElementById('heroDate');
+        if (!el || !cdTarget) return;
+        const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: CHICAGO_TZ,
+            weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+        }).formatToParts(new Date(cdTarget));
+        const get = t => parts.find(p => p.type === t).value;
+        el.textContent = `${get('weekday')} · ${get('month')} ${get('day')}, ${get('year')} · 5:00 PM Central Time`;
+    }
+    renderHeroDate();
+
     function tickCountdown() {
         let remaining = cdTarget - Date.now();
         if (remaining <= 0) {
@@ -1054,6 +1071,7 @@
                 cdEl.classList.remove('live');
                 cdSecs.parentElement.style.display = '';
                 cdTarget = nextAuctionInstant(Date.now());
+                renderHeroDate();
             }
             return;
         }
