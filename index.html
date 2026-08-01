@@ -74,19 +74,29 @@
 
 
 
-        /* Announcement bar */
+        /* Announcement bar — calm dark panel, not a billboard.
+           Was using oxblood background + gold-bright text which read
+           as orange-on-orange against the rest of the site's dark
+           palette. Now uses the same --bg-soft panel as section
+           dividers, with muted gold accents. */
         .announcement {
-            background: var(--oxblood);
-            color: var(--cream);
+            background: var(--bg-soft);
+            color: var(--cream-dim);
             text-align: center;
-            padding: 11px 16px;
-            font-size: 14px;
+            padding: 10px 16px;
+            font-size: 12px;
             font-weight: 500;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            border-bottom: 1px solid var(--border);
         }
-        .announcement strong { color: var(--gold-bright); font-weight: 700; }
+        .announcement strong { color: var(--gold); font-weight: 600; }
+        .announcement a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s, color 0.15s; }
+        .announcement a:hover { color: var(--gold-bright); border-bottom-color: var(--gold-bright); }
+        @media (max-width: 600px) {
+            .announcement { font-size: 11px; padding: 9px 12px; letter-spacing: 1.2px; }
+        }
 
         /* Header */
         header {
@@ -924,7 +934,7 @@
 
 <div class="announcement">
     ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM Central Time &nbsp;·&nbsp;
-    <a href="gallery/" style="color:var(--gold); text-decoration: underline;">View the Auction Gallery →</a>
+    <a href="gallery/">View the Auction Gallery →</a>
     &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
 </div>
 
