@@ -118,7 +118,7 @@ img { max-width: 100%; display: block; }
     position: relative;
     min-height: 86vh;
     background:
-        linear-gradient(180deg, rgba(13,13,13,0.4) 0%, rgba(13,13,13,0.85) 70%, var(--bg) 100%),
+        linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.85) 70%, var(--bg) 100%),
         url('img/nick-exhibiting-1.jpg') center/cover no-repeat;
     background-color: #1a1410;
     display: flex; align-items: flex-end;
@@ -262,13 +262,15 @@ img { max-width: 100%; display: block; }
     text-transform: uppercase; color: var(--taupe);
 }
 
-/* ---------- CAHOKIA HERO CARD ---------- */
+/* ---------- CAHOKIA SECTION — flat dark panel, no full-bleed drone.
+   The Monks Mound aerial now lives in the Things-to-Do card (image header)
+   so it earns its keep as a "go here if you have 3 hours" hook instead
+   of dominating a section that's tangential to the show itself. */
 .cahokia {
-    background:
-        linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.95) 100%),
-        url('img/monks-mound-bill-thorpe.jpg') center/cover no-repeat;
-    background-color: #1a1410;
-    padding: 120px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--bg-soft);
+    padding: 96px 32px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 .cahokia-inner { max-width: 900px; margin: 0 auto; }
 .cahokia h2 { color: var(--cream); }
@@ -816,8 +818,8 @@ img { max-width: 100%; display: block; }
 
         <div class="photo-strip">
             <figure class="photo-main">
-                <img src="img/cahokia-aerial.jpg" alt="Aerial view of the Cahokia Mounds Grand Plaza, looking down on reconstructed mounds and the Woodhenge circle" loading="lazy">
-                <figcaption>Cahokia at its peak · reconstructed Grand Plaza view</figcaption>
+                <img src="img/woodhenge.jpg" alt="Cahokia Woodhenge at sunrise — a circle of reconstructed timber posts that functioned as a Mississippian solar calendar" loading="lazy">
+                <figcaption>Woodhenge · solar calendar · circa 1000 CE</figcaption>
             </figure>
             <figure>
                 <img src="img/monks-mound-stairway.jpg" alt="The modern stairway climbing Monks Mound, the largest prehistoric earthen mound in the Americas" loading="lazy">
@@ -841,7 +843,7 @@ img { max-width: 100%; display: block; }
 
     <div class="cards">
         <div class="card-eyebrow-image">
-            <img src="img/woodhenge.jpg" alt="Cahokia Woodhenge at sunrise — a circle of reconstructed timber posts used as a Mississippian solar calendar" loading="lazy">
+            <img src="img/monks-mound-bill-thorpe.jpg" alt="Bill Thorpe's aerial of Monks Mound at Cahokia — the largest prehistoric earthen mound in the Americas, viewed from above with the Mississippi River bottoms in the distance" loading="lazy">
             <div class="card-body">
                 <div class="card-eyebrow">If you have 3 hours</div>
                 <h3>Cahokia Mounds</h3>
