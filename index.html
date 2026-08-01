@@ -175,30 +175,102 @@
         .header-links .cart-link:hover { background: var(--oxblood-bright); }
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--cream-soft); font-size: 24px; cursor: pointer; }
 
-        /* Hero */
+        /* Hero — split layout (left text + right artifact subject) */
         .hero {
             background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
-            padding: 40px 24px 60px;
-            text-align: center;
+            padding: 56px 24px 64px;
             border-bottom: 1px solid var(--border);
         }
-        .hero h1 { font-size: 42px; color: var(--cream); margin-bottom: 16px; letter-spacing: 0.5px; }
-        .hero p {
-            font-size: 17px; color: var(--cream-dim); max-width: 640px;
-            margin: 0 auto 32px; line-height: 1.85; font-weight: 500; letter-spacing: 0.015em;
-            -webkit-text-stroke: 0.3px rgba(255,255,255,0.28);
-            text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 56px;
+            align-items: center;
         }
+        .hero-text { text-align: left; }
+        .hero-logo-wrap {
+            max-width: 540px;
+            margin: 0 0 24px;
+            text-align: left;
+        }
+        .hero-logo-img {
+            width: 100%;
+            max-width: 540px;
+            height: auto;
+            display: inline-block;
+            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.6)) drop-shadow(0 0 60px rgba(212,168,83,0.15));
+        }
+        .hero h1 {
+            font-size: clamp(32px, 4.4vw, 48px);
+            color: var(--cream);
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 17px;
+            color: var(--cream-dim);
+            max-width: 560px;
+            margin: 0 0 28px;
+            line-height: 1.7;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        .hero-artifact {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #1a0e08;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,168,83,0.18);
+        }
+        .hero-artifact img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .hero-artifact:hover img { transform: scale(1.02); }
+        .hero-artifact-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 14px 18px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cream-dim);
+            font-weight: 500;
+        }
+        .hero-artifact-caption strong { color: var(--gold); font-weight: 600; }
+        @media (max-width: 880px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+            .hero-text { text-align: center; }
+            .hero-logo-wrap { margin: 0 auto 24px; text-align: center; }
+            .hero p { margin-left: auto; margin-right: auto; }
+            .hero-artifact { max-width: 360px; margin: 0 auto; }
+        }
+        @media (max-width: 480px) {
+            .hero-artifact { max-width: 280px; }
+            .hero h1 { font-size: 28px; }
+        }
+
         /* Personal guarantee — wood plaque image */
         .signature-block {
-            max-width: 580px;
-            margin: 40px auto 0;
+            max-width: 480px;
+            margin: 36px 0 0;
             padding: 0;
-            text-align: center;
+            text-align: left;
             background: transparent;
             border: none;
             position: relative;
         }
+        .hero .signature-block { text-align: left; margin-left: 0; margin-right: auto; }
         .signature-block .plaque-img {
             display: block;
             width: 100%;
@@ -207,12 +279,12 @@
             box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Show badge removed Jul 19 2026 — Starved Rock show has passed */
-
+        @media (max-width: 880px) {
+            .signature-block { margin: 32px auto 0; }
+            .hero .signature-block { text-align: center; }
+        }
         @media (max-width: 700px) {
             .signature-block { margin-top: 32px; }
-        }
-        @media (max-width: 480px) {
         }
 
         /* Section headers */
@@ -324,7 +396,157 @@
             font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
         }
 
-        /* Product detail overlay */
+        /* What We Do — uniform 4-card grid (Premiere Auctions pattern) */
+.what-we-do {
+    background: var(--bg-deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 24px;
+}
+.wwd-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+.wwd-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.wwd-card:hover {
+    border-color: var(--oxblood);
+    transform: translateY(-2px);
+}
+.wwd-image {
+    aspect-ratio: 4/3;
+    background: var(--bg-elev);
+    overflow: hidden;
+}
+.wwd-image img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.wwd-card:hover .wwd-image img { transform: scale(1.04); }
+.wwd-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    padding: 22px 24px 8px;
+    letter-spacing: 0.01em;
+}
+.wwd-card p {
+    padding: 0 24px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--cream-dim);
+    flex: 1;
+}
+.wwd-link {
+    display: block;
+    padding: 16px 24px 22px;
+    margin-top: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-top: 1px solid var(--border);
+    transition: color 0.15s, border-color 0.15s;
+}
+.wwd-link:hover { color: var(--gold-bright); border-top-color: var(--oxblood); }
+@media (max-width: 980px) {
+    .wwd-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+    .wwd-grid { grid-template-columns: 1fr; }
+    .what-we-do { padding: 56px 20px; }
+}
+
+/* Inline newsletter signup (mid-page, between cards and about) */
+.newsletter-strip {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 24px;
+}
+.newsletter-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    align-items: center;
+}
+.newsletter-text h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 8px;
+    letter-spacing: 0.005em;
+}
+.newsletter-text p {
+    color: var(--cream-dim);
+    font-size: 16px;
+    line-height: 1.55;
+    font-style: italic;
+}
+.newsletter-form {
+    display: flex;
+    gap: 0;
+    width: 100%;
+}
+.newsletter-form input[type="email"] {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-hover);
+    border-right: none;
+    color: var(--cream);
+    padding: 14px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 2px 0 0 2px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.newsletter-form input[type="email"]::placeholder { color: var(--taupe); }
+.newsletter-form input[type="email"]:focus { border-color: var(--gold); }
+.newsletter-form button {
+    background: var(--gold);
+    color: #1a1410;
+    border: 1px solid var(--gold);
+    padding: 14px 24px;
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.newsletter-form button:hover { background: var(--gold-bright); }
+.newsletter-form-note {
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--taupe);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+}
+@media (max-width: 720px) {
+    .newsletter-inner { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* Product detail overlay */
         .product-detail-overlay {
             display: none;
             position: fixed; inset: 0;
@@ -730,19 +952,30 @@
 </header>
 
 <section class="hero">
-    <div class="hero-logo-wrap">
-        <img src="images/bbr-logo.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-logo-img">
-    </div>
-    <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
-    <p>
-        Barn Burner Relics is the premier destination for authentic Native American artifacts.
-        Every piece is personally vetted by Nick Gatses — a lifetime guarantee of authenticity
-        with every purchase.
-    </p>
-    <a href="#shop" class="btn-inquire" onclick="closeDetail();">Browse the Collection</a>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-logo-wrap">
+                <img src="images/bbr-logo.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-logo-img">
+            </div>
+            <h1>Ancient Artifacts.<br>Authenticated. Documented. Guaranteed.</h1>
+            <p>
+                Barn Burner Relics is the premier destination for authentic Native American artifacts.
+                Every piece is personally vetted by Nick Gatses — a lifetime guarantee of authenticity
+                with every purchase.
+            </p>
+            <a href="#shop" class="btn-inquire" onclick="closeDetail();">Browse the Collection</a>
 
-    <div class="signature-block">
-        <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
+            <div class="signature-block">
+                <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
+            </div>
+        </div>
+
+        <figure class="hero-artifact">
+            <img src="images/incoming/clovis-1/photo-1.jpg" alt="Six authentic Clovis projectile points displayed in a red velvet museum case, ex-collection" loading="eager">
+            <figcaption class="hero-artifact-caption">
+                <strong>Six Clovis points</strong> · private collection · museum-quality
+            </figcaption>
+        </figure>
     </div>
 </section>
 
@@ -778,6 +1011,68 @@
     <p>The vault above is museum-grade. The Barn Burner Shop is where collectors start: single points and framed relics, priced plainly, shipped weekly.</p>
     <a href="shop/" class="btn-inquire">Browse the Everyday Shop →</a>
 </div>
+
+<!-- ============================================================
+     WHAT WE DO — uniform 4-card grid. Mirrors Premiere Auctions'
+     "Auctions / Consignment / Authentication / Publications" pattern
+     but with BBR-specific services. Same card height + template so
+     the row reads as a deliberate unit, not loose tiles.
+     ============================================================ -->
+<section class="what-we-do" id="services-grid">
+    <div class="section-header" style="padding-top:0;">
+        <h2>What We Do</h2>
+        <p>Four ways to work with Barn Burner Relics</p>
+    </div>
+    <div class="wwd-grid">
+        <article class="wwd-card">
+            <div class="wwd-image"><img src="images/incoming/2026-07-27-monday-auction/07.jpg" alt="Monday auction lot" loading="lazy"></div>
+            <h3>Weekly Auctions</h3>
+            <p>Every Monday on Facebook — 20-40 pieces per week, single points to small collections. Open bidding, photos in the lot, no reserves.</p>
+            <a href="gallery/" class="wwd-link">View the Auction Gallery →</a>
+        </article>
+
+        <article class="wwd-card">
+            <div class="wwd-image"><img src="images/incoming/display-case-points-misc/photo-2.jpg" alt="Curated collection of authentic Native American artifacts" loading="lazy"></div>
+            <h3>Private Sales</h3>
+            <p>Higher-end pieces, museum-grade material, and named-collection offerings. Sold quietly, with full provenance, to qualified buyers.</p>
+            <a href="#shop" onclick="closeDetail();" class="wwd-link">Browse the Vault →</a>
+        </article>
+
+        <article class="wwd-card">
+            <div class="wwd-image"><img src="images/bannerstones/collection-closeup-2026-07-13.jpg" alt="A close-up of an authenticated artifact" loading="lazy"></div>
+            <h3>Authentication &amp; Appraisals</h3>
+            <p>Independent authentication for insurance, estate, and donation. Confidential, prompt, and accepted by major auction houses.</p>
+            <a href="#" onclick="closeDetail(); openInquiry(); return false;" class="wwd-link">Request an Appraisal →</a>
+        </article>
+
+        <article class="wwd-card">
+            <div class="wwd-image"><img src="show/img/monks-mound-bill-thorpe.jpg" alt="The Collinsville Prehistoric Artifact Show, founded by Nick Gatses" loading="lazy"></div>
+            <h3>The Collinsville Show</h3>
+            <p>Nick organizes the country's largest prehistoric artifact show — 40 years running, ~200 exhibitors, every March in Collinsville, IL.</p>
+            <a href="show/" class="wwd-link">Plan Your Visit →</a>
+        </article>
+    </div>
+</section>
+
+<!-- ============================================================
+     NEWSLETTER — inline email signup between the services grid
+     and the About section. Visible mid-page so visitors can't miss
+     it. Form posts to mailto: for now; swap to a real provider
+     (Buttondown / Mailchimp / ConvertKit) when ready.
+     ============================================================ -->
+<section class="newsletter-strip">
+    <div class="newsletter-inner">
+        <div class="newsletter-text">
+            <h3>New lots every Monday.</h3>
+            <p>Get the auction lineup, new arrivals, and rare finds — one email a week, no spam.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); handleNewsletterSignup(this);">
+            <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <p class="newsletter-form-note" style="text-align:center;max-width:920px;margin:14px auto 0;">Unsubscribe anytime. We never share your email.</p>
+</section>
 
 <section class="about-section" id="about">
     <h2>About Barn Burner Relics</h2>
@@ -1091,6 +1386,17 @@
     // Email: nickgatses1@gmail.com (public, from FB group description)
     const MESSENGER_NICK_URL = 'https://m.me/Nickgeezy';
     const NICK_EMAIL = 'nickgatses1@gmail.com';
+
+    // Newsletter signup handler. Stub: forwards to mailto with a
+    // pre-filled subject for now. Swap to Buttondown / Mailchimp /
+    // ConvertKit once we pick a provider.
+    function handleNewsletterSignup(form) {
+        const email = (form.querySelector('input[type="email"]') || {}).value || '';
+        if (!email) return;
+        const subject = encodeURIComponent('Newsletter signup: ' + email);
+        const body = encodeURIComponent('Please add ' + email + ' to the Barn Burner Relics weekly auction list.');
+        window.location.href = 'mailto:' + NICK_EMAIL + '?subject=' + subject + '&body=' + body;
+    }
 
     function openInquiry() {
         if (!currentProduct) {
