@@ -235,7 +235,7 @@ img { max-width: 100%; display: block; }
 .cahokia {
     background:
         linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.95) 100%),
-        url('https://images.unsplash.com/photo-1605338803420-21a86cf2b9e1?w=2400&q=80') center/cover no-repeat;
+        url('img/monks-mound-stairway.jpg') center/cover no-repeat;
     background-color: #1a1410;
     padding: 120px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
@@ -409,6 +409,54 @@ img { max-width: 100%; display: block; }
     font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
     margin-bottom: 32px; border-radius: 2px;
 }
+
+/* ---------- PHOTO STRIP (Cahokia section) ---------- */
+.photo-strip {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 16px; margin-top: 48px;
+}
+@media (max-width: 768px) { .photo-strip { grid-template-columns: 1fr; } }
+.photo-strip figure { margin: 0; position: relative; overflow: hidden; border-radius: 2px; }
+.photo-strip img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    aspect-ratio: 16/10; transition: transform 0.4s ease;
+}
+.photo-strip figure:hover img { transform: scale(1.03); }
+.photo-strip figcaption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+    font-family: -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--cream-dim); font-weight: 500;
+}
+.photo-strip .photo-main img { aspect-ratio: 16/10; }
+
+/* ---------- THINGS-TO-DO CARD WITH IMAGE ---------- */
+.card-image {
+    width: 100%; height: 160px; object-fit: cover; display: block;
+    margin: -32px -32px 20px; border-bottom: 1px solid var(--border);
+}
+.card-eyebrow-image {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.card-eyebrow-image:hover { border-color: var(--oxblood); transform: translateY(-2px); }
+.card-eyebrow-image img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.card-eyebrow-image .card-body { padding: 28px 32px; }
+.card-eyebrow-image .card-distance { margin: 16px 32px 28px; padding: 0; border-top: 0; display: block; }
+
+/* ---------- PHOTO CREDITS (footer) ---------- */
+.photo-credits {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 0.5px;
+    color: var(--taupe); margin-top: 16px; line-height: 1.6;
+}
+.photo-credits a { color: var(--warm-grey); text-decoration: underline; text-decoration-color: var(--border); }
+.photo-credits a:hover { color: var(--gold); }
 
 </style>
 </head>
@@ -697,6 +745,17 @@ img { max-width: 100%; display: block; }
                 <div class="stat-label">UNESCO designation</div>
             </div>
         </div>
+
+        <div class="photo-strip">
+            <figure class="photo-main">
+                <img src="img/cahokia-aerial.jpg" alt="Aerial view of the Cahokia Mounds Grand Plaza, looking down on reconstructed mounds and the Woodhenge circle" loading="lazy">
+                <figcaption>Cahokia at its peak · reconstructed Grand Plaza view</figcaption>
+            </figure>
+            <figure>
+                <img src="img/monks-mound-pd.jpg" alt="Monks Mound viewed from the base, looking up at the climbable stairway" loading="lazy">
+                <figcaption>Monks Mound · 100 ft, four terraces</figcaption>
+            </figure>
+        </div>
     </div>
 </section>
 
@@ -713,18 +772,24 @@ img { max-width: 100%; display: block; }
     </p>
 
     <div class="cards">
-        <div class="card">
-            <div class="card-eyebrow">If you have 3 hours</div>
-            <h3>Cahokia Mounds</h3>
-            <p>Climb Monks Mound. Walk the Grand Plaza. See Woodhenge — the wooden solar calendar. Then drive back to the hotel and pretend you're not exhausted.</p>
-            <span class="card-distance">5 mi · 10 min from venue</span>
+        <div class="card-eyebrow-image">
+            <img src="img/woodhenge.jpg" alt="Cahokia Woodhenge at sunrise — a circle of reconstructed timber posts used as a Mississippian solar calendar" loading="lazy">
+            <div class="card-body">
+                <div class="card-eyebrow">If you have 3 hours</div>
+                <h3>Cahokia Mounds</h3>
+                <p>Climb Monks Mound. Walk the Grand Plaza. See Woodhenge — the wooden solar calendar. Then drive back to the hotel and pretend you're not exhausted.</p>
+                <span class="card-distance">5 mi · 10 min from venue</span>
+            </div>
         </div>
 
-        <div class="card">
-            <div class="card-eyebrow">If you have a half-day</div>
-            <h3>St. Louis</h3>
-            <p>Cross the river. Forest Park and the Saint Louis Art Museum have one of the finest Mississippian artifact collections in any museum — Cahokia-era pieces excavated from Mound 72. Then Italian on The Hill.</p>
-            <span class="card-distance">12 mi · 15 min from venue</span>
+        <div class="card-eyebrow-image">
+            <img src="img/saint-louis-art-museum.jpg" alt="The Saint Louis Art Museum in Forest Park, home to one of the finest Mississippian artifact collections in any museum" loading="lazy">
+            <div class="card-body">
+                <div class="card-eyebrow">If you have a half-day</div>
+                <h3>St. Louis</h3>
+                <p>Cross the river. Forest Park and the Saint Louis Art Museum have one of the finest Mississippian artifact collections in any museum — Cahokia-era pieces excavated from Mound 72. Then Italian on The Hill.</p>
+                <span class="card-distance">12 mi · 15 min from venue</span>
+            </div>
         </div>
 
         <div class="card">
@@ -845,6 +910,15 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="footer-bottom">
         © 2026 The Collinsville Show · A Barn Burner Relics property
+        <div class="photo-credits">
+            Photos:
+            <a href="https://www.nps.gov/" target="_blank" rel="noopener">NPS</a>,
+            <a href="https://commons.wikimedia.org/wiki/File:Monks_Mound_in_July.JPG" target="_blank" rel="noopener">Skubasteve834</a> (CC BY-SA 3.0),
+            <a href="https://commons.wikimedia.org/wiki/File:Cahokia_Woodhenge_at_Sunrise_HRoe_2017sm.jpg" target="_blank" rel="noopener">H. Roe</a> (CC BY-SA 4.0),
+            <a href="https://commons.wikimedia.org/wiki/File:Cahokia_Aerial_HRoe_2015.jpg" target="_blank" rel="noopener">H. Roe</a> (CC BY-SA 4.0),
+            <a href="https://commons.wikimedia.org/wiki/File:Cahokia_Monks_Mound.jpg" target="_blank" rel="noopener">Wikivoyage</a> (public domain),
+            <a href="https://commons.wikimedia.org/wiki/File:St._Louis_Art_Museum_in_Forest_Park.jpg" target="_blank" rel="noopener">AmyBautz</a> (CC BY-SA 3.0).
+        </div>
     </div>
 </footer>
 
