@@ -46,7 +46,7 @@
             letter-spacing: 0.02em;
         }
 
-        /* Hero trust stats removed Jul 19 2026 — replaced by Lifetime Authenticity Guarantee banner (TBD) */
+        /* Hero trust stats removed Jul 19 2026 — replaced by Lifetime Authenticity Guarantee banner */
 
 
 
@@ -340,7 +340,7 @@
         .detail-gallery { background: #1a1612; padding: 40px; }
         .detail-gallery .main-image {
             width: 100%; aspect-ratio: 1;
-            object-fit: cover; border-radius: 8px;
+            object-fit: contain; border-radius: 8px;
             background: #1f1a15;
         }
 
@@ -692,13 +692,13 @@
 
 <header>
     <div class="header-inner">
-        <a href="#" onclick="closeDetail(); return false;" class="logo">
+        <a href="./" class="logo">
             <img src="images/bbr-logo-header.jpg" alt="Barn Burner Relics Inc" class="header-logo-img">
         </a>
         <nav class="header-links">
-            <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
+            <a href="#shop" onclick="closeDetail();">Shop</a>
             <a href="shop/" style="color:#d4a853;">Everyday Shop ↗</a>
-            <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
+            <a href="#about" onclick="closeDetail();">About</a>
             <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
         </nav>
         <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
@@ -715,7 +715,7 @@
         Every piece is personally vetted by Nick Gatses — a lifetime guarantee of authenticity
         with every purchase.
     </p>
-    <a href="#" class="btn-inquire" onclick="closeDetail(); scrollToSection('shop'); return false;">Browse the Collection</a>
+    <a href="#shop" class="btn-inquire" onclick="closeDetail();">Browse the Collection</a>
 
     <div class="signature-block">
         <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
@@ -894,9 +894,9 @@
 <footer>
     <div class="links">
         <a href="gallery/" class="gallery-link">View the Auction Gallery →</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('shop'); return false;">Shop</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('about'); return false;">About</a>
-        <a href="#" onclick="closeDetail(); scrollToSection('services'); return false;">Buying &amp; Appraisals</a>
+        <a href="#shop" onclick="closeDetail();">Shop</a>
+        <a href="#about" onclick="closeDetail();">About</a>
+        <a href="#services" onclick="closeDetail();">Buying &amp; Appraisals</a>
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a>
         <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank" rel="noopener">Instagram</a>
