@@ -88,7 +88,7 @@ img { max-width: 100%; display: block; }
     min-height: 86vh;
     background:
         linear-gradient(180deg, rgba(13,13,13,0.4) 0%, rgba(13,13,13,0.85) 70%, var(--bg) 100%),
-        url('https://images.unsplash.com/photo-1565017228812-bf8d7d9c0e8b?w=2400&q=80') center/cover no-repeat;
+        url('img/nick-exhibiting-1.jpg') center/cover no-repeat;
     background-color: #1a1410;
     display: flex; align-items: flex-end;
     padding: 80px 32px 64px;
@@ -458,6 +458,26 @@ img { max-width: 100%; display: block; }
 .photo-credits a { color: var(--warm-grey); text-decoration: underline; text-decoration-color: var(--border); }
 .photo-credits a:hover { color: var(--gold); }
 
+/* ---------- ABOUT PORTRAIT (Nick) ---------- */
+.about-portrait {
+    margin-top: 32px; position: relative; overflow: hidden;
+    border: 1px solid var(--border); border-radius: 2px;
+}
+.about-portrait img {
+    width: 100%; height: auto; display: block;
+    aspect-ratio: 4/3; object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.about-portrait:hover img { transform: scale(1.02); }
+.about-portrait figcaption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+    font-family: -apple-system, sans-serif;
+    font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--cream-dim); font-weight: 500;
+}
+
 </style>
 </head>
 
@@ -579,6 +599,10 @@ img { max-width: 100%; display: block; }
                 houses make the drive.
             </p>
             <div class="signature">— Nick Gatses, Organizer</div>
+            <div class="about-portrait">
+                <img src="img/nick-exhibiting-2.jpg" alt="Nick Gatses exhibiting authentic prehistoric artifacts at a Midwest relic show, framed display cases of points behind him" loading="lazy">
+                <figcaption>Nick on the floor · typical exhibit setup</figcaption>
+            </div>
         </div>
 
         <div class="about-card">
@@ -914,6 +938,7 @@ img { max-width: 100%; display: block; }
             Photos:
             <a href="https://www.nps.gov/" target="_blank" rel="noopener">NPS</a>,
             <a href="https://barnburnerrelics.shop/" target="_blank" rel="noopener">Bill Thorpe</a>,
+            <a href="https://barnburnerrelics.shop/" target="_blank" rel="noopener">Nick Gatses</a>,
             <a href="https://commons.wikimedia.org/wiki/File:Monks_Mound_in_July.JPG" target="_blank" rel="noopener">Skubasteve834</a> (CC BY-SA 3.0),
             <a href="https://commons.wikimedia.org/wiki/File:Cahokia_Woodhenge_at_Sunrise_HRoe_2017sm.jpg" target="_blank" rel="noopener">H. Roe</a> (CC BY-SA 4.0),
             <a href="https://commons.wikimedia.org/wiki/File:Cahokia_Aerial_HRoe_2015.jpg" target="_blank" rel="noopener">H. Roe</a> (CC BY-SA 4.0),
