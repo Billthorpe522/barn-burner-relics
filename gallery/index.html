@@ -8,6 +8,18 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Monday Auction · Photo Gallery — Barn Burner Relics</title>
+<meta name="description" content="Photo gallery from the latest Barn Burner Relics Monday auction — authenticated Native American artifacts, points, bannerstones, and relics from recent lots.">
+<link rel="canonical" href="https://barnburnerrelics.shop/gallery/">
+<meta property="og:title" content="Monday Auction · Photo Gallery — Barn Burner Relics">
+<meta property="og:description" content="Photos from the latest Monday auction — authenticated Native American artifacts from recent lots.">
+<meta property="og:image" content="https://barnburnerrelics.shop/images/incoming/2026-07-27-monday-auction/05.jpg">
+<meta property="og:url" content="https://barnburnerrelics.shop/gallery/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barn Burner Relics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monday Auction · Photo Gallery — Barn Burner Relics">
+<meta name="twitter:description" content="Photos from the latest Monday auction — authenticated Native American artifacts from recent lots.">
+<meta name="twitter:image" content="https://barnburnerrelics.shop/images/incoming/2026-07-27-monday-auction/05.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -32,9 +44,22 @@
     --bg-elev: #1f1a15;
     --bg-panel: #1a1612;
     --border-soft: #3a3028;
-    --taupe-dim: #6b5a45;
+    --taupe-dim: #d4c8a8; /* raised from #6b5a45 (2.94:1 FAIL) — 2026-08-02 audit fix */
     --bg-deep: #16120e;
 }
+
+        .skip-nav {
+            position: absolute; top: -100px; left: 0;
+            background: var(--gold); color: var(--bg);
+            padding: .75rem 1.25rem; z-index: 9999;
+            font-weight: 600; font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+        .skip-nav:focus { top: 0; }
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -629,6 +654,7 @@
     </style>
 </head>
 <body>
+<a class="skip-nav" href="#main">Skip to main content</a>
 
 <!-- Cross-site nav. Identical block lives on / and /shop/ with paths adjusted to depth. -->
 <nav class="site-nav" aria-label="Barn Burner Relics surfaces">
@@ -652,6 +678,7 @@
     </div>
 </header>
 
+<main id="main">
 <section class="hero">
     <div class="hero-image-wrap">
         <img class="hero-image" src="/images/incoming/2026-07-27-monday-auction/05.jpg" alt="Large triangular point collection — 50+ pieces, the lead lot for the Monday July 27 auction">
@@ -768,6 +795,7 @@
         </div>
         </div>
 
+</main>
         <footer style="background:var(--bg);border-top:1px solid var(--bg-panel);padding:30px 24px 22px;text-align:center;">
     <div class="fb-cta">
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Join Barn Burner Relics on Facebook">
@@ -852,7 +880,7 @@
         <div class="${classes}" onclick="openLightbox(${idx})">
             ${leadTagHtml}
             ${soldTagHtml}
-            <img src="${p.src}" alt="" loading="lazy">
+            <img src="${p.src}" alt="${p.title || 'Auction lot photo'}" loading="lazy">
         </div>
     `;
     }).join('');

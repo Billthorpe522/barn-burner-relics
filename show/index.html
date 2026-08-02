@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Collinsville Show — Authentic Prehistoric Artifact Show</title>
 <meta name="description" content="The 40th Annual Collinsville Prehistoric Artifact Show. March 12-14, 2027 at the Gateway Convention Center, Collinsville, IL. Organized by Nick Gatses.">
+<link rel="canonical" href="https://barnburnerrelics.shop/show/">
+<meta property="og:title" content="The Collinsville Show — Authentic Prehistoric Artifact Show">
+<meta property="og:description" content="The 40th Annual Collinsville Prehistoric Artifact Show. March 12-14, 2027 at the Gateway Convention Center, Collinsville, IL.">
+<meta property="og:image" content="https://barnburnerrelics.shop/images/bbr-logo.jpg">
+<meta property="og:url" content="https://barnburnerrelics.shop/show/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barn Burner Relics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Collinsville Show — Authentic Prehistoric Artifact Show">
+<meta name="twitter:description" content="The 40th Annual Collinsville Prehistoric Artifact Show. March 12-14, 2027, Collinsville, IL.">
+<meta name="twitter:image" content="https://barnburnerrelics.shop/images/bbr-logo.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +42,19 @@
     --oxblood-bright: #a0522d;
     --taupe: #8b7355;
     --warm-grey: #b8a88a;
+}
+
+.skip-nav {
+    position: absolute; top: -100px; left: 0;
+    background: var(--gold); color: var(--bg);
+    padding: .75rem 1.25rem; z-index: 9999;
+    font-weight: 600; font-family: 'Cormorant Garamond', Georgia, serif;
+}
+.skip-nav:focus { top: 0; }
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -445,6 +469,7 @@ img { max-width: 100%; display: block; }
 </head>
 
 <body>
+<a class="skip-nav" href="#main">Skip to main content</a>
 
 <!-- ============================================================
      NAV
@@ -477,6 +502,7 @@ img { max-width: 100%; display: block; }
     </div>
 </nav>
 
+<main id="main">
 
 <!-- ============================================================
      HERO
@@ -859,6 +885,7 @@ img { max-width: 100%; display: block; }
 <!-- ============================================================
      FOOTER
      ============================================================ -->
+</main>
 <footer class="footer">
     <div class="footer-inner">
         <div>

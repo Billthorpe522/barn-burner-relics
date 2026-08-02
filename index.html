@@ -10,6 +10,18 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Barn Burner Relics — Authentic Native American Artifacts</title>
+<meta name="description" content="Authenticated, documented Native American artifacts — bannerstones, birdstones, Paleo points. Lifetime authenticity guarantee from Nick Gatses, Barn Burner Relics.">
+<link rel="canonical" href="https://barnburnerrelics.shop/">
+<meta property="og:title" content="Barn Burner Relics — Authentic Native American Artifacts">
+<meta property="og:description" content="Authenticated, documented Native American artifacts — bannerstones, birdstones, Paleo points. Lifetime authenticity guarantee.">
+<meta property="og:image" content="https://barnburnerrelics.shop/images/bbr-logo.jpg">
+<meta property="og:url" content="https://barnburnerrelics.shop/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barn Burner Relics">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Barn Burner Relics — Authentic Native American Artifacts">
+<meta name="twitter:description" content="Authenticated, documented Native American artifacts — bannerstones, birdstones, Paleo points. Lifetime authenticity guarantee.">
+<meta name="twitter:image" content="https://barnburnerrelics.shop/images/bbr-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,9 +50,23 @@
     --bg-elev: #1f1a15;
     --bg-panel: #1a1612;
     --border-soft: #3a3028;
-    --taupe-dim: #6b5a45;
+    --taupe-dim: #d4c8a8; /* raised from #6b5a45 (2.94:1 FAIL) to cream-dim (11.69:1 AA) — 2026-08-02 audit fix */
     --bg-deep: #16120e;
 }
+
+        .skip-nav {
+            position: absolute; top: -100px; left: 0;
+            background: var(--gold); color: var(--bg);
+            padding: .75rem 1.25rem; z-index: 9999;
+            font-weight: 600; font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+        .skip-nav:focus { top: 0; }
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+        .product-card { text-align: left; font: inherit; color: inherit; background: none; border: none; padding: 0; cursor: pointer; width: 100%; }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -692,6 +718,7 @@
     </style>
 </head>
 <body>
+<a class="skip-nav" href="#main">Skip to main content</a>
 
 <div class="announcement">
     ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM Central Time &nbsp;·&nbsp;
@@ -725,10 +752,11 @@
             <a href="#about" onclick="closeDetail();">About</a>
             <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
         </nav>
-        <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
+        <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="headerLinks" onclick="toggleMobile()">☰</button>
     </div>
 </header>
 
+<main id="main">
 <section class="hero">
     <div class="hero-logo-wrap">
         <img src="images/bbr-logo.jpg" alt="Barn Burner Relics Inc — Authentic Native American Artifacts" class="hero-logo-img">
@@ -915,6 +943,7 @@
     </div>
 </div>
 
+</main>
 <footer>
     <div class="links">
         <a href="gallery/" class="gallery-link">View the Auction Gallery →</a>
@@ -924,6 +953,7 @@
         <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a>
         <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a>
         <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank" rel="noopener">Instagram</a>
+        <a href="social/">Everywhere Else →</a>
     </div>
     <div class="copy">© 2026 Barn Burner Relics Inc. — Manhattan, IL &nbsp;·&nbsp; All artifacts guaranteed authentic for life.</div>
 </footer>
@@ -1000,7 +1030,7 @@
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '') + (p.price === 'Inquire' ? ' inquire-price' : '');
-            return `<div class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">
+            return `<button type="button" class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">`
                 <div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
                 <div class="info">
                     <h3>${p.title}</h3>
@@ -1009,7 +1039,7 @@
                         ${p.category ? `<span class="card-cat">${p.category}</span>` : ''}
                     </div>
                 </div>
-            </div>`;
+            </button>`;
         }).join('');
 
         if (!grid.innerHTML) {
@@ -1113,6 +1143,11 @@
 
     let mobileOpen = false;
     function toggleMobile() {
+        const btn = document.querySelector('.mobile-menu-btn');
+        const links = document.getElementById('headerLinks');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        btn.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
         const nav = document.querySelector('.header-links');
         mobileOpen = !mobileOpen;
         nav.style.display = mobileOpen ? 'flex' : '';

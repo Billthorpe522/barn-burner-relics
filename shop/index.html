@@ -6,6 +6,17 @@
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
     <title>Barn Burner Shop — Everyday Relics · Shipped Weekly</title>
     <meta name="description" content="Single points, framed relics, and small artifacts from the Barn Burner Relics collection. $20–$500. Real pieces, real provenance, shipped from Manhattan, IL.">
+    <link rel="canonical" href="https://barnburnerrelics.shop/shop/">
+    <meta property="og:title" content="Barn Burner Shop — Everyday Relics · Shipped Weekly">
+    <meta property="og:description" content="Single points, framed relics, and small artifacts from the Barn Burner Relics collection. $20–$500. Real pieces, real provenance.">
+    <meta property="og:image" content="https://barnburnerrelics.shop/images/bbshop-logo-horizontal.png">
+    <meta property="og:url" content="https://barnburnerrelics.shop/shop/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Barn Burner Relics">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Barn Burner Shop — Everyday Relics · Shipped Weekly">
+    <meta name="twitter:description" content="Single points, framed relics, and small artifacts. $20–$500. Real pieces, real provenance.">
+    <meta name="twitter:image" content="https://barnburnerrelics.shop/images/bbshop-logo-horizontal.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,6 +37,19 @@
             --text-dim: #8b7355;
             --border: rgba(212, 168, 83, 0.18);
             --border-hover: rgba(212, 168, 83, 0.45);
+        }
+
+        .skip-nav {
+            position: absolute; top: -100px; left: 0;
+            background: var(--gold); color: var(--bg);
+            padding: .75rem 1.25rem; z-index: 9999;
+            font-weight: 600; font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+        .skip-nav:focus { top: 0; }
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 2px;
         }
 
         body {
@@ -507,6 +531,7 @@
     </style>
 </head>
 <body>
+<a class="skip-nav" href="#main">Skip to main content</a>
 
 <div class="announcement">
     ⚡ <strong>Everyday relics, shipped from Manhattan, IL.</strong> Lifetime authenticity guarantee on every piece.
@@ -536,10 +561,11 @@
             <a href="#bargain" class="current">Great Deals</a>
             <a href="#curated">Curated</a>
         </nav>
-        <button class="mobile-menu-btn" onclick="document.getElementById('headerLinks').classList.toggle('open')">☰</button>
+        <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="headerLinks" onclick="const b=this,e=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!e));b.setAttribute('aria-label',e?'Open menu':'Close menu');document.getElementById('headerLinks').classList.toggle('open')">☰</button>
     </div>
 </header>
 
+<main id="main">
 <section class="hero">
     <h1>Single points. Framed relics.<br><em>Shipped weekly.</em></h1>
     <p class="hero-tagline">Real artifacts from a working collection — not a museum replica. Provenance documented. Guaranteed authentic for life.</p>
@@ -579,6 +605,7 @@
     <a href="../">Visit Barn Burner Relics — The Main Vault →</a>
 </div>
 
+</main>
 <footer>
     <div class="links">
         <a href="../">Main Site</a>
@@ -717,9 +744,9 @@ function renderProducts() {
                     <p class="product-card-desc">${p.desc}</p>
                     <div class="product-card-footer">
                         <span class="product-card-price">$${p.price}</span>
-                        <button class="reserve-btn" onclick="reserveItem('${p.id}')">Reserve</button>
+                        <button class="reserve-btn" onclick="reserveItem('${p.id}')">Add to Cart</button>
                     </div>
-                    <div class="card-reserve-sub">Secure checkout · or <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">reserve by Facebook message</a></div>
+                    <div class="card-reserve-sub">Checkout opens with Nick on Messenger · ships weekly</div>
                 </div>
             </article>
         `);
@@ -779,12 +806,13 @@ function reserveItem(id) {
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '')
         .slice(0, 100);
-    // Hand off to the Shopify draft product for that handle. Falls back to mailto
-    // (Nick's existing reserve email) if the handle isn't mirrored yet — keeps
-    // pre-migration pieces reachable via the same button.
-    const shopifyUrl = `https://barnburnerrelics.myshopify.com/products/${handle}`;
-    // Open the Shopify product page in the same tab so checkout is one click away.
-    window.location.href = shopifyUrl;
+    // GO-LIVE FLIP: while the Shopify storefront stays password-gated (pending
+    // payment verification with Nick), "Add to Cart" opens Facebook Messenger to
+    // Nick with a prefilled note naming the piece. When the store unlocks, swap
+    // the window.open line below for:
+    //   window.location.href = `https://barnburnerrelics.myshopify.com/products/${handle}`;
+    const note = `Hi Nick — I'd like to add this to my cart: ${product.title} ($${product.price}) — barnburnerrelics.shop/shop/`;
+    window.open(`https://m.me/Nickgeezy?text=${encodeURIComponent(note)}`, '_blank', 'noopener');
 }
 
 renderProducts();
