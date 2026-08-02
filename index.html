@@ -1342,16 +1342,7 @@
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '') + (p.price === 'Inquire' ? ' inquire-price' : '');
-            return `<button type="button" class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')">`
-                <div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div>
-                <div class="info">
-                    <h3>${p.title}</h3>
-                    <div class="price-row">
-                        <span class="${priceClass}">${p.price}</span>
-                        ${p.category ? `<span class="card-cat">${p.category}</span>` : ''}
-                    </div>
-                </div>
-            </button>`;
+            return `<button type="button" class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')"><div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div><div class="info"><h3>${p.title}</h3><div class="price-row"><span class="${priceClass}">${p.price}</span>${p.category ? `<span class="card-cat">${p.category}</span>` : ''}</div></div></button>`;
         }).join('');
 
         if (!grid.innerHTML) {
