@@ -130,10 +130,17 @@ h1 {
 .note a { color: var(--gold); text-decoration: underline; }
 
 footer {
-    text-align: center; padding: 24px;
+    text-align: center; padding: 32px 24px 24px;
     border-top: 1px solid var(--border);
     color: var(--taupe); font-size: 13px; letter-spacing: 1px;
 }
+footer .links {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 8px 22px; margin-bottom: 12px;
+}
+footer .links a { color: var(--cream-dim); font-size: 13.5px; letter-spacing: 0.5px; border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+footer .links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+footer .copy { margin-top: 14px; font-size: 12px; color: var(--taupe); }
 </style>
 </head>
 <body>
@@ -199,8 +206,8 @@ footer {
     <a class="link-card" href="../shop/">
         <span class="glyph">$</span>
         <span class="text">
-            <strong>Shop Everyday Relics</strong>
-            <span>Single points and framed relics, $20–$500, shipped weekly</span>
+            <strong>The Store</strong>
+            <span>Single points and framed relics — available for purchase now, shipped weekly</span>
         </span>
         <span class="arrow">→</span>
     </a>
@@ -221,7 +228,19 @@ footer {
 </main>
 
 <footer>
-    BARN BURNER RELICS · MANHATTAN, IL
+    <div class="links">
+        <a href="../">The Vault</a>
+        <a href="../shop/">The Store</a>
+        <a href="../gallery/">Monday Auction</a>
+        <a href="../show/">Collinsville Show</a>
+        <a href="./">Everywhere Else</a>
+    </div>
+    <div class="links">
+        <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a>
+        <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/barn_burner_relics_inc/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="copy">© 2026 Barn Burner Relics Inc. — Manhattan, IL &nbsp;·&nbsp; All artifacts guaranteed authentic for life.</div>
 </footer>
 </body>
 </html>
