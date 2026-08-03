@@ -605,6 +605,18 @@
             cursor: pointer;
             transition: border-color 0.15s ease, transform 0.15s ease;
         }
+        .photo-overlay-desc {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 17px;
+            color: #f0e8d0;
+            line-height: 1.55;
+            max-width: 720px;
+            max-height: 22vh;
+            overflow-y: auto;
+            text-align: center;
+            margin: 0;
+            padding: 0 12px;
+        }
         .photo-overlay-thumbs img:hover { transform: scale(1.05); }
         .photo-overlay-thumbs img.active { border-color: var(--accent); }
 
@@ -853,12 +865,11 @@ function renderProducts() {
                 </div>
                 <div class="product-card-body">
                     <h3 class="product-card-title">${p.title}</h3>
-                    <p class="product-card-desc">${p.desc}</p>
                     <div class="product-card-footer">
                         <span class="product-card-price">$${p.price}</span>
                         <button class="reserve-btn" onclick="reserveItem('${p.id}')">Add to Cart</button>
                     </div>
-                    <div class="card-reserve-sub">Checkout opens with Nick on Messenger · ships weekly</div>
+                    <div class="card-reserve-sub">Tap photo for full details · checkout with Nick on Messenger</div>
                 </div>
             </article>
         `);
@@ -881,7 +892,9 @@ function openPhotoOverlay(pid) {
     const main = document.getElementById('photoOverlayMain');
     const thumbs = document.getElementById('photoOverlayThumbs');
     const title = document.getElementById('photoOverlayTitle');
+    const desc = document.getElementById('photoOverlayDesc');
     title.textContent = p.title;
+    desc.textContent = p.desc || '';
     main.src = p.photos[0];
     main.alt = `${p.title} — photo 1`;
     thumbs.innerHTML = '';
@@ -946,6 +959,7 @@ document.addEventListener('keydown', e => {
             <img class="photo-overlay-main" id="photoOverlayMain" src="" alt="">
         </div>
         <div class="photo-overlay-thumbs" id="photoOverlayThumbs"></div>
+        <p class="photo-overlay-desc" id="photoOverlayDesc"></p>
     </div>
 </div>
 
