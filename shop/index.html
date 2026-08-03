@@ -630,7 +630,7 @@
 <a class="skip-nav" href="#main">Skip to main content</a>
 
 <div class="announcement">
-    ⚡ <strong>The Store — available for purchase now.</strong> Lifetime authenticity guarantee on every piece.
+    🔥 <strong>Sold out.</strong> New inventory coming soon — watch the Monday auction for fresh pieces.
 </div>
 
 <!-- Cross-site nav. Identical block lives on / and /gallery/ with paths adjusted to depth. -->
@@ -663,11 +663,11 @@
 
 <main id="main">
 <section class="hero">
-    <span class="hero-eyebrow">The Store · available for purchase now</span>
-    <h1>Single points. Framed relics.<br><em>Available now.</em></h1>
-    <p class="hero-tagline">Real artifacts from a working collection — not a museum replica. Provenance documented. Guaranteed authentic for life.</p>
+    <span class="hero-eyebrow">The Store · restocking soon</span>
+    <h1>Sold out.<br><em>Coming soon.</em></h1>
+    <p class="hero-tagline">Every piece in the store found a home. New single points and framed relics are on the way — same provenance, same lifetime guarantee.</p>
     <div class="hero-meta">
-        <span>💰 <strong>Available for purchase now</strong></span>
+        <span>🔥 <strong>New inventory coming soon</strong></span>
         <span>📦 <strong>Flat $8 shipping</strong> · ships weekly</span>
         <span>✅ <strong>Lifetime guarantee</strong></span>
     </div>
@@ -681,7 +681,7 @@
     <p class="band-intro">Single points, frame-fillers, and starter pieces. Real artifacts with real provenance — same authentication and lifetime guarantee as everything else we sell, just at lower price points.</p>
     <div class="product-grid" id="bargain-grid">
         <!-- Great Deals products get rendered here -->
-        <div class="empty-band">No great-deals pieces yet. New inventory drops weekly.</div>
+        <div class="empty-band">Sold out — new great-deals pieces coming soon.</div>
     </div>
 </section>
 
@@ -693,7 +693,7 @@
     <p class="band-intro">Better materials, better condition, better provenance. Still not museum-grade — that's what the main site is for — but the kind of pieces a serious collector is proud to own.</p>
     <div class="product-grid" id="curated-grid">
         <!-- Curated products get rendered here -->
-        <div class="empty-band">No curated pieces yet. New inventory drops weekly.</div>
+        <div class="empty-band">Sold out — new curated pieces coming soon.</div>
     </div>
 </section>
 
@@ -751,6 +751,10 @@
 -->
 <script>
 const PRODUCTS = [
+    // STORE PAUSED — all items sold (Aug 3 2026).
+    // Product data preserved below in a block comment. To restock,
+    // remove the opening/closing comment markers and the page goes live again.
+    /*
     {
         id: 'celt-geo-flick-001',
         band: 'curated',
@@ -844,6 +848,7 @@ const PRODUCTS = [
             'images/items/four-papered-points-001-5.jpg',
         ],
     },
+    */
 ];
 
 function renderProducts() {
