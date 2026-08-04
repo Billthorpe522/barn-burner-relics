@@ -67,23 +67,30 @@ img { max-width: 100%; display: block; }
 
 /* ---------- CROSS-SITE STRIP (matches /show/) ---------- */
 .site-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 14px; flex-wrap: wrap;
-    padding: 9px 22px;
-    background: linear-gradient(90deg, #0a0807 0%, #141008 55%, #0a0807 100%);
-    border-bottom: 1px solid #2a2018;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+    border-bottom: 1px solid var(--border); padding: 9px 24px;
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: #b8a88a;
     position: relative; z-index: 101;
 }
 .site-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .site-nav-brand-mark {
-    font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 13px;
-    color: #f5f0e8; background: #8b4513; padding: 3px 8px; border-radius: 2px; letter-spacing: 1.5px;
+    background: var(--oxblood);
+    color: var(--cream);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--gold);
 }
-.site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13px; color: #8b7355; letter-spacing: 1px; }
+.site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13px; color: var(--cream); letter-spacing: 1px; }
 .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
 .site-nav-links a {
     font-family: -apple-system, Arial, sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: 1.5px; text-transform: uppercase; color: #b8a88a; text-decoration: none;
+    color: #b8a88a; text-decoration: none;
     border-bottom: 1px solid transparent; padding-bottom: 2px;
 }
 .site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
