@@ -130,9 +130,11 @@ img { max-width: 100%; display: block; }
 .site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
 .site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
 @media (max-width: 700px) {
-    .site-nav { padding: 8px 14px; }
+    .site-nav { padding: 8px 12px; gap: 8px; }
     .site-nav-brand-text { display: none; }
-    .site-nav-links { gap: 14px; font-size: 11px; letter-spacing: 1px; }
+    .site-nav-brand-mark { font-size: 10px; padding: 2px 6px; }
+    .site-nav-links { gap: 10px; font-size: 12px; flex-wrap: nowrap; }
+    .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
 }
 
 /* ---------- HERO ---------- */
@@ -548,10 +550,10 @@ img { max-width: 100%; display: block; }
     <span class="site-nav-brand-text">Barn Burner Relics</span>
   </a>
   <div class="site-nav-links">
-    <a href="../"          data-key="sales"   >Vault &amp; Sales</a>
-    <a href="../shop/"     data-key="shop"    >The Store</a>
-    <a href="../gallery/"  data-key="gallery" >Monday Auction</a>
-    <a href="../show/"     data-key="show"    class="active">Collinsville Show</a>
+    <a href="../"          data-key="sales"   >Vault</a>
+    <a href="../shop/"     data-key="shop"    >Store</a>
+    <a href="../gallery/"  data-key="gallery" >Auction</a>
+    <a href="../show/"     data-key="show"    class="active">Show</a>
     <a href="../social/"   data-key="social"  >Socials</a>
   </div>
 </nav>
