@@ -89,14 +89,6 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        .header-back {
-            color: var(--warm-grey);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s;
-        }
-        .header-back:hover { color: var(--gold); }
         .header-title {
             color: var(--taupe);
             font-size: 11px;
@@ -665,8 +657,6 @@
             transition: color 0.15s ease, border-color 0.15s ease;
         }
         .site-nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-        .site-nav-links a[data-key="fb"] { color: #1877f2; }
-        .site-nav-links a[data-key="fb"]:hover { color: #5ea3ff; border-bottom-color: #5ea3ff; }
         .site-nav-links a.active { color: var(--cream); border-bottom-color: var(--gold); }
         @media (max-width: 540px) {
             .site-nav { padding: 8px 14px; }
@@ -690,13 +680,11 @@
     <a href="../gallery/"  data-key="gallery" class="active">Monday Auction</a>
     <a href="../show/"     data-key="show"    >Collinsville Show</a>
     <a href="../social/"   data-key="social"  >Socials</a>
-    <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" data-key="fb">Facebook ↗</a>
   </div>
 </nav>
 
 <header>
     <div class="header-inner">
-        <a href="../" class="header-back">← Back to Catalog</a>
         <span class="header-title">Monday's Auction · Photo Gallery</span>
     </div>
 </header>

@@ -105,25 +105,6 @@
            as orange-on-orange against the rest of the site's dark
            palette. Now uses the same --bg-soft panel as section
            dividers, with muted gold accents. */
-        .announcement {
-            background: var(--bg-soft);
-            color: var(--cream-dim);
-            text-align: center;
-            padding: 10px 16px;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            border-bottom: 1px solid var(--border);
-        }
-        .announcement strong { color: var(--gold); font-weight: 600; }
-        .announcement a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s, color 0.15s; }
-        .announcement a:hover { color: var(--gold-bright); border-bottom-color: var(--gold-bright); }
-        @media (max-width: 600px) {
-            .announcement { font-size: 11px; padding: 9px 12px; letter-spacing: 1.2px; }
-        }
-
         /* Header */
         header {
             background: var(--bg-soft);
@@ -849,8 +830,6 @@
             transition: color 0.15s ease, border-color 0.15s ease;
         }
         .site-nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-        .site-nav-links a[data-key="fb"] { color: #1877f2; }
-        .site-nav-links a[data-key="fb"]:hover { color: #5ea3ff; border-bottom-color: #5ea3ff; }
         .site-nav-links a.active { color: var(--cream); border-bottom-color: var(--gold); }
         @media (max-width: 540px) {
             .site-nav { padding: 8px 14px; }
@@ -884,12 +863,6 @@
 <body>
 <a class="skip-nav" href="#main">Skip to main content</a>
 
-<div class="announcement">
-    ⚡ <strong>Live Auctions</strong> Mondays at 5:00 PM Central Time &nbsp;·&nbsp;
-    <a href="gallery/">View the Auction Gallery →</a>
-    &nbsp;·&nbsp; <strong>Lifetime Authenticity Guarantee</strong>
-</div>
-
 <!-- Cross-site nav. Identical block lives on /shop/ and /gallery/ with ../ paths. -->
 <nav class="site-nav" aria-label="Barn Burner Relics surfaces">
   <a class="site-nav-brand" href="./">
@@ -901,8 +874,7 @@
     <a href="shop/"      data-key="shop"    >The Store</a>
     <a href="gallery/"   data-key="gallery" >Monday Auction</a>
     <a href="show/"      data-key="show"    >Collinsville Show</a>
-    <a href="social/"    data-key="social"  >Socials</a>
-    <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" data-key="fb">Facebook ↗</a>
+    <a href="social/"   data-key="social"  >Socials</a>
   </div>
 </nav>
 
