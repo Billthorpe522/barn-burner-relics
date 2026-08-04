@@ -105,93 +105,6 @@
            as orange-on-orange against the rest of the site's dark
            palette. Now uses the same --bg-soft panel as section
            dividers, with muted gold accents. */
-        /* Header */
-        header {
-            background: var(--bg-soft);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 24px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        .logo h1 {
-            font-size: 22px;
-            color: var(--cream);
-            line-height: 1.2;
-            margin: 0;
-        }
-        .header-logo-img {
-            height: 56px;
-            width: auto;
-            display: block;
-            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
-        }
-        .hero-logo-wrap {
-            max-width: 720px;
-            margin: 0 auto 28px;
-            text-align: center;
-        }
-        .hero-logo-img {
-            width: 100%;
-            max-width: 720px;
-            height: auto;
-            display: inline-block;
-            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.6)) drop-shadow(0 0 60px rgba(212,168,83,0.15));
-        }
-        .logo span {
-            display: block;
-            font-size: 11px;
-            color: var(--taupe);
-            font-family: -apple-system, sans-serif;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        @media (max-width: 700px) {
-            .logo h1 { font-size: 18px; }
-            .logo span { font-size: 10px; }
-            .header-logo-img { height: 44px; }
-            .hero-logo-wrap { margin-bottom: 20px; }
-            .hero h1 { font-size: 28px; }
-        }
-        @media (max-width: 480px) {
-            .logo h1 { font-size: 16px; }
-            .header-logo-img { height: 38px; }
-            .hero-logo-wrap { margin-bottom: 16px; }
-        }
-        .header-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            font-size: 13px;
-            color: var(--warm-grey);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .header-links a:hover { color: var(--gold); }
-        .header-links .cart-link {
-            background: var(--oxblood);
-            color: var(--cream);
-            padding: 8px 18px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-        .header-links .cart-link:hover { background: var(--oxblood-bright); }
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--cream-soft); font-size: 24px; cursor: pointer; }
-
         /* Hero — split layout (left text + right artifact subject) */
         .hero {
             background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
@@ -841,8 +754,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header-links { display: none; }
-            .mobile-menu-btn { display: block; }
             .hero h1 { font-size: 28px; }
             .hero { padding: 50px 20px 40px; }
             .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; padding: 0 16px 40px; }
@@ -879,21 +790,6 @@
     <a href="social/"   data-key="social"  >Socials</a>
   </div>
 </nav>
-
-<header>
-    <div class="header-inner">
-        <a href="./" class="logo">
-            <img src="images/bbr-logo-header.jpg" alt="Barn Burner Relics Inc" class="header-logo-img">
-        </a>
-        <nav class="header-links">
-            <a href="#shop" onclick="closeDetail();">Shop</a>
-            <a href="shop/" style="color:var(--gold);">The Store ↗</a>
-            <a href="#about" onclick="closeDetail();">About</a>
-            <a href="#" class="cart-link" onclick="openInquiry(); return false;">Inquire</a>
-        </nav>
-        <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="headerLinks" onclick="toggleMobile()">☰</button>
-    </div>
-</header>
 
 <main id="main">
 <section class="hero">
@@ -1328,38 +1224,6 @@
         document.getElementById('messengerOverlay').classList.remove('active');
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('messengerOverlay').classList.contains('active')) closeMessenger(); });
-
-    let mobileOpen = false;
-    function toggleMobile() {
-        const btn = document.querySelector('.mobile-menu-btn');
-        const links = document.getElementById('headerLinks');
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        btn.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
-        const nav = document.querySelector('.header-links');
-        mobileOpen = !mobileOpen;
-        nav.style.display = mobileOpen ? 'flex' : '';
-        if (mobileOpen) {
-            nav.style.flexDirection = 'column';
-            nav.style.position = 'absolute';
-            nav.style.top = '100%';
-            nav.style.left = '0';
-            nav.style.right = '0';
-            nav.style.background = 'var(--bg-soft)';
-            nav.style.padding = '20px';
-            nav.style.borderBottom = '1px solid var(--border)';
-            nav.style.zIndex = '99';
-        } else {
-            nav.style = '';
-        }
-    }
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            const nav = document.querySelector('.header-links');
-            nav.style = '';
-            mobileOpen = false;
-        }
-    });
 
     // Classifier: turns a descriptive period label (e.g. "Late Archaic · ~3,000 BP"
     // or "Paleoindian / Early Archaic (~8500–7900 B.P.)") into one of four buckets.

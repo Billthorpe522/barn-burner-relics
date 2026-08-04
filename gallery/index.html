@@ -73,30 +73,6 @@
         img { max-width: 100%; display: block; cursor: pointer; }
         a { color: inherit; text-decoration: none; }
 
-        /* === HEADER === */
-        header {
-            background: var(--bg-soft);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .header-title {
-            color: var(--taupe);
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: -apple-system, sans-serif;
-        }
-
         /* === HERO === */
         .hero {
         background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
@@ -544,7 +520,6 @@
             .hero-image-wrap { padding-top: 14px; margin-bottom: 18px; }
             .hero h1 { font-size: 28px; }
             .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 14px 12px 30px; }
-            .header-title { display: none; }
             .lightbox-nav { width: 42px; height: 42px; font-size: 22px; }
             }
 
@@ -684,12 +659,6 @@
     <a href="../social/"   data-key="social"  >Socials</a>
   </div>
 </nav>
-
-<header>
-    <div class="header-inner">
-        <span class="header-title">Monday's Auction · Photo Gallery</span>
-    </div>
-</header>
 
 <main id="main">
 <section class="hero">
