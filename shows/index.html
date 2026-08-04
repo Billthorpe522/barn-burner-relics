@@ -186,11 +186,26 @@ img { max-width: 100%; display: block; }
 .show-card-image {
     width: 100%;
     height: 320px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center top;
+    background: #0a0807;
     border-bottom: 1px solid var(--border);
     display: block;
-    background: #0a0807;
+    cursor: zoom-in;
+    transition: opacity 0.15s ease;
+}
+.show-card-image:hover { opacity: 0.92; }
+.show-card-image-caption {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--taupe);
+    text-align: center;
+    padding: 8px 12px;
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+}
+@media (min-width: 820px) {
+    .show-card-image { height: 420px; }
 }
 .show-card-body {
     padding: 32px;
@@ -380,7 +395,59 @@ img { max-width: 100%; display: block; }
     .section { padding: 64px 24px; }
     .submit-band { padding: 64px 24px; }
     .show-card-body { padding: 24px; }
-    .show-card-image { height: 240px; }
+    .show-card-image { height: 320px; }
+}
+
+/* ---------- LIGHTBOX (full flyer viewer) ---------- */
+.lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    cursor: zoom-out;
+    animation: lb-fade 0.15s ease;
+}
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+.lightbox.open { display: flex; }
+.lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+}
+.lightbox-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.1);
+    border: 1px solid rgba(245, 240, 232, 0.2);
+    color: var(--cream);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, Arial, sans-serif;
+    transition: background 0.15s ease;
+}
+.lightbox-close:hover { background: rgba(245, 240, 232, 0.2); }
+.lightbox-caption {
+    position: absolute;
+    bottom: 20px; left: 0; right: 0;
+    text-align: center;
+    color: var(--cream-dim);
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 0 24px;
+}
+@media (max-width: 700px) {
+    .lightbox { padding: 16px; }
+    .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
 }
 </style>
 
@@ -537,10 +604,13 @@ img { max-width: 100%; display: block; }
 
         <!-- ===== LAKE OZARK — NEXT UP ===== -->
         <article class="show-card featured">
-            <img class="show-card-image"
-                 src="img/lake-ozark-2026.jpg"
-                 alt="Official flyer for the Lake Ozark MO Prehistoric Artifact Show, August 7–8, 2026 at the Lake Ozarks Lions Club, 131 Fish Haven Rd, Lake Ozark MO"
-                 loading="lazy">
+            <a href="img/lake-ozark-2026.jpg" class="flyer-trigger" data-caption="Lake Ozark Prehistoric Artifact Show — official flyer, Aug 7–8, 2026">
+                <img class="show-card-image"
+                     src="img/lake-ozark-2026.jpg"
+                     alt="Official flyer for the Lake Ozark MO Prehistoric Artifact Show, August 7–8, 2026 at the Lake Ozarks Lions Club, 131 Fish Haven Rd, Lake Ozark MO"
+                     loading="lazy">
+            </a>
+            <div class="show-card-image-caption">Click to view full flyer</div>
             <div class="show-card-body">
                 <span class="show-card-tag next">This Weekend · Aug 7–8</span>
                 <h3>Lake Ozark Prehistoric Artifact Show</h3>
@@ -564,10 +634,13 @@ img { max-width: 100%; display: block; }
 
         <!-- ===== MARSHALL TX ===== -->
         <article class="show-card">
-            <img class="show-card-image"
-                 src="img/marshall-tx-2026.jpg"
-                 alt="Official flyer for the Marshall Texas Arrowhead and Artifact Show, Saturday August 22 2026 at the Marshall Texas Convention Center, Caddo Hall, 2501 E End Blvd S, Marshall TX 75672"
-                 loading="lazy">
+            <a href="img/marshall-tx-2026.jpg" class="flyer-trigger" data-caption="Marshall Texas Arrowhead & Artifact Show — official flyer, Aug 22, 2026">
+                <img class="show-card-image"
+                     src="img/marshall-tx-2026.jpg"
+                     alt="Official flyer for the Marshall Texas Arrowhead and Artifact Show, Saturday August 22 2026 at the Marshall Texas Convention Center, Caddo Hall, 2501 E End Blvd S, Marshall TX 75672"
+                     loading="lazy">
+            </a>
+            <div class="show-card-image-caption">Click to view full flyer</div>
             <div class="show-card-body">
                 <span class="show-card-tag">Two Weeks Out · Aug 22</span>
                 <h3>Marshall Texas Arrowhead &amp; Artifact Show</h3>
@@ -693,5 +766,57 @@ img { max-width: 100%; display: block; }
 
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script>
+
+<!-- Flyer lightbox -->
+<div class="lightbox" id="flyerLightbox" role="dialog" aria-modal="true" aria-label="Full flyer view" tabindex="-1">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+<script>
+(function() {
+    const lb = document.getElementById('flyerLightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbCap = document.getElementById('lightboxCaption');
+    const lbClose = document.getElementById('lightboxClose');
+    const triggers = document.querySelectorAll('.flyer-trigger');
+
+    function openLb(src, cap, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCap.textContent = cap || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lb.focus();
+    }
+    function closeLb() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    triggers.forEach(function(t) {
+        // Capture-phase handler so we run before any default navigation
+        t.addEventListener('click', function(e) {
+            e.preventDefault();
+            const img = t.querySelector('img');
+            openLb(t.getAttribute('href'), t.dataset.caption, img ? img.alt : '');
+        }, true);
+        // Also handle clicks directly on the inner image, in case focus/event routing is odd
+        const innerImg = t.querySelector('img');
+        if (innerImg) {
+            innerImg.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                openLb(t.getAttribute('href'), t.dataset.caption, innerImg.alt);
+            });
+        }
+    });
+    lb.addEventListener('click', function(e) { if (e.target === lb) closeLb(); });
+    lbClose.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) closeLb();
+    });
+})();
+</script>
 </body>
 </html>
