@@ -1,7 +1,13 @@
 # Personal / draft / working-only artifacts — not for the public site
 /docs/
 /obs/
-/images/incoming/
+# Block raw incoming photos but allow WebP variants through (optimized variants ship to site)
+/images/incoming/**/*.jpg
+/images/incoming/**/*.jpeg
+/images/incoming/**/*.png
+/images/incoming/**/*.JPG
+/images/incoming/**/*.JPEG
+/images/incoming/**/*.PNG
 construction-banner-draft.md
 
 # OS / editor noise
