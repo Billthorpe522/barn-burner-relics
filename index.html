@@ -208,6 +208,32 @@
             position: relative;
         }
         .hero .signature-block { text-align: left; margin-left: 0; margin-right: auto; }
+        /* Welcome video embed — sits directly under the plaque in the hero */
+        .hero-video {
+            max-width: 480px;
+            margin: 24px 0 0;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        .hero-video .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(212, 168, 83, 0.32);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+        .hero-video .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .hero-video .video-link-caption {
+            margin-top: 10px;
+        }
         .signature-block .plaque-img {
             display: block;
             width: 100%;
@@ -680,8 +706,6 @@
             text-shadow: 0 1px 2px rgba(255,255,255,0.1), 0 0 1px rgba(255,255,255,0.15);
         }
         .about-section .signature { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: var(--gold); font-size: 18px; margin-top: 24px; }
-        .about-video { margin-top: 36px; max-width: 720px; margin-left: auto; margin-right: auto; }
-        .about-video .video-link { border-color: rgba(212, 168, 83, 0.32); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
         /* Footer */
         footer {
@@ -810,6 +834,18 @@
             <div class="signature-block">
                 <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
             </div>
+
+            <div class="hero-video">
+                <div class="video-frame">
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/Np3t4Zg8ckM?autoplay=1&mute=1&rel=0&playsinline=1"
+                        title="Welcome to Barn Burner Relics — YouTube"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        loading="lazy"></iframe>
+                </div>
+                <div class="video-link-caption">Welcome to the channel · autoplays muted — tap for sound · <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener" style="color:var(--gold);">Subscribe →</a></div>
+            </div>
         </div>
 
         <figure class="hero-artifact">
@@ -919,13 +955,6 @@
         Nick organizes the <a href="show/" style="color:var(--gold);border-bottom:1px solid var(--oxblood);padding-bottom:2px;text-decoration:none;">Collinsville Prehistoric Artifact Show</a> — among the largest prehistoric artifact shows in the country — and is a regular exhibitor at the annual Starved Rock Native American Artifact Show. His weekly Facebook auctions draw collectors from across the United States.
         </p>
     <div class="signature">— Nick Gatses, Proprietor</div>
-    <div class="about-video">
-        <a href="https://www.youtube.com/watch?v=Np3t4Zg8ckM" target="_blank" rel="noopener" class="video-link" style="--video-thumb: url('https://i.ytimg.com/vi/Np3t4Zg8ckM/maxresdefault.jpg?v=20260804');" aria-label="Watch the Welcome to Barn Burner Relics video on YouTube">
-            <span class="video-title">Welcome to the Barn Burner Relics YouTube channel</span>
-            <span class="video-duration">1:49</span>
-        </a>
-        <div class="video-link-caption">Subscribe to our channel →</div>
-    </div>
 </section>
 
 <!-- Quiet CTA: Nick actively buys collections and does appraisals.
