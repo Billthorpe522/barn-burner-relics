@@ -215,24 +215,22 @@
             margin-left: 0;
             margin-right: auto;
         }
-        .hero-video .video-frame {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
+        .hero-video .video-link {
             border: 1px solid rgba(212, 168, 83, 0.32);
-            border-radius: 4px;
-            overflow: hidden;
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-        }
-        .hero-video .video-frame iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
         }
         .hero-video .video-link-caption {
             margin-top: 10px;
+        }
+        .hero-video .video-link-caption a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid var(--oxblood);
+            padding-bottom: 2px;
+            transition: color 0.2s ease;
+        }
+        .hero-video .video-link-caption a:hover {
+            color: var(--gold);
         }
         .signature-block .plaque-img {
             display: block;
@@ -836,15 +834,11 @@
             </div>
 
             <div class="hero-video">
-                <div class="video-frame">
-                    <iframe
-                        src="https://www.youtube-nocookie.com/embed/Np3t4Zg8ckM?autoplay=1&mute=1&rel=0&playsinline=1"
-                        title="Welcome to Barn Burner Relics — YouTube"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy"></iframe>
-                </div>
-                <div class="video-link-caption">Welcome to the channel · autoplays muted — tap for sound · <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener" style="color:var(--gold);">Subscribe →</a></div>
+                <a href="https://www.youtube.com/watch?v=Np3t4Zg8ckM" target="_blank" rel="noopener" class="video-link" style="--video-thumb: url('https://i.ytimg.com/vi/Np3t4Zg8ckM/maxresdefault.jpg?v=20260804');" aria-label="Watch the Welcome to Barn Burner Relics video on YouTube">
+                    <span class="video-title">Welcome to the Barn Burner Relics YouTube channel</span>
+                    <span class="video-duration">1:49</span>
+                </a>
+                <div class="video-link-caption"><a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">Subscribe to our channel →</a></div>
             </div>
         </div>
 
