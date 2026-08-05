@@ -1194,7 +1194,8 @@
                     period: 'Late Archaic · 3000–1000 BC',
                     tag: 'Sold',
                     category: 'Bannerstones',
-                    images: ['images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-1.jpg', 'images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-2.jpg'],
+                    images: ['images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-1.jpg', 'images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-2.jpg', 'images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-3-hand.jpg'],
+                    video: 'CWLbTf_DFwA',
                     description: '<p>A <strong>pop-eyed rocking birdstone</strong> carved from warm variegated quartz — cream, ochre, and caramel tones with natural inclusions. Stylized avian form with raised, protruding eyes and a low center ridge; the curved base allows it to rock gently when set on a flat surface. Polished to a soft sheen with honest age wear.</p><p><strong>This piece has sold.</strong> Birdstones of this quality rarely surface — join the Facebook group for first look at what comes in next.</p>',
                     specs: {'Material':'Quartz (variegated)','Origin':'Midwest','Period':'Late Archaic · 3000–1000 BC','Culture':'Late Archaic','Type':'Pop-eyed rocking birdstone','Condition':'Sold — shown for reference','Authenticity':'Lifetime Authenticity Guarantee'}
                 }
@@ -1303,6 +1304,17 @@
             };
             thumbs.appendChild(thumb);
         });
+
+        // YouTube video embed (if the piece has one)
+        if (p.video) {
+            const vid = document.createElement('a');
+            vid.href = `https://www.youtube.com/watch?v=${p.video}`;
+            vid.target = '_blank';
+            vid.rel = 'noopener';
+            vid.style.cssText = 'display:block;position:relative;border-radius:4px;overflow:hidden;border:1px solid var(--gold);aspect-ratio:16/9;';
+            vid.innerHTML = `<img src="https://i.ytimg.com/vi/${p.video}/hqdefault.jpg" alt="Watch the video" style="width:100%;height:100%;object-fit:cover;display:block;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);"><svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>`;
+            thumbs.appendChild(vid);
+        }
 
         const meta = document.getElementById('detailMetaTable');
         meta.innerHTML = Object.entries(p.specs).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
