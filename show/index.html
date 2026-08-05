@@ -109,6 +109,28 @@ img { max-width: 100%; display: block; }
 }
 .nav-cta:hover { background: var(--oxblood-bright); color: var(--cream); }
 
+/* Other-shows strip — sandwiched between the Collinsville sub-nav and the hero */
+.other-shows-strip {
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 100;
+}
+.other-shows-strip a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--oxblood);
+    padding-bottom: 1px;
+    transition: color 0.2s ease;
+}
+.other-shows-strip a:hover { color: var(--gold-bright); }
+
 /* Cross-site strip — identical to /, /shop/, /gallery/ */
 .site-nav {
     display: flex; align-items: center; justify-content: space-between; gap: 16px;
@@ -577,7 +599,7 @@ img { max-width: 100%; display: block; }
     <a href="../"          data-key="sales"   >Vault</a>
     <a href="../shop/"     data-key="shop"    >Store</a>
     <a href="../gallery/"  data-key="gallery" >Auction</a>
-    <a href="../show/"     data-key="show"    class="active">Show</a>
+    <a href="../show/"     data-key="show"    class="active">Shows</a>
     <a href="../social/"   data-key="social"  >Socials</a>
   </div>
 </nav>
@@ -595,6 +617,10 @@ img { max-width: 100%; display: block; }
         <a href="https://barnburnerrelics.net/" class="nav-cta">Barn Burner Relics →</a>
     </div>
 </nav>
+
+<div class="other-shows-strip">
+    <a href="../shows/">Find Us at Other Shows →</a>
+</div>
 
 <main id="main">
 
