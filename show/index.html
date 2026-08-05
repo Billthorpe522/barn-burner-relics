@@ -13,6 +13,9 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Barn Burner Relics">
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- Preload the hero image as WebP for fast LCP. Falls back to JPEG via the preload's `imagesrcset` + the CSS background below. -->
+<link rel="preload" as="image" href="/show/img/nick-exhibiting-1.webp" type="image/webp" imagesrcset="/show/img/nick-exhibiting-1-mobile.webp 768w, /show/img/nick-exhibiting-1.webp 1280w" imagesizes="100vw" fetchpriority="high">
 <meta name="twitter:title" content="The Collinsville Show — Authentic Prehistoric Artifact Show">
 <meta name="twitter:description" content="The 40th Annual Collinsville Prehistoric Artifact Show. March 12-14, 2027, Collinsville, IL.">
 <meta name="twitter:image" content="https://barnburnerrelics.net/images/bbr-logo.jpg">
@@ -154,6 +157,20 @@ img { max-width: 100%; display: block; }
     background-color: #1a1410;
     display: flex; align-items: flex-end;
     padding: 80px 32px 64px;
+}
+/* WebP variant for browsers that support it (modern). Browsers without WebP support fall back to the JPEG above via CSS cascade order. */
+.webp .hero {
+    background-image:
+        linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.85) 70%, var(--bg) 100%),
+        url('img/nick-exhibiting-1.webp');
+}
+/* Mobile gets a smaller, faster WebP variant. */
+@media (max-width: 768px) {
+    .webp .hero {
+        background-image:
+            linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.85) 70%, var(--bg) 100%),
+            url('img/nick-exhibiting-1-mobile.webp');
+    }
 }
 .hero-content { max-width: 980px; margin: 0 auto; width: 100%; }
 
@@ -679,7 +696,7 @@ img { max-width: 100%; display: block; }
             </p>
             <div class="signature">— Nick Gatses, Organizer</div>
             <div class="about-portrait">
-                <img src="img/nick-exhibiting-2.jpg" alt="Nick Gatses exhibiting authentic prehistoric artifacts at a Midwest relic show, framed display cases of points behind him" loading="lazy">
+                <picture><source type="image/webp" media="(max-width: 768px)" srcset="img/nick-exhibiting-2-mobile.webp"><source type="image/webp" srcset="img/nick-exhibiting-2.webp"><img src="img/nick-exhibiting-2.jpg" alt="Nick Gatses exhibiting authentic prehistoric artifacts at a Midwest relic show, framed display cases of points behind him" width="1280" height="960" loading="lazy"></picture>
             </div>
         </div>
 
@@ -850,11 +867,11 @@ img { max-width: 100%; display: block; }
 
         <div class="photo-strip">
             <figure class="photo-main">
-                <img src="img/woodhenge.jpg" alt="Cahokia Woodhenge at sunrise — a circle of reconstructed timber posts that functioned as a Mississippian solar calendar" loading="lazy">
+                <picture><source type="image/webp" media="(max-width: 768px)" srcset="img/woodhenge-mobile.webp"><source type="image/webp" srcset="img/woodhenge.webp"><img src="img/woodhenge.jpg" alt="Cahokia Woodhenge at sunrise — a circle of reconstructed timber posts that functioned as a Mississippian solar calendar" width="1280" height="720" loading="lazy"></picture>
                 <figcaption>Woodhenge · solar calendar · circa 1000 CE</figcaption>
             </figure>
             <figure>
-                <img src="img/monks-mound-stairway.jpg" alt="The modern stairway climbing Monks Mound, the largest prehistoric earthen mound in the Americas" loading="lazy">
+                <picture><source type="image/webp" media="(max-width: 768px)" srcset="img/monks-mound-stairway-mobile.webp"><source type="image/webp" srcset="img/monks-mound-stairway.webp"><img src="img/monks-mound-stairway.jpg" alt="The modern stairway climbing Monks Mound, the largest prehistoric earthen mound in the Americas" width="1280" height="960" loading="lazy"></picture>
                 <figcaption>Monks Mound · 100 ft, four terraces · stairway open daily</figcaption>
             </figure>
         </div>
@@ -875,7 +892,7 @@ img { max-width: 100%; display: block; }
 
     <div class="cards">
         <div class="card-eyebrow-image">
-            <img src="img/monks-mound-bill-thorpe.jpg" alt="Bill Thorpe's aerial of Monks Mound at Cahokia — the largest prehistoric earthen mound in the Americas, viewed from above with the Mississippi River bottoms in the distance" loading="lazy">
+            <picture><source type="image/webp" media="(max-width: 768px)" srcset="img/monks-mound-bill-thorpe-mobile.webp"><source type="image/webp" srcset="img/monks-mound-bill-thorpe.webp"><img src="img/monks-mound-bill-thorpe.jpg" alt="Bill Thorpe's aerial of Monks Mound at Cahokia — the largest prehistoric earthen mound in the Americas, viewed from above with the Mississippi River bottoms in the distance" width="1280" height="720" loading="lazy"></picture>
             <div class="card-body">
                 <div class="card-eyebrow">If you have 3 hours</div>
                 <h3>Cahokia Mounds</h3>
@@ -885,7 +902,7 @@ img { max-width: 100%; display: block; }
         </div>
 
         <div class="card-eyebrow-image">
-            <img src="img/saint-louis-art-museum.jpg" alt="The Saint Louis Art Museum in Forest Park, home to one of the finest Mississippian artifact collections in any museum" loading="lazy">
+            <picture><source type="image/webp" media="(max-width: 768px)" srcset="img/saint-louis-art-museum-mobile.webp"><source type="image/webp" srcset="img/saint-louis-art-museum.webp"><img src="img/saint-louis-art-museum.jpg" alt="The Saint Louis Art Museum in Forest Park, home to one of the finest Mississippian artifact collections in any museum" width="1280" height="851" loading="lazy"></picture>
             <div class="card-body">
                 <div class="card-eyebrow">If you have a half-day</div>
                 <h3>St. Louis</h3>
@@ -1048,5 +1065,16 @@ img { max-width: 100%; display: block; }
 </footer>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- WebP feature detection — adds .webp class to <html> for modern browsers so CSS can swap to optimized images. Negligible cost (1KB canvas check), no FOIT. -->
+<script>
+(function(){
+  var canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 1;
+  if (canvas.toDataURL && canvas.toDataURL('image/webp').indexOf('image/webp') === 5) {
+    document.documentElement.classList.add('webp');
+  }
+})();
+</script>
 </body>
 </html>

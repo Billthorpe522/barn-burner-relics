@@ -639,6 +639,9 @@
             .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
         }
     </style>
+
+<!-- Preload the hero image for fast LCP. -->
+<link rel="preload" as="image" href="/images/incoming/2026-08-02-monday-auction/01.webp" type="image/webp" imagesrcset="/images/incoming/2026-08-02-monday-auction/01-mobile.webp 768w, /images/incoming/2026-08-02-monday-auction/01.webp 1600w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
 </head>
 <body>
 <a class="skip-nav" href="#main">Skip to main content</a>
@@ -661,7 +664,11 @@
 <main id="main">
 <section class="hero">
     <div class="hero-image-wrap">
-        <img class="hero-image" src="/images/incoming/2026-08-02-monday-auction/01.jpg" alt="Full display case overview — last Monday's auction lots, all in one frame">
+        <picture>
+            <source type="image/webp" media="(max-width: 768px)" srcset="/images/incoming/2026-08-02-monday-auction/01-mobile.webp">
+            <source type="image/webp" srcset="/images/incoming/2026-08-02-monday-auction/01.webp">
+            <img class="hero-image" src="/images/incoming/2026-08-02-monday-auction/01.jpg" alt="Full display case overview — last Monday's auction lots, all in one frame" loading="eager" fetchpriority="high" width="1600" height="1300">
+        </picture>
     </div>
     <div class="countdown" id="countdown" aria-label="Countdown to the next Monday auction">
         <div class="cd-cell">
@@ -844,11 +851,18 @@
         const classes = 'photo-tile' + (isLead ? ' lead-tile' : '') + (isSold ? ' sold-tile' : '');
         const leadTagHtml = ''; // "Lead Photo · Monday" tag removed per request — lead-tile styling (gold border, full-width) preserved
         const soldTagHtml = isSold ? '<span class="sold-tag">Sold</span>' : '';
+        // Build WebP srcset variants from the JPEG path. e.g. /img/foo/01.jpg -> /img/foo/01.webp + /img/foo/01-mobile.webp
+        const webpSrc = p.src.replace(/\.jpg$/, '.webp');
+        const webpMobileSrc = p.src.replace(/\.jpg$/, '-mobile.webp');
         return `
         <div class="${classes}" onclick="openLightbox(${idx})">
             ${leadTagHtml}
             ${soldTagHtml}
-            <img src="${p.src}" alt="${p.title || 'Auction lot photo'}" loading="lazy">
+            <picture>
+                <source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}">
+                <source type="image/webp" srcset="${webpSrc}">
+                <img src="${p.src}" alt="${p.title || 'Auction lot photo'}" loading="lazy" width="1280" height="960">
+            </picture>
         </div>
     `;
     }).join('');
@@ -862,8 +876,11 @@
 
     function showLightbox() {
         const photo = galleryPhotos[lightboxIndex];
-        document.getElementById('lbImage').src = photo.src;
-        document.getElementById('lbImage').alt = '';
+        // Use WebP for the full-size lightbox too. Falls back to JPEG via onerror.
+        const lbImg = document.getElementById('lbImage');
+        lbImg.onerror = function() { this.onerror = null; this.src = photo.src; };
+        lbImg.src = photo.src.replace(/\.jpg$/, '.webp');
+        lbImg.alt = '';
         document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}`;
         document.getElementById('lightbox').classList.add('active');
         document.body.style.overflow = 'hidden';

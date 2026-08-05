@@ -770,6 +770,9 @@
             .hero h1 { font-size: 24px; }
         }
     </style>
+
+<!-- Preload the hero image for fast LCP. The <picture> element below handles WebP/mobile variants. -->
+<link rel="preload" as="image" href="/images/hero-display-case-collection.webp" type="image/webp" imagesrcset="/images/hero-display-case-collection-mobile.webp 768w, /images/hero-display-case-collection.webp 1280w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
 </head>
 <body>
 <a class="skip-nav" href="#main">Skip to main content</a>
@@ -810,7 +813,11 @@
         </div>
 
         <figure class="hero-artifact">
-            <img src="images/hero-display-case-collection.jpg" alt="Curated glass display case holding a working collection of hammerstones, bannerstones, pipes, gorgets, and a framed arrowhead tray from the BBR vault" loading="eager">
+            <picture>
+                <source type="image/webp" media="(max-width: 768px)" srcset="images/hero-display-case-collection-mobile.webp">
+                <source type="image/webp" srcset="images/hero-display-case-collection.webp">
+                <img src="images/hero-display-case-collection.jpg" alt="Curated glass display case holding a working collection of hammerstones, bannerstones, pipes, gorgets, and a framed arrowhead tray from the BBR vault" loading="eager" fetchpriority="high" width="1280" height="720">
+            </picture>
             <figcaption class="hero-artifact-caption">
                 <strong>From the vault</strong> · curated collection · available now
             </figcaption>
@@ -864,28 +871,28 @@
     </div>
     <div class="wwd-grid">
         <article class="wwd-card">
-            <div class="wwd-image"><img src="images/incoming/2026-08-02-monday-auction/07.jpg" alt="Monday auction lot — current batch" loading="lazy"></div>
+            <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/incoming/2026-08-02-monday-auction/07-mobile.webp"><source type="image/webp" srcset="images/incoming/2026-08-02-monday-auction/07.webp"><img src="images/incoming/2026-08-02-monday-auction/07.jpg" alt="Monday auction lot — current batch" loading="lazy" width="1280" height="960"></picture></div>
             <h3>Weekly Auctions</h3>
             <p>Every Monday on Facebook — 20-40 pieces per week, single points to small collections. Open bidding, photos in the lot, no reserves.</p>
             <a href="gallery/" class="wwd-link">View the Auction Gallery →</a>
         </article>
 
         <article class="wwd-card">
-            <div class="wwd-image"><img src="images/incoming/display-case-points-misc/photo-2.jpg" alt="Curated collection of authentic Native American artifacts" loading="lazy"></div>
+            <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/incoming/display-case-points-misc/photo-2-mobile.webp"><source type="image/webp" srcset="images/incoming/display-case-points-misc/photo-2.webp"><img src="images/incoming/display-case-points-misc/photo-2.jpg" alt="Curated collection of authentic Native American artifacts" loading="lazy" width="1280" height="960"></picture></div>
             <h3>Private Sales</h3>
             <p>Higher-end pieces, museum-grade material, and named-collection offerings. Sold quietly, with full provenance, to qualified buyers.</p>
             <a href="#shop" onclick="closeDetail();" class="wwd-link">Browse the Vault →</a>
         </article>
 
         <article class="wwd-card">
-            <div class="wwd-image"><img src="images/bannerstones/collection-closeup-2026-07-13.jpg" alt="A close-up of an authenticated artifact" loading="lazy"></div>
+            <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/bannerstones/collection-closeup-2026-07-13-mobile.webp"><source type="image/webp" srcset="images/bannerstones/collection-closeup-2026-07-13.webp"><img src="images/bannerstones/collection-closeup-2026-07-13.jpg" alt="A close-up of an authenticated artifact" loading="lazy" width="1280" height="443"></picture></div>
             <h3>Buying Collections</h3>
             <p>Single pieces, full collections, and estate accumulations — bought quietly and confidentially, with fair offers and fast decisions.</p>
             <a href="#" onclick="closeDetail(); openInquiry(); return false;" class="wwd-link">Talk to Nick →</a>
         </article>
 
         <article class="wwd-card">
-            <div class="wwd-image"><img src="show/img/collinsville-exhibit-floor.jpg" alt="Nick Gatses on the Collinsville Prehistoric Artifact Show floor, framed cases of points and stone tools on display" loading="lazy"></div>
+            <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="show/img/collinsville-exhibit-floor-mobile.webp"><source type="image/webp" srcset="show/img/collinsville-exhibit-floor.webp"><img src="show/img/collinsville-exhibit-floor.jpg" alt="Nick Gatses on the Collinsville Prehistoric Artifact Show floor, framed cases of points and stone tools on display" loading="lazy" width="1280" height="960"></picture></div>
             <h3>The Collinsville Show</h3>
             <p>Nick organizes the country's largest prehistoric artifact show — 40 years running, ~200 exhibitors, every March in Collinsville, IL.</p>
             <a href="show/" class="wwd-link">Plan Your Visit →</a>
@@ -1117,11 +1124,14 @@
             })
             .map(p => {
             const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
+            // Build WebP variants from the JPEG/PNG src. Handles both .jpg and .png.
+            const webpSrc = imgSrc.replace(/\.(jpg|png)$/i, '.webp');
+            const webpMobileSrc = imgSrc.replace(/\.(jpg|png)$/i, '-mobile.webp');
             const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
             const isSold = p.tag === 'Sold';
             const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
             const priceClass = 'price' + (isSold ? ' sold-price' : '') + (p.price === 'Inquire' ? ' inquire-price' : '');
-            return `<button type="button" class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')"><div class="image-wrap">${tagHtml}<img src="${imgSrc}" alt="${p.title}" loading="lazy"></div><div class="info"><h3>${p.title}</h3><div class="price-row"><span class="${priceClass}">${p.price}</span>${p.category ? `<span class="card-cat">${p.category}</span>` : ''}</div></div></button>`;
+            return `<button type="button" class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')"><div class="image-wrap">${tagHtml}<picture><source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}"><source type="image/webp" srcset="${webpSrc}"><img src="${imgSrc}" alt="${p.title}" loading="lazy" width="1280" height="960"></picture></div><div class="info"><h3>${p.title}</h3><div class="price-row"><span class="${priceClass}">${p.price}</span>${p.category ? `<span class="card-cat">${p.category}</span>` : ''}</div></div></button>`;
         }).join('');
 
         if (!grid.innerHTML) {
@@ -1167,16 +1177,29 @@
             '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
             '</svg>'
         );
-        mainImg.src = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
+        // Try WebP first, fall back to JPEG/PNG on error.
+        const firstImg = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
+        if (firstImg !== PLACEHOLDER) {
+            mainImg.onerror = function() { this.onerror = null; this.src = firstImg; };
+            mainImg.src = firstImg.replace(/\.(jpg|png)$/i, '.webp');
+        } else {
+            mainImg.src = PLACEHOLDER;
+        }
         const thumbs = document.getElementById('detailThumbs');
         thumbs.innerHTML = '';
         (p.images || [PLACEHOLDER]).forEach((img, i) => {
             const thumb = document.createElement('img');
             thumb.src = img;
             thumb.alt = `${p.title} - Photo ${i+1}`;
+            thumb.loading = 'lazy';
             if (i === 0) thumb.classList.add('active');
             thumb.onclick = function() {
-                mainImg.src = img;
+                if (img !== PLACEHOLDER) {
+                    mainImg.onerror = function() { this.onerror = null; this.src = img; };
+                    mainImg.src = img.replace(/\.(jpg|png)$/i, '.webp');
+                } else {
+                    mainImg.src = img;
+                }
                 document.querySelectorAll('.detail-thumbs img').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
             };
