@@ -400,6 +400,26 @@
             background: rgba(0, 0, 0, 0.85);
             color: #8b6f47;
         }
+        /* Runs 6:30 PM badge — same piece shown across multiple photos.
+           Gold accent per design system; sits bottom-left so it never
+           collides with Sold (top-right) or tile number (top-left). */
+        .photo-tile .run-time-tag {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(13, 13, 13, 0.88);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-family: -apple-system, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            z-index: 2;
+            pointer-events: none;
+        }
 
         /* === LIGHTBOX ===
            The .lightbox-stage is a FIXED aspect-ratio container so the
@@ -873,9 +893,9 @@
         { src: '/images/incoming/2026-08-10-monday-auction/40.jpg', title: 'Lot 40' },
         { src: '/images/incoming/2026-08-10-monday-auction/41.jpg', title: 'Lot 41' },
         { src: '/images/incoming/2026-08-10-monday-auction/42.jpg', title: 'Lot 42' },
-        { src: '/images/incoming/2026-08-10-monday-auction/43.jpg', title: 'Lot 43 — agate/chalcedony slice, backlit to show translucency' },
-        { src: '/images/incoming/2026-08-10-monday-auction/44.jpg', title: 'Lot 44 — gray flaked point/blade in hand' },
-        { src: '/images/incoming/2026-08-10-monday-auction/45.jpg', title: 'Lot 45 — tan and blue-gray flaked blade in hand' },
+        { src: '/images/incoming/2026-08-10-monday-auction/43.jpg', title: 'Lot 43 — same piece as 44 & 45 · runs 6:30 PM', runTime: 'Runs 6:30 PM' },
+        { src: '/images/incoming/2026-08-10-monday-auction/44.jpg', title: 'Lot 44 — same piece as 43 & 45 · runs 6:30 PM', runTime: 'Runs 6:30 PM' },
+        { src: '/images/incoming/2026-08-10-monday-auction/45.jpg', title: 'Lot 45 — same piece as 43 & 44 · runs 6:30 PM', runTime: 'Runs 6:30 PM' },
     ];
 
     // Sort active pieces first (preserving their order), then sold
@@ -892,6 +912,7 @@
         const classes = 'photo-tile' + (isLead ? ' lead-tile' : '') + (isSold ? ' sold-tile' : '');
         const leadTagHtml = ''; // "Lead Photo · Monday" tag removed per request — lead-tile styling (gold border, full-width) preserved
         const soldTagHtml = isSold ? '<span class="sold-tag">Sold</span>' : '';
+        const runTimeTagHtml = p.runTime ? `<span class="run-time-tag">${p.runTime}</span>` : '';
         // Build WebP srcset variants from the JPEG path. e.g. /img/foo/01.jpg -> /img/foo/01.webp + /img/foo/01-mobile.webp
         const webpSrc = p.src.replace(/\.jpg$/, '.webp');
         const webpMobileSrc = p.src.replace(/\.jpg$/, '-mobile.webp');
@@ -899,6 +920,7 @@
         <div class="${classes}" onclick="openLightbox(${idx})">
             ${leadTagHtml}
             ${soldTagHtml}
+            ${runTimeTagHtml}
             <span class="tile-number">${String(idx + 1).padStart(2, '0')}</span>
             <picture>
                 <source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}">
