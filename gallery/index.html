@@ -7,18 +7,19 @@
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-<title>Special 2-Day Auction · Photo Gallery — Barn Burner Relics</title>
-<meta name="description" content="Photo gallery from the Barn Burner Relics special 2-day auction — authenticated Native American artifacts, points, bannerstones, and relics from recent lots.">
+<title>Monday Auction · Photo Gallery — Barn Burner Relics</title>
+<meta name="description" content="Photo gallery from the Barn Burner Relics Monday auction — authenticated Native American artifacts, points, bannerstones, and relics from recent lots.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
-<meta property="og:title" content="Special 2-Day Auction · Photo Gallery — Barn Burner Relics">
-<meta property="og:description" content="Photos from the Barn Burner Relics special 2-day auction — Sunday & Monday, 5:00 PM Central. 54 lots previewed.">
+<meta property="og:title" content="Monday Auction · Photo Gallery — Barn Burner Relics">
+<meta property="og:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. 54 lots from the previous week's auction previewed.">
 <meta property="og:image" content="https://barnburnerrelics.net/images/incoming/2026-08-10-monday-auction/hero-case.jpg">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Barn Burner Relics">
+
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Special 2-Day Auction · Photo Gallery — Barn Burner Relics">
-<meta name="twitter:description" content="Photos from the Barn Burner Relics special 2-day auction — Sunday & Monday, 5:00 PM Central. 54 lots previewed.">
+<meta name="twitter:title" content="Monday Auction Preview · Barn Burner Relics">
+<meta name="twitter:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. 54 lots from the previous week's auction previewed.">
 <meta name="twitter:image" content="https://barnburnerrelics.net/images/incoming/2026-08-10-monday-auction/hero-case.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -717,19 +718,19 @@
         </div>
     </div>
     <div class="hero-text">
-        <div class="hero-eyebrow">Special 2-day auction · Facebook Live</div>
-        <div class="hero-date" id="heroDate">Next auction · Sunday · 5:00 PM Central Time</div>
-        <h1>Special <em><span class="big-two">2</span>-Day Auction</em></h1>
+        <div class="hero-eyebrow">Monday auction · Facebook Live</div>
+        <div class="hero-date" id="heroDate">Next auction · Monday · 5:00 PM Central Time</div>
+        <h1>Monday <em>Auction Preview</em></h1>
         <p class="hero-note">
-            <strong>Two nights: Sunday &amp; Monday at 5:00 PM Central.</strong>
-            54 lots previewed — scroll to browse; click any photo to enlarge. Every tile is numbered — call out the lot number when you bid.
+            <strong>Every Monday at 5:00 PM Central.</strong>
+            54 lots from last week's auction are shown below — scroll to browse; click any photo to enlarge. Every tile is numbered — call out the lot number when you bid.
             Bidding happens live on the Facebook group; check there for lot descriptions and provenance.
         </p>
     </div>
 </section>
 
 <div class="section-label">
-    <h2>Sunday &amp; Monday · 54 Lots Previewed</h2>
+    <h2>Previous Week's Auction · 54 Lots</h2>
     <p>scroll to browse · click to enlarge · numbered for live call-out</p>
 </div>
 
@@ -1065,12 +1066,12 @@
 
     // ========== Countdown to next auction ==========
     // AUCTION_DAYS controls which weekdays host auctions. JS weekday: 0=Sun..6=Sat.
-    //   Special 2-day (Aug 9-10): Sunday + Monday — [0, 1]
     //   Normal weekly: Monday only — [1]
     //   Winter (per Bill): Saturdays + Mondays — [6, 1]
+    //   Special 2-day (Aug 9-10, 2026): Sunday + Monday — [0, 1] (historical)
     // Time-of-day and timezone are fixed at 5:00 PM America/Chicago (CST/CDT auto).
     // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
-    const AUCTION_DAYS = [0, 1]; // Special 2-day: Sun + Mon
+    const AUCTION_DAYS = [1]; // Monday only
     const AUCTION_HOUR = 17;  // 5:00 PM in 24h
     const CHICAGO_TZ = 'America/Chicago';
 
@@ -1154,7 +1155,7 @@
     let cdTarget = nextAuctionInstant(Date.now());
 
     // Render the hero date from the same target the countdown uses — one
-    // source of truth, never rots. Format: "Sunday · August 9, 2026 · 5:00 PM Central Time"
+    // source of truth, never rots. Format: "Monday · August 17, 2026 · 5:00 PM Central Time"
     function renderHeroDate() {
         const el = document.getElementById('heroDate');
         if (!el || !cdTarget) return;
