@@ -961,7 +961,7 @@
             <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/bannerstones/collection-closeup-2026-07-13-mobile.webp"><source type="image/webp" srcset="images/bannerstones/collection-closeup-2026-07-13.webp"><img src="images/bannerstones/collection-closeup-2026-07-13.jpg" alt="A close-up of an authenticated artifact" loading="lazy" width="1280" height="443"></picture></div>
             <h3>Buying Collections</h3>
             <p>Single pieces, full collections, and estate accumulations — bought quietly and confidentially, with fair offers and fast decisions.</p>
-            <a href="#" onclick="closeDetail(); openInquiry(); return false;" class="wwd-link">Talk to Nick →</a>
+            <a href="#" onclick="closeDetail(); openInquiry(); return false;" class="wwd-link">Email Us →</a>
         </article>
 
         <article class="wwd-card">
@@ -1052,7 +1052,7 @@
         quietly and confidentially.
     </div>
     <div class="services-action">
-        Thinking of selling? <a href="#" onclick="closeDetail(); openInquiry(); return false;">Message Nick →</a>
+        Thinking of selling? <a href="#" onclick="closeDetail(); openSellingInquiry(); return false;">Message Us →</a>
     </div>
 </div>
 
@@ -1074,7 +1074,7 @@
                     <h4>Provenance &amp; Details</h4>
                     <table id="detailMetaTable"></table>
                 </div>
-                <button class="btn-inquire" onclick="openInquiry()">Message Nick on Facebook</button>
+                <button class="btn-inquire" onclick="openInquiry()">Email Us</button>
             </div>
         </div>
     </div>
@@ -1385,6 +1385,15 @@
         document.getElementById('messengerPiece').textContent = currentProduct.title;
         const emailSubject = encodeURIComponent('BBR Vault — ' + currentProduct.title);
         const emailBody = encodeURIComponent('Hi — I\'m interested in this piece:\n\n' + currentProduct.title + '\nbarnburnerrelics.net\n\n');
+        document.getElementById('messengerTextBtn').href = 'mailto:' + STORE_EMAIL + '?subject=' + emailSubject + '&body=' + emailBody;
+        document.getElementById('messengerOverlay').classList.add('active');
+        closeDetail();
+    }
+
+    function openSellingInquiry() {
+        document.getElementById('messengerPiece').textContent = 'selling a piece or collection';
+        const emailSubject = encodeURIComponent('BBR — Selling a Piece or Collection');
+        const emailBody = encodeURIComponent('Hi — I\'m interested in selling a piece or collection.\n\nDetails:\n\n\n\nbarnburnerrelics.net\n\n');
         document.getElementById('messengerTextBtn').href = 'mailto:' + STORE_EMAIL + '?subject=' + emailSubject + '&body=' + emailBody;
         document.getElementById('messengerOverlay').classList.add('active');
         closeDetail();
