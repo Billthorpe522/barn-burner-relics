@@ -154,6 +154,79 @@
             background: var(--gold);
             border-color: var(--gold);
         }
+        /* Filter bar */
+        .filter-bar {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .filter-bar-label {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .filter-btn {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+        .filter-btn:hover { color: var(--gold); border-color: var(--border-hover); }
+        .filter-btn.active {
+            color: var(--bg);
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .product-card-category {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .sold-card { opacity: 0.7; }
+        .sold-price { color: var(--text-dim) !important; text-decoration: line-through; }
+        .inquire-price { color: var(--cream) !important; font-style: italic; }
+        .sold-label {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+        .badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 2px;
+            z-index: 2;
+        }
+        .badge.featured { background: var(--gold); color: var(--bg); }
+        .badge.vault { background: var(--oxblood); color: var(--cream); }
+        .badge.sold { background: #333; color: #999; }
+        .badge.store { background: var(--gold-dim); color: var(--bg); }
+
 
         /* Product grid */
         .store-section {
@@ -585,9 +658,9 @@
 
 <main id="main">
 <section class="hero">
-    <span class="hero-eyebrow">The Store · Available Now</span>
+    <span class="hero-eyebrow">The Collection · Available Now</span>
     <h1>Real pieces.<br><em>Real provenance.</em></h1>
-    <p class="hero-tagline">Authentic prehistoric artifacts with documented history — from single points to framed collections. Every piece guaranteed for life.</p>
+    <p class="hero-tagline">Authentic prehistoric artifacts with documented history — from single points to museum-grade bannerstones. Every piece guaranteed for life.</p>
     <div class="hero-meta">
         <span>✅ <strong>Lifetime Authenticity Guarantee</strong></span>
         <span>💬 <strong>Message us</strong> to purchase</span>
@@ -601,14 +674,23 @@
         <button class="sort-btn" data-sort="price-asc" onclick="sortProducts('price-asc')">Price ↑</button>
         <button class="sort-btn" data-sort="price-desc" onclick="sortProducts('price-desc')">Price ↓</button>
     </div>
+    <div class="filter-bar">
+        <span class="filter-bar-label">Type:</span>
+        <button class="filter-btn active" data-cat="all" onclick="filterCategory('all')">All</button>
+        <button class="filter-btn" data-cat="Points" onclick="filterCategory('Points')">Points</button>
+        <button class="filter-btn" data-cat="Bannerstones" onclick="filterCategory('Bannerstones')">Bannerstones</button>
+        <button class="filter-btn" data-cat="Pottery" onclick="filterCategory('Pottery')">Pottery</button>
+        <button class="filter-btn" data-cat="Pipes" onclick="filterCategory('Pipes')">Pipes</button>
+        <button class="filter-btn" data-cat="Discoidals" onclick="filterCategory('Discoidals')">Discoidals</button>
+    </div>
     <div class="product-grid" id="product-grid">
         <!-- Products rendered here -->
     </div>
 </section>
 
 <div class="parent-cta">
-    <p>Looking for the rare, museum-grade bannerstones and Paleo material?</p>
-    <a href="../">Visit Barn Burner Relics — The Main Vault →</a>
+    <p>Want to see what's coming up at auction or learn more about Barn Burner Relics?</p>
+    <a href="../">Visit the Main Site →</a>
 </div>
 
 <section class="show-cta">
@@ -653,81 +735,467 @@ const STORE_EMAIL = 'bbryoutube@gmail.com';
 
 const PRODUCTS = [
     {
-        id: 'caddo-bird-points-frame-001',
-        title: 'Whole Frame of Caddo Bird Points',
-        desc: '114 points in this frame! Mostly Arkansas and Mississippi. Misc. jasper and chert. Certificate of Authenticity by Josh Davis (Stanton, KY) — Certificate #8914, Grade G9. COA included.\n\nLifetime Guarantee. Accept all payment methods.',
-        price: 3250,
-        added: '2026-08-12',
-        photos: [
-            'images/items/caddo-bird-points-frame-001-1.jpg',
-            'images/items/caddo-bird-points-frame-001-2.jpg',
-            'images/items/caddo-bird-points-frame-001-3.jpg',
+        "id": "quartz-bottle-bannerstone-buchanan-co",
+        "title": "Quartz Bottle Bannerstone — Buchanan County, MO",
+        "desc": "<a href=\"https://youtube.com/shorts/2WHWPNRgd9k\" target=\"_blank\" rel=\"noopener\" class=\"video-link\" style=\"--video-thumb: url(\\'https://i.ytimg.com/vi/2WHWPNRgd9k/hq2.jpg\\');\" aria-label=\"Watch the Quartz Bottle Bannerstone video on YouTube\"><span class=\"video-title\">Quartz Bottle Bannerstone</span><span class=\"video-duration\">1:05</span></a><div class=\"video-link-caption\">Watch the video · 1 minute 5 seconds</div><p>A <strong>translucent peachy-pink quartz bottle bannerstone</strong> recovered from Buchanan County, Missouri — and a piece with the kind of paper trail you almost never see anymore. Bottle bannerstones are rare in any material. In <strong>quartz</strong> — the rarest bannerstone material class — they sit at the absolute top of the Archaic lapidary hierarchy. The stone is hard, brittle, and notoriously difficult to work; the bottle form requires the four-knob profile to read clearly from any angle; and the fully drilled biconical perforation has to survive the process intact. This piece checks every one of those boxes.</p><p>What separates this piece from anything else in the current bannerstone market is the <strong>published, documented five-owner provenance chain</strong> — not just a chain, but one that ties back-to-back into <em>Who\\'s Who in Indian Relics</em> on two separate pages:</p><p><strong>Provenance chain:</strong> Finder (Buchanan County, MO) → <strong>Ed Buel</strong> (purchased direct from finder; Buel collection pictured in <em>Who\\'s Who</em>, page 40) → <strong>Joe Kinker</strong> → <strong>Floyd Ritter</strong> (Ritter spread pictured in <em>Who\\'s Who</em>, page 6 — the bottle is the centerpiece of the collection case shown on that page, with the inscription \"B RITTER / BUCHANAN CO / MO\" visible on the piece itself) → <strong>Terry Stumpf</strong> → <strong>Barn Burner Relics</strong>.</p><p>The piece carries an engraved collector inscription on its lower face: \"<strong>B. RITTER / BUCHANAN / MO</strong>\" — Floyd Ritter\\'s own hand, marking it as part of his published Buchanan County, Missouri collection. The display-case photograph (image #3) is the actual page-6 spread from <em>Who\\'s Who in Indian Relics</em>: thirteen bannerstones arranged in a fitted black-foam case, with this bottle sitting in the center middle position. The piece is pictured twice in the reference — once on its own, and once as the focal point of the Ritter spread.</p><p>Five owners over the last fifty years. Three of them published in the same reference book. Two consecutive page references (page 6, page 40). One piece of quartz that\\'s been passed hand to hand across the Midwest, with the paper trail to prove it. This is not provenance as a footnote — provenance as the whole pitch.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Featured",
+        "period": "Archaic · ~3,000–5,000 BP",
+        "photos": [
+            "../images/quartz-bottle-banner-hero.jpg",
+            "../images/quartz-bottle-banner-1.png",
+            "../images/quartz-bottle-banner-2.png",
+            "../images/quartz-bottle-banner-3.jpg"
         ],
+        "specs": {
+            "Material": "Translucent Quartz (peachy-pink coloration, subtle banding — rarest of all bannerstone material classes)",
+            "Origin": "Buchanan County, Missouri",
+            "Period": "Archaic · ~3,000–5,000 BP",
+            "Culture": "Archaic",
+            "Type": "Bottle Bannerstone (four-knob bottle form with fully drilled biconical perforation)",
+            "Dimensions": "Full dimensions on request",
+            "Provenance Inscription on Piece": "\"B. RITTER / BUCHANAN / MO\" engraved on lower face (Floyd Ritter\\",
+            "Publication History": "Pictured on the Floyd Ritter spread in \"Who\\",
+            "Provenance Chain": "Finder (Buchanan Co., MO) → Ed Buel → Joe Kinker → Floyd Ritter → Terry Stumpf → Barn Burner Relics",
+            "Notable Feature": "Quartz (rarest bannerstone material) in bottle form (rarest bannerstone type); biconical perforation (Archaic-era drilling signature); engraved collector inscription on piece; published in two consecutive pages of Who\\",
+            "Condition": "Excellent — surface intact, perforation clean, no restoration visible",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
     },
     {
-        id: 'dalton-pitkin-green-co-ar-001',
-        title: '2⅝" Fine Pitkin Chert Dalton — Green County, AR',
-        desc: 'This piece is from Green County, Arkansas.\n\nEX: Leslie Pfeiffer, Bryon Mcdonald, Mitch Lewis\n\n🔥 REDUCED PRICE 🔥\n\nLifetime Guarantee. Accept all payment methods.',
-        price: 1750,
-        added: '2026-08-12',
-        photos: [
-            'images/items/dalton-pitkin-green-co-ar-001-3.jpg',
-            'images/items/dalton-pitkin-green-co-ar-001-2.jpg',
-            'images/items/dalton-pitkin-green-co-ar-001-4.jpg',
+        "id": "butterfly-bannerstone",
+        "title": "Butterfly Bannerstone — Quartz",
+        "desc": "<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Featured",
+        "period": "Archaic · ~3,000–5,000 BP",
+        "photos": [
+            "../images/butterfly-banner-1.jpg",
+            "../images/butterfly-banner-2.jpg",
+            "../images/butterfly-banner-3.jpg",
+            "../images/butterfly-banner-4.jpg"
         ],
+        "specs": {
+            "Material": "Quartz (rarest of bannerstone materials)",
+            "Origin": "Illinois",
+            "Period": "Archaic · ~3,000–5,000 BP",
+            "Culture": "Archaic",
+            "Type": "Butterfly Bannerstone",
+            "Dimensions": "Full dimensions on request",
+            "Cuckler Catalog #": "3287 (sticker on piece)",
+            "Provenance": "Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses",
+            "Notable Feature": "Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types",
+            "Condition": "Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
     },
     {
-        id: 'clovis-chariton-co-mo-001',
-        title: '2¹¹⁄₁₆" Colorful Clovis — Chariton County, MO',
-        desc: 'This piece is from Chariton County, MO! This piece was in the collection of Beau Leach, Dennis Smith, Ken Partain, Ray Arnett. Shows great translucency and color!\n\nLifetime Guarantee. Accept all payment methods.',
-        price: 1650,
-        added: '2026-08-12',
-        photos: [
-            'images/items/clovis-chariton-co-mo-001-3.jpg',
-            'images/items/clovis-chariton-co-mo-001-1.jpg',
-            'images/items/clovis-chariton-co-mo-001-2.jpg',
-            'images/items/clovis-chariton-co-mo-001-4.jpg',
+        "id": "scottsbluff-knife-washington-co-utah",
+        "title": "Scottsbluff Knife — Washington County, Utah",
+        "desc": "<p>One of the most premier pieces of flint to come through Barn Burner Relics — a <strong>Scottsbluff knife from Washington County, Utah</strong>, St. George area, inscribed on the face in collector ink: \"ST. GEORGE / WASHINGTON CO. / UTAH.\"</p><p>The material is a vividly banded flint — cream, tan, gray, and warm brown with a striking agate-eye ring figure in the lower face and thin quartz veining — combined with prehistoric craftsmanship that marks this as a piece of <strong>Cody Complex excellence</strong>. Fine, regular flaking runs both edges of the lanceolate form.</p><p><strong>Provenance chain:</strong> E.K. Petrie → Mel Wilkins → Tom Amble → Bob Converse → Jim Crawford → Bob Roth → Barn Burner Relics. Six named collections — the kind of documented ownership history most pieces never accumulate.</p><p>Full measurements and additional photography are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Points",
+        "tag": "Featured",
+        "period": "Paleo · Cody Complex, ~9,000–8,000 BP",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/scottsbluff-knife-utah-1.jpg"
         ],
+        "specs": {
+            "Material": "Banded flint (cream/tan/gray/brown banding with agate-eye figure and quartz veining)",
+            "Origin": "St. George area, Washington County, Utah — inscribed on piece",
+            "Period": "Paleo · Cody Complex (~9,000–8,000 BP)",
+            "Culture": "Cody Complex",
+            "Type": "Scottsbluff Knife",
+            "Dimensions": "Full dimensions on request",
+            "Inscription on Piece": "\"ST. GEORGE / WASHINGTON CO. / UTAH\" (collector ink)",
+            "Provenance Chain": "E.K. Petrie → Mel Wilkins → Tom Amble → Bob Converse → Jim Crawford → Bob Roth → Barn Burner Relics",
+            "Condition": "Fine regular flaking both edges; banding intact",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
     },
     {
-        id: 'discoidal-scioto-co-oh-001',
-        title: '2⅝" × 1¼" Perforated Discoidal — Scioto County, OH',
-        desc: 'This exceptional relic was found in Scioto Co, Ohio. Clay Twp. Pict. in WW#7 p. 196. & WW#8 p.210. EX: Len Wiedner, Archie Diller, David Stilp, Rob Bane, Ray Fraser.\n\nLifetime Guarantee. Accept all payment methods.',
-        price: 1650,
-        added: '2026-08-12',
-        photos: [
-            'images/items/discoidal-scioto-co-oh-001-1.jpg',
-            'images/items/discoidal-scioto-co-oh-001-2.jpg',
-            'images/items/discoidal-scioto-co-oh-001-3.jpg',
-            'images/items/discoidal-scioto-co-oh-001-4.jpg',
+        "id": "mississippian-compound-bottle-crittenden-co",
+        "title": "Mississippian Compound Bottle — Crittenden County, AR",
+        "desc": "<p>A <strong>Mississippian compound bottle from Crittenden County, Arkansas</strong> — globular body, upright neck with dense incised herringbone decoration, lug perforations at the neck for suspension, and heavy fire-clouding across the shoulder. Documented with its original <strong>Caddo Trading Company museum file card</strong> (Murfreesboro, AR — tribal art specialists), typed with the piece\\'s county, age range, and dimensions. Photo of the card included.</p><p><strong>Documentation (Caddo Trading Co. museum file card):</strong> Type — Mississippian Compound Bottle · Age — 800 A.D.–1200 A.D. · Found — Crittenden Co., AR · H 5¾\" · D 5\" · G 9\".</p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Pottery",
+        "tag": "Featured",
+        "period": "Woodland · Mississippian, 800–1200 AD",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/mississippian-compound-bottle-1.jpg",
+            "../images/incoming/2026-08-05-vault-additions/mississippian-compound-bottle-2-card.jpg"
         ],
+        "specs": {
+            "Material": "Earthenware (buff/tan body with fire-clouding and mineral encrustation)",
+            "Origin": "Crittenden County, Arkansas (per Caddo Trading Co. card)",
+            "Period": "Woodland · Mississippian (800–1200 AD per card)",
+            "Culture": "Mississippian",
+            "Type": "Compound Bottle (incised herringbone neck, lug perforations)",
+            "Dimensions": "H 5¾\" · Diameter 5\" · Girth 9\" (per card)",
+            "Documentation": "Caddo Trading Company, Inc. museum file card (Murfreesboro, AR) — photographed in sleeve, included",
+            "Condition": "Intact; rim wear, fire-clouding, surface encrustation consistent with burial age",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
     },
     {
-        id: 'hixton-hardin-bureau-co-001',
-        title: '2⅝" Hixton Hardin — Bureau County, IL',
-        desc: 'This piece was found by Martin Decker in Bureau Co, IL. Killer piece and a great addition to any Hixton frame!\n\nLifetime Guarantee. Accept all payment methods.',
-        price: 595,
-        added: '2026-08-12',
-        photos: [
-            'images/items/hixton-hardin-bureau-co-001-1.jpg',
-            'images/items/hixton-hardin-bureau-co-001-2.jpg',
-            'images/items/hixton-hardin-bureau-co-001-3.jpg',
-            'images/items/hixton-hardin-bureau-co-001-4.jpg',
+        "id": "caddo-bird-points-frame-001",
+        "title": "Whole Frame of Caddo Bird Points",
+        "desc": "114 points in this frame! Mostly Arkansas and Mississippi. Misc. jasper and chert. Certificate of Authenticity by Josh Davis (Stanton, KY) — Certificate #8914, Grade G9. COA included.\\n\\nLifetime Guarantee. Accept all payment methods.",
+        "price": 3250,
+        "price_display": "$3,250",
+        "added": "2026-08-12",
+        "category": "Points",
+        "tag": "Store",
+        "period": "",
+        "photos": [
+            "images/items/caddo-bird-points-frame-001-1.jpg",
+            "images/items/caddo-bird-points-frame-001-2.jpg",
+            "images/items/caddo-bird-points-frame-001-3.jpg"
         ],
+        "specs": {},
+        "source": "shop"
     },
     {
-        id: 'dover-pinetree-tn-001',
-        title: '2¾" Dover Pinetree — Tennessee',
-        desc: 'This piece is from Tennessee! EX: Petee Larue, Jerry Dickey.\n\nLifetime Guarantee. Accept all payment methods.',
-        price: 595,
-        added: '2026-08-12',
-        photos: [
-            'images/items/dover-pinetree-tn-001-1.jpg',
-            'images/items/dover-pinetree-tn-001-2.jpg',
-            'images/items/dover-pinetree-tn-001-3.jpg',
-            'images/items/dover-pinetree-tn-001-4.jpg',
+        "id": "dalton-pitkin-green-co-ar-001",
+        "title": "2⅝\" Fine Pitkin Chert Dalton — Green County, AR",
+        "desc": "This piece is from Green County, Arkansas.\\n\\nEX: Leslie Pfeiffer, Bryon Mcdonald, Mitch Lewis\\n\\n🔥 REDUCED PRICE 🔥\\n\\nLifetime Guarantee. Accept all payment methods.",
+        "price": 1750,
+        "price_display": "$1,750",
+        "added": "2026-08-12",
+        "category": "Points",
+        "tag": "Store",
+        "period": "",
+        "photos": [
+            "images/items/dalton-pitkin-green-co-ar-001-3.jpg",
+            "images/items/dalton-pitkin-green-co-ar-001-2.jpg",
+            "images/items/dalton-pitkin-green-co-ar-001-4.jpg"
         ],
+        "specs": {},
+        "source": "shop"
     },
+    {
+        "id": "clovis-chariton-co-mo-001",
+        "title": "2¹¹⁄₁₆\" Colorful Clovis — Chariton County, MO",
+        "desc": "This piece is from Chariton County, MO! This piece was in the collection of Beau Leach, Dennis Smith, Ken Partain, Ray Arnett. Shows great translucency and color!\\n\\nLifetime Guarantee. Accept all payment methods.",
+        "price": 1650,
+        "price_display": "$1,650",
+        "added": "2026-08-12",
+        "category": "Points",
+        "tag": "Store",
+        "period": "",
+        "photos": [
+            "images/items/clovis-chariton-co-mo-001-3.jpg",
+            "images/items/clovis-chariton-co-mo-001-1.jpg",
+            "images/items/clovis-chariton-co-mo-001-2.jpg",
+            "images/items/clovis-chariton-co-mo-001-4.jpg"
+        ],
+        "specs": {},
+        "source": "shop"
+    },
+    {
+        "id": "discoidal-scioto-co-oh-001",
+        "title": "2⅝\" × 1¼\" Perforated Discoidal — Scioto County, OH",
+        "desc": "This exceptional relic was found in Scioto Co, Ohio. Clay Twp. Pict. in WW#7 p. 196. & WW#8 p.210. EX: Len Wiedner, Archie Diller, David Stilp, Rob Bane, Ray Fraser.\\n\\nLifetime Guarantee. Accept all payment methods.",
+        "price": 1650,
+        "price_display": "$1,650",
+        "added": "2026-08-12",
+        "category": "Discoidals",
+        "tag": "Store",
+        "period": "",
+        "photos": [
+            "images/items/discoidal-scioto-co-oh-001-1.jpg",
+            "images/items/discoidal-scioto-co-oh-001-2.jpg",
+            "images/items/discoidal-scioto-co-oh-001-3.jpg",
+            "images/items/discoidal-scioto-co-oh-001-4.jpg"
+        ],
+        "specs": {},
+        "source": "shop"
+    },
+    {
+        "id": "hixton-hardin-bureau-co-001",
+        "title": "2⅝\" Hixton Hardin — Bureau County, IL",
+        "desc": "This piece was found by Martin Decker in Bureau Co, IL. Killer piece and a great addition to any Hixton frame!\\n\\nLifetime Guarantee. Accept all payment methods.",
+        "price": 595,
+        "price_display": "$595",
+        "added": "2026-08-12",
+        "category": "Points",
+        "tag": "Store",
+        "period": "",
+        "photos": [
+            "images/items/hixton-hardin-bureau-co-001-1.jpg",
+            "images/items/hixton-hardin-bureau-co-001-2.jpg",
+            "images/items/hixton-hardin-bureau-co-001-3.jpg",
+            "images/items/hixton-hardin-bureau-co-001-4.jpg"
+        ],
+        "specs": {},
+        "source": "shop"
+    },
+    {
+        "id": "dover-pinetree-tn-001",
+        "title": "2¾\" Dover Pinetree — Tennessee",
+        "desc": "This piece is from Tennessee! EX: Petee Larue, Jerry Dickey.\\n\\nLifetime Guarantee. Accept all payment methods.",
+        "price": 595,
+        "price_display": "$595",
+        "added": "2026-08-12",
+        "category": "Points",
+        "tag": "Store",
+        "period": "",
+        "photos": [
+            "images/items/dover-pinetree-tn-001-1.jpg",
+            "images/items/dover-pinetree-tn-001-2.jpg",
+            "images/items/dover-pinetree-tn-001-3.jpg",
+            "images/items/dover-pinetree-tn-001-4.jpg"
+        ],
+        "specs": {},
+        "source": "shop"
+    },
+    {
+        "id": "diorite-barrel-bannerstone",
+        "title": "Rectangular Barrel Bannerstone — Diorite",
+        "desc": "<a href=\"https://youtube.com/shorts/CWLbTf_DFwA\" target=\"_blank\" rel=\"noopener\" class=\"video-link\" aria-label=\"Watch the Rectangular Barrel Diorite Bannerstone video on YouTube\"><span class=\"video-title\">Rectangular Barrel Diorite Bannerstone</span><span class=\"video-duration\">1:11</span></a><div class=\"video-link-caption\">Watch the video · 1 minute 11 seconds</div><p>A <strong>rectangular barrel bannerstone</strong> cut from diorite — the warm pink-and-black speckled stone collectors call \"granite\" or \"hard stone.\" This is the textbook form as referenced in the bannerstone book: a four-sided barrel with gently rounded corners and a fully drilled biconical perforation (tapered bore, drilled from both faces to meet in the middle — the classic bannerstone perforation technique). The polish on this piece is the kind of finish that takes a very long time on diorite, given the stone\\'s hardness.</p><p><strong>Provenance chain:</strong> Byron Knoblock collection → Paul Titterington collection → Nick Gatses. Both previous collectors are well-known names in the relic hobby; both are no longer with us. This is a piece with a documented collector history.</p><p>Two provenance stickers preserved on the piece: red-bordered oval \"B-32 / DUNKLIN / CO. MO\" and white round handwritten \"B36 / CA3600.\" Dunklin County, Missouri — southeastern Bootheel — is classic diorite-bannerstone territory.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message us for current pricing and condition details.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Vault",
+        "period": "Archaic · ~3,000–5,000 BP",
+        "photos": [
+            "../images/diorite-barrel-2.jpg",
+            "../images/diorite-barrel-stickers.jpg",
+            "../images/diorite-barrel-3.jpg",
+            "../images/diorite-barrel-1.jpg",
+            "../images/diorite-barrel-4.jpg"
+        ],
+        "specs": {
+            "Material": "Diorite (pinkish-tan with dense black speckling — collectors call this \"granite\" or \"hard stone\")",
+            "Origin": "Dunklin County, Missouri",
+            "Period": "Archaic · ~3,000–5,000 BP",
+            "Culture": "Archaic",
+            "Type": "Rectangular Barrel Bannerstone (four-sided barrel form with fully drilled biconical perforation)",
+            "Dimensions": "Full dimensions on request",
+            "Provenance Stickers on Piece": "Red-bordered oval \"B-32 / DUNKLIN CO. MO\"; white round handwritten \"B36 / CA3600\"",
+            "Provenance Chain": "Byron Knoblock collection → Paul Titterington collection → Nick Gatses",
+            "Notable Feature": "Diorite (rarest bannerstone material class); rectangular barrel form (rarest bannerstone shape); fully drilled biconical perforation; both previous collectors are documented names in the hobby",
+            "Condition": "Excellent — described in video as \"very tedious work especially to get a finish like that on a piece this nice\"",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "quartz-banner-cosach-1917",
+        "title": "Quartz Butterfly Bannerstone — Pink Quartz",
+        "desc": "<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rare material in a rare form, with the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. Shows the documented Cusick Collection #1917 sticker, \"MIKE ECK\" handwritten note, M.S.C. / 83 institutional tag, and back tags \"7,500\" and \"Ex Eckler / Owen.\" Provenance chain: <strong>Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses</strong>. Biconical perforation (Archaic-era drilling signature, ~3,000–5,000 BP).</p><p><strong>Condition:</strong> Both wing tips are broken and have been glued back on. Repair is documented here as-is, consistent with our restoration-disclosure policy on every catalog piece.</p><p>No third-party Certificate of Authenticity. Lifetime Authenticity Guarantee.</p><p><strong>Price: Inquire.</strong></p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Vault",
+        "period": "Archaic · ~3,000–5,000 BP",
+        "photos": [
+            "../images/quartz-banner-1.jpg",
+            "../images/quartz-banner-2.jpg",
+            "../images/quartz-banner-3.jpg",
+            "../images/quartz-banner-4.jpg"
+        ],
+        "specs": {
+            "Material": "Pink Translucent Quartz (warm peach coloration, subtle banding)",
+            "Origin": "Provenance stickers preserved on piece",
+            "Period": "Archaic · ~3,000–5,000 BP",
+            "Culture": "Archaic",
+            "Type": "Butterfly Bannerstone (single-hole, biconical perforation)",
+            "Dimensions": "Full dimensions on request",
+            "Provenance Stickers on Piece": "Red-bordered oval \"M.S.C. / 83\" tag; handwritten \"MIKE ECK\" pencil note; white round sticker \"1917 / CUSICK / CB50\" (Cusick catalog #1917, sub-code CB50)",
+            "Provenance Tag on Back": "Handwritten: \"Ex Eckler / Owen\" — previous collector trace",
+            "Provenance Chain": "Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses",
+            "Notable Feature": "Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)",
+            "Condition": "Both wing tips broken and glued back on (disclosed)",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "granite-winged-bannerstone",
+        "title": "Winged Bannerstone — Granite",
+        "desc": "<p>A <strong>winged bannerstone</strong> in dark granite — symmetrical twin lobes with a raised central spine, polished to a soft gloss across the high points. Winged forms are among the most recognizable atlatl-weight shapes: bilateral wings reading clearly from any angle, with the ridge running the center like a body.</p><p>Full documentation, measurements, and provenance details are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Vault",
+        "period": "Archaic · ~3,000–5,000 BP",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/granite-winged-bannerstone-1.jpg"
+        ],
+        "specs": {
+            "Material": "Granite (dark charcoal, polished)",
+            "Origin": "Details forthcoming",
+            "Period": "Archaic · ~3,000–5,000 BP",
+            "Culture": "Archaic",
+            "Type": "Winged Bannerstone (atlatl weight)",
+            "Dimensions": "Full dimensions on request",
+            "Provenance": "Details forthcoming",
+            "Condition": "Polish intact; honest age wear visible",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "quartz-bannerstone-backlit",
+        "title": "Quartz Bannerstone",
+        "desc": "<p>A <strong>quartz bannerstone</strong> — the warm amber glow in the photo is light passing through the stone itself, the signature of genuine quartz lapidary work. Quartz is the rarest of all bannerstone material classes: hard, brittle, and notoriously difficult to work to this level of finish.</p><p>Full documentation, measurements, and provenance details are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Vault",
+        "period": "Archaic · ~3,000–5,000 BP",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/quartz-bannerstone-backlit-1.jpg"
+        ],
+        "specs": {
+            "Material": "Quartz (translucent, warm amber coloration under transmitted light)",
+            "Origin": "Details forthcoming",
+            "Period": "Archaic · ~3,000–5,000 BP",
+            "Culture": "Archaic",
+            "Type": "Bannerstone (atlatl weight)",
+            "Dimensions": "Full dimensions on request",
+            "Provenance": "Details forthcoming",
+            "Condition": "Polish intact; internal inclusions natural to the stone",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "mississippian-pottery-jar",
+        "title": "Mississippian Pottery Jar",
+        "desc": "<p>A <strong>Mississippian pottery jar</strong> — globular body, short neck, flared rim, with small lug handles at the shoulder. Heavy mineral encrustation, fire-blackened patches across the shoulder, and iridescent weathering across the surface — honest burial age on an intact vessel.</p><p>Full documentation, measurements, and provenance details are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Pottery",
+        "tag": "Vault",
+        "period": "Woodland · Mississippian, ~1,000–500 BP",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/mississippian-pottery-jar-1.jpg"
+        ],
+        "specs": {
+            "Material": "Earthenware (buff to gray-brown body, mineral encrustation)",
+            "Origin": "Details forthcoming",
+            "Period": "Woodland · Mississippian (~1,000–500 BP)",
+            "Culture": "Mississippian",
+            "Type": "Globular jar with lug handles",
+            "Dimensions": "Full dimensions on request",
+            "Provenance": "Details forthcoming",
+            "Condition": "Intact; heavy surface encrustation and fire-blackening consistent with burial age",
+            "Price": "Inquire for price",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "animal-effigy-water-bottle",
+        "title": "Animal Effigy Water Bottle — Negative-Painted",
+        "desc": "<p>A <strong>negative-painted animal effigy water bottle</strong> — light buff grit-tempered pottery in the form of a quadruped, with the bottle mouth set into the back. The surface is covered in a darker brown slip with reserved spots of natural clay color, a technique documented in the Mississippi Culture period of the southeastern United States.</p><p>This piece is <strong>published</strong> — featured as Figure 42 in a 1970s archaeological journal article by collector James H. Nelson of Syracuse, Indiana, who discovered it in an antique shop after it surfaced at a farm auction outside Osceola, Indiana. The article documents the piece at 6½″ long × 3″ wide × 4⅛″ tall, with the negative-painting technique identified per Fundaburk &amp; Foreman (<em>Sun Circles and Human Hands</em>, 1957). Vessels of this type were used in ceremonies and deposited with burials.</p><p>Also included is Nelson\\'s own handwritten letter with his original sketch of the piece, measurements, and a provenance note from Mrs. Ann Huffman tracing it to Kramers Antique Auction in Kramer, Indiana. A rare combination: documented find site, published reference, and primary-source correspondence.</p><p>Half of the right rear leg was broken prior to Nelson\\'s acquisition and is missing — documented in the article. Otherwise intact with strong paint retention.</p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-08-05",
+        "category": "Pottery",
+        "tag": "Vault",
+        "period": "Mississippian · 800–1600 AD",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/animal-effigy-water-bottle-1.jpg",
+            "../images/incoming/2026-08-05-vault-additions/animal-effigy-water-bottle-2-article.jpg",
+            "../images/incoming/2026-08-05-vault-additions/animal-effigy-water-bottle-3-letter.jpg"
+        ],
+        "specs": {
+            "Material": "Grit-tempered pottery, negative-painted",
+            "Origin": "Southeastern US (found Indiana)",
+            "Period": "Mississippian · 800–1600 AD",
+            "Culture": "Mississippi Culture",
+            "Type": "Animal effigy water bottle / rhyton",
+            "Dimensions": "6½″ L × 3″ W × 4⅛″ H",
+            "Published": "Figure 42, \"An Intriguing Water Bottle,\" James H. Nelson",
+            "Reference": "Fundaburk & Foreman, Sun Circles and Human Hands (1957)",
+            "Provenance": "Farm auction (Osceola, IN) → antique shop → Nelson collection → Kramers Antique Auction (Kramer, IN)",
+            "Condition": "Right rear leg partially broken (pre-existing, documented in article)",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "catlinite-effigy-pipe-sold",
+        "title": "Catlinite Effigy Pipe — Animal Effigy",
+        "desc": "<p>A <strong>catlinite effigy pipe</strong> — carved from sacred red pipestone, with the bowl set into the back of a long-snouted animal effigy. Deeply blackened bowl interior from ceremonial use, incised decorative banding behind the head, and the warm terracotta polish that only handled catlinite takes on.</p><p><strong>This piece has sold.</strong> Pieces of this caliber move through the vault regularly — join the Facebook group for first look at what comes in next.</p>",
+        "price": -1,
+        "price_display": "Sold",
+        "added": "2026-08-05",
+        "category": "Pipes",
+        "tag": "Sold",
+        "period": "Historic · 1800s Plains",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/catlinite-effigy-pipe-1.jpg",
+            "../images/incoming/2026-08-05-vault-additions/catlinite-effigy-pipe-2.jpg",
+            "../images/incoming/2026-08-05-vault-additions/catlinite-effigy-pipe-3-stem.jpg"
+        ],
+        "specs": {
+            "Material": "Catlinite (red pipestone)",
+            "Origin": "Plains",
+            "Period": "Historic · 1800s",
+            "Culture": "Plains",
+            "Type": "Effigy pipe (animal effigy with inset bowl)",
+            "Condition": "Sold — shown for reference",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    },
+    {
+        "id": "birdstone-pop-eyed-rocking-sold",
+        "title": "Pop-Eyed Rocking Birdstone — Quartz",
+        "desc": "<p>A <strong>pop-eyed rocking birdstone</strong> carved from warm variegated quartz — cream, ochre, and caramel tones with natural inclusions. Stylized avian form with raised, protruding eyes and a low center ridge; the curved base allows it to rock gently when set on a flat surface. Polished to a soft sheen with honest age wear.</p><p><strong>This piece has sold.</strong> Birdstones of this quality rarely surface — join the Facebook group for first look at what comes in next.</p>",
+        "price": -1,
+        "price_display": "Sold",
+        "added": "2026-08-05",
+        "category": "Bannerstones",
+        "tag": "Sold",
+        "period": "Late Archaic · 3000–1000 BC",
+        "photos": [
+            "../images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-1.jpg",
+            "../images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-2.jpg",
+            "../images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-3-hand.jpg"
+        ],
+        "specs": {
+            "Material": "Quartz (variegated)",
+            "Origin": "Midwest",
+            "Period": "Late Archaic · 3000–1000 BC",
+            "Culture": "Late Archaic",
+            "Type": "Pop-eyed rocking birdstone",
+            "Condition": "Sold — shown for reference",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault"
+    }
 ];
 
 let currentSort = 'newest';
@@ -741,33 +1209,74 @@ function sortProducts(mode) {
     renderProducts();
 }
 
-function getSorted() {
-    const sorted = [...PRODUCTS];
-    if (currentSort === 'price-asc') sorted.sort((a, b) => a.price - b.price);
-    else if (currentSort === 'price-desc') sorted.sort((a, b) => b.price - a.price);
-    else sorted.sort((a, b) => b.added.localeCompare(a.added)); // newest first
-    return sorted;
+let currentCategory = 'all';
+
+function filterCategory(cat) {
+    currentCategory = cat;
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === cat);
+    });
+    renderProducts();
+}
+
+function getFiltered() {
+    let filtered = [...PRODUCTS];
+    // Category filter
+    if (currentCategory !== 'all') {
+        filtered = filtered.filter(p => p.category === currentCategory);
+    }
+    // Sort
+    if (currentSort === 'price-asc') {
+        filtered.sort((a, b) => {
+            const aPrice = typeof a.price === 'number' ? a.price : (a.price_display === 'Sold' ? -1 : 999999);
+            const bPrice = typeof b.price === 'number' ? b.price : (b.price_display === 'Sold' ? -1 : 999999);
+            return aPrice - bPrice;
+        });
+    } else if (currentSort === 'price-desc') {
+        filtered.sort((a, b) => {
+            const aPrice = typeof a.price === 'number' ? a.price : (a.price_display === 'Sold' ? -1 : 0);
+            const bPrice = typeof b.price === 'number' ? b.price : (b.price_display === 'Sold' ? -1 : 0);
+            return bPrice - aPrice;
+        });
+    } else {
+        // newest first
+        filtered.sort((a, b) => b.added.localeCompare(a.added));
+    }
+    // Sold items to bottom
+    filtered.sort((a, b) => {
+        const aSold = a.tag === 'Sold' ? 1 : 0;
+        const bSold = b.tag === 'Sold' ? 1 : 0;
+        return aSold - bSold;
+    });
+    return filtered;
 }
 
 function renderProducts() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = '';
-    const sorted = getSorted();
-    for (const p of sorted) {
+    const filtered = getFiltered();
+    for (const p of filtered) {
         const hero = p.photos && p.photos[0] ? p.photos[0] : '';
         const extra = (p.photos || []).length - 1;
         const extraBadge = extra > 0 ? `<span class="photo-count">+${extra}</span>` : '';
+        const isSold = p.tag === 'Sold' || p.price_display === 'Sold';
+        const isInquire = p.price_display === 'Inquire';
+        const priceClass = isSold ? 'sold-price' : (isInquire ? 'inquire-price' : '');
+        const cardClass = isSold ? 'sold-card' : '';
+        const badgeHtml = p.tag ? `<span class="badge ${p.tag.toLowerCase()}">${p.tag}</span>` : '';
         grid.insertAdjacentHTML('beforeend', `
-            <article class="product-card" data-id="${p.id}">
+            <article class="product-card ${cardClass}" data-id="${p.id}" data-category="${p.category}">
                 <div class="product-card-image" data-action="open" data-pid="${p.id}" role="button" tabindex="0" aria-label="View ${p.title} photos">
                     <img src="${hero}" alt="${p.title} — hero photo" loading="lazy">
                     ${extraBadge}
+                    ${badgeHtml}
                 </div>
                 <div class="product-card-body">
                     <h3 class="product-card-title">${p.title}</h3>
+                    <div class="product-card-category">${p.category}</div>
                     <div class="product-card-footer">
-                        <span class="product-card-price">$${p.price.toLocaleString()}</span>
-                        <button class="reserve-btn" onclick="messageUs('${p.id}')">Message Us</button>
+                        <span class="product-card-price ${priceClass}">${p.price_display}</span>
+                        ${!isSold ? `<button class="reserve-btn" onclick="messageUs('${p.id}')">Message Us</button>` : '<span class="sold-label">Sold</span>'}
                     </div>
                     <div class="card-reserve-sub">Tap photo for full details</div>
                 </div>
@@ -824,8 +1333,9 @@ function closePhotoOverlay() {
 function messageUs(id) {
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    const subject = encodeURIComponent(`BBR Store — ${product.title} ($${product.price.toLocaleString()})`);
-    const body = encodeURIComponent(`Hi — I'm interested in this piece from the BBR store:\n\n${product.title}\n$${product.price.toLocaleString()}\nbarnburnerrelics.net/shop/\n\n`);
+    const priceText = typeof product.price === 'number' ? `$${product.price.toLocaleString()}` : product.price_display;
+    const subject = encodeURIComponent(`BBR — ${product.title} (${priceText})`);
+    const body = encodeURIComponent(`Hi — I'm interested in this piece:\n\n${product.title}\n${priceText}\nbarnburnerrelics.net/shop/\n\n`);
     window.location.href = `mailto:${STORE_EMAIL}?subject=${subject}&body=${body}`;
 }
 

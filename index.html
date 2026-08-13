@@ -358,6 +358,111 @@
             font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
         }
 
+        /* Featured section — 2 highlighted pieces linking to shop */
+        .featured-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 700px) {
+            .featured-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+        .featured-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+        }
+        .featured-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .featured-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .featured-image {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            background: #0a0807;
+            overflow: hidden;
+        }
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.18s ease;
+        }
+        .featured-card:hover .featured-image img { transform: scale(1.02); }
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--gold);
+            color: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+        .featured-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .featured-info h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 6px;
+        }
+        .featured-origin {
+            font-size: 15px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+        .featured-price {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .featured-cta {
+            text-align: center;
+            padding: 16px 0 32px;
+        }
+        .featured-cta .btn-inquire {
+            display: inline-block;
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #1a1410;
+            background: var(--gold);
+            padding: 14px 28px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.15s, transform 0.15s;
+        }
+        .featured-cta .btn-inquire:hover {
+            background: var(--cream);
+            transform: translateY(-1px);
+        }
+
         /* What We Do — uniform 4-card grid (Premiere Auctions pattern) */
 .what-we-do {
     background: var(--bg-deep);
@@ -898,38 +1003,46 @@
     </div>
 </section>
 
-<div class="section-header" id="shop">
-    <h2>Available &amp; Recent Pieces</h2>
-    <p>Click any piece for the full story, provenance, and multiple photos</p>
-</div>
-
-<div class="filter-block">
-    <div class="filter-row" id="periodFilter">
-        <div class="filter-row-label">By Period</div>
-        <button class="cat-btn active" data-period="all">All</button>
-        <button class="cat-btn" data-period="paleo">Paleo</button>
-        <button class="cat-btn" data-period="archaic">Archaic</button>
-        <button class="cat-btn" data-period="woodland">Woodland</button>
-        <button class="cat-btn" data-period="historic">Historic</button>
+<!-- ============================================================
+     FEATURED PIECES — 2 highlighted items linking to the full shop
+     ============================================================ -->
+<section class="featured-section" id="featured">
+    <div class="section-header">
+        <h2>Featured Pieces</h2>
+        <p>Museum-grade artifacts from the current collection</p>
     </div>
-    <div class="filter-row" id="catFilter">
-        <div class="filter-row-label">By Type</div>
-        <button class="cat-btn active" data-cat="all">All</button>
-        <button class="cat-btn" data-cat="Points">Points</button>
-        <button class="cat-btn" data-cat="Pendants">Pendants &amp; Gorgets</button>
-        <button class="cat-btn" data-cat="Bannerstones">Bannerstones</button>
-        <button class="cat-btn" data-cat="Pottery">Pottery</button>
-        <button class="cat-btn" data-cat="Pipes">Pipes</button>
+    <div class="featured-grid">
+        <article class="featured-card">
+            <a href="shop/" class="featured-link">
+                <div class="featured-image">
+                    <img src="images/quartz-bottle-banner-hero.jpg" alt="Quartz Bottle Bannerstone — Buchanan County, MO" loading="lazy">
+                    <span class="featured-badge">Featured</span>
+                </div>
+                <div class="featured-info">
+                    <h3>Quartz Bottle Bannerstone</h3>
+                    <p class="featured-origin">Buchanan County, Missouri</p>
+                    <p class="featured-price">Inquire</p>
+                </div>
+            </a>
+        </article>
+        <article class="featured-card">
+            <a href="shop/" class="featured-link">
+                <div class="featured-image">
+                    <img src="images/incoming/2026-08-05-vault-additions/scottsbluff-knife-utah-1.jpg" alt="Scottsbluff Knife — Washington County, Utah" loading="lazy">
+                    <span class="featured-badge">Featured</span>
+                </div>
+                <div class="featured-info">
+                    <h3>Scottsbluff Knife</h3>
+                    <p class="featured-origin">Washington County, Utah</p>
+                    <p class="featured-price">Inquire</p>
+                </div>
+            </a>
+        </article>
     </div>
-</div>
-
-<div class="product-grid" id="productGrid"></div>
-<div class="bridge-band">
-    <p class="bridge-eyebrow">New to relics?</p>
-    <h3>The Store — available for purchase now.</h3>
-    <p>The vault above is museum-grade. The Store is where collectors start: single points and framed relics, priced plainly, shipped weekly.</p>
-    <a href="shop/" class="btn-inquire">Browse The Store →</a>
-</div>
+    <div class="featured-cta">
+        <a href="shop/" class="btn-inquire">Browse the Full Collection →</a>
+    </div>
+</section>
 
 <!-- ============================================================
      WHAT WE DO — uniform 4-card grid. Mirrors Premiere Auctions'
@@ -1113,270 +1226,17 @@
 </footer>
 
 <script>
-        const products = [
-                {
-                    id: 'quartz-bottle-bannerstone-buchanan-co',
-                    title: 'Quartz Bottle Bannerstone — Buchanan County, MO',
-                    price: 'Inquire',
-                    period: 'Archaic · ~3,000–5,000 BP',
-                    tag: 'Featured',
-                    category: 'Bannerstones',
-                    images: ['images/quartz-bottle-banner-hero.jpg', 'images/quartz-bottle-banner-1.png', 'images/quartz-bottle-banner-2.png', 'images/quartz-bottle-banner-3.jpg'],
-                    description: '<a href="https://youtube.com/shorts/2WHWPNRgd9k" target="_blank" rel="noopener" class="video-link" style="--video-thumb: url(\'https://i.ytimg.com/vi/2WHWPNRgd9k/hq2.jpg\');" aria-label="Watch the Quartz Bottle Bannerstone video on YouTube"><span class="video-title">Quartz Bottle Bannerstone</span><span class="video-duration">1:05</span></a><div class="video-link-caption">Watch the video · 1 minute 5 seconds</div><p>A <strong>translucent peachy-pink quartz bottle bannerstone</strong> recovered from Buchanan County, Missouri — and a piece with the kind of paper trail you almost never see anymore. Bottle bannerstones are rare in any material. In <strong>quartz</strong> — the rarest bannerstone material class — they sit at the absolute top of the Archaic lapidary hierarchy. The stone is hard, brittle, and notoriously difficult to work; the bottle form requires the four-knob profile to read clearly from any angle; and the fully drilled biconical perforation has to survive the process intact. This piece checks every one of those boxes.</p><p>What separates this piece from anything else in the current bannerstone market is the <strong>published, documented five-owner provenance chain</strong> — not just a chain, but one that ties back-to-back into <em>Who\'s Who in Indian Relics</em> on two separate pages:</p><p><strong>Provenance chain:</strong> Finder (Buchanan County, MO) → <strong>Ed Buel</strong> (purchased direct from finder; Buel collection pictured in <em>Who\'s Who</em>, page 40) → <strong>Joe Kinker</strong> → <strong>Floyd Ritter</strong> (Ritter spread pictured in <em>Who\'s Who</em>, page 6 — the bottle is the centerpiece of the collection case shown on that page, with the inscription "B RITTER / BUCHANAN CO / MO" visible on the piece itself) → <strong>Terry Stumpf</strong> → <strong>Barn Burner Relics</strong>.</p><p>The piece carries an engraved collector inscription on its lower face: "<strong>B. RITTER / BUCHANAN / MO</strong>" — Floyd Ritter\'s own hand, marking it as part of his published Buchanan County, Missouri collection. The display-case photograph (image #3) is the actual page-6 spread from <em>Who\'s Who in Indian Relics</em>: thirteen bannerstones arranged in a fitted black-foam case, with this bottle sitting in the center middle position. The piece is pictured twice in the reference — once on its own, and once as the focal point of the Ritter spread.</p><p>Five owners over the last fifty years. Three of them published in the same reference book. Two consecutive page references (page 6, page 40). One piece of quartz that\'s been passed hand to hand across the Midwest, with the paper trail to prove it. This is not provenance as a footnote — provenance as the whole pitch.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>',
-                    specs: {'Material':'Translucent Quartz (peachy-pink coloration, subtle banding — rarest of all bannerstone material classes)','Origin':'Buchanan County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Bottle Bannerstone (four-knob bottle form with fully drilled biconical perforation)','Dimensions':'Full dimensions on request','Provenance Inscription on Piece':'"B. RITTER / BUCHANAN / MO" engraved on lower face (Floyd Ritter\'s hand)','Publication History':'Pictured on the Floyd Ritter spread in "Who\'s Who in Indian Relics," page 6 (bottle is centerpiece of the 13-piece display case); Ed Buel collection pictured on page 40 of the same reference','Provenance Chain':'Finder (Buchanan Co., MO) → Ed Buel → Joe Kinker → Floyd Ritter → Terry Stumpf → Barn Burner Relics','Notable Feature':'Quartz (rarest bannerstone material) in bottle form (rarest bannerstone type); biconical perforation (Archaic-era drilling signature); engraved collector inscription on piece; published in two consecutive pages of Who\'s Who in Indian Relics (pp. 6 & 40)','Condition':'Excellent — surface intact, perforation clean, no restoration visible','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'diorite-barrel-bannerstone',
-                    title: 'Rectangular Barrel Bannerstone — Diorite',
-                    price: 'Inquire',
-                    period: 'Archaic · ~3,000–5,000 BP',
-                    category: 'Bannerstones',
-                    images: ['images/diorite-barrel-2.jpg', 'images/diorite-barrel-stickers.jpg', 'images/diorite-barrel-3.jpg', 'images/diorite-barrel-1.jpg', 'images/diorite-barrel-4.jpg'],
-                    description: '<a href="https://youtube.com/shorts/CWLbTf_DFwA" target="_blank" rel="noopener" class="video-link" aria-label="Watch the Rectangular Barrel Diorite Bannerstone video on YouTube"><span class="video-title">Rectangular Barrel Diorite Bannerstone</span><span class="video-duration">1:11</span></a><div class="video-link-caption">Watch the video · 1 minute 11 seconds</div><p>A <strong>rectangular barrel bannerstone</strong> cut from diorite — the warm pink-and-black speckled stone collectors call "granite" or "hard stone." This is the textbook form as referenced in the bannerstone book: a four-sided barrel with gently rounded corners and a fully drilled biconical perforation (tapered bore, drilled from both faces to meet in the middle — the classic bannerstone perforation technique). The polish on this piece is the kind of finish that takes a very long time on diorite, given the stone\'s hardness.</p><p><strong>Provenance chain:</strong> Byron Knoblock collection → Paul Titterington collection → Nick Gatses. Both previous collectors are well-known names in the relic hobby; both are no longer with us. This is a piece with a documented collector history.</p><p>Two provenance stickers preserved on the piece: red-bordered oval "B-32 / DUNKLIN / CO. MO" and white round handwritten "B36 / CA3600." Dunklin County, Missouri — southeastern Bootheel — is classic diorite-bannerstone territory.</p><p>No third-party Certificate of Authenticity. <strong>Lifetime Authenticity Guarantee.</strong></p><p><strong>Price: Inquire.</strong> Serious collectors — message us for current pricing and condition details.</p>',
-                    specs: {'Material':'Diorite (pinkish-tan with dense black speckling — collectors call this "granite" or "hard stone")','Origin':'Dunklin County, Missouri','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Rectangular Barrel Bannerstone (four-sided barrel form with fully drilled biconical perforation)','Dimensions':'Full dimensions on request','Provenance Stickers on Piece':'Red-bordered oval "B-32 / DUNKLIN CO. MO"; white round handwritten "B36 / CA3600"','Provenance Chain':'Byron Knoblock collection → Paul Titterington collection → Nick Gatses','Notable Feature':'Diorite (rarest bannerstone material class); rectangular barrel form (rarest bannerstone shape); fully drilled biconical perforation; both previous collectors are documented names in the hobby','Condition':'Excellent — described in video as "very tedious work especially to get a finish like that on a piece this nice"','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'butterfly-bannerstone',
-                    title: 'Butterfly Bannerstone — Quartz',
-                    price: 'Inquire',
-                    period: 'Archaic · ~3,000–5,000 BP',
-                    tag: 'Featured',
-                    category: 'Bannerstones',
-                    images: ['images/butterfly-banner-1.jpg', 'images/butterfly-banner-2.jpg', 'images/butterfly-banner-3.jpg', 'images/butterfly-banner-4.jpg'],
-                    description: '<p>A truly rare butterfly bannerstone cut from <strong>quartz</strong> — the rarest of all bannerstone materials. Quartz butterfly bannerstones sit at the very top of the Archaic lapidary hierarchy: the stone is hard, brittle, and notoriously difficult to work, and butterfly forms require bilateral symmetry refined enough to read as wings from any angle. This is not a common material in a common form — it is a once-in-a-generation piece.</p><p>The piece is published with the <strong>Gary Cuckler Collection sticker (#3287)</strong> still attached — visible in the first photograph. Cuckler was one of the most respected bannerstone collectors of his generation, and his catalog numbers carry immediate recognition in the Midwest collector market. The ownership chain runs <strong>Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses</strong> — three previous collectors, each named, each documented, in a clean linear trace.</p><p>Two small restoration spots were completed by Gary Cuckler while the piece was in his collection, and are photographed in detail in image #4 (with red callouts marking the restoration points). The restoration is conservative, period-appropriate, and disclosed here as part of the documented history of the piece — not minimized, not hidden. Cuckler took care of his pieces; that care is part of why they survive.</p><p>The piece is recovered from Illinois and represents Archaic-era lapidary work at its most refined: thin section, clean drilled perforation, symmetrical wings, and the warm honey-amber translucency that only quartz delivers when backlit (see image #4). Truly an Indigenous work of prehistoric art.</p><p><strong>Price: Inquire.</strong> Serious collectors — message Nick for current pricing and condition details.</p>',
-                    specs: {'Material':'Quartz (rarest of bannerstone materials)','Origin':'Illinois','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone','Dimensions':'Full dimensions on request','Cuckler Catalog #':'3287 (sticker on piece)','Provenance':'Gary Cuckler (#3287) → Tommy Beutell → Perry Hansen → Nick Gatses','Notable Feature':'Quartz — rarest of all bannerstone materials; butterfly form — rarest of bannerstone types','Condition':'Two small restoration spots completed by Gary Cuckler (disclosed, photographed in image #4)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'quartz-banner-cosach-1917',
-                    title: 'Quartz Butterfly Bannerstone — Pink Quartz',
-                    price: 'Inquire',
-                    period: 'Archaic · ~3,000–5,000 BP',
-                    category: 'Bannerstones',
-                    images: ['images/quartz-banner-1.jpg', 'images/quartz-banner-2.jpg', 'images/quartz-banner-3.jpg', 'images/quartz-banner-4.jpg'],
-                    description: '<p>A <strong>pink translucent quartz butterfly bannerstone</strong> — a rare material in a rare form, with the warm peach-pink coloration that distinguishes this piece from the more typical honey-amber quartz. Shows the documented Cusick Collection #1917 sticker, "MIKE ECK" handwritten note, M.S.C. / 83 institutional tag, and back tags "7,500" and "Ex Eckler / Owen." Provenance chain: <strong>Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses</strong>. Biconical perforation (Archaic-era drilling signature, ~3,000–5,000 BP).</p><p><strong>Condition:</strong> Both wing tips are broken and have been glued back on. Repair is documented here as-is, consistent with our restoration-disclosure policy on every catalog piece.</p><p>No third-party Certificate of Authenticity. Lifetime Authenticity Guarantee.</p><p><strong>Price: Inquire.</strong></p>',
-                    specs: {'Material':'Pink Translucent Quartz (warm peach coloration, subtle banding)','Origin':'Provenance stickers preserved on piece','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Butterfly Bannerstone (single-hole, biconical perforation)','Dimensions':'Full dimensions on request','Provenance Stickers on Piece':'Red-bordered oval "M.S.C. / 83" tag; handwritten "MIKE ECK" pencil note; white round sticker "1917 / CUSICK / CB50" (Cusick catalog #1917, sub-code CB50)','Provenance Tag on Back':'Handwritten: "Ex Eckler / Owen" — previous collector trace','Provenance Chain':'Cusick Collection (#1917 / CB50) → Mike Eck → Ex-Eckler / Owen → Nick Gatses','Notable Feature':'Quartz (rarest bannerstone material); butterfly form (rarest bannerstone type); pink/peach coloration (its own collector category); biconical perforation (Archaic-era drilling signature)','Condition':'Both wing tips broken and glued back on (disclosed)','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'granite-winged-bannerstone',
-                    title: 'Winged Bannerstone — Granite',
-                    price: 'Inquire',
-                    period: 'Archaic · ~3,000–5,000 BP',
-                    category: 'Bannerstones',
-                    images: ['images/incoming/2026-08-05-vault-additions/granite-winged-bannerstone-1.jpg'],
-                    description: '<p>A <strong>winged bannerstone</strong> in dark granite — symmetrical twin lobes with a raised central spine, polished to a soft gloss across the high points. Winged forms are among the most recognizable atlatl-weight shapes: bilateral wings reading clearly from any angle, with the ridge running the center like a body.</p><p>Full documentation, measurements, and provenance details are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>',
-                    specs: {'Material':'Granite (dark charcoal, polished)','Origin':'Details forthcoming','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Winged Bannerstone (atlatl weight)','Dimensions':'Full dimensions on request','Provenance':'Details forthcoming','Condition':'Polish intact; honest age wear visible','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'scottsbluff-knife-washington-co-utah',
-                    title: 'Scottsbluff Knife — Washington County, Utah',
-                    price: 'Inquire',
-                    period: 'Paleo · Cody Complex, ~9,000–8,000 BP',
-                    tag: 'Featured',
-                    category: 'Points',
-                    images: ['images/incoming/2026-08-05-vault-additions/scottsbluff-knife-utah-1.jpg'],
-                    description: '<p>One of the most premier pieces of flint to come through Barn Burner Relics — a <strong>Scottsbluff knife from Washington County, Utah</strong>, St. George area, inscribed on the face in collector ink: "ST. GEORGE / WASHINGTON CO. / UTAH."</p><p>The material is a vividly banded flint — cream, tan, gray, and warm brown with a striking agate-eye ring figure in the lower face and thin quartz veining — combined with prehistoric craftsmanship that marks this as a piece of <strong>Cody Complex excellence</strong>. Fine, regular flaking runs both edges of the lanceolate form.</p><p><strong>Provenance chain:</strong> E.K. Petrie → Mel Wilkins → Tom Amble → Bob Converse → Jim Crawford → Bob Roth → Barn Burner Relics. Six named collections — the kind of documented ownership history most pieces never accumulate.</p><p>Full measurements and additional photography are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>',
-                    specs: {'Material':'Banded flint (cream/tan/gray/brown banding with agate-eye figure and quartz veining)','Origin':'St. George area, Washington County, Utah — inscribed on piece','Period':'Paleo · Cody Complex (~9,000–8,000 BP)','Culture':'Cody Complex','Type':'Scottsbluff Knife','Dimensions':'Full dimensions on request','Inscription on Piece':'"ST. GEORGE / WASHINGTON CO. / UTAH" (collector ink)','Provenance Chain':'E.K. Petrie → Mel Wilkins → Tom Amble → Bob Converse → Jim Crawford → Bob Roth → Barn Burner Relics','Condition':'Fine regular flaking both edges; banding intact','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'quartz-bannerstone-backlit',
-                    title: 'Quartz Bannerstone',
-                    price: 'Inquire',
-                    period: 'Archaic · ~3,000–5,000 BP',
-                    category: 'Bannerstones',
-                    images: ['images/incoming/2026-08-05-vault-additions/quartz-bannerstone-backlit-1.jpg'],
-                    description: '<p>A <strong>quartz bannerstone</strong> — the warm amber glow in the photo is light passing through the stone itself, the signature of genuine quartz lapidary work. Quartz is the rarest of all bannerstone material classes: hard, brittle, and notoriously difficult to work to this level of finish.</p><p>Full documentation, measurements, and provenance details are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>',
-                    specs: {'Material':'Quartz (translucent, warm amber coloration under transmitted light)','Origin':'Details forthcoming','Period':'Archaic · ~3,000–5,000 BP','Culture':'Archaic','Type':'Bannerstone (atlatl weight)','Dimensions':'Full dimensions on request','Provenance':'Details forthcoming','Condition':'Polish intact; internal inclusions natural to the stone','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'mississippian-pottery-jar',
-                    title: 'Mississippian Pottery Jar',
-                    price: 'Inquire',
-                    period: 'Woodland · Mississippian, ~1,000–500 BP',
-                    category: 'Pottery',
-                    images: ['images/incoming/2026-08-05-vault-additions/mississippian-pottery-jar-1.jpg'],
-                    description: '<p>A <strong>Mississippian pottery jar</strong> — globular body, short neck, flared rim, with small lug handles at the shoulder. Heavy mineral encrustation, fire-blackened patches across the shoulder, and iridescent weathering across the surface — honest burial age on an intact vessel.</p><p>Full documentation, measurements, and provenance details are being prepared. <strong>More information coming soon.</strong></p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>',
-                    specs: {'Material':'Earthenware (buff to gray-brown body, mineral encrustation)','Origin':'Details forthcoming','Period':'Woodland · Mississippian (~1,000–500 BP)','Culture':'Mississippian','Type':'Globular jar with lug handles','Dimensions':'Full dimensions on request','Provenance':'Details forthcoming','Condition':'Intact; heavy surface encrustation and fire-blackening consistent with burial age','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'mississippian-compound-bottle-crittenden-co',
-                    title: 'Mississippian Compound Bottle — Crittenden County, AR',
-                    price: 'Inquire',
-                    period: 'Woodland · Mississippian, 800–1200 AD',
-                    tag: 'Featured',
-                    category: 'Pottery',
-                    images: ['images/incoming/2026-08-05-vault-additions/mississippian-compound-bottle-1.jpg', 'images/incoming/2026-08-05-vault-additions/mississippian-compound-bottle-2-card.jpg'],
-                    description: '<p>A <strong>Mississippian compound bottle from Crittenden County, Arkansas</strong> — globular body, upright neck with dense incised herringbone decoration, lug perforations at the neck for suspension, and heavy fire-clouding across the shoulder. Documented with its original <strong>Caddo Trading Company museum file card</strong> (Murfreesboro, AR — tribal art specialists), typed with the piece\'s county, age range, and dimensions. Photo of the card included.</p><p><strong>Documentation (Caddo Trading Co. museum file card):</strong> Type — Mississippian Compound Bottle · Age — 800 A.D.–1200 A.D. · Found — Crittenden Co., AR · H 5¾" · D 5" · G 9".</p><p><strong>Price: Inquire.</strong> Message us for more information — serious inquiries answered same day on weekdays.</p>',
-                    specs: {'Material':'Earthenware (buff/tan body with fire-clouding and mineral encrustation)','Origin':'Crittenden County, Arkansas (per Caddo Trading Co. card)','Period':'Woodland · Mississippian (800–1200 AD per card)','Culture':'Mississippian','Type':'Compound Bottle (incised herringbone neck, lug perforations)','Dimensions':'H 5¾" · Diameter 5" · Girth 9" (per card)','Documentation':'Caddo Trading Company, Inc. museum file card (Murfreesboro, AR) — photographed in sleeve, included','Condition':'Intact; rim wear, fire-clouding, surface encrustation consistent with burial age','Price':'Inquire for price','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'catlinite-effigy-pipe-sold',
-                    title: 'Catlinite Effigy Pipe — Animal Effigy',
-                    price: 'Sold',
-                    period: 'Historic · 1800s Plains',
-                    tag: 'Sold',
-                    category: 'Pipes',
-                    images: ['images/incoming/2026-08-05-vault-additions/catlinite-effigy-pipe-1.jpg', 'images/incoming/2026-08-05-vault-additions/catlinite-effigy-pipe-2.jpg', 'images/incoming/2026-08-05-vault-additions/catlinite-effigy-pipe-3-stem.jpg'],
-                    description: '<p>A <strong>catlinite effigy pipe</strong> — carved from sacred red pipestone, with the bowl set into the back of a long-snouted animal effigy. Deeply blackened bowl interior from ceremonial use, incised decorative banding behind the head, and the warm terracotta polish that only handled catlinite takes on.</p><p><strong>This piece has sold.</strong> Pieces of this caliber move through the vault regularly — join the Facebook group for first look at what comes in next.</p>',
-                    specs: {'Material':'Catlinite (red pipestone)','Origin':'Plains','Period':'Historic · 1800s','Culture':'Plains','Type':'Effigy pipe (animal effigy with inset bowl)','Condition':'Sold — shown for reference','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'birdstone-pop-eyed-rocking-sold',
-                    title: 'Pop-Eyed Rocking Birdstone — Quartz',
-                    price: 'Sold',
-                    period: 'Late Archaic · 3000–1000 BC',
-                    tag: 'Sold',
-                    category: 'Bannerstones',
-                    images: ['images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-1.jpg', 'images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-2.jpg', 'images/incoming/2026-08-05-vault-additions/birdstone-pop-eyed-rocking-3-hand.jpg'],
-                    video: 'CWLbTf_DFwA',
-                    description: '<p>A <strong>pop-eyed rocking birdstone</strong> carved from warm variegated quartz — cream, ochre, and caramel tones with natural inclusions. Stylized avian form with raised, protruding eyes and a low center ridge; the curved base allows it to rock gently when set on a flat surface. Polished to a soft sheen with honest age wear.</p><p><strong>This piece has sold.</strong> Birdstones of this quality rarely surface — join the Facebook group for first look at what comes in next.</p>',
-                    specs: {'Material':'Quartz (variegated)','Origin':'Midwest','Period':'Late Archaic · 3000–1000 BC','Culture':'Late Archaic','Type':'Pop-eyed rocking birdstone','Condition':'Sold — shown for reference','Authenticity':'Lifetime Authenticity Guarantee'}
-                },
-                {
-                    id: 'animal-effigy-water-bottle',
-                    title: 'Animal Effigy Water Bottle — Negative-Painted',
-                    price: 'Inquire',
-                    period: 'Mississippian · 800–1600 AD',
-                    tag: 'Vault',
-                    category: 'Pottery',
-                    images: ['images/incoming/2026-08-05-vault-additions/animal-effigy-water-bottle-1.jpg', 'images/incoming/2026-08-05-vault-additions/animal-effigy-water-bottle-2-article.jpg', 'images/incoming/2026-08-05-vault-additions/animal-effigy-water-bottle-3-letter.jpg'],
-                    description: '<p>A <strong>negative-painted animal effigy water bottle</strong> — light buff grit-tempered pottery in the form of a quadruped, with the bottle mouth set into the back. The surface is covered in a darker brown slip with reserved spots of natural clay color, a technique documented in the Mississippi Culture period of the southeastern United States.</p><p>This piece is <strong>published</strong> — featured as Figure 42 in a 1970s archaeological journal article by collector James H. Nelson of Syracuse, Indiana, who discovered it in an antique shop after it surfaced at a farm auction outside Osceola, Indiana. The article documents the piece at 6½″ long × 3″ wide × 4⅛″ tall, with the negative-painting technique identified per Fundaburk &amp; Foreman (<em>Sun Circles and Human Hands</em>, 1957). Vessels of this type were used in ceremonies and deposited with burials.</p><p>Also included is Nelson\'s own handwritten letter with his original sketch of the piece, measurements, and a provenance note from Mrs. Ann Huffman tracing it to Kramers Antique Auction in Kramer, Indiana. A rare combination: documented find site, published reference, and primary-source correspondence.</p><p>Half of the right rear leg was broken prior to Nelson\'s acquisition and is missing — documented in the article. Otherwise intact with strong paint retention.</p>',
-                    specs: {'Material':'Grit-tempered pottery, negative-painted','Origin':'Southeastern US (found Indiana)','Period':'Mississippian · 800–1600 AD','Culture':'Mississippi Culture','Type':'Animal effigy water bottle / rhyton','Dimensions':'6½″ L × 3″ W × 4⅛″ H','Published':'Figure 42, "An Intriguing Water Bottle," James H. Nelson','Reference':'Fundaburk & Foreman, Sun Circles and Human Hands (1957)','Provenance':'Farm auction (Osceola, IN) → antique shop → Nelson collection → Kramers Antique Auction (Kramer, IN)','Condition':'Right rear leg partially broken (pre-existing, documented in article)','Authenticity':'Lifetime Authenticity Guarantee'}
-                }
-    ];
-
-    function renderGrid() {
-        const grid = document.getElementById('productGrid');
-        const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
-            '<rect width="800" height="800" fill="var(--bg-elev)"/>' +
-            '<text x="400" y="380" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="20">Click to View</text>' +
-            '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
-            '</svg>'
-        );
-        grid.innerHTML = products
-            .filter(p => (currentCat === 'all' || p.category === currentCat))
-            .filter(p => (currentPeriod === 'all' || classifyPeriod(p.period) === currentPeriod))
-            // Sort active pieces first (preserving their order), then sold pieces (preserving their order)
-            .slice() // copy so we don't mutate the source array
-            .sort((a, b) => {
-                const aSold = a.tag === 'Sold';
-                const bSold = b.tag === 'Sold';
-                if (aSold === bSold) return 0;  // stable within each group
-                return aSold ? 1 : -1;           // active (false) before sold (true)
-            })
-            .map(p => {
-            const imgSrc = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
-            // Build WebP variants from the JPEG/PNG src. Handles both .jpg and .png.
-            const webpSrc = imgSrc.replace(/\.(jpg|png)$/i, '.webp');
-            const webpMobileSrc = imgSrc.replace(/\.(jpg|png)$/i, '-mobile.webp');
-            const tagHtml = p.tag ? `<span class="badge ${p.tag === 'Sold' ? 'sold' : p.tag === 'Featured' ? 'featured' : p.tag === 'New' ? 'new' : ''}">${p.tag}</span>` : '';
-            const isSold = p.tag === 'Sold';
-            const cardClasses = 'product-card' + (isSold ? ' sold-card' : '') + (p.category ? ' cat-' + p.category.toLowerCase() : '');
-            const priceClass = 'price' + (isSold ? ' sold-price' : '') + (p.price === 'Inquire' ? ' inquire-price' : '');
-            return `<button type="button" class="${cardClasses}" data-category="${p.category || ''}" onclick="openDetail('${p.id}')"><div class="image-wrap">${tagHtml}<picture><source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}"><source type="image/webp" srcset="${webpSrc}"><img src="${imgSrc}" alt="${p.title}" loading="lazy" width="1280" height="960"></picture></div><div class="info"><h3>${p.title}</h3><div class="price-row"><span class="${priceClass}">${p.price}</span>${p.category ? `<span class="card-cat">${p.category}</span>` : ''}</div></div></button>`;
-        }).join('');
-
-        if (!grid.innerHTML) {
-            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--taupe);font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;">No pieces match these filters yet. <a href="#" onclick="resetFilters();return false;" style="color:var(--sand);text-decoration:underline;">Reset filters</a></div>`;
-        }
-    }
-
-    function resetFilters() {
-        currentCat = 'all';
-        currentPeriod = 'all';
-        document.querySelectorAll('#catFilter .cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
-        document.querySelectorAll('#periodFilter .cat-btn').forEach(b => b.classList.toggle('active', b.dataset.period === 'all'));
-        renderGrid();
-    }
-
-    let currentProduct = null;
-
-    function openDetail(id) {
-        const p = products.find(x => x.id === id);
-        if (!p) return;
-        currentProduct = p;
-        const overlay = document.getElementById('detailOverlay');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-
-        document.getElementById('detailTitle').textContent = p.title;
-        document.getElementById('detailPeriod').textContent = p.period;
-        const extra = p.tag === 'Sold' ? '— Sold' : (p.price === 'Inquire' ? '— Contact for pricing' : '');
-        document.getElementById('detailPrice').innerHTML = `${p.price} <span class="label">${extra}</span>`;
-        document.getElementById('detailDesc').innerHTML = p.description;
-
-        // Hide the inquiry button when an item is sold.
-        const inquireBtn = document.querySelector('.detail-info .btn-inquire');
-        if (inquireBtn) {
-            inquireBtn.style.display = (p.tag === 'Sold') ? 'none' : '';
-        }
-
-        const mainImg = document.getElementById('detailMainImage');
-        const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
-            '<rect width="800" height="800" fill="var(--bg-elev)"/>' +
-            '<text x="400" y="380" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="20">Click to View</text>' +
-            '<text x="400" y="420" text-anchor="middle" fill="var(--border-soft)" font-family="Georgia" font-size="14">Artifact Photo</text>' +
-            '</svg>'
-        );
-        // Try WebP first, fall back to JPEG/PNG on error.
-        const firstImg = p.images && p.images[0] ? p.images[0] : PLACEHOLDER;
-        if (firstImg !== PLACEHOLDER) {
-            mainImg.onerror = function() { this.onerror = null; this.src = firstImg; };
-            mainImg.src = firstImg.replace(/\.(jpg|png)$/i, '.webp');
-        } else {
-            mainImg.src = PLACEHOLDER;
-        }
-        const thumbs = document.getElementById('detailThumbs');
-        thumbs.innerHTML = '';
-        (p.images || [PLACEHOLDER]).forEach((img, i) => {
-            const thumb = document.createElement('img');
-            thumb.src = img;
-            thumb.alt = `${p.title} - Photo ${i+1}`;
-            thumb.loading = 'lazy';
-            if (i === 0) thumb.classList.add('active');
-            thumb.onclick = function() {
-                if (img !== PLACEHOLDER) {
-                    mainImg.onerror = function() { this.onerror = null; this.src = img; };
-                    mainImg.src = img.replace(/\.(jpg|png)$/i, '.webp');
-                } else {
-                    mainImg.src = img;
-                }
-                document.querySelectorAll('.detail-thumbs img').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            };
-            thumbs.appendChild(thumb);
-        });
-
-        // YouTube video embed (if the piece has one)
-        if (p.video) {
-            const vid = document.createElement('a');
-            vid.href = `https://www.youtube.com/watch?v=${p.video}`;
-            vid.target = '_blank';
-            vid.rel = 'noopener';
-            vid.style.cssText = 'display:block;position:relative;border-radius:4px;overflow:hidden;border:1px solid var(--gold);aspect-ratio:16/9;';
-            vid.innerHTML = `<img src="https://i.ytimg.com/vi/${p.video}/hqdefault.jpg" alt="Watch the video" style="width:100%;height:100%;object-fit:cover;display:block;"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);"><svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>`;
-            thumbs.appendChild(vid);
-        }
-
-        const meta = document.getElementById('detailMetaTable');
-        meta.innerHTML = Object.entries(p.specs).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
-    }
-
-    function closeDetail() {
-        document.getElementById('detailOverlay').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
-
-    function scrollToSection(id) {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
     // ========== Email inquiry wiring ==========
     // All buyer inquiries route to bbryoutube@gmail.com — Bill reviews and forwards to Nick.
     const STORE_EMAIL = 'bbryoutube@gmail.com';
+    let currentProduct = null;
+
+    function closeDetail() {
+        const overlay = document.getElementById('detailOverlay');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
 
     function openInquiry() {
         if (!currentProduct) {
@@ -1403,44 +1263,6 @@
         document.getElementById('messengerOverlay').classList.remove('active');
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('messengerOverlay').classList.contains('active')) closeMessenger(); });
-
-    // Classifier: turns a descriptive period label (e.g. "Late Archaic · ~3,000 BP"
-    // or "Paleoindian / Early Archaic (~8500–7900 B.P.)") into one of four buckets.
-    // Keep this in sync with the periodFilter buttons in the markup above.
-    function classifyPeriod(label) {
-        if (!label) return 'archaic';        // safe default for missing data
-        const s = label.toLowerCase();
-        if (/\bpaleo\b|paleoindian/.test(s)) return 'paleo';
-        // "Late Archaic / Early Woodland" still files under Archaic per dealer convention
-        // — assign the earlier of the two periods referenced.
-        if (/archaic/.test(s)) return 'archaic';
-        if (/\bwoodland\b/.test(s)) return 'woodland';
-        // Historic = anything post-1500: 1800s, Plains, Sioux, Civil War era, etc.
-        if (/1800|1700|1500|sioux|plains|historic|civil war|colonial/.test(s)) return 'historic';
-        return 'archaic';                    // safe fallback for new pieces Bill hasn't bucketed
-    }
-
-    // Two filter handlers — Period + Type compose (AND). Each keeps its own active state.
-    let currentCat = 'all';
-    let currentPeriod = 'all';
-
-    document.getElementById('catFilter').addEventListener('click', (e) => {
-        const btn = e.target.closest('.cat-btn');
-        if (!btn) return;
-        document.querySelectorAll('#catFilter .cat-btn').forEach(b => b.classList.toggle('active', b === btn));
-        currentCat = btn.dataset.cat;
-        renderGrid();
-    });
-
-    document.getElementById('periodFilter').addEventListener('click', (e) => {
-        const btn = e.target.closest('.cat-btn');
-        if (!btn) return;
-        document.querySelectorAll('#periodFilter .cat-btn').forEach(b => b.classList.toggle('active', b === btn));
-        currentPeriod = btn.dataset.period;
-        renderGrid();
-    });
-
-    renderGrid();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
 <!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></scr'ipt><!-- End GoatCounter -->
