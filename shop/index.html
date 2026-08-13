@@ -1303,7 +1303,7 @@ function openPhotoOverlay(pid) {
     const title = document.getElementById('photoOverlayTitle');
     const desc = document.getElementById('photoOverlayDesc');
     title.textContent = p.title;
-    desc.textContent = p.desc || '';
+    desc.innerHTML = p.desc || '';
     main.src = p.photos[0];
     main.alt = `${p.title} — photo 1`;
     thumbs.innerHTML = '';
