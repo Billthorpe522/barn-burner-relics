@@ -490,21 +490,24 @@
         }
         .photo-overlay-close {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background: rgba(0,0,0,0.6);
+            top: 4px;
+            right: 4px;
+            background: rgba(0,0,0,0.75);
             color: #f0e8d0;
-            border: 1px solid var(--border-hover);
+            border: 2px solid var(--gold);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 24px;
+            width: 56px;
+            height: 56px;
+            font-size: 32px;
+            font-weight: 700;
             line-height: 1;
             cursor: pointer;
             font-family: 'Cormorant Garamond', Georgia, serif;
             transition: background 0.15s ease;
+            z-index: 1001;
         }
         .photo-overlay-close:hover { background: var(--gold); color: #1a140d; }
+        .photo-overlay-close:active { background: var(--cream); color: #1a140d; transform: scale(0.95); }
         .photo-overlay-title {
             font-family: 'Playfair Display', serif;
             font-size: 22px;
@@ -836,6 +839,11 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.getElementById('photoOverlay').classList.contains('active')) {
         closePhotoOverlay();
     }
+});
+
+// Tap outside the photo card closes the overlay (mobile-friendly)
+document.getElementById('photoOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closePhotoOverlay();
 });
 </script>
 
