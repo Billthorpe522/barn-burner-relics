@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
     <title>The Store — Barn Burner Relics · Available Now</title>
-    <meta name="description" content="The Store — single points, framed relics, and small artifacts from the Barn Burner Relics collection, available for purchase now. Real pieces, real provenance, shipped from Manhattan, IL.">
+    <meta name="description" content="Authentic prehistoric artifacts with real provenance — single points, framed collections, and exceptional pieces from the Barn Burner Relics collection. Lifetime Authenticity Guarantee. Shipped from Manhattan, IL.">
     <link rel="canonical" href="https://barnburnerrelics.net/shop/">
     <meta property="og:title" content="The Store — Barn Burner Relics · Available Now">
-    <meta property="og:description" content="Single points, framed relics, and small artifacts from the Barn Burner Relics collection — available for purchase now. Real pieces, real provenance.">
+    <meta property="og:description" content="Authentic prehistoric artifacts with real provenance — lifetime guarantee, shipped from Manhattan, IL.">
     <meta property="og:image" content="https://barnburnerrelics.net/images/bbshop-logo-horizontal.png">
     <meta property="og:url" content="https://barnburnerrelics.net/shop/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Barn Burner Relics">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Store — Barn Burner Relics · Available Now">
-    <meta name="twitter:description" content="Single points, framed relics, and small artifacts — available for purchase now. Real pieces, real provenance.">
+    <meta name="twitter:description" content="Authentic prehistoric artifacts with real provenance — lifetime guarantee.">
     <meta name="twitter:image" content="https://barnburnerrelics.net/images/bbshop-logo-horizontal.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,12 +61,10 @@
             min-height: 100vh;
         }
 
-        
-
         /* Hero */
         .hero {
             text-align: center;
-            padding: 80px 24px 64px;
+            padding: 80px 24px 48px;
             background: linear-gradient(180deg, rgba(26, 20, 16, 0.6) 0%, transparent 100%),
                         radial-gradient(ellipse at center, rgba(212, 168, 83, 0.04) 0%, transparent 70%);
         }
@@ -115,50 +113,57 @@
         .hero-meta span { display: flex; align-items: center; gap: 6px; }
         .hero-meta strong { color: var(--gold); font-weight: 600; }
         @media (max-width: 700px) {
-            .hero { padding: 56px 20px 48px; }
+            .hero { padding: 56px 20px 40px; }
             .hero h1 { font-size: clamp(32px, 8vw, 44px); }
         }
 
-        /* Band sections */
-        .band {
+        /* Sort bar */
+        .sort-bar {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 48px 24px;
-        }
-        .band-header {
+            padding: 0 24px 32px;
             display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-        .band-header h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 14px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            font-weight: 600;
-        }
-        .band-header .band-sub {
+        .sort-bar-label {
             font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
             font-size: 11px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--text-dim);
         }
-        .band-intro {
+        .sort-btn {
+            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             color: var(--text-dim);
-            font-style: italic;
-            margin-bottom: 32px;
-            max-width: 720px;
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+        .sort-btn:hover { color: var(--gold); border-color: var(--border-hover); }
+        .sort-btn.active {
+            color: var(--bg);
+            background: var(--gold);
+            border-color: var(--gold);
         }
 
         /* Product grid */
+        .store-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
         }
         @media (max-width: 700px) {
@@ -190,7 +195,7 @@
             cursor: zoom-in;
             overflow: hidden;
         }
-        .product-card-image:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+        .product-card-image:focus { outline: 2px solid var(--gold); outline-offset: -2px; }
         .product-card-image img {
             width: 100%;
             height: 100%;
@@ -235,9 +240,6 @@
             flex: 1;
         }
         .card-reserve-sub { margin-top: 8px; font-size: 12px; color: var(--text-dim); font-family: -apple-system, Arial, sans-serif; }
-        .card-reserve-sub a { color: var(--gold); text-decoration: none; }
-        .card-reserve-sub a:hover { text-decoration: underline; }
-        .footer-policy { max-width: 560px; margin: 14px auto 0; font-size: 14px; color: var(--text); font-style: italic; text-align: center; }
         .product-card-footer {
             display: flex;
             align-items: center;
@@ -269,23 +271,13 @@
         }
         .reserve-btn:hover { background: var(--cream); }
 
-        /* Mobile: keep big, just stack nicer */
+        /* Mobile */
         @media (max-width: 420px) {
             .product-card-body { padding: 18px 16px; gap: 10px; }
             .product-card-title { font-size: 20px; }
             .product-card-desc { font-size: 16px; }
             .product-card-price { font-size: 24px; }
             .reserve-btn { font-size: 12px; padding: 10px 14px; }
-        }
-
-        /* Empty state */
-        .empty-band {
-            text-align: center;
-            padding: 60px 24px;
-            color: var(--text-dim);
-            border: 1px dashed var(--border);
-            border-radius: 4px;
-            font-style: italic;
         }
 
         /* Parent site CTA */
@@ -318,7 +310,7 @@
         }
         .parent-cta a:hover { background: var(--gold); color: var(--bg); }
 
-        /* Show CTA — drives traffic from shop to the live annual event */
+        /* Show CTA */
         .show-cta {
             position: relative;
             background:
@@ -410,19 +402,20 @@
         }
         footer .links a { color: var(--gold); text-decoration: none; transition: color 0.15s; }
         footer .links a:hover { color: #ffd700; }
+        .footer-policy { max-width: 560px; margin: 14px auto 0; font-size: 14px; color: var(--text); font-style: italic; text-align: center; }
         footer .copy {
             font-size: 11px;
             letter-spacing: 1px;
             opacity: 0.7;
         }
 
-        /* Cross-site top nav (identical block on / and /gallery/) */
+        /* Cross-site top nav */
         .site-nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+            background: linear-gradient(90deg, #0a0807 0%, #1a1410 50%, #0a0807 100%);
             border-bottom: 1px solid var(--border);
             padding: 9px 24px;
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
@@ -471,7 +464,7 @@
             .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
         }
 
-        /* Photo gallery overlay (one-hero-per-card, click to expand) */
+        /* Photo gallery overlay */
         .photo-overlay {
             position: fixed;
             inset: 0;
@@ -511,7 +504,7 @@
             font-family: 'Cormorant Garamond', Georgia, serif;
             transition: background 0.15s ease;
         }
-        .photo-overlay-close:hover { background: var(--accent); color: #1a140d; }
+        .photo-overlay-close:hover { background: var(--gold); color: #1a140d; }
         .photo-overlay-title {
             font-family: 'Playfair Display', serif;
             font-size: 22px;
@@ -549,6 +542,8 @@
             cursor: pointer;
             transition: border-color 0.15s ease, transform 0.15s ease;
         }
+        .photo-overlay-thumbs img:hover { transform: scale(1.05); }
+        .photo-overlay-thumbs img.active { border-color: var(--gold); }
         .photo-overlay-desc {
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 17px;
@@ -561,9 +556,6 @@
             margin: 0;
             padding: 0 12px;
         }
-        .photo-overlay-thumbs img:hover { transform: scale(1.05); }
-        .photo-overlay-thumbs img.active { border-color: var(--accent); }
-
         @media (max-width: 600px) {
             .photo-overlay-thumbs img { width: 52px; height: 52px; }
             .photo-overlay-title { font-size: 18px; }
@@ -573,7 +565,6 @@
 <body>
 <a class="skip-nav" href="#main">Skip to main content</a>
 
-<!-- Cross-site nav. Identical block lives on / and /gallery/ with paths adjusted to depth. -->
 <nav class="site-nav" aria-label="Barn Burner Relics surfaces">
   <a class="site-nav-brand" href="../">
     <span class="site-nav-brand-mark">BBR</span>
@@ -590,37 +581,25 @@
 
 <main id="main">
 <section class="hero">
-    <span class="hero-eyebrow">The Store · restocking soon</span>
-    <h1>Sold out.<br><em>Coming soon.</em></h1>
-    <p class="hero-tagline">Every piece in the store found a home. New single points and framed relics are on the way — same provenance, same lifetime guarantee.</p>
+    <span class="hero-eyebrow">The Store · Available Now</span>
+    <h1>Real pieces.<br><em>Real provenance.</em></h1>
+    <p class="hero-tagline">Authentic prehistoric artifacts with documented history — from single points to framed collections. Every piece guaranteed for life.</p>
     <div class="hero-meta">
-        <span>🔥 <strong>New inventory coming soon</strong></span>
-        <span>📦 <strong>$10 flat shipping</strong> · $15 for pottery · ships weekly</span>
-        <span>✅ <strong>Lifetime guarantee</strong></span>
+        <span>📦 <strong>Free shipping</strong> on all pieces</span>
+        <span>✅ <strong>Lifetime Authenticity Guarantee</strong></span>
+        <span>💬 <strong>Message us</strong> to purchase</span>
     </div>
 </section>
 
-<section class="band" id="bargain">
-    <div class="band-header">
-        <h2>Great Deals</h2>
-        <span class="band-sub">Smaller pieces, real artifacts</span>
+<section class="store-section">
+    <div class="sort-bar">
+        <span class="sort-bar-label">Sort:</span>
+        <button class="sort-btn active" data-sort="newest" onclick="sortProducts('newest')">Newest</button>
+        <button class="sort-btn" data-sort="price-asc" onclick="sortProducts('price-asc')">Price ↑</button>
+        <button class="sort-btn" data-sort="price-desc" onclick="sortProducts('price-desc')">Price ↓</button>
     </div>
-    <p class="band-intro">Single points, frame-fillers, and starter pieces. Real artifacts with real provenance — same authentication and lifetime guarantee as everything else we sell, just at lower price points.</p>
-    <div class="product-grid" id="bargain-grid">
-        <!-- Great Deals products get rendered here -->
-        <div class="empty-band">Sold out — new great-deals pieces coming soon.</div>
-    </div>
-</section>
-
-<section class="band" id="curated">
-    <div class="band-header">
-        <h2>Curated</h2>
-        <span class="band-sub">The better pieces, still accessible</span>
-    </div>
-    <p class="band-intro">Better materials, better condition, better provenance. Still not museum-grade — that's what the main site is for — but the kind of pieces a serious collector is proud to own.</p>
-    <div class="product-grid" id="curated-grid">
-        <!-- Curated products get rendered here -->
-        <div class="empty-band">Sold out — new curated pieces coming soon.</div>
+    <div class="product-grid" id="product-grid">
+        <!-- Products rendered here -->
     </div>
 </section>
 
@@ -629,11 +608,6 @@
     <a href="../">Visit Barn Burner Relics — The Main Vault →</a>
 </div>
 
-<!-- ============================================================
-     SHOW CTA — drives shop traffic to the live annual event.
-     Background is the show page's hero photo (Bill Thorpe, Monks
-     Mound aerial) so the cross-sell reads as connected, not bolted-on.
-     ============================================================ -->
 <section class="show-cta">
     <span class="show-cta-eyebrow">40th Annual · Authentic Prehistoric Artifacts Only</span>
     <h2>The Collinsville Prehistoric <em>Artifact Show</em></h2>
@@ -670,124 +644,108 @@
 <!--
     ============================================================
     PRODUCT DATA — Edit this array to add/remove inventory.
-    Each product: { id, band ('bargain'|'curated'), title, desc, price, photo1, photo2 }
-    Photos live in /shop/images/items/<id>-1.jpg and <id>-2.jpg
+    Each product: { id, title, desc, price, added (YYYY-MM-DD), photos[] }
+    Photos live in /shop/images/items/<id>-N.jpg
     ============================================================
 -->
 <script>
+const MESSENGER_URL = 'https://m.me/camden.baker.779';
+
 const PRODUCTS = [
-    // STORE PAUSED — all items sold (Aug 3 2026).
-    // Product data preserved below in a block comment. To restock,
-    // remove the opening/closing comment markers and the page goes live again.
-    /*
     {
-        id: 'celt-geo-flick-001',
-        band: 'curated',
-        title: 'Ground-stone celt',
-        desc: 'Dark speckled greenish-gray ground-stone celt (~7" length), classic tapered form with rounded bit and tapered poll. Pecked and ground facets visible across both faces. Ex-George Flick collection → ex-Lewis, acquired 1985. Provenance tag preserved on piece. Hefty in hand, polished working surface, unrestored.',
-        price: 250,
+        id: 'caddo-bird-points-frame-001',
+        title: 'Whole Frame of Caddo Bird Points',
+        desc: '114 points in this frame! Mostly Arkansas and Mississippi. Misc. jasper and chert. Certificate of Authenticity by Josh Davis (Stanton, KY) — Certificate #8914, Grade G9. COA included.\n\nLifetime Guarantee. Accept all payment methods.',
+        price: 3250,
+        added: '2026-08-12',
         photos: [
-            'images/items/celt-geo-flick-001-1.jpg',
-            'images/items/celt-geo-flick-001-2.jpg',
+            'images/items/caddo-bird-points-frame-001-1.jpg',
+            'images/items/caddo-bird-points-frame-001-2.jpg',
+            'images/items/caddo-bird-points-frame-001-3.jpg',
         ],
     },
     {
-        id: 'kaolin-point-001',
-        band: 'curated',
-        title: 'Kaolin dart point',
-        desc: 'Translucent cream-and-honey chalcedony-like stone side-notched dart point (~3½", likely Big Sandy or Quad form). Highly translucent material that backlights beautifully, with subtle iron-staining veining visible when held to light. Crisp pressure flaking across both faces, original surfaces, unrestored.',
-        price: 75,
+        id: 'clovis-chariton-co-mo-001',
+        title: '2¹¹⁄₁₆" Colorful Clovis — Chariton County, MO',
+        desc: 'This piece is from Chariton County, MO! This piece was in the collection of Beau Leach, Dennis Smith, Ken Partain, Ray Arnett. Shows great translucency and color!\n\nLifetime Guarantee. Accept all payment methods.',
+        price: 1650,
+        added: '2026-08-12',
         photos: [
-            'images/items/kaolin-point-001-1.jpg',
-            'images/items/kaolin-point-001-2.jpg',
+            'images/items/clovis-chariton-co-mo-001-3.jpg',
+            'images/items/clovis-chariton-co-mo-001-1.jpg',
+            'images/items/clovis-chariton-co-mo-001-2.jpg',
+            'images/items/clovis-chariton-co-mo-001-4.jpg',
         ],
     },
     {
-        id: 'corner-notch-williams-co-oh-001',
-        band: 'curated',
-        title: 'Corner notch dart point',
-        desc: 'Reddish-brown pipestone (likely Catlinite) corner-notch dart point, Williams County, Ohio. ~3½" length with deep corner notches and slightly contracting stem. Ex-Theron Clymer collection (pronounced "FAIR-en"), with original Williams Co. Ohio / T. Clymer collector tag. Rare red-stone material, unrestored, original surfaces.',
-        price: 75,
+        id: 'discoidal-scioto-co-oh-001',
+        title: '2⅝" × 1¼" Perforated Discoidal — Scioto County, OH',
+        desc: 'This exceptional relic was found in Scioto Co, Ohio. Clay Twp. Pict. in WW#7 p. 196. & WW#8 p.210. EX: Len Wiedner, Archie Diller, David Stilp, Rob Bane, Ray Fraser.\n\nLifetime Guarantee. Accept all payment methods.',
+        price: 1650,
+        added: '2026-08-12',
         photos: [
-            'images/items/corner-notch-williams-co-oh-001-1.jpg',
-            'images/items/corner-notch-williams-co-oh-001-2.jpg',
+            'images/items/discoidal-scioto-co-oh-001-1.jpg',
+            'images/items/discoidal-scioto-co-oh-001-2.jpg',
+            'images/items/discoidal-scioto-co-oh-001-3.jpg',
+            'images/items/discoidal-scioto-co-oh-001-4.jpg',
         ],
     },
     {
-        id: 'kramer-johnson-co-ind-001',
-        band: 'curated',
-        title: 'Kramer dart point',
-        desc: 'Burlington chert Kramer dart point, Johnson County, Indiana. ~3½" length, classic Early Archaic side-notched form with slightly expanding stem. Original Johnson Co. IND collector tag on blade. Crisp pressure flaking, original surfaces, unrestored.',
-        price: 75,
+        id: 'hixton-hardin-bureau-co-001',
+        title: '2⅝" Hixton Hardin — Bureau County, IL',
+        desc: 'This piece was found by Martin Decker in Bureau Co, IL. Killer piece and a great addition to any Hixton frame!\n\nLifetime Guarantee. Accept all payment methods.',
+        price: 595,
+        added: '2026-08-12',
         photos: [
-            'images/items/kramer-johnson-co-ind-001-1.jpg',
-            'images/items/kramer-johnson-co-ind-001-2.jpg',
+            'images/items/hixton-hardin-bureau-co-001-1.jpg',
+            'images/items/hixton-hardin-bureau-co-001-2.jpg',
+            'images/items/hixton-hardin-bureau-co-001-3.jpg',
+            'images/items/hixton-hardin-bureau-co-001-4.jpg',
         ],
     },
     {
-        id: 'stillwell-warren-mo-001',
-        band: 'curated',
-        title: 'Stillwell dart point',
-        desc: 'Translucent white flint or Burlington chert Stillwell dart point, Warren County, Missouri. ~5½" length with deeply serrated edges, pronounced flared barbed stem, and original collector ink provenance on blade ("WARREN CO. MO." with catalog C-31). Classic Archaic form, unrestored, original surfaces intact.',
-        price: 475,
+        id: 'dover-pinetree-tn-001',
+        title: '2¾" Dover Pinetree — Tennessee',
+        desc: 'This piece is from Tennessee! EX: Petee Larue, Jerry Dickey.\n\nLifetime Guarantee. Accept all payment methods.',
+        price: 595,
+        added: '2026-08-12',
         photos: [
-            'images/items/stillwell-warren-mo-001-1.jpg',
-            'images/items/stillwell-warren-mo-001-2.jpg',
+            'images/items/dover-pinetree-tn-001-1.jpg',
+            'images/items/dover-pinetree-tn-001-2.jpg',
+            'images/items/dover-pinetree-tn-001-3.jpg',
+            'images/items/dover-pinetree-tn-001-4.jpg',
         ],
     },
-    {
-        id: 'adena-hornstone-001',
-        band: 'bargain',
-        title: 'Adena point',
-        desc: 'Translucent gray hornstone Adena point with intact cortex base — likely southern Indiana. 3" length, crisp pressure flaking across both faces, original surfaces, unrestored.',
-        price: 50,
-        photos: [
-            'images/items/adena-hornstone-001-1.jpg',
-            'images/items/adena-hornstone-001-2.jpg',
-        ],
-    },
-    // Example shape (commented out — uncomment + add photos to test a 3-photo hero):
-    // {
-    //     id: 'sample-knife-001',
-    //     band: 'bargain',
-    //     title: 'Dover Chert Corner-Cut Knife',
-    //     desc: 'Tight 1¾" Archaic knife, Dover chert, Missouri origin. Unrestored.',
-    //     price: 35,
-    //     photos: [
-    //         'images/items/sample-knife-001-1.jpg',
-    //         'images/items/sample-knife-001-2.jpg',
-    //         'images/items/sample-knife-001-3.jpg',
-    //     ],
-    // },
-    {
-        id: 'four-papered-points-001',
-        band: 'curated',
-        title: '4-Piece Papered Point Lot — Tennessee / Alabama',
-        desc: 'Four authentic prehistoric points, all with COAs from Josh Davis (Stanton, KY), dated June 8, 2026. Sold as a bundle, $375 shipped. Pickwick (Fort Payne chert, 1 7/8" × 1" × 3/8", G6, West Tennessee, COA #1368). Preform (Dover chert, 3¼" × 1 9/16", G6, West Tennessee, COA #1371). Buzzard Roost Creek (Fort Payne chert, 1 7/16" × 1" × 1/8", G7, West Tennessee, COA #1380). Cotaco Creek (Fort Payne chert, 1 3/4" × 1" × 1/8", G7, Alabama, COA #1376). Three of the four are Fort Payne; the preform is Dover. Mix of finished points and a working preform — solid grouping for a new collector or as display pieces. Lifetime Authenticity Guarantee. All payment methods accepted.',
-        price: 375,
-        photos: [
-            'images/items/four-papered-points-001-1.jpg',
-            'images/items/four-papered-points-001-2.jpg',
-            'images/items/four-papered-points-001-3.jpg',
-            'images/items/four-papered-points-001-4.jpg',
-            'images/items/four-papered-points-001-5.jpg',
-        ],
-    },
-    */
 ];
 
+let currentSort = 'newest';
+
+function sortProducts(mode) {
+    currentSort = mode;
+    // Update button states
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.sort === mode);
+    });
+    renderProducts();
+}
+
+function getSorted() {
+    const sorted = [...PRODUCTS];
+    if (currentSort === 'price-asc') sorted.sort((a, b) => a.price - b.price);
+    else if (currentSort === 'price-desc') sorted.sort((a, b) => b.price - a.price);
+    else sorted.sort((a, b) => b.added.localeCompare(a.added)); // newest first
+    return sorted;
+}
+
 function renderProducts() {
-    const bands = { bargain: document.getElementById('bargain-grid'), curated: document.getElementById('curated-grid') };
-    // Clear empty states if we have products
-    const counts = { bargain: 0, curated: 0 };
-    for (const p of PRODUCTS) {
-        if (!bands[p.band]) continue;
-        if (counts[p.band] === 0) bands[p.band].innerHTML = '';
-        counts[p.band]++;
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = '';
+    const sorted = getSorted();
+    for (const p of sorted) {
         const hero = p.photos && p.photos[0] ? p.photos[0] : '';
         const extra = (p.photos || []).length - 1;
         const extraBadge = extra > 0 ? `<span class="photo-count">+${extra}</span>` : '';
-        bands[p.band].insertAdjacentHTML('beforeend', `
+        grid.insertAdjacentHTML('beforeend', `
             <article class="product-card" data-id="${p.id}">
                 <div class="product-card-image" data-action="open" data-pid="${p.id}" role="button" tabindex="0" aria-label="View ${p.title} photos">
                     <img src="${hero}" alt="${p.title} — hero photo" loading="lazy">
@@ -796,10 +754,10 @@ function renderProducts() {
                 <div class="product-card-body">
                     <h3 class="product-card-title">${p.title}</h3>
                     <div class="product-card-footer">
-                        <span class="product-card-price">$${p.price}</span>
-                        <button class="reserve-btn" onclick="reserveItem('${p.id}')">Add to Cart</button>
+                        <span class="product-card-price">$${p.price.toLocaleString()}</span>
+                        <button class="reserve-btn" onclick="messageUs('${p.id}')">Message Us</button>
                     </div>
-                    <div class="card-reserve-sub">Tap photo for full details · checkout with Nick on Messenger</div>
+                    <div class="card-reserve-sub">Tap photo for full details</div>
                 </div>
             </article>
         `);
@@ -851,23 +809,11 @@ function closePhotoOverlay() {
     photoOverlayPid = null;
 }
 
-function reserveItem(id) {
-    // BBR Shop → Shopify reserve. The Shopify product handle is the same
-    // as our static `id` slugified (matches the script's title → handle logic).
+function messageUs(id) {
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    const handle = (product.title || '')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
-        .slice(0, 100);
-    // GO-LIVE FLIP: while the Shopify storefront stays password-gated (pending
-    // payment verification with Nick), "Add to Cart" opens Facebook Messenger to
-    // Nick with a prefilled note naming the piece. When the store unlocks, swap
-    // the window.open line below for:
-    //   window.location.href = `https://barnburnerrelics.myshopify.com/products/${handle}`;
-    const note = `Hi Nick — I'd like to add this to my cart: ${product.title} ($${product.price}) — barnburnerrelics.net/shop/`;
-    window.open(`https://m.me/Nickgeezy?text=${encodeURIComponent(note)}`, '_blank', 'noopener');
+    const note = `Hi — I'm interested in the ${product.title} ($${product.price.toLocaleString()}) from the BBR store. barnburnerrelics.net/shop/`;
+    window.open(`${MESSENGER_URL}?text=${encodeURIComponent(note)}`, '_blank', 'noopener');
 }
 
 renderProducts();
@@ -880,7 +826,7 @@ document.addEventListener('keydown', e => {
 });
 </script>
 
-<!-- Photo gallery overlay (one hero per product, click to expand) -->
+<!-- Photo gallery overlay -->
 <div class="photo-overlay" id="photoOverlay" role="dialog" aria-modal="true" aria-labelledby="photoOverlayTitle">
     <button class="photo-overlay-close" type="button" aria-label="Close" onclick="closePhotoOverlay()">×</button>
     <div class="photo-overlay-inner">
@@ -894,6 +840,6 @@ document.addEventListener('keydown', e => {
 </div>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
-<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></scr'ipt><!-- End GoatCounter -->
+<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- End GoatCounter -->
 </body>
 </html>
