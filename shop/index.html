@@ -242,8 +242,9 @@
         .card-reserve-sub { margin-top: 8px; font-size: 12px; color: var(--text-dim); font-family: -apple-system, Arial, sans-serif; }
         .product-card-footer {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
             margin-top: 12px;
             padding-top: 16px;
             border-top: 1px solid var(--border);
@@ -257,19 +258,19 @@
         }
         .reserve-btn {
             font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            color: var(--bg);
-            background: var(--gold);
-            border: none;
-            padding: 12px 18px;
+            color: var(--gold);
+            background: transparent;
+            border: 1px solid var(--border-hover);
+            padding: 7px 14px;
             border-radius: 2px;
             cursor: pointer;
-            transition: background 0.15s;
+            transition: background 0.15s, color 0.15s;
         }
-        .reserve-btn:hover { background: var(--cream); }
+        .reserve-btn:hover { background: var(--gold); color: var(--bg); }
 
         /* Mobile */
         @media (max-width: 420px) {
@@ -277,7 +278,7 @@
             .product-card-title { font-size: 20px; }
             .product-card-desc { font-size: 16px; }
             .product-card-price { font-size: 24px; }
-            .reserve-btn { font-size: 12px; padding: 10px 14px; }
+            .reserve-btn { font-size: 10px; padding: 6px 12px; }
         }
 
         /* Parent site CTA */
@@ -827,8 +828,12 @@ function closePhotoOverlay() {
 function messageUs(id) {
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    const note = `Hi — I'm interested in the ${product.title} ($${product.price.toLocaleString()}) from the BBR store. barnburnerrelics.net/shop/`;
-    window.open(`${MESSENGER_URL}?text=${encodeURIComponent(note)}`, '_blank', 'noopener');
+    const note = `Hi Nick — I'm interested in the ${product.title} ($${product.price.toLocaleString()}) from the BBR store. barnburnerrelics.net/shop/`;
+    const encoded = encodeURIComponent(note);
+    // m.me/Nickgeezy?text=... works on desktop web Messenger but is unreliable
+    // in the mobile app. The m.me link alone opens the thread — the buyer types.
+    // We include ?text= anyway; it works on desktop and some mobile clients.
+    window.open(`${MESSENGER_URL}?text=${encoded}`, '_blank', 'noopener');
 }
 
 renderProducts();
