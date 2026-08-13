@@ -653,7 +653,7 @@
     ============================================================
 -->
 <script>
-const MESSENGER_URL = 'https://m.me/Nickgeezy';
+const STORE_EMAIL = 'bbryoutube@gmail.com';
 
 const PRODUCTS = [
     {
@@ -828,12 +828,9 @@ function closePhotoOverlay() {
 function messageUs(id) {
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    const note = `Hi Nick — I'm interested in the ${product.title} ($${product.price.toLocaleString()}) from the BBR store. barnburnerrelics.net/shop/`;
-    const encoded = encodeURIComponent(note);
-    // m.me/Nickgeezy?text=... works on desktop web Messenger but is unreliable
-    // in the mobile app. The m.me link alone opens the thread — the buyer types.
-    // We include ?text= anyway; it works on desktop and some mobile clients.
-    window.open(`${MESSENGER_URL}?text=${encoded}`, '_blank', 'noopener');
+    const subject = encodeURIComponent(`BBR Store — ${product.title} ($${product.price.toLocaleString()})`);
+    const body = encodeURIComponent(`Hi — I'm interested in this piece from the BBR store:\n\n${product.title}\n$${product.price.toLocaleString()}\nbarnburnerrelics.net/shop/\n\n`);
+    window.location.href = `mailto:${STORE_EMAIL}?subject=${subject}&body=${body}`;
 }
 
 renderProducts();

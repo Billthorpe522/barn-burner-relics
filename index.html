@@ -1082,20 +1082,13 @@
 
 <div class="messenger-overlay" id="messengerOverlay" onclick="if(event.target===this)closeMessenger()">
     <div class="messenger-modal">
-        <h3>Contact Nick about this piece</h3>
-        <p>Send a message about <strong id="messengerPiece">a piece</strong> via either channel. Both go straight to Nick — same-day reply on weekdays.</p>
+        <h3>Inquire about this piece</h3>
+        <p>Send us an email about <strong id="messengerPiece">a piece</strong> — we'll get back to you same-day on weekdays.</p>
         <a id="messengerTextBtn" href="#" class="messenger-btn messenger-email">
             <span class="messenger-icon messenger-icon-email">✉️</span>
             <div>
-                <strong>Email Nick</strong>
-                <small>Primary channel — opens your email app with a pre-filled inquiry</small>
-            </div>
-        </a>
-        <a id="messengerNickBtn" href="#" target="_blank" rel="noopener" class="messenger-btn messenger-nick">
-            <span class="messenger-icon messenger-icon-fb">💬</span>
-            <div>
-                <strong>Message Nick on Facebook</strong>
-                <small>Secondary channel — for users who prefer Messenger</small>
+                <strong>Email Us</strong>
+                <small>Opens your email app with a pre-filled inquiry</small>
             </div>
         </a>
         <button class="messenger-close" onclick="closeMessenger()">Close</button>
@@ -1381,23 +1374,18 @@
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // ========== Messenger / Email wiring ==========
-    // Email is the primary channel — matches the rest of the site (commit 174ce4e swapped social page to email).
-    // Facebook Messenger is offered as secondary for users who prefer it.
-    const MESSENGER_NICK_URL = 'https://m.me/Nickgeezy';
-    const NICK_EMAIL = 'nickgatses1@gmail.com';
+    // ========== Email inquiry wiring ==========
+    // All buyer inquiries route to bbryoutube@gmail.com — Bill reviews and forwards to Nick.
+    const STORE_EMAIL = 'bbryoutube@gmail.com';
 
     function openInquiry() {
         if (!currentProduct) {
             currentProduct = { title: 'General Question — Barn Burner Relics' };
         }
         document.getElementById('messengerPiece').textContent = currentProduct.title;
-        // Email with pre-filled subject + body (PRIMARY channel)
-        const emailSubject = encodeURIComponent('Inquiry: ' + currentProduct.title);
-        const emailBody = encodeURIComponent('Hi Nick — interested in the ' + currentProduct.title + ' on barnburnerrelics.net. Is it still available?');
-        document.getElementById('messengerTextBtn').href = 'mailto:' + NICK_EMAIL + '?subject=' + emailSubject + '&body=' + emailBody;
-        // Facebook Messenger (SECONDARY channel — keep for users who prefer it)
-        document.getElementById('messengerNickBtn').href = MESSENGER_NICK_URL;
+        const emailSubject = encodeURIComponent('BBR Vault — ' + currentProduct.title);
+        const emailBody = encodeURIComponent('Hi — I\'m interested in this piece:\n\n' + currentProduct.title + '\nbarnburnerrelics.net\n\n');
+        document.getElementById('messengerTextBtn').href = 'mailto:' + STORE_EMAIL + '?subject=' + emailSubject + '&body=' + emailBody;
         document.getElementById('messengerOverlay').classList.add('active');
         closeDetail();
     }
