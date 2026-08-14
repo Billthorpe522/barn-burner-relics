@@ -1045,6 +1045,109 @@
 </section>
 
 <!-- ============================================================
+     WHAT'S NEW — bulletin board. Time-stamped news items: books,
+     press, show announcements. Newest on top. Popup (below) shows
+     the latest bulletin to first-visit (session) visitors.
+     ============================================================ -->
+<style>
+    .whats-new { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 64px 20px; }
+    .whats-new .section-header { padding-top: 0; }
+    .bulletin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
+    .bulletin-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+    .bulletin-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 3px 10px; border-radius: 2px; margin-bottom: 12px; }
+    .bulletin-images { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); }
+    .bulletin-images img { width: 100%; height: 240px; object-fit: cover; display: block; cursor: pointer; }
+    .bulletin-body { padding: 22px 24px 26px; }
+    .bulletin-body h3 { font-family: 'Cinzel', serif; color: var(--ink); font-size: 20px; margin: 0 0 10px; }
+    .bulletin-body p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.65; margin: 0 0 14px; }
+    .bulletin-body p em { color: var(--ink); }
+    .bulletin-cta { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border-hover); background: transparent; padding: 8px 16px; border-radius: 2px; text-decoration: none; transition: background .15s, color .15s; }
+    .bulletin-cta:hover { background: var(--gold); color: var(--bg); }
+    .bulletin-meta { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.5px; margin-top: 14px; }
+    /* Bulletin popup — small, bottom-right, session-gated */
+    .bulletin-pop { position: fixed; right: 18px; bottom: 18px; z-index: 900; width: 320px; max-width: calc(100vw - 36px); background: var(--bg-card); border: 1px solid var(--gold); border-radius: 6px; box-shadow: 0 12px 40px rgba(0,0,0,.6); display: none; overflow: hidden; }
+    .bulletin-pop.show { display: block; animation: popIn .35s ease-out; }
+    @keyframes popIn { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+    .bulletin-pop img { width: 100%; height: 150px; object-fit: cover; display: block; }
+    .bulletin-pop-body { padding: 14px 16px 16px; }
+    .bulletin-pop-body strong { color: var(--ink); font-size: 14px; display: block; margin-bottom: 4px; }
+    .bulletin-pop-body span { color: var(--ink-soft); font-size: 12.5px; line-height: 1.5; display: block; margin-bottom: 10px; }
+    .bulletin-pop-actions { display: flex; gap: 10px; align-items: center; }
+    .bulletin-pop-actions a { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--border-hover); padding: 6px 12px; border-radius: 2px; }
+    .bulletin-pop-actions a:hover { background: var(--gold); color: var(--bg); }
+    .bulletin-pop-close { margin-left: auto; background: none; border: none; color: var(--ink-soft); font-size: 16px; cursor: pointer; padding: 4px 6px; }
+    .bulletin-pop-close:hover { color: var(--ink); }
+    @media (max-width: 600px) {
+        .bulletin-images img { height: 180px; }
+        .whats-new { padding: 48px 16px; }
+    }
+</style>
+<section class="whats-new" id="whats-new">
+    <div class="section-header">
+        <h2>What's New</h2>
+        <p>From the bulletin board — books, press, and announcements</p>
+    </div>
+    <div class="bulletin-grid">
+        <article class="bulletin-card">
+            <div class="bulletin-images">
+                <img src="images/whats-new/whos-who-legacy-cover.jpg" alt="Who's Who in Indian Relics — Legacy Edition cover, by Steven R. Cooper" loading="lazy" onclick="openBulletinImage('images/whats-new/whos-who-legacy-cover.jpg')">
+                <img src="images/whats-new/whos-who-nick-spread.jpg" alt="Nick Gatses two-page feature spread — pages 356–357 of the Who's Who Legacy Edition" loading="lazy" onclick="openBulletinImage('images/whats-new/whos-who-nick-spread.jpg')">
+            </div>
+            <div class="bulletin-body">
+                <span class="bulletin-tag">Press</span>
+                <h3>Nick in the Who's Who Legacy Edition</h3>
+                <p>Make sure to pick up the latest volume of the <em>Who's Who in Indian Relics</em>. Steven Cooper did a fabulous job on this one — I can't imagine the exhausting work it took to get this released. <em>Check out pages 356 and 357</em> — the Nick Gatses Collection, two full pages.</p>
+                <a class="bulletin-cta" href="mailto:nickgatses1@gmail.com?subject=Who%27s%20Who%20Legacy%20Edition%20—%20copy%20request&amp;body=Hi%20Nick%2C%0A%0AI%27d%20like%20to%20get%20a%20copy%20of%20the%20Who%27s%20Who%20in%20Indian%20Relics%20Legacy%20Edition.%0A%0AThanks!">Ask Nick about a copy →</a>
+                <div class="bulletin-meta">Posted August 2026 · Who's Who in Indian Relics, Legacy Edition — Steven R. Cooper</div>
+            </div>
+        </article>
+        <article class="bulletin-card">
+            <div class="bulletin-images">
+                <img src="images/whats-new/flint-types-ohio-cover.jpg" alt="Flint Types of Ohio and the Ohio River Valley — cover, by Janie &amp; Len Weidner" loading="lazy" onclick="openBulletinImage('images/whats-new/flint-types-ohio-cover.jpg')">
+                <img src="images/whats-new/flint-types-ohio-intro.jpg" alt="Introduction page — Flint Types of Ohio, with the Weidner wall display" loading="lazy" onclick="openBulletinImage('images/whats-new/flint-types-ohio-intro.jpg')">
+            </div>
+            <div class="bulletin-body">
+                <span class="bulletin-tag">Pre-sale</span>
+                <h3>Flint Types of Ohio — Signed &amp; Numbered</h3>
+                <p>Janie &amp; Len Weidner's new book — 1,500+ full-color artifacts in actual size, flint sources, outcrops, and the cultures that used them. Every first-edition copy is signed and numbered; Janie is on <em>book #113</em>, so low numbers are going. <em>$47 shipped.</em> Janie authored Who's Who volumes 8, 9, and 10.</p>
+                <a class="bulletin-cta" href="mailto:Janiew48@aol.com?subject=Pre-sale%20—%20Flint%20Types%20of%20Ohio%20(numbered%20copy%20request)&amp;body=Hi%20Janie%2C%0A%0AI%27d%20like%20to%20reserve%20a%20signed%20and%20numbered%20copy%20of%20Flint%20Types%20of%20Ohio%20and%20the%20Ohio%20River%20Valley%20(%2447%20shipped).%0A%0ACould%20you%20let%20me%20know%20which%20numbered%20copy%20I%27d%20get%3F%0A%0AThanks!">Reserve from Janie →</a>
+                <div class="bulletin-meta">Posted August 2026 · $47 shipped · PayPal (Friends &amp; Family) or check · ships in 6–8 weeks</div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Small bulletin popup — session-gated, bottom-right -->
+<div class="bulletin-pop" id="bulletinPop" role="dialog" aria-label="What's new at Barn Burner Relics">
+    <img src="images/whats-new/whos-who-nick-spread.jpg" alt="Nick Gatses feature spread in the Who's Who Legacy Edition">
+    <div class="bulletin-pop-body">
+        <strong>What's new at the Barn</strong>
+        <span>Nick's collection is featured in the new <em>Who's Who in Indian Relics</em> Legacy Edition — pages 356–357. Plus: Janie Weidner's <em>Flint Types of Ohio</em> pre-sale, signed &amp; numbered, $47 shipped.</span>
+        <div class="bulletin-pop-actions">
+            <a href="#whats-new" onclick="closeBulletinPop()">Read the board</a>
+            <button class="bulletin-pop-close" onclick="closeBulletinPop()" aria-label="Dismiss">✕</button>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        if (sessionStorage.getItem('bbr-bulletin-dismissed')) return;
+        setTimeout(function () {
+            var p = document.getElementById('bulletinPop');
+            if (p) p.classList.add('show');
+        }, 2500);
+    })();
+    function closeBulletinPop() {
+        var p = document.getElementById('bulletinPop');
+        if (p) p.classList.remove('show');
+        sessionStorage.setItem('bbr-bulletin-dismissed', '1');
+    }
+    function openBulletinImage(src) {
+        window.open(src, '_blank', 'noopener');
+    }
+</script>
+
+<!-- ============================================================
      WHAT WE DO — uniform 4-card grid. Mirrors Premiere Auctions'
      "Auctions / Consignment / Authentication / Publications" pattern
      but with BBR-specific services. Same card height + template so
