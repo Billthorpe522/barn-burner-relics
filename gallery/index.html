@@ -842,61 +842,15 @@
 
 <script>
     // Monday Auction gallery — Monday August 4, 2026 (next auction)
-    // 10 photos from this week's auction batch. Slot 1 is the cropped
-    // centerpiece of the full display-case overview.
+    // Lots 46-54 from the 2026-08-10 batch (lots 01-45 archived).
+    // Slot 1 is the cropped centerpiece of the full display-case overview.
     // No text overlays, no captions — clean case photos. Tap any to enlarge
     // (native pinch-zoom on mobile, click + scroll-wheel on desktop).
     //
-    // Previous 10-photo batch (2026-08-02) archived to:
-    //   images/incoming/_archive/2026-08-02-batch-replaced/
-    // Current batch: 42 lots for Monday Aug 10, 2026 auction.
-    // Numbered 01-42 by drop order — bidders call out pieces by number during the live.
+    // Lots 01-45 from this batch archived to:
+    //   images/incoming/_archive/2026-08-10-batch-replaced/
+    // New batch (this week's auction) will be added below.
     const galleryPhotos = [
-        { src: '/images/incoming/2026-08-10-monday-auction/01.jpg', title: 'Lot 01 — fluted point, held in hand' },
-        { src: '/images/incoming/2026-08-10-monday-auction/02.jpg', title: 'Lot 02' },
-        { src: '/images/incoming/2026-08-10-monday-auction/03.jpg', title: 'Lot 03' },
-        { src: '/images/incoming/2026-08-10-monday-auction/04.jpg', title: 'Lot 04' },
-        { src: '/images/incoming/2026-08-10-monday-auction/05.jpg', title: 'Lot 05' },
-        { src: '/images/incoming/2026-08-10-monday-auction/06.jpg', title: 'Lot 06' },
-        { src: '/images/incoming/2026-08-10-monday-auction/07.jpg', title: 'Lot 07' },
-        { src: '/images/incoming/2026-08-10-monday-auction/08.jpg', title: 'Lot 08' },
-        { src: '/images/incoming/2026-08-10-monday-auction/09.jpg', title: 'Lot 09' },
-        { src: '/images/incoming/2026-08-10-monday-auction/10.jpg', title: 'Lot 10' },
-        { src: '/images/incoming/2026-08-10-monday-auction/11.jpg', title: 'Lot 11' },
-        { src: '/images/incoming/2026-08-10-monday-auction/12.jpg', title: 'Lot 12' },
-        { src: '/images/incoming/2026-08-10-monday-auction/13.jpg', title: 'Lot 13' },
-        { src: '/images/incoming/2026-08-10-monday-auction/14.jpg', title: 'Lot 14' },
-        { src: '/images/incoming/2026-08-10-monday-auction/15.jpg', title: 'Lot 15' },
-        { src: '/images/incoming/2026-08-10-monday-auction/16.jpg', title: 'Lot 16' },
-        { src: '/images/incoming/2026-08-10-monday-auction/17.jpg', title: 'Lot 17' },
-        { src: '/images/incoming/2026-08-10-monday-auction/18.jpg', title: 'Lot 18' },
-        { src: '/images/incoming/2026-08-10-monday-auction/19.jpg', title: 'Lot 19' },
-        { src: '/images/incoming/2026-08-10-monday-auction/20.jpg', title: 'Lot 20' },
-        { src: '/images/incoming/2026-08-10-monday-auction/21.jpg', title: 'Lot 21' },
-        { src: '/images/incoming/2026-08-10-monday-auction/22.jpg', title: 'Lot 22' },
-        { src: '/images/incoming/2026-08-10-monday-auction/23.jpg', title: 'Lot 23' },
-        { src: '/images/incoming/2026-08-10-monday-auction/24.jpg', title: 'Lot 24' },
-        { src: '/images/incoming/2026-08-10-monday-auction/25.jpg', title: 'Lot 25' },
-        { src: '/images/incoming/2026-08-10-monday-auction/26.jpg', title: 'Lot 26' },
-        { src: '/images/incoming/2026-08-10-monday-auction/27.jpg', title: 'Lot 27' },
-        { src: '/images/incoming/2026-08-10-monday-auction/28.jpg', title: 'Lot 28' },
-        { src: '/images/incoming/2026-08-10-monday-auction/29.jpg', title: 'Lot 29' },
-        { src: '/images/incoming/2026-08-10-monday-auction/30.jpg', title: 'Lot 30' },
-        { src: '/images/incoming/2026-08-10-monday-auction/31.jpg', title: 'Lot 31' },
-        { src: '/images/incoming/2026-08-10-monday-auction/32.jpg', title: 'Lot 32' },
-        { src: '/images/incoming/2026-08-10-monday-auction/33.jpg', title: 'Lot 33' },
-        { src: '/images/incoming/2026-08-10-monday-auction/34.jpg', title: 'Lot 34' },
-        { src: '/images/incoming/2026-08-10-monday-auction/35.jpg', title: 'Lot 35' },
-        { src: '/images/incoming/2026-08-10-monday-auction/36.jpg', title: 'Lot 36' },
-        { src: '/images/incoming/2026-08-10-monday-auction/37.jpg', title: 'Lot 37' },
-        { src: '/images/incoming/2026-08-10-monday-auction/38.jpg', title: 'Lot 38' },
-        { src: '/images/incoming/2026-08-10-monday-auction/39.jpg', title: 'Lot 39' },
-        { src: '/images/incoming/2026-08-10-monday-auction/40.jpg', title: 'Lot 40' },
-        { src: '/images/incoming/2026-08-10-monday-auction/41.jpg', title: 'Lot 41' },
-        { src: '/images/incoming/2026-08-10-monday-auction/42.jpg', title: 'Lot 42' },
-        { src: '/images/incoming/2026-08-10-monday-auction/43.jpg', title: 'Lot 43 — same piece as 44 & 45 · runs 6:30 PM', runTime: 'Runs 6:30 PM' },
-        { src: '/images/incoming/2026-08-10-monday-auction/44.jpg', title: 'Lot 44 — same piece as 43 & 45 · runs 6:30 PM', runTime: 'Runs 6:30 PM' },
-        { src: '/images/incoming/2026-08-10-monday-auction/45.jpg', title: 'Lot 45 — same piece as 43 & 44 · runs 6:30 PM', runTime: 'Runs 6:30 PM' },
         { src: '/images/incoming/2026-08-10-monday-auction/46.jpg', title: 'Lot 46' },
         { src: '/images/incoming/2026-08-10-monday-auction/47.jpg', title: 'Lot 47' },
         { src: '/images/incoming/2026-08-10-monday-auction/48.jpg', title: 'Lot 48' },
@@ -906,6 +860,9 @@
         { src: '/images/incoming/2026-08-10-monday-auction/52.jpg', title: 'Lot 52' },
         { src: '/images/incoming/2026-08-10-monday-auction/53.jpg', title: 'Lot 53' },
         { src: '/images/incoming/2026-08-10-monday-auction/54.jpg', title: 'Lot 54' },
+        { src: '/images/incoming/2026-08-10-monday-auction/55.jpg', title: 'Lot 55 — two St. Charles Co. MO notched points' },
+        { src: '/images/incoming/2026-08-10-monday-auction/56.jpg', title: 'Lot 56 — small pottery vessel' },
+        { src: '/images/incoming/2026-08-10-monday-auction/57.jpg', title: 'Lot 57 — stone ball, dug by John Grotte, Brown Co. IL 1983' },
     ];
 
     // Sort active pieces first (preserving their order), then sold
