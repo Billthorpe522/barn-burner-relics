@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<title>The Library — Barn Burner Relics</title>
+<meta name="description" content="Searchable catalog of public-domain archaeology references — books on mounds, lithics, pottery, and regional antiquities. Chat with the Artifact Guru for answers drawn from the library.">
+<link rel="canonical" href="https://barnburnerrelics.net/library/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<style>
+:root {
+    --bg: #0d0d0d;
+    --bg-soft: #14110e;
+    --bg-card: #1a1410;
+    --bg-elev: #1f1a15;
+    --border: #2a2018;
+    --cream: #f5f0e8;
+    --cream-dim: #d4c8a8;
+    --cream-soft: #e8e0d8;
+    --gold: #d4a853;
+    --gold-bright: #ffd700;
+    --oxblood: #8b4513;
+    --oxblood-bright: #a0522d;
+    --taupe: #8b7355;
+    --warm-grey: #b8a88a;
+    --sand: #c8a878;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+/* Cross-site top nav — identical block to other surfaces */
+.site-nav {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 9px 24px;
+    font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--warm-grey);
+    flex-wrap: wrap;
+}
+.site-nav-brand {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--gold); text-decoration: none; font-weight: 700; letter-spacing: 1.5px; white-space: nowrap;
+}
+.site-nav-brand-mark {
+    background: var(--oxblood); color: var(--cream);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 11px; font-weight: 900; padding: 4px 7px; border-radius: 3px;
+}
+.site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.site-nav-links a {
+    color: var(--warm-grey); text-decoration: none; transition: color 0.15s;
+}
+.site-nav-links a:hover { color: var(--gold); }
+.site-nav-links a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+@media (max-width: 540px) {
+    .site-nav { padding: 8px 12px; gap: 8px; }
+    .site-nav-brand-text { display: none; }
+    .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
+    .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
+}
+
+/* Hero */
+.hero {
+    padding: 60px 24px 40px;
+    text-align: center;
+    background: radial-gradient(ellipse at top, rgba(139, 69, 19, 0.15), transparent 60%);
+    border-bottom: 1px solid var(--border);
+}
+.hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.hero .sub {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 22px;
+    color: var(--taupe);
+    margin-bottom: 16px;
+}
+.hero .lede {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--cream-dim);
+    font-size: 18px;
+    font-style: italic;
+}
+.hero .count {
+    margin-top: 18px;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: var(--sand);
+}
+
+/* Layout */
+.container { max-width: 1280px; margin: 0 auto; padding: 32px 20px 80px; }
+.layout { display: grid; grid-template-columns: 1fr 380px; gap: 24px; align-items: start; }
+@media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+    .guru-pane { position: static; }
+}
+
+/* Search + filters */
+.controls {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+@media (max-width: 700px) { .controls { grid-template-columns: 1fr; } }
+.search-input {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    transition: border-color 0.2s;
+}
+.search-input:focus { outline: none; border-color: var(--gold); }
+.search-input::placeholder { color: var(--taupe); font-style: italic; }
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--warm-grey);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.filter-btn:hover { color: var(--gold); border-color: var(--gold); }
+.filter-btn.active {
+    background: var(--oxblood); color: var(--cream); border-color: var(--oxblood);
+}
+
+/* Book grid */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+}
+.book-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px;
+    transition: transform 0.15s, border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.book-card:hover { transform: translateY(-2px); border-color: var(--oxblood-bright); }
+.book-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--cream-soft);
+    line-height: 1.3;
+}
+.book-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    color: var(--warm-grey);
+    flex-wrap: wrap;
+}
+.book-year { color: var(--sand); }
+.book-author { font-style: italic; }
+.book-category {
+    display: inline-block;
+    background: rgba(139, 69, 19, 0.25);
+    color: var(--sand);
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-left: auto;
+}
+.book-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+.book-actions a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.15s;
+    font-weight: 600;
+}
+.btn-read {
+    background: var(--oxblood);
+    color: var(--cream);
+}
+.btn-read:hover { background: var(--oxblood-bright); }
+.btn-ask {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+}
+.btn-ask:hover { background: var(--gold); color: var(--bg); }
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--taupe);
+    font-style: italic;
+    font-size: 19px;
+}
+
+/* Guru pane */
+.guru-pane {
+    position: sticky;
+    top: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 40px);
+}
+.guru-head {
+    background: linear-gradient(135deg, var(--oxblood) 0%, #6b340e 100%);
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+}
+.guru-head h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 4px;
+}
+.guru-head p {
+    font-size: 14px;
+    color: var(--sand);
+    font-style: italic;
+}
+.guru-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 280px;
+}
+.guru-msg {
+    padding: 12px 14px;
+    border-radius: 6px;
+    max-width: 92%;
+    line-height: 1.45;
+    font-size: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.guru-msg.user {
+    background: var(--oxblood);
+    color: var(--cream);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+.guru-msg.assistant {
+    background: var(--bg-elev);
+    color: var(--cream-soft);
+    border: 1px solid var(--border);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+.guru-msg.assistant .sources {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--sand);
+    font-style: italic;
+}
+.guru-msg.loading {
+    color: var(--taupe);
+    font-style: italic;
+}
+.guru-form {
+    display: flex;
+    gap: 8px;
+    padding: 14px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+}
+.guru-form input {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 12px;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+}
+.guru-form input:focus { outline: none; border-color: var(--gold); }
+.guru-form button {
+    background: var(--oxblood);
+    color: var(--cream);
+    border: none;
+    border-radius: 3px;
+    padding: 10px 16px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.guru-form button:hover { background: var(--oxblood-bright); }
+.guru-form button:disabled { opacity: 0.5; cursor: wait; }
+
+.guru-auth {
+    padding: 24px 20px;
+    text-align: center;
+    color: var(--cream-dim);
+}
+.guru-auth p { margin-bottom: 14px; font-style: italic; }
+.guru-auth form { display: flex; gap: 8px; }
+.guru-auth input {
+    flex: 1;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 12px;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+.guru-auth button {
+    background: var(--oxblood);
+    color: var(--cream);
+    border: none;
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.guru-note {
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--taupe);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 20px;
+    text-align: center;
+    color: var(--taupe);
+    font-size: 14px;
+}
+footer a { color: var(--warm-grey); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Barn Burner Relics surfaces">
+  <a class="site-nav-brand" href="../">
+    <span class="site-nav-brand-mark">BBR</span>
+    <span class="site-nav-brand-text">Barn Burner Relics</span>
+  </a>
+  <div class="site-nav-links">
+    <a href="../"         data-key="sales"   >The Barn</a>
+    <a href="../shop/"    data-key="shop"    >The Collection</a>
+    <a href="../gallery/" data-key="gallery" >Auction</a>
+    <a href="../show/"    data-key="show"    >Shows</a>
+    <a href="../social/"  data-key="social"  >Socials</a>
+    <a href="./"          data-key="library" class="active">Library</a>
+  </div>
+</nav>
+
+<section class="hero">
+    <h1>The Library</h1>
+    <div class="sub">every reference we could find, and a mind that read them all</div>
+    <p class="lede">Public-domain archaeology — mounds, lithics, pottery, regional histories. Click a book to read the original at the Internet Archive, or ask the Guru to pull answers across the whole shelf.</p>
+    <div class="count" id="bookCount">…</div>
+</section>
+
+<div class="container">
+<div class="layout">
+
+    <div>
+        <div class="controls">
+            <input type="search" class="search-input" id="searchInput" placeholder="Search by title, author, year, or topic…">
+            <div class="filter-row" id="filterRow">
+                <button class="filter-btn active" data-cat="all">All</button>
+                <button class="filter-btn" data-cat="pottery">Pottery</button>
+                <button class="filter-btn" data-cat="lithics">Lithics</button>
+                <button class="filter-btn" data-cat="cahokia">Cahokia / IL</button>
+                <button class="filter-btn" data-cat="mounds">Mounds</button>
+                <button class="filter-btn" data-cat="bae">BAE Reports</button>
+                <button class="filter-btn" data-cat="regional">Regional</button>
+                <button class="filter-btn" data-cat="ethnology">Ethnology</button>
+            </div>
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+            <div class="no-results">Loading the shelf…</div>
+        </div>
+    </div>
+
+    <aside class="guru-pane">
+        <div class="guru-head">
+            <h2>The Artifact Guru</h2>
+            <p>Ask anything — answers cite the books they came from.</p>
+        </div>
+
+        <div id="guruAuth" class="guru-auth">
+            <p>The Guru is Bill &amp; Nick only. Enter the password to open the chat.</p>
+            <form id="authForm">
+                <input type="password" id="authPassword" placeholder="Password" autocomplete="current-password" required>
+                <button type="submit">Open</button>
+            </form>
+        </div>
+
+        <div id="guruChat" style="display:none; flex-direction:column; flex:1; min-height:0;">
+            <div class="guru-messages" id="guruMessages"></div>
+            <form class="guru-form" id="guruForm">
+                <input type="text" id="guruInput" placeholder="Ask the Guru…" autocomplete="off" required>
+                <button type="submit" id="guruSend">Ask</button>
+            </form>
+            <div class="guru-note">Answers drawn from <span id="guruBookCount">the library</span>. Sources cited under each reply.</div>
+        </div>
+    </aside>
+
+</div>
+</div>
+
+<footer>
+    All books are public-domain (pre-1927 US publication) and hosted by the <a href="https://archive.org" target="_blank" rel="noopener">Internet Archive</a>. Click through to read the original scans.
+</footer>
+
+<script>
+// ============================================================
+// Book manifest — populated by the build pipeline
+// Each entry: { id, title, author, year, category, iaId, chunks }
+// ============================================================
+const BOOKS = [
+    // POTTERY (12)
+    { id: "holmes-1886-ancient-pottery", title: "Ancient Pottery of the Mississippi Valley", author: "William H. Holmes", year: 1886, category: "pottery", iaId: "ancientpotteryof00holmrich" },
+    { id: "holmes-1903-aboriginal-pottery", title: "Aboriginal Pottery of the Eastern United States", author: "William H. Holmes", year: 1903, category: "pottery", iaId: "aboriginalpottery00holmrich" },
+    { id: "butler-1894-prehistoric-pottery-mo-ar", title: "Prehistoric Pottery from Missouri and Arkansas", author: "Amos W. Butler", year: 1894, category: "pottery", iaId: "prehistoricpotte00butl" },
+    { id: "holmes-1894-caribbean-influence", title: "Caribbean Influence on the Prehistoric Ceramic Art of the Southern States", author: "William H. Holmes", year: 1894, category: "pottery", iaId: "caribbeaninfluen00holm" },
+    { id: "harrington-1920-caddo-sites-ar", title: "Certain Caddo Sites in Arkansas", author: "M.R. Harrington", year: 1920, category: "pottery", iaId: "certaincaddosite00harr" },
+    { id: "moore-1908-mounds-ar-ms", title: "Certain Mounds of Arkansas and of Mississippi", author: "Clarence B. Moore", year: 1908, category: "pottery", iaId: "certainmoundsofa00moor_0" },
+    { id: "moore-1910-st-francis-rivers", title: "Antiquities of the St. Francis, White, and Black Rivers, Arkansas", author: "Clarence B. Moore", year: 1910, category: "pottery", iaId: "stfranciswhiteblk00moorrich" },
+    { id: "moore-1909-ouachita-valley", title: "Antiquities of the Ouachita Valley", author: "Clarence B. Moore", year: 1909, category: "pottery", iaId: "antiquitiesofoua00moor" },
+    { id: "moore-1911-sites-mississippi-river", title: "Some Aboriginal Sites on Mississippi River", author: "Clarence B. Moore", year: 1911, category: "pottery", iaId: "someaboriginalsi00moor" },
+    { id: "moore-1915-tennessee-river", title: "Aboriginal Sites on Tennessee River", author: "Clarence B. Moore", year: 1915, category: "pottery", iaId: "tennesseeriver00moorrich" },
+    { id: "moore-1907-moundville-revisited", title: "Moundville Revisited", author: "Clarence B. Moore", year: 1907, category: "pottery", iaId: "moundvillerevisi00moor" },
+    { id: "moore-1905-black-warrior", title: "Certain Aboriginal Remains of the Black Warrior River", author: "Clarence B. Moore", year: 1905, category: "pottery", iaId: "certainaborigina00moor" },
+    // LITHICS (8)
+    { id: "moorehead-1899-birdstone-ceremonial", title: "The Birdstone Ceremonial", author: "Warren K. Moorehead", year: 1899, category: "lithics", iaId: "birdstoneceremon00moor" },
+    { id: "moorehead-1917-stone-ornaments", title: "Stone Ornaments Used by Indians in the United States and Canada", author: "Warren K. Moorehead", year: 1917, category: "lithics", iaId: "stoneornamentsus00mooruoft" },
+    { id: "west-1910-aboriginal-pipes", title: "Aboriginal Pipes", author: "George A. West", year: 1910, category: "lithics", iaId: "aboriginalpipeso00westrich" },
+    { id: "mcguire-1899-pipes-smoking", title: "Pipes and Smoking Customs of the American Aborigines", author: "Joseph D. McGuire", year: 1899, category: "lithics", iaId: "pipesandsmoking00mcgugoog" },
+    { id: "squier-davis-1848-ancient-monuments", title: "Ancient Monuments of the Mississippi Valley", author: "E.G. Squier & E.H. Davis", year: 1848, category: "lithics", iaId: "ancientmonuments00squi" },
+    { id: "squier-1851-serpent-symbol", title: "The Serpent Symbol", author: "E.G. Squier", year: 1851, category: "lithics", iaId: "serpentsymbolwor00squi" },
+    { id: "thomas-1894-mound-explorations", title: "Report on the Mound Explorations of the Bureau of Ethnology", author: "Cyrus Thomas", year: 1894, category: "lithics", iaId: "bureauofethnology00thomrich" },
+    { id: "mills-1921-mounds-ohio", title: "Certain Mounds and Village Sites in Ohio", author: "William C. Mills", year: 1921, category: "lithics", iaId: "certainmoundsoh21millrich" },
+    // CAHOKIA / IL (3)
+    { id: "thomas-1887-work-mound-exploration", title: "Work in Mound Exploration of the Bureau of Ethnology", author: "Cyrus Thomas", year: 1887, category: "cahokia", iaId: "workinmoundex00thomrich" },
+    { id: "thomas-1889-problem-ohio-mounds", title: "The Problem of the Ohio Mounds", author: "Cyrus Thomas", year: 1889, category: "cahokia", iaId: "problemofohiomou00thom" },
+    { id: "brink-1879-macoupin-county", title: "History of Macoupin County, Illinois", author: "W.R. Brink & Co.", year: 1879, category: "cahokia", iaId: "il-macoupin-1879-brink" },
+];
+
+// ============================================================
+// Render books
+// ============================================================
+const bookGrid = document.getElementById('bookGrid');
+const bookCount = document.getElementById('bookCount');
+const guruBookCount = document.getElementById('guruBookCount');
+const searchInput = document.getElementById('searchInput');
+const filterRow = document.getElementById('filterRow');
+
+let activeCategory = 'all';
+let searchQuery = '';
+
+function iaUrl(iaId) { return `https://archive.org/details/${iaId}`; }
+
+function renderBooks() {
+    const q = searchQuery.toLowerCase().trim();
+    const filtered = BOOKS.filter(b => {
+        if (activeCategory !== 'all' && b.category !== activeCategory) return false;
+        if (!q) return true;
+        const hay = `${b.title} ${b.author} ${b.year} ${b.category}`.toLowerCase();
+        return q.split(/\s+/).every(word => hay.includes(word));
+    });
+    filtered.sort((a, b) => a.year - b.year);
+
+    bookCount.textContent = `${BOOKS.length} ${BOOKS.length === 1 ? 'volume' : 'volumes'} on the shelf · ${filtered.length} shown`;
+    guruBookCount.textContent = `${BOOKS.length} ${BOOKS.length === 1 ? 'book' : 'books'}`;
+
+    if (filtered.length === 0) {
+        bookGrid.innerHTML = `<div class="no-results">Nothing on the shelf matches that. Try a different search.</div>`;
+        return;
+    }
+
+    bookGrid.innerHTML = filtered.map(b => `
+        <article class="book-card">
+            <h3 class="book-title">${escapeHtml(b.title)}</h3>
+            <div class="book-meta">
+                <span class="book-year">${b.year}</span>
+                <span class="book-author">${escapeHtml(b.author)}</span>
+                <span class="book-category">${b.category}</span>
+            </div>
+            <div class="book-actions">
+                <a href="${iaUrl(b.iaId)}" target="_blank" rel="noopener" class="btn-read">Read at IA</a>
+                <a href="#" class="btn-ask" data-book-id="${b.id}" data-book-title="${escapeHtml(b.title)}">Ask Guru</a>
+            </div>
+        </article>
+    `).join('');
+
+    // Wire "Ask Guru" buttons
+    document.querySelectorAll('.btn-ask').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            const title = btn.getAttribute('data-book-title');
+            const input = document.getElementById('guruInput');
+            if (input) {
+                input.value = `Tell me about "${title}" — what does it cover and what's its most interesting content?`;
+                input.focus();
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    });
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[c]);
+}
+
+searchInput.addEventListener('input', e => { searchQuery = e.target.value; renderBooks(); });
+filterRow.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCategory = btn.getAttribute('data-cat');
+    renderBooks();
+});
+
+renderBooks();
+
+// ============================================================
+// Guru chat
+// ============================================================
+const GURU_API = 'https://artifact-guru.vercel.app';
+let guruToken = null;
+const chatHistory = [];
+
+const guruAuth = document.getElementById('guruAuth');
+const guruChat = document.getElementById('guruChat');
+const authForm = document.getElementById('authForm');
+const guruForm = document.getElementById('guruForm');
+const guruInput = document.getElementById('guruInput');
+const guruMessages = document.getElementById('guruMessages');
+const guruSend = document.getElementById('guruSend');
+
+authForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const password = document.getElementById('authPassword').value;
+    try {
+        const r = await fetch(`${GURU_API}/api/auth`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        });
+        const data = await r.json();
+        if (data.ok && data.token) {
+            guruToken = data.token;
+            guruAuth.style.display = 'none';
+            guruChat.style.display = 'flex';
+            appendMsg('assistant', 'The library is open. Ask away — try "What is a birdstone?" or "Tell me about Cahokia pottery."');
+        } else {
+            alert('Wrong password.');
+        }
+    } catch (err) {
+        alert('Could not reach the Guru: ' + err.message);
+    }
+});
+
+guruForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const text = guruInput.value.trim();
+    if (!text || !guruToken) return;
+    guruInput.value = '';
+    appendMsg('user', text);
+    chatHistory.push({ role: 'user', content: text });
+    const loadingEl = appendMsg('assistant', 'Reading the shelf…', true);
+    guruSend.disabled = true;
+
+    try {
+        const r = await fetch(`${GURU_API}/api/chat`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${guruToken}`
+            },
+            body: JSON.stringify({ messages: chatHistory })
+        });
+        const data = await r.json();
+        loadingEl.remove();
+        if (data.ok) {
+            chatHistory.push({ role: 'assistant', content: data.reply });
+            appendMsg('assistant', data.reply, false, data.sources);
+        } else {
+            appendMsg('assistant', 'The Guru hit a snag: ' + (data.error || 'unknown error'));
+        }
+    } catch (err) {
+        loadingEl.remove();
+        appendMsg('assistant', 'Connection lost: ' + err.message);
+    } finally {
+        guruSend.disabled = false;
+        guruInput.focus();
+    }
+});
+
+function appendMsg(role, text, isLoading = false, sources = []) {
+    const el = document.createElement('div');
+    el.className = `guru-msg ${role}${isLoading ? ' loading' : ''}`;
+    el.textContent = text;
+    if (sources && sources.length > 0) {
+        const srcEl = document.createElement('div');
+        srcEl.className = 'sources';
+        const uniqueSources = [];
+        const seen = new Set();
+        sources.forEach(s => {
+            const key = `${s.title}|${s.year}`;
+            if (!seen.has(key)) { seen.add(key); uniqueSources.push(s); }
+        });
+        srcEl.textContent = 'Sources: ' + uniqueSources.map(s => `${s.title} (${s.year})`).join(' · ');
+        el.appendChild(srcEl);
+    }
+    guruMessages.appendChild(el);
+    guruMessages.scrollTop = guruMessages.scrollHeight;
+    return el;
+}
+</script>
+
+</body>
+</html>
