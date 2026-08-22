@@ -11,16 +11,16 @@
 <meta name="description" content="Photo gallery from the Barn Burner Relics Monday auction — authenticated Native American artifacts, points, bannerstones, and relics from recent lots.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
 <meta property="og:title" content="Monday Auction · Photo Gallery — Barn Burner Relics">
-<meta property="og:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. Preview some of this week's items.">
-<meta property="og:image" content="https://barnburnerrelics.net/images/incoming/2026-08-10-monday-auction/hero-case.jpg">
+<meta property="og:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. New photos drop auction week.">
+<meta property="og:image" content="https://barnburnerrelics.net/images/bbr-logo.jpg">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Barn Burner Relics">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Monday Auction Preview · Barn Burner Relics">
-<meta name="twitter:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. Preview some of this week's items.">
-<meta name="twitter:image" content="https://barnburnerrelics.net/images/incoming/2026-08-10-monday-auction/hero-case.jpg">
+<meta name="twitter:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. New photos drop auction week.">
+<meta name="twitter:image" content="https://barnburnerrelics.net/images/bbr-logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -692,13 +692,6 @@
 
 <main id="main">
 <section class="hero">
-    <div class="hero-image-wrap">
-        <picture>
-            <source type="image/webp" media="(max-width: 768px)" srcset="/images/incoming/2026-08-10-monday-auction/hero-case-mobile.webp">
-            <source type="image/webp" srcset="/images/incoming/2026-08-10-monday-auction/hero-case.webp">
-            <img class="hero-image" src="/images/incoming/2026-08-10-monday-auction/hero-case.jpg" alt="Display case of cataloged Native American projectile points and stone artifacts — auction lots preview" loading="eager" fetchpriority="high" width="1600" height="1204">
-        </picture>
-    </div>
     <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
         <div class="cd-cell">
             <span class="cd-num" id="cdDays">--</span>
@@ -720,18 +713,18 @@
     <div class="hero-text">
         <div class="hero-eyebrow">Monday auction · Facebook Live</div>
         <div class="hero-date" id="heroDate">Next auction · Monday · 5:00 PM Central Time</div>
-        <h1>Monday <em>Auction Preview</em></h1>
+        <h1>Monday <em>Auction</em></h1>
         <p class="hero-note">
             <strong>Every Monday at 5:00 PM Central.</strong>
-            Some of this week's items are shown below — scroll to browse; click any photo to enlarge. Every tile is numbered — call out the lot number when you bid.
-            Bidding happens live on the Facebook group; check there for lot descriptions and provenance.
+            Photos for this week's auction are on the way — check back as we get closer to Monday.
+            Bidding happens live on the Facebook group.
         </p>
     </div>
 </section>
 
 <div class="section-label">
     <h2>This Week's Auction</h2>
-    <p>scroll to browse · click to enlarge · numbered for live call-out</p>
+    <p>photos dropping soon · check back auction week</p>
 </div>
 
 <div class="photo-grid" id="photoGrid"></div>
@@ -841,55 +834,11 @@
 </footer>
 
 <script>
-    // Monday Auction gallery — Monday August 4, 2026 (next auction)
-    // Lots 46-54 from the 2026-08-10 batch (lots 01-45 archived).
-    // Slot 1 is the cropped centerpiece of the full display-case overview.
-    // No text overlays, no captions — clean case photos. Tap any to enlarge
-    // (native pinch-zoom on mobile, click + scroll-wheel on desktop).
-    //
-    // Lots 01-45 from this batch archived to:
-    //   images/incoming/_archive/2026-08-10-batch-replaced/
-    // New batch (this week's auction) will be added below.
+    // Monday Auction gallery — week of Aug 24, 2026
+    // Previous batch (Aug 10) archived to images/incoming/_archive/2026-08-10-full-batch/
+    // Photos arriving as overviews this week — array fills as Bill uploads.
+    // Numbering = drop order; tiles auto-number 01, 02, ...
     const galleryPhotos = [
-        { src: '/images/incoming/2026-08-10-monday-auction/46.jpg', title: 'Lot 46' },
-        { src: '/images/incoming/2026-08-10-monday-auction/47.jpg', title: 'Lot 47' },
-        { src: '/images/incoming/2026-08-10-monday-auction/48.jpg', title: 'Lot 48' },
-        { src: '/images/incoming/2026-08-10-monday-auction/49.jpg', title: 'Lot 49' },
-        { src: '/images/incoming/2026-08-10-monday-auction/50.jpg', title: 'Lot 50' },
-        { src: '/images/incoming/2026-08-10-monday-auction/51.jpg', title: 'Lot 51' },
-        { src: '/images/incoming/2026-08-10-monday-auction/52.jpg', title: 'Lot 52' },
-        { src: '/images/incoming/2026-08-10-monday-auction/53.jpg', title: 'Lot 53' },
-        { src: '/images/incoming/2026-08-10-monday-auction/54.jpg', title: 'Lot 54' },
-        { src: '/images/incoming/2026-08-10-monday-auction/55.jpg', title: 'Lot 55 — two St. Charles Co. MO notched points' },
-        { src: '/images/incoming/2026-08-10-monday-auction/56.jpg', title: 'Lot 56 — small pottery vessel' },
-        { src: '/images/incoming/2026-08-10-monday-auction/57.jpg', title: 'Lot 57 — stone ball, dug by John Grotte, Brown Co. IL 1983' },
-        { src: '/images/incoming/2026-08-10-monday-auction/58.jpg', title: 'Lot 58 — grooved axe/maul, Maasnaic Co. IA, Ex. Harold Carr' },
-        { src: '/images/incoming/2026-08-10-monday-auction/59.jpg', title: 'Lot 59 — SC AXE-324, Marshall Co. Iowa' },
-        { src: '/images/incoming/2026-08-10-monday-auction/60.jpg', title: 'Lot 60 — two bifaces, tan + red heat-treated' },
-        { src: '/images/incoming/2026-08-10-monday-auction/61.jpg', title: 'Lot 61 — two large bifaces, Madison Co. + Pike Co. labels' },
-        { src: '/images/incoming/2026-08-10-monday-auction/62.jpg', title: 'Lot 62 — milky quartz/chalcedony with iron staining' },
-        { src: '/images/incoming/2026-08-10-monday-auction/63.jpg', title: 'Lot 63 — Adams Co. point, 12-15-83' },
-        { src: '/images/incoming/2026-08-10-monday-auction/64.jpg', title: 'Lot 64 — white chert blade/point' },
-        { src: '/images/incoming/2026-08-10-monday-auction/65.jpg', title: 'Lot 65 — Calhoun Co. IL point, Dickey label' },
-        { src: '/images/incoming/2026-08-10-monday-auction/66.jpg', title: 'Lot 66 — tan/buff biface' },
-        { src: '/images/incoming/2026-08-10-monday-auction/67.jpg', title: 'Lot 67 — St. Clair Co. ILL celt/blade, JBH-58' },
-        { src: '/images/incoming/2026-08-10-monday-auction/68.jpg', title: 'Lot 68 — dark polished stone' },
-        { src: '/images/incoming/2026-08-10-monday-auction/69.jpg', title: 'Lot 69 — dark fossil/belemnite, Dalloz label' },
-        { src: '/images/incoming/2026-08-10-monday-auction/70.jpg', title: 'Lot 70 — display case of ~36 small dark stones/plummets' },
-        { src: '/images/incoming/2026-08-10-monday-auction/71.jpg', title: 'Lot 71 — large knapped biface / cleaver form, tan-buff chert' },
-        { src: '/images/incoming/2026-08-10-monday-auction/72.jpg', title: 'Lot 72 — weathered hafted stone implement / shaft form' },
-        { src: '/images/incoming/2026-08-10-monday-auction/73.jpg', title: 'Lot 73 — large knapped biface, Mississippi Co. MO label' },
-        { src: '/images/incoming/2026-08-10-monday-auction/74.jpg', title: 'Lot 74 — Illinois adze/celt, collection #837' },
-        { src: '/images/incoming/2026-08-10-monday-auction/75.jpg', title: 'Lot 75 — Salt River Disc, Scott Co. IL, Ex. Steve Koch' },
-        { src: '/images/incoming/2026-08-10-monday-auction/76.jpg', title: 'Lot 76 — brown ovoid stone / possible pestle' },
-        { src: '/images/incoming/2026-08-10-monday-auction/77.jpg', title: 'Lot 77 — pecked stone disc, Scott Co. IL, Ex. Steve Koch' },
-        { src: '/images/incoming/2026-08-10-monday-auction/78.jpg', title: 'Lot 78 — dark dome-shaped grinding stone' },
-        { src: '/images/incoming/2026-08-10-monday-auction/79.jpg', title: 'Lot 79 — cylindrical pestle/roller, speckled granite' },
-        { src: '/images/incoming/2026-08-10-monday-auction/80.jpg', title: 'Lot 80 — Illinois adze, yellow collection label' },
-        { src: '/images/incoming/2026-08-10-monday-auction/81.jpg', title: 'Lot 81 — Texas Perdiz point, translucent, 1½-inch' },
-        { src: '/images/incoming/2026-08-10-monday-auction/82.jpg', title: 'Lot 82 — mineral specimen, DeMoines Co. IA, Ex. Lee Tyner' },
-        { src: '/images/incoming/2026-08-10-monday-auction/83.jpg', title: 'Lot 83 — cream/ivory knapped point, serrated' },
-        { src: '/images/incoming/2026-08-10-monday-auction/84.jpg', title: 'Lot 84 — Texas Perdiz point (2nd view, backlit)' },
     ];
 
     // Sort active pieces first (preserving their order), then sold
