@@ -260,27 +260,35 @@
         /* === GRID === */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             padding: 20px 24px 60px;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 16px 16px 48px;
+            }
         }
 
         .photo-tile {
             position: relative;
             background: var(--bg-panel);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             aspect-ratio: 4/3;
             cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
         .photo-tile:hover {
-            transform: translateY(-2px);
-            border-color: var(--oxblood);
-            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,83,0.2);
         }
         .photo-tile img {
             width: 100%;
@@ -289,16 +297,18 @@
         }
         .photo-tile .tile-number {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.7);
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.78);
             color: var(--gold);
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 6px 11px;
+            border-radius: 5px;
             font-family: -apple-system, sans-serif;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(212,168,83,0.35);
+            backdrop-filter: blur(4px);
         }
 
         /* Tile caption (lot title + short desc) — sits at the bottom of the tile */
@@ -442,7 +452,7 @@
         .lightbox-overlay.active { display: flex; }
         .lightbox-content {
             position: relative;
-            width: min(95vw, 1280px);
+            width: min(96vw, 1600px);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -452,12 +462,12 @@
         .lightbox-stage {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9;     /* STABLE box — arrows anchor to this */
-            max-height: 80vh;         /* never exceed viewport */
+            aspect-ratio: 16 / 10;    /* slightly taller than 16/9 — uses vertical space better */
+            max-height: 88vh;         /* push closer to viewport edge */
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #000;         /* letterbox/pillarbox color matches overlay */
+            background: #000;
             border-radius: 6px;
             overflow: hidden;
         }
@@ -845,6 +855,7 @@
     // Overview shots — individual lots go up live Monday 5 PM.
     // Hero = 23-point spread on dark felt (Paleo + Archaic, IL/MO/OH/IA provenance).
     const galleryPhotos = [
+        { src: '/images/incoming/2026-08-24-monday-auction/hero-case.jpg', title: 'Overview — 23-point spread, IL/MO/OH/IA provenance', lead: true },
         { src: '/images/incoming/2026-08-24-monday-auction/02.jpg', title: 'Overview — large fluted points, Bogle + Jackson COA labels' },
         { src: '/images/incoming/2026-08-24-monday-auction/03.jpg', title: 'Overview — points with Jersey Co. IL, Pemiscot Co. MO provenance' },
         { src: '/images/incoming/2026-08-24-monday-auction/04.jpg', title: 'Overview — red felt display case, Burlington blades + dark points' },
