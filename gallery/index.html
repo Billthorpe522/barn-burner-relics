@@ -155,6 +155,23 @@
             letter-spacing: 0.02em;
         }
 
+        /* === AUCTION WEEK POSTER === */
+        .auction-week-poster {
+            padding: 0 20px 24px;
+            text-align: center;
+        }
+        .auction-week-poster img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,83,0.2);
+        }
+        @media (max-width: 640px) {
+            .auction-week-poster { padding: 0 16px 20px; }
+            .auction-week-poster img { max-width: 320px; }
+        }
+
         /* === COUNTDOWN === */
         .countdown {
             display: flex;
@@ -727,21 +744,24 @@
             <span class="cd-lbl">Secs</span>
         </div>
     </div>
+    <div class="auction-week-poster">
+        <img src="/images/promo/auction-week-poster.png" alt="Auction Week — Three Nights Only · Monday August 24 through Wednesday August 26 at 5 PM Central" loading="eager">
+    </div>
     <div class="hero-text">
-        <div class="hero-eyebrow">Monday auction · Facebook Live</div>
-        <div class="hero-date" id="heroDate">Next auction · Monday · 5:00 PM Central Time</div>
-        <h1>Monday <em>Auction Preview</em></h1>
+        <div class="hero-eyebrow">Auction Week · Three Nights Only</div>
+        <div class="hero-date" id="heroDate">Monday – Wednesday · 5:00 PM Central</div>
+        <h1>Auction <em>Week</em></h1>
         <p class="hero-note">
-            <strong>Every Monday at 5:00 PM Central.</strong>
-            Overview shots below — individual lots go up during the live auction starting at 5:00 PM Monday. Click any photo to enlarge.
+            <strong>Three nights only — Monday, Tuesday, Wednesday at 5:00 PM Central.</strong>
+            Fresh from the road, ready for your screen. Three birdstones, hardstone, pottery, and too many relics to list.
             Bidding happens live on the Facebook group; check there for lot descriptions and provenance.
         </p>
     </div>
 </section>
 
 <div class="section-label">
-    <h2>This Week's Auction</h2>
-    <p>scroll to browse · click to enlarge · overviews — individual lots Monday 5 PM</p>
+    <h2>Auction Week Preview</h2>
+    <p>scroll to browse · click to enlarge · three nights — Mon Aug 24, Tue Aug 25, Wed Aug 26</p>
 </div>
 
 <div class="photo-grid" id="photoGrid"></div>
@@ -1030,9 +1050,10 @@
     //   Normal weekly: Monday only — [1]
     //   Winter (per Bill): Saturdays + Mondays — [6, 1]
     //   Special 2-day (Aug 9-10, 2026): Sunday + Monday — [0, 1] (historical)
+    //   Auction Week (Aug 24-26, 2026): Monday + Tuesday + Wednesday — [1, 2, 3]
     // Time-of-day and timezone are fixed at 5:00 PM America/Chicago (CST/CDT auto).
     // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
-    const AUCTION_DAYS = [1]; // Monday only
+    const AUCTION_DAYS = [1, 2, 3]; // Auction Week — Mon Tue Wed
     const AUCTION_HOUR = 17;  // 5:00 PM in 24h
     const CHICAGO_TZ = 'America/Chicago';
 
