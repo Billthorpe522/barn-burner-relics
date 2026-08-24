@@ -7,20 +7,20 @@
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-<title>Monday Auction · Photo Gallery — Barn Burner Relics</title>
-<meta name="description" content="Photo gallery from the Barn Burner Relics Monday auction — authenticated Native American artifacts, points, bannerstones, and relics from recent lots.">
+<title>Auction Week · Photo Gallery — Barn Burner Relics</title>
+<meta name="description" content="Auction Week preview from Barn Burner Relics — authenticated Native American artifacts: three birdstones, hardstone, pottery, points, and bannerstones. Live Mon/Tue/Wed at 5 PM Central.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
-<meta property="og:title" content="Monday Auction · Photo Gallery — Barn Burner Relics">
-<meta property="og:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. Preview this week's items.">
-<meta property="og:image" content="https://barnburnerrelics.net/images/incoming/2026-08-24-auction-week/01.jpg">
+<meta property="og:title" content="Auction Week · Three Nights Only — Barn Burner Relics">
+<meta property="og:description" content="Fresh from the road. Three birdstones, hardstone, pottery, and relics — live Mon/Tue/Wed at 5 PM Central. Preview the lots.">
+<meta property="og:image" content="https://barnburnerrelics.net/images/promo/auction-week-poster.png">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Barn Burner Relics">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Monday Auction Preview · Barn Burner Relics">
-<meta name="twitter:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. Preview this week's items.">
-<meta name="twitter:image" content="https://barnburnerrelics.net/images/incoming/2026-08-24-auction-week/01.jpg">
+<meta name="twitter:title" content="Auction Week · Three Nights Only — Barn Burner Relics">
+<meta name="twitter:description" content="Fresh from the road. Three birdstones, hardstone, pottery, and relics — live Mon/Tue/Wed at 5 PM Central. Preview the lots.">
+<meta name="twitter:image" content="https://barnburnerrelics.net/images/promo/auction-week-poster.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -737,7 +737,7 @@
         <picture>
             <source type="image/webp" media="(max-width: 768px)" srcset="/images/incoming/2026-08-24-auction-week/01-mobile.webp">
             <source type="image/webp" srcset="/images/incoming/2026-08-24-auction-week/01.webp">
-            <img class="hero-image" src="/images/incoming/2026-08-24-auction-week/01.jpg" alt="Three birdstones held in hand — dark slate hooks with drilled holes, Auglaize County Ohio provenance" loading="eager" fetchpriority="high" width="1600" height="1204">
+            <img class="hero-image" src="/images/incoming/2026-08-24-auction-week/01.webp" alt="Three birdstones held in hand — dark slate hooks with drilled holes, Auglaize County Ohio provenance" loading="eager" fetchpriority="high" width="1600" height="1204">
         </picture>
     </div>
     <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
@@ -916,11 +916,11 @@
             ${soldTagHtml}
             ${runTimeTagHtml}
             <span class="tile-number">${String(idx + 1).padStart(2, '0')}</span>
-            <a href="${p.src}" target="_blank" rel="noopener" class="tile-link" aria-label="Open full size: ${p.title || 'Auction lot photo'}">
+            <a href="${webpSrc}" target="_blank" rel="noopener" class="tile-link" aria-label="Open full size: ${p.title || 'Auction lot photo'}">
                 <picture>
                     <source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}">
                     <source type="image/webp" srcset="${webpSrc}">
-                    <img src="${p.src}" alt="${p.title || 'Auction lot photo'}" loading="lazy" width="1280" height="960">
+                    <img src="${webpSrc}" alt="${p.title || 'Auction lot photo'}" loading="lazy" width="1280" height="960">
                 </picture>
             </a>
         </div>
