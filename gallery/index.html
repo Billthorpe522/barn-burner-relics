@@ -298,7 +298,6 @@
             border-radius: 10px;
             overflow: hidden;
             aspect-ratio: 4/3;
-            cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
@@ -306,6 +305,21 @@
             transform: translateY(-4px);
             border-color: var(--gold);
             box-shadow: 0 12px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,83,0.2);
+        }
+        .tile-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .tile-link picture {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .tile-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .photo-tile img {
             width: 100%;
@@ -766,24 +780,12 @@
 
 <div class="photo-grid" id="photoGrid"></div>
 
-<!-- Lightbox -->
-<div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this||event.target===document.getElementById('lbImage'))closeLightbox()">
-    <div class="lightbox-content">
-        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
-        <div class="lightbox-stage" id="lightboxStage">
-            <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Previous photo">‹</button>
-            <img id="lbImage" class="lightbox-image" src="" alt="">
-            <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Next photo">›</button>
-        </div>
-        <div class="lightbox-counter" id="lbCounter"></div>
-        </div>
-        </div>
-
-        <!-- Quiet CTA: Nick is looking to buy collections + does appraisals.
-         Mirrors the services-cta block on the main site. Sits just above the
-         footer so it doesn't interrupt photo browsing. Action link goes to
-         the Facebook Group (the gallery's primary contact path; no inquiry
-         overlay exists on this page). -->
+<!-- Quiet CTA: Nick is looking to buy collections + does appraisals.
+     Mirrors the services-cta block on the main site. Sits just above the
+     footer so it doesn't interrupt photo browsing. Action link goes to
+     the Facebook Group (the gallery's primary contact path; no inquiry
+     overlay exists on this page). -->
+<div class="fb-cta">
         <style>
         .services-cta {
             max-width: 720px;
@@ -909,142 +911,38 @@
         const webpSrc = p.src.replace(/\.jpg$/, '.webp');
         const webpMobileSrc = p.src.replace(/\.jpg$/, '-mobile.webp');
         return `
-        <div class="${classes}" onclick="openLightbox(${idx})">
+        <div class="${classes}">
             ${leadTagHtml}
             ${soldTagHtml}
             ${runTimeTagHtml}
             <span class="tile-number">${String(idx + 1).padStart(2, '0')}</span>
-            <picture>
-                <source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}">
-                <source type="image/webp" srcset="${webpSrc}">
-                <img src="${p.src}" alt="${p.title || 'Auction lot photo'}" loading="lazy" width="1280" height="960">
-            </picture>
+            <a href="${p.src}" target="_blank" rel="noopener" class="tile-link" aria-label="Open full size: ${p.title || 'Auction lot photo'}">
+                <picture>
+                    <source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}">
+                    <source type="image/webp" srcset="${webpSrc}">
+                    <img src="${p.src}" alt="${p.title || 'Auction lot photo'}" loading="lazy" width="1280" height="960">
+                </picture>
+            </a>
         </div>
     `;
     }).join('');
 
     let lightboxIndex = 0;
 
+    // Lightbox removed — tiles now open full-size in a new tab via target="_blank"
+    // Keeping the function stubs so nothing breaks if referenced elsewhere.
     function openLightbox(idx) {
         lightboxIndex = idx;
-        showLightbox();
+        window.open(galleryPhotos[idx].src, '_blank');
     }
 
-    function showLightbox() {
-        const photo = galleryPhotos[lightboxIndex];
-        // Use WebP for the full-size lightbox too. Falls back to JPEG via onerror.
-        const lbImg = document.getElementById('lbImage');
-        lbImg.onerror = function() { this.onerror = null; this.src = photo.src; };
-        lbImg.src = photo.src.replace(/\.jpg$/, '.webp');
-        lbImg.alt = '';
-        document.getElementById('lbCounter').textContent = `${lightboxIndex + 1} of ${galleryPhotos.length}`;
-        document.getElementById('lightbox').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function navigateLightbox(direction) {
-        lightboxIndex = (lightboxIndex + direction + galleryPhotos.length) % galleryPhotos.length;
-        showLightbox();
-    }
+    function showLightbox() {}
+    function closeLightbox() {}
+    function navigateLightbox(direction) {}
 
     document.addEventListener('keydown', e => {
-        if (!document.getElementById('lightbox').classList.contains('active')) return;
         if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') navigateLightbox(-1);
-        if (e.key === 'ArrowRight') navigateLightbox(1);
     });
-
-    // ========== Mobile swipe-to-navigate in the lightbox ==========
-    // Tracks horizontal drag on the lightbox stage and triggers prev/next
-    // when the user swipes past a threshold. A small live translation on
-    // the image gives immediate visual feedback that the swipe registered.
-    // Vertical scroll is allowed (touch-action: pan-y on .lightbox-content)
-    // so the page can scroll behind the overlay if needed.
-    (function setupSwipe() {
-        const stage = document.getElementById('lightboxStage');
-        const img = document.getElementById('lbImage');
-        if (!stage || !img) return;
-
-        const SWIPE_THRESHOLD = 50;   // px of horizontal travel to trigger nav
-        const MAX_DRAG = 120;        // cap the visual drag offset so it doesn't fly off
-        let startX = 0, startY = 0, startTime = 0, dragging = false;
-        let axisLocked = null;        // 'x' or 'y' — first-move wins so vertical scroll isn't hijacked
-
-        stage.addEventListener('touchstart', e => {
-            if (e.touches.length !== 1) return;
-            const t = e.touches[0];
-            startX = t.clientX;
-            startY = t.clientY;
-            startTime = Date.now();
-            dragging = true;
-            axisLocked = null;
-            img.style.transition = 'none';
-        }, { passive: true });
-
-        stage.addEventListener('touchmove', e => {
-            if (!dragging) return;
-            const t = e.touches[0];
-            const dx = t.clientX - startX;
-            const dy = t.clientY - startY;
-            // Lock to whichever axis moves first (avoids fighting vertical scroll)
-            if (axisLocked === null) {
-                if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
-                    axisLocked = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
-                }
-            }
-            if (axisLocked !== 'x') return; // let vertical scroll proceed
-            // Live visual feedback: drag the image
-            const clamped = Math.max(-MAX_DRAG, Math.min(MAX_DRAG, dx));
-            img.style.transform = `translateX(${clamped}px)`;
-            // Hint: dim slightly as the user pulls further
-            const dim = 1 - Math.min(0.25, Math.abs(dx) / 400);
-            img.style.opacity = String(dim);
-        }, { passive: true });
-
-        function endDrag(e) {
-            if (!dragging) return;
-            dragging = false;
-            const t = (e.changedTouches && e.changedTouches[0]) || null;
-            if (!t) return reset();
-            const dx = t.clientX - startX;
-            const dt = Date.now() - startTime;
-            // Quick fling counts even if it doesn't cross threshold (under 300ms)
-            const fling = Math.abs(dx) > 20 && dt < 300 && Math.abs(dx) > SWIPE_THRESHOLD * 0.4;
-            const passed = Math.abs(dx) > SWIPE_THRESHOLD;
-            img.style.transition = 'transform 0.18s ease, opacity 0.18s ease';
-            if (fling || passed) {
-                if (dx < 0) navigateLightbox(1);
-                else navigateLightbox(-1);
-            }
-            reset();
-        }
-        function reset() {
-            img.style.transform = '';
-            img.style.opacity = '';
-            // remove the inline transition after it plays out
-            setTimeout(() => { img.style.transition = ''; }, 200);
-        }
-
-        stage.addEventListener('touchend', endDrag, { passive: true });
-        stage.addEventListener('touchcancel', endDrag, { passive: true });
-
-        // Optional: keyboard hint on the counter on first lightbox open
-        const counter = document.getElementById('lbCounter');
-        if (counter) {
-            const observer = new MutationObserver(() => {
-                if (document.getElementById('lightbox').classList.contains('active')) {
-                    counter.title = 'Swipe left/right or use arrow keys';
-                }
-            });
-            observer.observe(counter, { childList: true, characterData: true, subtree: true });
-        }
-    })();
 
     // ========== Countdown to next auction ==========
     // AUCTION_DAYS controls which weekdays host auctions. JS weekday: 0=Sun..6=Sat.
