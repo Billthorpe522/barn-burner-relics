@@ -702,13 +702,31 @@
         .site-nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
         .site-nav-links a.active { color: var(--cream); border-bottom-color: var(--gold); }
         @media (max-width: 540px) {
-            .site-nav { padding: 8px 12px; gap: 8px; }
-            .site-nav-brand-text { display: none; }
-            .site-nav-brand-mark { font-size: 13px; padding: 3px 8px; }
-            .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
-            .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
-        }
-    </style>
+                    .site-nav { padding: 8px 12px; gap: 8px; }
+                    .site-nav-brand-text { display: none; }
+                    .site-nav-brand-mark { font-size: 13px; padding: 3px 8px; }
+                    .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
+                    .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
+                }
+
+                /* Postponement banner — temporary notice for one-week auction shift.
+                   Remove after Sat Sep 5 2026. Visible on home + gallery. */
+                .postponement-banner {
+                    background: var(--bg-soft);
+                    color: var(--cream-dim);
+                    text-align: center;
+                    padding: 12px 24px;
+                    border-bottom: 1px solid var(--border);
+                    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    letter-spacing: 0.3px;
+                }
+                .postponement-banner strong { color: var(--gold); font-weight: 600; }
+                @media (max-width: 540px) {
+                    .postponement-banner { padding: 10px 14px; font-size: 13px; }
+                }
+            </style>
 
 <!-- Preload the hero image for fast LCP. -->
 <link rel="preload" as="image" href="/images/incoming/2026-08-24-monday-auction/hero-case.webp" type="image/webp" imagesrcset="/images/incoming/2026-08-24-monday-auction/hero-case-mobile.webp 768w, /images/incoming/2026-08-24-monday-auction/hero-case.webp 1920w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
@@ -730,6 +748,13 @@
     <a href="../social/"   data-key="social"  >Socials</a>
   </div>
 </nav>
+
+<!-- Postponement banner — TEMPORARY, remove after Sat Sep 5 2026 -->
+<div class="postponement-banner" role="status">
+    <strong>This week's auction is postponed to Saturday, Sep 5.</strong>
+    No Monday Aug 31 sale. 20–40 fresh lots at the usual 5 PM Central.
+    Monday cadence resumes Sep 7.
+</div>
 
 <main id="main">
 <section class="hero">
@@ -942,16 +967,21 @@
     });
 
     // ========== Countdown to next auction ==========
-    // AUCTION_DAYS controls which weekdays host auctions. JS weekday: 0=Sun..6=Sat.
-    //   Normal weekly: Monday only — [1]
-    //   Winter (per Bill): Saturdays + Mondays — [6, 1]
-    //   Special 2-day (Aug 9-10, 2026): Sunday + Monday — [0, 1] (historical)
-    //   Auction Week (Aug 24-26, 2026): Monday + Tuesday + Wednesday — [1, 2, 3] (historical)
-    // Time-of-day and timezone are fixed at 5:00 PM America/Chicago (CST/CDT auto).
-    // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
-    const AUCTION_DAYS = [1]; // Monday only
-    const AUCTION_HOUR = 17;  // 5:00 PM in 24h
-    const CHICAGO_TZ = 'America/Chicago';
+        // AUCTION_DAYS controls which weekdays host auctions. JS weekday: 0=Sun..6=Sat.
+        //   Normal weekly: Monday only — [1]
+        //   Winter (per Bill): Saturdays + Mondays — [6, 1]
+        //   Special 2-day (Aug 9-10, 2026): Sunday + Monday — [0, 1] (historical)
+        //   Auction Week (Aug 24-26, 2026): Monday + Tuesday + Wednesday — [1, 2, 3] (historical)
+        // Time-of-day and timezone are fixed at 5:00 PM America/Chicago (CST/CDT auto).
+        // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
+        const AUCTION_DAYS = [1]; // Monday only
+
+        // TEMP POSTPONEMENT (Aug 30 → Sep 5, 2026): one-week shift to Saturday Sep 5.
+        // Set TEMP_AUCTION_INSTANT to a UTC ms timestamp (or null to disable).
+        // After Sat Sep 5 passes, set back to null and the regular Monday cadence resumes.
+        const TEMP_AUCTION_INSTANT = new Date('2026-09-05T17:00:00-05:00').getTime();
+        const AUCTION_HOUR = 17;  // 5:00 PM in 24h
+        const CHICAGO_TZ = 'America/Chicago';
 
     // Read the wall-clock components for a given UTC instant in America/Chicago.
     // Returns {year, month (0-idx), day, weekday (0=Sun..6=Sat)}.
@@ -995,35 +1025,40 @@
     }
 
     // Return the next auction instant (a UTC ms timestamp) on or after `nowMs`.
-    // If today's auction slot hasn't started yet, return today's; otherwise the next.
-    function nextAuctionInstant(nowMs) {
-        const nowParts = chicagoPartsFromInstant(nowMs);
-        const sortedDays = [...AUCTION_DAYS].sort((a, b) => a - b);
-        let bestDelta = Infinity;
-        let bestInstant = null;
-        for (const targetDow of sortedDays) {
-            // Days forward from today (in Chicago) to the next occurrence of targetDow.
-            let delta = (targetDow - nowParts.weekday + 7) % 7;
-            // Use a temp Date with month-overflow allowed to roll the day forward.
-            const probe = new Date(nowParts.year, nowParts.month, nowParts.day + delta);
-            const probeMs = chicagoWallClockToInstant(
-                probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
-            );
-            if (probeMs > nowMs && (probeMs - nowMs) < bestDelta) {
-                bestDelta = probeMs - nowMs;
-                bestInstant = probeMs;
+        // If today's auction slot hasn't started yet, return today's; otherwise the next.
+        function nextAuctionInstant(nowMs) {
+            // TEMP POSTPONEMENT: if the override is set and still in the future, use it.
+            // Falls through to the regular cadence once the override is null or past.
+            if (TEMP_AUCTION_INSTANT !== null && TEMP_AUCTION_INSTANT > nowMs) {
+                return TEMP_AUCTION_INSTANT;
             }
+            const nowParts = chicagoPartsFromInstant(nowMs);
+            const sortedDays = [...AUCTION_DAYS].sort((a, b) => a - b);
+            let bestDelta = Infinity;
+            let bestInstant = null;
+            for (const targetDow of sortedDays) {
+                // Days forward from today (in Chicago) to the next occurrence of targetDow.
+                let delta = (targetDow - nowParts.weekday + 7) % 7;
+                // Use a temp Date with month-overflow allowed to roll the day forward.
+                const probe = new Date(nowParts.year, nowParts.month, nowParts.day + delta);
+                const probeMs = chicagoWallClockToInstant(
+                    probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
+                );
+                if (probeMs > nowMs && (probeMs - nowMs) < bestDelta) {
+                    bestDelta = probeMs - nowMs;
+                    bestInstant = probeMs;
+                }
+            }
+            // If nothing in the next 7 days is still in the future, push a full week
+            // from the soonest candidate (handles the case of AUCTION_DAYS being empty).
+            if (bestInstant === null) {
+                const probe = new Date(nowParts.year, nowParts.month, nowParts.day + 7);
+                bestInstant = chicagoWallClockToInstant(
+                    probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
+                );
+            }
+            return bestInstant;
         }
-        // If nothing in the next 7 days is still in the future, push a full week
-        // from the soonest candidate (handles the case of AUCTION_DAYS being empty).
-        if (bestInstant === null) {
-            const probe = new Date(nowParts.year, nowParts.month, nowParts.day + 7);
-            bestInstant = chicagoWallClockToInstant(
-                probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
-            );
-        }
-        return bestInstant;
-    }
 
     const cdEl = document.getElementById('countdown');
     const cdDays = document.getElementById('cdDays');
