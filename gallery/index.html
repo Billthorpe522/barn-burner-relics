@@ -24,7 +24,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+
+<!-- Preload the hero image for fast LCP. -->
+<link rel="preload" as="image" href="/images/incoming/2026-09-05-saturday-auction/hero-case.webp" type="image/webp" imagesrcset="/images/incoming/2026-09-05-saturday-auction/hero-case-mobile.webp 768w, /images/incoming/2026-09-05-saturday-auction/hero-case.webp 1920w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
+
 <style>
+
+
 :root {
     --bg: #0d0d0d;
     --bg-soft: #14110e;
@@ -124,14 +131,14 @@
         }
         .hero-eyebrow {
             display: inline-block;
-            color: var(--gold); font-size: 13px;
+            color: var(--gold); font-size: 14px;
             font-family: -apple-system, Arial, sans-serif;
             letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
             padding-bottom: 6px; border-bottom: 1px solid #8b4513;
             margin-bottom: 24px;
         }
         .hero .hero-date {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--sand);
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -202,7 +209,7 @@
         }
         .countdown .cd-lbl {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            font-size: 10px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--taupe);
@@ -231,7 +238,7 @@
             animation: cdLivePulse 1.4s ease-in-out infinite;
         }
         .countdown.live .cd-lbl {
-            font-size: 12px;
+            font-size: 14px;
             color: #c8423b;
             margin-top: 0;
             letter-spacing: 3px;
@@ -247,7 +254,7 @@
         @media (max-width: 480px) {
             .countdown { padding: 0 12px 18px; }
             .countdown .cd-num { font-size: 22px; letter-spacing: 0.5px; }
-            .countdown .cd-lbl { font-size: 9px; letter-spacing: 1.5px; }
+            .countdown .cd-lbl { font-size: 14px; letter-spacing: 1.5px; }
         }
 
         /* === SECTION DIVIDER === */
@@ -265,7 +272,7 @@
             letter-spacing: 0.5px;
         }
         .section-label p {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--taupe);
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -332,7 +339,7 @@
             left: 12px;
             background: rgba(0,0,0,0.78);
             color: var(--gold);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             padding: 6px 11px;
             border-radius: 5px;
@@ -365,7 +372,7 @@
         }
         .photo-tile .tile-caption-desc {
             font-family: -apple-system, sans-serif;
-            font-size: 10.5px;
+            font-size: 14px;
             color: var(--warm-grey);
             line-height: 1.3;
             letter-spacing: 0.2px;
@@ -385,7 +392,7 @@
         .photo-tile.lead-tile .tile-number {
             top: 16px;
             left: 16px;
-            font-size: 13px;
+            font-size: 14px;
             padding: 6px 12px;
             background: rgba(212, 168, 83, 0.95);
             color: var(--bg-card);
@@ -401,14 +408,14 @@
             padding: 8px 14px;
             border-radius: 4px;
             font-family: -apple-system, sans-serif;
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
         @media (max-width: 768px) {
             .photo-tile.lead-tile { aspect-ratio: 4/3; }
-            .photo-tile.lead-tile .lead-tag { top: 10px; right: 10px; padding: 6px 10px; font-size: 10px; }
+            .photo-tile.lead-tile .lead-tag { top: 10px; right: 10px; padding: 6px 10px; font-size: 14px; }
         }
 
         /* Sold tile — sorted to bottom by JS, desaturated, SOLD badge */
@@ -433,7 +440,7 @@
             padding: 4px 10px;
             border-radius: 3px;
             font-family: -apple-system, sans-serif;
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -456,7 +463,7 @@
             padding: 4px 10px;
             border-radius: 3px;
             font-family: -apple-system, sans-serif;
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -511,7 +518,7 @@
         }
         .lightbox-counter {
             color: var(--sand);
-            font-size: 13px;
+            font-size: 14px;
             margin-top: 14px;
             letter-spacing: 2px;
             font-family: -apple-system, sans-serif;
@@ -632,7 +639,7 @@
         flex-shrink: 0;
         }
         .fb-cta-sub {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--cream-dim);
         font-style: italic;
         letter-spacing: 0.3px;
@@ -651,7 +658,7 @@
         @media (max-width: 600px) {
         .fb-cta-btn { padding: 12px 22px; font-size: 14px; gap: 10px; }
         .fb-cta-btn svg { width: 20px; height: 20px; }
-        .fb-cta-sub { font-size: 12px; padding: 0 8px; }
+        .fb-cta-sub { font-size: 14px; padding: 0 8px; }
         }
 
         /* Cross-site top nav (identical block on / and /shop/) */
@@ -664,7 +671,7 @@
             border-bottom: 1px solid var(--border);
             padding: 9px 24px;
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-            font-size: 13px;
+            font-size: 14px;
             letter-spacing: 1.4px;
             text-transform: uppercase;
             color: #b8a88a;
@@ -684,14 +691,14 @@
             background: var(--oxblood);
             color: var(--cream);
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 900;
             letter-spacing: 2px;
             padding: 3px 8px;
             border-radius: 2px;
             border: 1px solid var(--gold);
         }
-        .site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13px; color: var(--cream); letter-spacing: 1px; }
+        .site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; color: var(--cream); letter-spacing: 1px; }
         .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
         .site-nav-links a {
             font-family: -apple-system, Arial, sans-serif; font-size: 14px; font-weight: 600;
@@ -704,7 +711,7 @@
         @media (max-width: 540px) {
                     .site-nav { padding: 8px 12px; gap: 8px; }
                     .site-nav-brand-text { display: none; }
-                    .site-nav-brand-mark { font-size: 13px; padding: 3px 8px; }
+                    .site-nav-brand-mark { font-size: 14px; padding: 3px 8px; }
                     .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
                     .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
                 }
@@ -724,85 +731,10 @@
                 }
                 .postponement-banner strong { color: var(--gold); font-weight: 600; }
                 @media (max-width: 540px) {
-                    .postponement-banner { padding: 10px 14px; font-size: 13px; }
+                    .postponement-banner { padding: 10px 14px; font-size: 14px; }
                 }
-            </style>
 
-<!-- Preload the hero image for fast LCP. -->
-<link rel="preload" as="image" href="/images/incoming/2026-09-05-saturday-auction/hero-case.webp" type="image/webp" imagesrcset="/images/incoming/2026-09-05-saturday-auction/hero-case-mobile.webp 768w, /images/incoming/2026-09-05-saturday-auction/hero-case.webp 1920w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
-</head>
-<body>
-<a class="skip-nav" href="#main">Skip to main content</a>
 
-<!-- Cross-site nav. Identical block lives on / and /shop/ with paths adjusted to depth. -->
-<nav class="site-nav" aria-label="Barn Burner Relics surfaces">
-  <a class="site-nav-brand" href="../">
-    <span class="site-nav-brand-mark">BBR</span>
-    <span class="site-nav-brand-text">Barn Burner Relics</span>
-  </a>
-  <div class="site-nav-links">
-    <a href="../"          data-key="sales"   >The Barn</a>
-    <a href="../shop/"     data-key="shop"    >The Collection</a>
-    <a href="../gallery/"  data-key="gallery" class="active">Auction</a>
-    <a href="../show/"     data-key="show"    >Shows</a>
-    <a href="../social/"   data-key="social"  >Socials</a>
-  </div>
-</nav>
-
-<!-- Postponement banner — TEMP_AUCTION_INSTANT cleared; Monday cadence resumes Sep 7 automatically. -->
-
-<main id="main">
-<section class="hero">
-    <div class="hero-image-wrap">
-        <picture>
-            <source type="image/webp" media="(max-width: 768px)" srcset="/images/incoming/2026-09-05-saturday-auction/hero-case-mobile.webp">
-                        <source type="image/webp" srcset="/images/incoming/2026-09-05-saturday-auction/hero-case.webp">
-                        <img class="hero-image" src="/images/incoming/2026-09-05-saturday-auction/hero-case.jpg" alt="Saturday Sept 5 auction overview — knife blade in case on dark backdrop" loading="eager" fetchpriority="high" width="2560" height="1495">
-        </picture>
-    </div>
-    <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
-        <div class="cd-cell">
-            <span class="cd-num" id="cdDays">--</span>
-            <span class="cd-lbl">Days</span>
-        </div>
-        <div class="cd-cell">
-            <span class="cd-num" id="cdHours">--</span>
-            <span class="cd-lbl">Hours</span>
-        </div>
-        <div class="cd-cell">
-            <span class="cd-num" id="cdMins">--</span>
-            <span class="cd-lbl">Mins</span>
-        </div>
-        <div class="cd-cell cd-cell-secs">
-            <span class="cd-num" id="cdSecs">--</span>
-            <span class="cd-lbl">Secs</span>
-        </div>
-    </div>
-    <div class="hero-text">
-        <div class="hero-eyebrow">Monday auction · Facebook Live</div>
-        <div class="hero-date" id="heroDate">Next auction · Monday · 5:00 PM Central Time</div>
-        <h1>Monday <em>Auction Preview</em></h1>
-        <p class="hero-note">
-            <strong>Overview shots below — individual lots go up during the live auction starting at 5:00 PM Monday.</strong>
-            Click any photo to enlarge. Bidding happens live on the Facebook group; check there for lot descriptions and provenance.
-        </p>
-    </div>
-</section>
-
-<div class="section-label">
-    <h2>Auction Preview</h2>
-    <p>scroll to browse · click to enlarge · overviews — individual lots Monday 5 PM</p>
-</div>
-
-<div class="photo-grid" id="photoGrid"></div>
-
-<!-- Quiet CTA: Nick is looking to buy collections + does appraisals.
-     Mirrors the services-cta block on the main site. Sits just above the
-     footer so it doesn't interrupt photo browsing. Action link goes to
-     the Facebook Group (the gallery's primary contact path; no inquiry
-     overlay exists on this page). -->
-<div class="fb-cta">
-        <style>
         .services-cta {
             max-width: 720px;
             margin: 48px auto 36px;
@@ -830,7 +762,7 @@
         .services-cta .services-action {
             margin-top: 10px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             color: var(--taupe);
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -849,7 +781,81 @@
             .services-cta { padding: 18px 20px; }
             .services-cta .services-line { font-size: 16px; }
         }
-        </style>
+
+
+</style>
+<link rel="stylesheet" href="/assets/site.css?v=20260905c">
+<script defer src="/assets/site.js?v=20260905c"></script>
+</head>
+<body class="bbr-theme bbr-gallery">
+<a class="skip-nav" href="#main">Skip to main content</a>
+
+<!-- Cross-site nav. Identical block lives on / and /shop/ with paths adjusted to depth. -->
+<header class="bbr-header">
+<nav class="site-nav" aria-label="Main navigation">
+  <a class="site-nav-brand" href="/" aria-label="Barn Burner Relics home"><span class="site-nav-brand-mark" aria-hidden="true">BBR</span><span class="site-nav-brand-text">Barn Burner Relics</span></a>
+  <div class="site-nav-links"><a href="/">The Barn</a>
+<a href="/shop/">The Collection</a>
+<a href="/gallery/" aria-current="page">Auction</a>
+<a href="/show/">Shows</a>
+<a href="/social/">Socials</a></div>
+</nav></header>
+
+<!-- Postponement banner — TEMP_AUCTION_INSTANT cleared; Monday cadence resumes Sep 7 automatically. -->
+
+<main id="main" tabindex="-1">
+<noscript><p style="padding:1.5rem;text-align:center">Enable JavaScript to browse the auction photos. <a href="/contact-us/">Contact us</a> for help.</p></noscript>
+<section class="hero" aria-labelledby="auction-title">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Barn Burner Relics · Facebook Live</div>
+      <h1 id="auction-title">Monday<br><em>Auction Preview</em></h1>
+      <p class="hero-date" id="heroDate">Monday · 5:00 PM Central Time</p>
+      <p class="hero-note">Browse the overview photos below. Individual lots, descriptions, provenance, and bidding are shared live in our Facebook group.</p>
+      <a class="auction-link" href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Join the auction on Facebook</a>
+    <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
+        <div class="cd-cell">
+            <span class="cd-num" id="cdDays">--</span>
+            <span class="cd-lbl">Days</span>
+        </div>
+        <div class="cd-cell">
+            <span class="cd-num" id="cdHours">--</span>
+            <span class="cd-lbl">Hours</span>
+        </div>
+        <div class="cd-cell">
+            <span class="cd-num" id="cdMins">--</span>
+            <span class="cd-lbl">Mins</span>
+        </div>
+        <div class="cd-cell cd-cell-secs">
+            <span class="cd-num" id="cdSecs">--</span>
+            <span class="cd-lbl">Secs</span>
+        </div>
+    </div>
+    </div>
+    <div class="hero-image-wrap">
+        <picture>
+            <source type="image/webp" media="(max-width: 768px)" srcset="/images/incoming/2026-09-05-saturday-auction/hero-case-mobile.webp">
+                        <source type="image/webp" srcset="/images/incoming/2026-09-05-saturday-auction/hero-case.webp">
+                        <img class="hero-image" src="/images/incoming/2026-09-05-saturday-auction/hero-case.jpg" alt="Saturday Sept 5 auction overview — knife blade in case on dark backdrop" loading="eager" fetchpriority="high" width="2560" height="1495">
+        </picture>
+    </div>
+  </div>
+</section>
+
+<div class="section-label">
+    <h2>A closer look</h2>
+    <p>Select a photo to open the full-size image in a new tab.</p>
+</div>
+
+<div class="photo-grid" id="photoGrid"></div>
+
+<!-- Quiet CTA: Nick is looking to buy collections + does appraisals.
+     Mirrors the services-cta block on the main site. Sits just above the
+     footer so it doesn't interrupt photo browsing. Action link goes to
+     the Facebook Group (the gallery's primary contact path; no inquiry
+     overlay exists on this page). -->
+<div class="fb-cta">
+
         <div class="services-cta">
         <div class="services-line">
             <strong>We are looking to buy.</strong> Single pieces, full collections, and estate accumulations —
@@ -860,32 +866,15 @@
         </div>
         </div>
 
+</div>
 </main>
-        <footer style="background:var(--bg);border-top:1px solid var(--bg-panel);padding:30px 24px 22px;text-align:center;">
-    <div class="fb-cta">
-        <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Join Barn Burner Relics on Facebook">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            <span>Join the Facebook Group</span>
-        </a>
-        <a href="https://www.youtube.com/shorts/3gBWGk3E9ls" target="_blank" rel="noopener" class="fb-cta-btn" aria-label="Watch the Monday Auction preview on YouTube" style="margin-top:10px;background:var(--bg-panel);border-color:var(--gold);color:var(--gold);">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="fill:var(--gold);"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span>Watch on YouTube</span>
-        </a>
-        <div class="fb-cta-sub" style="margin-top:8px;">Watch this week's Monday Auction preview</div>
-        <div class="fb-cta-sub" style="margin-top:14px;">Live photos, descriptions, and bidding for every auction night</div>
-        <div class="fb-cta-divider"></div>
-    </div>
-    <div style="margin-bottom:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;">
-        <a href="../">The Barn</a>
-        <a href="../shop/">The Collection</a>
-        <a href="./">Monday Auction</a>
-        <a href="../show/">Collinsville Show</a>
-        <a href="../social/">Everywhere Else</a>
-    </div>
-    <div style="margin-bottom:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;"></div>
-    <div style="font-size:12px;color:var(--border-soft);">
-        © 2026 Barn Burner Relics Inc. — Manhattan, IL &nbsp;·&nbsp; All artifacts guaranteed authentic for life. &nbsp;·&nbsp; <a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net" style="color:inherit;">Website problem? Contact the webmaster</a>
-    </div>
+        <footer class="bbr-footer">
+  <div class="bbr-footer-grid">
+    <div class="bbr-footer-about"><div class="bbr-footer-brand">Barn Burner Relics</div><p>Authentic Native American artifacts. Personally vetted by Nick Gatses, with a lifetime authenticity guarantee.</p><p>Manhattan, Illinois</p></div>
+    <div><h2>Explore</h2><ul><li><a href="/shop/">The Collection</a></li><li><a href="/gallery/">Monday Auction</a></li><li><a href="/show/">Collinsville Show</a></li><li><a href="/shows/">Upcoming events</a></li><li><a href="/#about">About Nick</a></li></ul></div>
+    <div><h2>Stay in touch</h2><ul><li><a href="/contact-us/">Contact us</a></li><li><a href="/faq/">Frequently asked questions</a></li><li><a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a></li><li><a href="/social/">Social channels</a></li><li><a href="/videos/">Videos</a></li></ul></div>
+  </div>
+  <div class="bbr-footer-bottom">© 2026 Barn Burner Relics Inc. · All artifacts guaranteed authentic for life.<br><a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net">Website problem? Contact the webmaster</a><div class="bbr-page-links"><a href="https://www.youtube.com/shorts/3gBWGk3E9ls" target="_blank" rel="noopener">Watch the auction preview on YouTube</a></div></div>
 </footer>
 
 <script>
@@ -928,12 +917,12 @@
             ${leadTagHtml}
             ${soldTagHtml}
             ${runTimeTagHtml}
-            <span class="tile-number">${String(idx + 1).padStart(2, '0')}</span>
-            <a href="${webpSrc}" target="_blank" rel="noopener" class="tile-link" aria-label="Open full size: ${p.title || 'Auction lot photo'}">
+            <span class="tile-number">Photo ${String(idx + 1).padStart(2, '0')}</span>
+            <a href="${webpSrc}" target="_blank" rel="noopener" class="tile-link" aria-label="Open ${p.title || 'auction photo ' + (idx + 1)} full size in a new tab">
                 <picture>
                     <source type="image/webp" media="(max-width: 768px)" srcset="${webpMobileSrc}">
                     <source type="image/webp" srcset="${webpSrc}">
-                    <img src="${webpSrc}" alt="${p.title || 'Auction lot photo'}" loading="lazy" width="1280" height="960">
+                    <img src="${p.src}" alt="${p.title || 'Auction overview photo ' + (idx + 1)}" loading="lazy" width="1280" height="960">
                 </picture>
             </a>
         </div>
@@ -1106,6 +1095,6 @@
 </script>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
-<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></scr'ipt><!-- End GoatCounter -->
+<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- End GoatCounter -->
 </body>
 </html>

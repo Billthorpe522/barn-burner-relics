@@ -21,442 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
-<style>
-/* ============================================================
-   Where Nick Will Be — Barn Burner Relics
-   Mirrors /show/ design system: dark + cream + gold + oxblood
-   Headlines: Playfair Display · Body: Cormorant Garamond
-   ============================================================ */
-:root {
-    --bg: #0d0d0d;
-    --bg-soft: #14110e;
-    --bg-card: #1a1410;
-    --border: #2a2018;
-    --cream: #f5f0e8;
-    --cream-dim: #d4c8a8;
-    --gold: #d4a853;
-    --gold-bright: #ffd700;
-    --oxblood: #8b4513;
-    --oxblood-bright: #a0522d;
-    --taupe: #8b7355;
-    --warm-grey: #b8a88a;
-}
 
-.skip-nav {
-    position: absolute; top: -100px; left: 0;
-    background: var(--gold); color: var(--bg);
-    padding: .75rem 1.25rem; z-index: 9999;
-    font-weight: 600; font-family: 'Cormorant Garamond', Georgia, serif;
-}
-.skip-nav:focus { top: 0; }
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-    background: var(--bg);
-    color: var(--cream);
-    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    font-size: 21px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-}
-a { color: var(--gold); text-decoration: none; }
-a:hover { color: var(--gold-bright); }
-img { max-width: 100%; display: block; }
-
-/* ---------- CROSS-SITE STRIP (matches /show/) ---------- */
-.site-nav {
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
-    border-bottom: 1px solid var(--border); padding: 9px 24px;
-    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: #b8a88a;
-    position: relative; z-index: 101;
-}
-.site-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.site-nav-brand-mark {
-    background: var(--oxblood);
-    color: var(--cream);
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    padding: 3px 8px;
-    border-radius: 2px;
-    border: 1px solid var(--gold);
-}
-.site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13px; color: var(--cream); letter-spacing: 1px; }
-.site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.site-nav-links a {
-    font-family: -apple-system, Arial, sans-serif; font-size: 14px; font-weight: 600;
-    color: #b8a88a; text-decoration: none;
-    border-bottom: 1px solid transparent; padding-bottom: 2px;
-}
-.site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
-.site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
-@media (max-width: 700px) {
-    .site-nav { padding: 8px 12px; gap: 8px; }
-    .site-nav-brand-text { display: none; }
-    .site-nav-brand-mark { font-size: 13px; padding: 3px 8px; }
-    .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
-    .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
-}
-
-/* ---------- HERO ---------- */
-.hero {
-    position: relative;
-    padding: 96px 32px 80px;
-    background:
-        radial-gradient(ellipse at top, rgba(139, 69, 19, 0.18) 0%, transparent 60%),
-        var(--bg);
-    border-bottom: 1px solid var(--border);
-}
-.hero-inner { max-width: 1100px; margin: 0 auto; }
-.hero-eyebrow {
-    display: inline-block;
-    color: var(--gold); font-size: 13px;
-    font-family: -apple-system, Arial, sans-serif;
-    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
-    padding-bottom: 6px; border-bottom: 1px solid var(--oxblood);
-    margin-bottom: 24px;
-}
-.hero h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(40px, 7vw, 76px);
-    font-weight: 700; line-height: 1.05;
-    color: var(--cream); margin-bottom: 20px;
-    letter-spacing: -0.5px;
-}
-.hero h1 em { font-style: italic; font-weight: 400; color: var(--gold); }
-.hero-sub {
-    font-size: 19px; color: var(--cream-dim);
-    max-width: 720px; margin-bottom: 0;
-}
-
-/* ---------- SHOW CARDS ---------- */
-.section { padding: 96px 32px; max-width: 1100px; margin: 0 auto; }
-.section-eyebrow {
-    color: var(--gold); font-size: 12px;
-    font-family: -apple-system, Arial, sans-serif;
-    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
-    margin-bottom: 16px;
-}
-.section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 600; line-height: 1.15;
-    margin-bottom: 24px; color: var(--cream);
-}
-.section h2 em { font-style: italic; font-weight: 400; color: var(--gold); }
-.section .lede {
-    font-size: 19px; color: var(--cream-dim);
-    margin-bottom: 28px; max-width: 720px;
-}
-.section p { margin-bottom: 18px; color: var(--cream-dim); }
-.section strong { color: var(--cream); }
-
-.show-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-    margin-top: 16px;
-}
-@media (min-width: 820px) {
-    .show-list { grid-template-columns: 1fr 1fr; gap: 32px; }
-}
-
-.show-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 2px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.18s ease, transform 0.18s ease;
-}
-.show-card:hover {
-    border-color: var(--oxblood);
-    border-left-color: var(--gold-bright);
-    transform: translateY(-2px);
-}
-.show-card.featured {
-    border-left-color: var(--gold-bright);
-    background: linear-gradient(180deg, #1f1812 0%, var(--bg-card) 100%);
-}
-.show-card.future {
-    border-left-color: var(--taupe);
-    opacity: 0.92;
-}
-
-.show-card-image {
-    width: 100%;
-    height: 320px;
-    object-fit: contain;
-    object-position: center top;
-    background: #0a0807;
-    border-bottom: 1px solid var(--border);
-    display: block;
-    cursor: zoom-in;
-    transition: opacity 0.15s ease;
-}
-.show-card-image:hover { opacity: 0.92; }
-.show-card-image-caption {
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase;
-    color: var(--taupe);
-    text-align: center;
-    padding: 8px 12px;
-    background: var(--bg-soft);
-    border-bottom: 1px solid var(--border);
-}
-@media (min-width: 820px) {
-    .show-card-image { height: 420px; }
-}
-.show-card-body {
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-.show-card-tag {
-    display: inline-block;
-    align-self: flex-start;
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); font-weight: 700;
-    margin-bottom: 12px;
-    padding: 4px 10px;
-    border: 1px solid var(--oxblood);
-    border-radius: 2px;
-    background: rgba(139, 69, 19, 0.12);
-}
-.show-card-tag.next {
-    color: var(--gold-bright);
-    border-color: var(--gold);
-    background: rgba(212, 168, 83, 0.12);
-}
-.show-card-tag.future {
-    color: var(--warm-grey);
-    border-color: var(--taupe);
-    background: transparent;
-}
-.show-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px; font-weight: 600;
-    color: var(--cream); line-height: 1.2;
-    margin-bottom: 8px;
-}
-.show-card .show-when {
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 14px; letter-spacing: 1.5px;
-    color: var(--gold); font-weight: 600;
-    margin-bottom: 18px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-}
-.show-card .show-where {
-    font-size: 17px; color: var(--cream);
-    margin-bottom: 4px; line-height: 1.4;
-}
-.show-card .show-where-detail {
-    font-size: 14px; color: var(--taupe);
-    font-family: -apple-system, Arial, sans-serif;
-    letter-spacing: 0.5px;
-    margin-bottom: 18px;
-}
-.show-card .show-details {
-    list-style: none; padding: 0;
-    margin: 0 0 24px;
-}
-.show-card .show-details li {
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 15px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-.show-card .show-details li:last-child { border-bottom: 0; }
-.show-card .show-details .label {
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 11px; letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--taupe); font-weight: 600;
-}
-.show-card .show-details .value {
-    color: var(--cream-dim); text-align: right;
-}
-.show-card .show-cta {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-}
-.show-card .show-cta a {
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 13px; letter-spacing: 1.5px;
-    text-transform: uppercase; font-weight: 600;
-    color: var(--gold);
-}
-.show-card .show-cta a:hover { color: var(--gold-bright); }
-
-/* ---------- SUBMIT YOUR SHOW ---------- */
-.submit-band {
-    background: linear-gradient(135deg, var(--oxblood) 0%, #5c2c0c 100%);
-    padding: 80px 32px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-.submit-inner {
-    max-width: 900px; margin: 0 auto;
-    text-align: center;
-}
-.submit-band h2 {
-    color: var(--cream); font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 40px);
-    margin-bottom: 20px; font-weight: 600;
-}
-.submit-band p {
-    color: var(--cream-dim);
-    max-width: 640px; margin: 0 auto 32px;
-    font-size: 18px; line-height: 1.6;
-}
-.submit-channels {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    max-width: 720px; margin: 0 auto;
-}
-@media (min-width: 640px) {
-    .submit-channels { grid-template-columns: 1fr 1fr; }
-}
-.submit-channel {
-    background: rgba(0, 0, 0, 0.32);
-    border: 1px solid rgba(245, 240, 232, 0.18);
-    padding: 24px;
-    border-radius: 2px;
-    text-align: left;
-}
-.submit-channel .label {
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold-bright); font-weight: 700;
-    margin-bottom: 8px;
-}
-.submit-channel a, .submit-channel span {
-    font-family: 'Playfair Display', serif;
-    font-size: 19px; color: var(--cream);
-    word-break: break-word;
-}
-.submit-channel a:hover { color: var(--gold); }
-.submit-channel .small {
-    font-size: 13px; color: var(--cream-dim);
-    margin-top: 6px;
-    font-family: -apple-system, Arial, sans-serif;
-    letter-spacing: 0.3px;
-}
-
-/* ---------- FOOTER ---------- */
-.footer {
-    background: var(--bg-soft);
-    padding: 48px 32px 32px;
-    border-top: 1px solid var(--border);
-}
-.footer-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 48px; margin-bottom: 32px;
-}
-@media (max-width: 768px) {
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .footer-brand-col { grid-column: 1 / -1; }
-}
-.footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 600; color: var(--cream);
-    margin-bottom: 12px;
-}
-.footer p { font-size: 14px; color: var(--taupe); }
-.footer h4 {
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gold); font-weight: 700; margin-bottom: 16px;
-}
-.footer ul { list-style: none; padding: 0; }
-.footer li { margin-bottom: 10px; }
-.footer a { color: var(--cream-dim); font-size: 14px; }
-.footer a:hover { color: var(--gold); }
-.footer-bottom {
-    max-width: 1100px; margin: 32px auto 0;
-    padding-top: 24px; border-top: 1px solid var(--border);
-    text-align: center;
-    font-size: 12px; color: var(--taupe);
-    letter-spacing: 1px;
-}
-
-/* ---------- MOBILE ---------- */
-@media (max-width: 700px) {
-    .hero { padding: 64px 24px 56px; }
-    .section { padding: 64px 24px; }
-    .submit-band { padding: 64px 24px; }
-    .show-card-body { padding: 24px; }
-    .show-card-image { height: 320px; }
-}
-
-/* ---------- LIGHTBOX (full flyer viewer) ---------- */
-.lightbox {
-    position: fixed; inset: 0;
-    background: rgba(0, 0, 0, 0.92);
-    z-index: 1000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 32px;
-    cursor: zoom-out;
-    animation: lb-fade 0.15s ease;
-}
-@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
-.lightbox.open { display: flex; }
-.lightbox-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
-    border-radius: 2px;
-}
-.lightbox-close {
-    position: absolute;
-    top: 20px; right: 20px;
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: rgba(245, 240, 232, 0.1);
-    border: 1px solid rgba(245, 240, 232, 0.2);
-    color: var(--cream);
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-family: -apple-system, Arial, sans-serif;
-    transition: background 0.15s ease;
-}
-.lightbox-close:hover { background: rgba(245, 240, 232, 0.2); }
-.lightbox-caption {
-    position: absolute;
-    bottom: 20px; left: 0; right: 0;
-    text-align: center;
-    color: var(--cream-dim);
-    font-family: -apple-system, Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 1px;
-    padding: 0 24px;
-}
-@media (max-width: 700px) {
-    .lightbox { padding: 16px; }
-    .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
-}
-</style>
 
 <!-- JSON-LD: Event schema for upcoming shows -->
 <script type="application/ld+json">
@@ -523,29 +88,465 @@ img { max-width: 100%; display: block; }
   ]
 }
 </script>
+<style>
+
+/* ============================================================
+   Where Nick Will Be — Barn Burner Relics
+   Mirrors /show/ design system: dark + cream + gold + oxblood
+   Headlines: Playfair Display · Body: Cormorant Garamond
+   ============================================================ */
+:root {
+    --bg: #0d0d0d;
+    --bg-soft: #14110e;
+    --bg-card: #1a1410;
+    --border: #2a2018;
+    --cream: #f5f0e8;
+    --cream-dim: #d4c8a8;
+    --gold: #d4a853;
+    --gold-bright: #ffd700;
+    --oxblood: #8b4513;
+    --oxblood-bright: #a0522d;
+    --taupe: #8b7355;
+    --warm-grey: #b8a88a;
+}
+
+.skip-nav {
+    position: absolute; top: -100px; left: 0;
+    background: var(--gold); color: var(--bg);
+    padding: .75rem 1.25rem; z-index: 9999;
+    font-weight: 600; font-family: 'Cormorant Garamond', Georgia, serif;
+}
+.skip-nav:focus { top: 0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 21px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-bright); }
+img { max-width: 100%; display: block; }
+
+/* ---------- CROSS-SITE STRIP (matches /show/) ---------- */
+.site-nav {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: linear-gradient(90deg, #0a0807 0%, var(--bg-soft) 50%, #0a0807 100%);
+    border-bottom: 1px solid var(--border); padding: 9px 24px;
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 14px; letter-spacing: 1.4px; text-transform: uppercase; color: #b8a88a;
+    position: relative; z-index: 101;
+}
+.site-nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.site-nav-brand-mark {
+    background: var(--oxblood);
+    color: var(--cream);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--gold);
+}
+.site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; color: var(--cream); letter-spacing: 1px; }
+.site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.site-nav-links a {
+    font-family: -apple-system, Arial, sans-serif; font-size: 14px; font-weight: 600;
+    color: #b8a88a; text-decoration: none;
+    border-bottom: 1px solid transparent; padding-bottom: 2px;
+}
+.site-nav-links a:hover { color: #d4a853; border-bottom-color: #d4a853; }
+.site-nav-links a.active { color: #f5f0e8; border-bottom-color: #d4a853; }
+@media (max-width: 700px) {
+    .site-nav { padding: 8px 12px; gap: 8px; }
+    .site-nav-brand-text { display: none; }
+    .site-nav-brand-mark { font-size: 14px; padding: 3px 8px; }
+    .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
+    .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    position: relative;
+    padding: 96px 32px 80px;
+    background:
+        radial-gradient(ellipse at top, rgba(139, 69, 19, 0.18) 0%, transparent 60%),
+        var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+.hero-eyebrow {
+    display: inline-block;
+    color: var(--gold); font-size: 14px;
+    font-family: -apple-system, Arial, sans-serif;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+    padding-bottom: 6px; border-bottom: 1px solid var(--oxblood);
+    margin-bottom: 24px;
+}
+.hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: 700; line-height: 1.05;
+    color: var(--cream); margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--gold); }
+.hero-sub {
+    font-size: 19px; color: var(--cream-dim);
+    max-width: 720px; margin-bottom: 0;
+}
+
+/* ---------- SHOW CARDS ---------- */
+.section { padding: 96px 32px; max-width: 1100px; margin: 0 auto; }
+.section-eyebrow {
+    color: var(--gold); font-size: 14px;
+    font-family: -apple-system, Arial, sans-serif;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+    margin-bottom: 16px;
+}
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600; line-height: 1.15;
+    margin-bottom: 24px; color: var(--cream);
+}
+.section h2 em { font-style: italic; font-weight: 400; color: var(--gold); }
+.section .lede {
+    font-size: 19px; color: var(--cream-dim);
+    margin-bottom: 28px; max-width: 720px;
+}
+.section p { margin-bottom: 18px; color: var(--cream-dim); }
+.section strong { color: var(--cream); }
+
+.show-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 16px;
+}
+@media (min-width: 820px) {
+    .show-list { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+
+.show-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.show-card:hover {
+    border-color: var(--oxblood);
+    border-left-color: var(--gold-bright);
+    transform: translateY(-2px);
+}
+.show-card.featured {
+    border-left-color: var(--gold-bright);
+    background: linear-gradient(180deg, #1f1812 0%, var(--bg-card) 100%);
+}
+.show-card.future {
+    border-left-color: var(--taupe);
+    opacity: 0.92;
+}
+
+.show-card-image {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    object-position: center top;
+    background: #0a0807;
+    border-bottom: 1px solid var(--border);
+    display: block;
+    cursor: zoom-in;
+    transition: opacity 0.15s ease;
+}
+.show-card-image:hover { opacity: 0.92; }
+.show-card-image-caption {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--taupe);
+    text-align: center;
+    padding: 8px 12px;
+    background: var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+}
+@media (min-width: 820px) {
+    .show-card-image { height: 420px; }
+}
+.show-card-body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.show-card-tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--oxblood);
+    border-radius: 2px;
+    background: rgba(139, 69, 19, 0.12);
+}
+.show-card-tag.next {
+    color: var(--gold-bright);
+    border-color: var(--gold);
+    background: rgba(212, 168, 83, 0.12);
+}
+.show-card-tag.future {
+    color: var(--warm-grey);
+    border-color: var(--taupe);
+    background: transparent;
+}
+.show-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600;
+    color: var(--cream); line-height: 1.2;
+    margin-bottom: 8px;
+}
+.show-card .show-when {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 1.5px;
+    color: var(--gold); font-weight: 600;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+.show-card .show-where {
+    font-size: 17px; color: var(--cream);
+    margin-bottom: 4px; line-height: 1.4;
+}
+.show-card .show-where-detail {
+    font-size: 14px; color: var(--taupe);
+    font-family: -apple-system, Arial, sans-serif;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+}
+.show-card .show-details {
+    list-style: none; padding: 0;
+    margin: 0 0 24px;
+}
+.show-card .show-details li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.show-card .show-details li:last-child { border-bottom: 0; }
+.show-card .show-details .label {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--taupe); font-weight: 600;
+}
+.show-card .show-details .value {
+    color: var(--cream-dim); text-align: right;
+}
+.show-card .show-cta {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+.show-card .show-cta a {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600;
+    color: var(--gold);
+}
+.show-card .show-cta a:hover { color: var(--gold-bright); }
+
+/* ---------- SUBMIT YOUR SHOW ---------- */
+.submit-band {
+    background: linear-gradient(135deg, var(--oxblood) 0%, #5c2c0c 100%);
+    padding: 80px 32px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.submit-inner {
+    max-width: 900px; margin: 0 auto;
+    text-align: center;
+}
+.submit-band h2 {
+    color: var(--cream); font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 20px; font-weight: 600;
+}
+.submit-band p {
+    color: var(--cream-dim);
+    max-width: 640px; margin: 0 auto 32px;
+    font-size: 18px; line-height: 1.6;
+}
+.submit-channels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 720px; margin: 0 auto;
+}
+@media (min-width: 640px) {
+    .submit-channels { grid-template-columns: 1fr 1fr; }
+}
+.submit-channel {
+    background: rgba(0, 0, 0, 0.32);
+    border: 1px solid rgba(245, 240, 232, 0.18);
+    padding: 24px;
+    border-radius: 2px;
+    text-align: left;
+}
+.submit-channel .label {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-bright); font-weight: 700;
+    margin-bottom: 8px;
+}
+.submit-channel a, .submit-channel span {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px; color: var(--cream);
+    word-break: break-word;
+}
+.submit-channel a:hover { color: var(--gold); }
+.submit-channel .small {
+    font-size: 14px; color: var(--cream-dim);
+    margin-top: 6px;
+    font-family: -apple-system, Arial, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    background: var(--bg-soft);
+    padding: 48px 32px 32px;
+    border-top: 1px solid var(--border);
+}
+.footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 32px;
+}
+@media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-brand-col { grid-column: 1 / -1; }
+}
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; color: var(--cream);
+    margin-bottom: 12px;
+}
+.footer p { font-size: 14px; color: var(--taupe); }
+.footer h4 {
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 16px;
+}
+.footer ul { list-style: none; padding: 0; }
+.footer li { margin-bottom: 10px; }
+.footer a { color: var(--cream-dim); font-size: 14px; }
+.footer a:hover { color: var(--gold); }
+.footer-bottom {
+    max-width: 1100px; margin: 32px auto 0;
+    padding-top: 24px; border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 14px; color: var(--taupe);
+    letter-spacing: 1px;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 700px) {
+    .hero { padding: 64px 24px 56px; }
+    .section { padding: 64px 24px; }
+    .submit-band { padding: 64px 24px; }
+    .show-card-body { padding: 24px; }
+    .show-card-image { height: 320px; }
+}
+
+/* ---------- LIGHTBOX (full flyer viewer) ---------- */
+.lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    cursor: zoom-out;
+    animation: lb-fade 0.15s ease;
+}
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+.lightbox.open { display: flex; }
+.lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+}
+.lightbox-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.1);
+    border: 1px solid rgba(245, 240, 232, 0.2);
+    color: var(--cream);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, Arial, sans-serif;
+    transition: background 0.15s ease;
+}
+.lightbox-close:hover { background: rgba(245, 240, 232, 0.2); }
+.lightbox-caption {
+    position: absolute;
+    bottom: 20px; left: 0; right: 0;
+    text-align: center;
+    color: var(--cream-dim);
+    font-family: -apple-system, Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 0 24px;
+}
+@media (max-width: 700px) {
+    .lightbox { padding: 16px; }
+    .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
+}
+
+</style>
+<link rel="stylesheet" href="/assets/site.css?v=20260905c">
+<script defer src="/assets/site.js?v=20260905c"></script>
 </head>
 
-<body>
+<body class="bbr-theme bbr-shows">
 <a class="skip-nav" href="#main">Skip to main content</a>
 
 <!-- ============================================================
      CROSS-SITE NAV (identical to /show/, /gallery/, etc.)
      ============================================================ -->
-<nav class="site-nav" aria-label="Barn Burner Relics surfaces">
-  <a class="site-nav-brand" href="../">
-    <span class="site-nav-brand-mark">BBR</span>
-    <span class="site-nav-brand-text">Barn Burner Relics</span>
-  </a>
-  <div class="site-nav-links">
-    <a href="../"          data-key="sales"   >The Barn</a>
-    <a href="../shop/"     data-key="shop"    >The Collection</a>
-    <a href="../gallery/"  data-key="gallery" >Auction</a>
-    <a href="../show/"     data-key="show"    class="active">Shows</a>
-    <a href="../social/"   data-key="social"  >Socials</a>
-  </div>
-</nav>
+<header class="bbr-header">
+<nav class="site-nav" aria-label="Main navigation">
+  <a class="site-nav-brand" href="/" aria-label="Barn Burner Relics home"><span class="site-nav-brand-mark" aria-hidden="true">BBR</span><span class="site-nav-brand-text">Barn Burner Relics</span></a>
+  <div class="site-nav-links"><a href="/">The Barn</a>
+<a href="/shop/">The Collection</a>
+<a href="/gallery/">Auction</a>
+<a href="/show/" aria-current="page">Shows</a>
+<a href="/social/">Socials</a></div>
+</nav></header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
 <!-- ============================================================
      HERO
@@ -675,43 +676,13 @@ img { max-width: 100%; display: block; }
 
 </main>
 
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand-col">
-            <div class="footer-brand">Barn Burner Relics</div>
-            <p>
-                Authentic prehistoric Native American artifacts. Manhattan, Illinois.
-                Lifetime authenticity guarantee on every piece Nick sells.
-            </p>
-        </div>
-        <div>
-            <h4>Shows</h4>
-            <ul>
-                <li><a href="./">This Calendar</a></li>
-                <li><a href="../show/">Collinsville (Nick's Show)</a></li>
-                <li><a href="#submit">Submit a Show</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Barn Burner Relics</h4>
-            <ul>
-                <li><a href="../">The Barn</a></li>
-                <li><a href="../shop/">The Collection</a></li>
-                <li><a href="../gallery/">Monday Auction</a></li>
-                <li><a href="../social/">Everywhere Else</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Connect</h4>
-            <ul>
-                <li><a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a></li>
-                <li><a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        © 2026 Barn Burner Relics Inc. — Manhattan, IL &nbsp;·&nbsp; All artifacts guaranteed authentic for life. &nbsp;·&nbsp; <a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net" style="color:inherit;">Website problem? Contact the webmaster</a>
-    </div>
+<footer class="bbr-footer">
+  <div class="bbr-footer-grid">
+    <div class="bbr-footer-about"><div class="bbr-footer-brand">Barn Burner Relics</div><p>Authentic Native American artifacts. Personally vetted by Nick Gatses, with a lifetime authenticity guarantee.</p><p>Manhattan, Illinois</p></div>
+    <div><h2>Explore</h2><ul><li><a href="/shop/">The Collection</a></li><li><a href="/gallery/">Monday Auction</a></li><li><a href="/show/">Collinsville Show</a></li><li><a href="/shows/">Upcoming events</a></li><li><a href="/#about">About Nick</a></li></ul></div>
+    <div><h2>Stay in touch</h2><ul><li><a href="/contact-us/">Contact us</a></li><li><a href="/faq/">Frequently asked questions</a></li><li><a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a></li><li><a href="/social/">Social channels</a></li><li><a href="/videos/">Videos</a></li></ul></div>
+  </div>
+  <div class="bbr-footer-bottom">© 2026 Barn Burner Relics Inc. · All artifacts guaranteed authentic for life.<br><a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net">Website problem? Contact the webmaster</a><div class="bbr-page-links"><a href="#submit">Submit a show</a></div></div>
 </footer>
 
 <!-- Cloudflare Web Analytics -->
@@ -737,7 +708,7 @@ img { max-width: 100%; display: block; }
         lbCap.textContent = cap || '';
         lb.classList.add('open');
         document.body.style.overflow = 'hidden';
-        lb.focus();
+        // Shared dialog behavior moves focus and restores the triggering link.
     }
     function closeLb() {
         lb.classList.remove('open');
@@ -768,6 +739,6 @@ img { max-width: 100%; display: block; }
     });
 })();
 </script>
-<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></scr'ipt><!-- End GoatCounter -->
+<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- End GoatCounter -->
 </body>
 </html>

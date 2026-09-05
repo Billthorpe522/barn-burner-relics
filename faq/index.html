@@ -100,7 +100,9 @@
 <link rel="icon" href="../favicon-16x16.png" sizes="16x16">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
+
 <style>
+
 :root {
     --bg: #0d0d0d;
     --bg-soft: #14110e;
@@ -145,7 +147,7 @@ body {
     background: var(--oxblood); color: var(--cream);
     border: 1px solid var(--gold);
     font-family: 'Playfair Display', Georgia, serif; font-weight: 900;
-    padding: 4px 10px; border-radius: 3px; font-size: 11px;
+    padding: 4px 10px; border-radius: 3px; font-size: 14px;
     letter-spacing: 1.5px;
 }
 .site-nav-brand-text {
@@ -166,7 +168,7 @@ body {
 @media (max-width: 700px) {
     .site-nav { padding: 8px 12px; gap: 8px; }
     .site-nav-brand-text { display: none; }
-    .site-nav-brand-mark { font-size: 13px; padding: 3px 8px; }
+    .site-nav-brand-mark { font-size: 14px; padding: 3px 8px; }
     .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
     .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
 }
@@ -302,7 +304,7 @@ body {
     border: 1px solid var(--border);
     color: var(--cream-dim);
     font-family: -apple-system, Arial, sans-serif;
-    font-size: 12px; font-weight: 600;
+    font-size: 14px; font-weight: 600;
     letter-spacing: 1px; text-transform: uppercase;
     padding: 10px 18px; border-radius: 4px;
     text-decoration: none;
@@ -340,7 +342,7 @@ body {
     .faq-item summary { font-size: 17px; padding: 16px 18px; padding-right: 44px; }
     .faq-item .answer { font-size: 16px; padding: 6px 18px 18px; }
     .quick-nav { padding: 20px 16px 4px; }
-    .quick-nav a { font-size: 11px; padding: 8px 14px; }
+    .quick-nav a { font-size: 14px; padding: 8px 14px; }
 }
 
 /* Skip-nav */
@@ -353,27 +355,26 @@ body {
     padding: 8px 14px; border-radius: 4px;
     z-index: 200;
 }
+
 </style>
+<link rel="stylesheet" href="/assets/site.css?v=20260905c">
+<script defer src="/assets/site.js?v=20260905c"></script>
 </head>
-<body>
+<body class="bbr-theme bbr-faq">
 <a class="skip-nav" href="#main">Skip to main content</a>
 
 <!-- Cross-site nav. FAQ is informational — no top-nav entry in the 5-link set. -->
-<nav class="site-nav" aria-label="Barn Burner Relics surfaces">
-  <a class="site-nav-brand" href="../">
-    <span class="site-nav-brand-mark">BBR</span>
-    <span class="site-nav-brand-text">Barn Burner Relics</span>
-  </a>
-  <div class="site-nav-links">
-    <a href="../"          data-key="sales"   >The Barn</a>
-    <a href="../shop/"     data-key="shop"    >The Collection</a>
-    <a href="../gallery/"  data-key="gallery" >Auction</a>
-    <a href="../show/"     data-key="show"    >Shows</a>
-    <a href="../social/"   data-key="social"  >Socials</a>
-  </div>
-</nav>
+<header class="bbr-header">
+<nav class="site-nav" aria-label="Main navigation">
+  <a class="site-nav-brand" href="/" aria-label="Barn Burner Relics home"><span class="site-nav-brand-mark" aria-hidden="true">BBR</span><span class="site-nav-brand-text">Barn Burner Relics</span></a>
+  <div class="site-nav-links"><a href="/">The Barn</a>
+<a href="/shop/">The Collection</a>
+<a href="/gallery/">Auction</a>
+<a href="/show/">Shows</a>
+<a href="/social/">Socials</a></div>
+</nav></header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
 <section class="faq-hero">
     <div class="eyebrow">Monday Auction · Manhattan, IL · Ships Anywhere</div>
@@ -583,7 +584,15 @@ body {
 </section>
 
 </main>
-<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></scr'ipt><!-- End GoatCounter -->
-<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></scr'ipt><!-- End Cloudflare Web Analytics -->
+<footer class="bbr-footer">
+  <div class="bbr-footer-grid">
+    <div class="bbr-footer-about"><div class="bbr-footer-brand">Barn Burner Relics</div><p>Authentic Native American artifacts. Personally vetted by Nick Gatses, with a lifetime authenticity guarantee.</p><p>Manhattan, Illinois</p></div>
+    <div><h2>Explore</h2><ul><li><a href="/shop/">The Collection</a></li><li><a href="/gallery/">Monday Auction</a></li><li><a href="/show/">Collinsville Show</a></li><li><a href="/shows/">Upcoming events</a></li><li><a href="/#about">About Nick</a></li></ul></div>
+    <div><h2>Stay in touch</h2><ul><li><a href="/contact-us/">Contact us</a></li><li><a href="/faq/">Frequently asked questions</a></li><li><a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a></li><li><a href="/social/">Social channels</a></li><li><a href="/videos/">Videos</a></li></ul></div>
+  </div>
+  <div class="bbr-footer-bottom">© 2026 Barn Burner Relics Inc. · All artifacts guaranteed authentic for life.<br><a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net">Website problem? Contact the webmaster</a></div>
+</footer>
+<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- End GoatCounter -->
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

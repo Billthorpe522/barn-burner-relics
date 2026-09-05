@@ -29,7 +29,54 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+
+<!-- FAQPage schema — Google AI Overviews / Bing Copilot / Perplexity pull answers from this block. Source-of-truth for AI search. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are Barn Burner Relics artifacts guaranteed authentic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every artifact sold by Barn Burner Relics is guaranteed authentic for life. If a piece is ever proven not to be authentic, we refund the full purchase price — no time limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is shipping from Barn Burner Relics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$10 flat rate shipping anywhere in the United States, via UPS or USPS. One box, any box — single points, bannerstones, and small collections all ship at $10. Pottery ships at $15 flat because of the extra packing it takes to get it there whole. Either rate covers any box, regardless of weight."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a buyer premium on Barn Burner Relics auctions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Barn Burner Relics charges flat shipping only — no buyer premium, no hidden fees. This is the major difference between us and auction houses like eBay or LiveAuctioneers, which can take 20%+ in premiums and fees combined."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Barn Burner Relics Monday auction work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every Monday at 5 PM Central, Nick Gatses posts 20–40 fresh lots to the Barn Burner Relics Facebook group. Bidding is comment-to-bid: type your bid in the comments on the lot photo. There is no auction timer — bidding stays open until Nick calls it. To claim a Buy-It-Now piece, type SOLD or say you want the item. Camden Baker sends invoices to the winners after the sale."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Preload the hero image for fast LCP. The <picture> element below handles WebP/mobile variants. -->
+<link rel="preload" as="image" href="/images/hero-display-case-collection.webp" type="image/webp" imagesrcset="/images/hero-display-case-collection-mobile.webp 768w, /images/hero-display-case-collection.webp 1280w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
 <style>
+
 :root {
     --bg: #0d0d0d;
     --bg-soft: #14110e;
@@ -178,7 +225,7 @@
             padding: 14px 18px;
             background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
             font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            font-size: 11px;
+            font-size: 14px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--cream-dim);
@@ -221,7 +268,7 @@
         }
         .hero-video .video-link-caption {
             margin-top: 10px;
-            font-size: 11px;
+            font-size: 14px;
         }
         .hero-video .video-link-caption a {
             color: inherit;
@@ -277,7 +324,7 @@
             border: 1px solid var(--border);
             color: var(--sand);
             font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 13px; font-weight: 600;
+            font-size: 14px; font-weight: 600;
             letter-spacing: 0.06em;
             padding: 8px 18px;
             border-radius: 4px;
@@ -351,9 +398,9 @@
         }
         .product-card .info .price-row .price { font-size: 17px; font-weight: 600; }
         .product-card .info .price-row .price.inquire-price { color: var(--gold); font-style: italic; font-weight: 500; }
-        .product-card .info .price-row .period { font-size: 11px; color: var(--taupe-dim); }
+        .product-card .info .price-row .period { font-size: 14px; color: var(--taupe-dim); }
         .product-card .info .price-row .card-cat {
-            font-size: 10px; color: var(--sand);
+            font-size: 14px; color: var(--sand);
             text-transform: uppercase; letter-spacing: 0.12em;
             font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
         }
@@ -378,7 +425,7 @@
         .show-banner a:hover { color: var(--gold-bright); }
         .show-banner .banner-label {
             color: var(--ink-soft);
-            font-size: 13px;
+            font-size: 14px;
             font-family: -apple-system, Arial, sans-serif;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -440,7 +487,7 @@
             background: var(--gold);
             color: var(--bg);
             font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -476,7 +523,7 @@
         .featured-cta .btn-inquire {
             display: inline-block;
             font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -549,7 +596,7 @@
     padding: 16px 24px 22px;
     margin-top: 14px;
     font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -652,7 +699,7 @@
             bottom: 10px; right: 12px;
             background: rgba(0,0,0,0.85);
             color: var(--cream);
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 600;
             padding: 3px 7px;
             border-radius: 3px;
@@ -664,14 +711,14 @@
             position: absolute;
             bottom: 10px; left: 14px; right: 80px;
             color: var(--cream);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             font-family: 'Cormorant Garamond', Georgia, serif;
             text-shadow: 0 1px 4px rgba(0,0,0,0.9);
             z-index: 1;
         }
         .video-link-caption {
-            font-size: 12px;
+            font-size: 14px;
             color: var(--taupe);
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -693,7 +740,7 @@
         .detail-thumbs img.active { border-color: var(--gold); }
         .detail-thumbs img:hover { border-color: var(--taupe); }
         .detail-info { padding: 40px 40px 40px 0; }
-        .detail-info .breadcrumb { font-size: 12px; color: var(--taupe-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-info .breadcrumb { font-size: 14px; color: var(--taupe-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .detail-info h2 { font-size: 28px; color: var(--cream); margin-bottom: 4px; }
         .detail-info .detail-period {
             font-size: 15px;
@@ -721,7 +768,7 @@
             background: var(--bg-panel); border: 1px solid var(--border);
             border-radius: 8px; padding: 20px; margin-bottom: 24px;
         }
-        .detail-meta h4 { font-size: 13px; color: var(--taupe); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .detail-meta h4 { font-size: 14px; color: var(--taupe); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .detail-meta table { width: 100%; border-collapse: collapse; }
         .detail-meta td { padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg-elev); }
         .detail-meta td:first-child { color: var(--taupe); width: 40%; font-weight: 500; }
@@ -808,7 +855,7 @@
         .messenger-btn small {
             display: block;
             color: var(--taupe);
-            font-size: 12px;
+            font-size: 14px;
             font-family: -apple-system, sans-serif;
         }
         .messenger-close {
@@ -817,7 +864,7 @@
             color: var(--taupe);
             padding: 10px 24px;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             margin-top: 12px;
             text-transform: uppercase;
@@ -846,11 +893,11 @@
             padding: 40px 24px; text-align: center;
         }
         footer .links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
-        footer .links a { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        footer .links a { color: var(--gold); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         footer .links a:hover { color: var(--gold-bright); }
         footer .links a.gallery-link { color: var(--gold-bright); font-weight: 600; }
         footer .links a.gallery-link:hover { color: #ffffff; }
-        footer .copy { font-size: 12px; color: var(--taupe); font-style: italic; }
+        footer .copy { font-size: 14px; color: var(--taupe); font-style: italic; }
 
         /* Cross-site top nav (identical block on /shop/ and /gallery/) */
         .site-nav {
@@ -862,7 +909,7 @@
             border-bottom: 1px solid var(--border);
             padding: 9px 24px;
             font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-            font-size: 13px;
+            font-size: 14px;
             letter-spacing: 1.4px;
             text-transform: uppercase;
             color: #b8a88a;
@@ -882,14 +929,14 @@
             background: var(--oxblood);
             color: var(--cream);
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 900;
             letter-spacing: 2px;
             padding: 3px 8px;
             border-radius: 2px;
             border: 1px solid var(--gold);
         }
-        .site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13px; color: var(--cream); letter-spacing: 1px; }
+        .site-nav-brand-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; color: var(--cream); letter-spacing: 1px; }
         .site-nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
         .site-nav-links a {
             font-family: -apple-system, Arial, sans-serif; font-size: 14px; font-weight: 600;
@@ -902,7 +949,7 @@
         @media (max-width: 540px) {
             .site-nav { padding: 8px 12px; gap: 8px; }
             .site-nav-brand-text { display: none; }
-            .site-nav-brand-mark { font-size: 13px; padding: 3px 8px; }
+            .site-nav-brand-mark { font-size: 14px; padding: 3px 8px; }
             .site-nav-links { gap: 10px; font-size: 15px; flex-wrap: nowrap; }
             .site-nav-links a { white-space: nowrap; text-transform: none; letter-spacing: 0; }
         }
@@ -922,7 +969,7 @@
         }
         .postponement-banner strong { color: var(--gold); font-weight: 600; }
         @media (max-width: 540px) {
-            .postponement-banner { padding: 10px 14px; font-size: 13px; }
+            .postponement-banner { padding: 10px 14px; font-size: 14px; }
         }
 
         /* Responsive */
@@ -944,79 +991,95 @@
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 12px 30px; }
             .hero h1 { font-size: 24px; }
         }
-    </style>
 
-<!-- FAQPage schema — Google AI Overviews / Bing Copilot / Perplexity pull answers from this block. Source-of-truth for AI search. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Are Barn Burner Relics artifacts guaranteed authentic?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Every artifact sold by Barn Burner Relics is guaranteed authentic for life. If a piece is ever proven not to be authentic, we refund the full purchase price — no time limit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much is shipping from Barn Burner Relics?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "$10 flat rate shipping anywhere in the United States, via UPS or USPS. One box, any box — single points, bannerstones, and small collections all ship at $10. Pottery ships at $15 flat because of the extra packing it takes to get it there whole. Either rate covers any box, regardless of weight."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a buyer premium on Barn Burner Relics auctions?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Barn Burner Relics charges flat shipping only — no buyer premium, no hidden fees. This is the major difference between us and auction houses like eBay or LiveAuctioneers, which can take 20%+ in premiums and fees combined."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does the Barn Burner Relics Monday auction work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Every Monday at 5 PM Central, Nick Gatses posts 20–40 fresh lots to the Barn Burner Relics Facebook group. Bidding is comment-to-bid: type your bid in the comments on the lot photo. There is no auction timer — bidding stays open until Nick calls it. To claim a Buy-It-Now piece, type SOLD or say you want the item. Camden Baker sends invoices to the winners after the sale."
-      }
+
+    .whats-new { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 64px 20px; }
+    .whats-new .section-header { padding-top: 0; }
+    .bulletin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
+    .bulletin-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+    .bulletin-tag { display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 3px 10px; border-radius: 2px; margin-bottom: 12px; }
+    .bulletin-images { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); }
+    .bulletin-images img { width: 100%; height: 240px; object-fit: cover; display: block; cursor: pointer; }
+    .bulletin-body { padding: 22px 24px 26px; }
+    .bulletin-body h3 { font-family: 'Cinzel', serif; color: var(--ink); font-size: 20px; margin: 0 0 10px; }
+    .bulletin-body p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.65; margin: 0 0 14px; }
+    .bulletin-body p em { color: var(--ink); }
+    .bulletin-cta { display: inline-block; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border-hover); background: transparent; padding: 8px 16px; border-radius: 2px; text-decoration: none; transition: background .15s, color .15s; }
+    .bulletin-cta:hover { background: var(--gold); color: var(--bg); }
+    .bulletin-meta { font-size: 14px; color: var(--ink-soft); letter-spacing: 0.5px; margin-top: 14px; }
+    @media (max-width: 600px) {
+        .bulletin-images img { height: 180px; }
+        .whats-new { padding: 48px 16px; }
     }
-  ]
-}
-</script>
 
-<!-- Preload the hero image for fast LCP. The <picture> element below handles WebP/mobile variants. -->
-<link rel="preload" as="image" href="/images/hero-display-case-collection.webp" type="image/webp" imagesrcset="/images/hero-display-case-collection-mobile.webp 768w, /images/hero-display-case-collection.webp 1280w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
+
+    .services-cta {
+        max-width: 720px;
+        margin: 36px auto 0;
+        padding: 22px 28px;
+        background: rgba(26, 20, 16, 0.5);
+        border: 1px solid rgba(212, 168, 83, 0.28);
+        border-left: 3px solid var(--oxblood);
+        border-radius: 4px;
+        text-align: left;
+    }
+    .services-cta .services-line {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 17px;
+        line-height: 1.55;
+        color: var(--cream-dim);
+        font-style: italic;
+        letter-spacing: 0.01em;
+    }
+    .services-cta .services-line strong {
+        color: var(--gold);
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+    }
+    .services-cta .services-action {
+        margin-top: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        font-size: 14px;
+        color: var(--taupe);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .services-cta .services-action a {
+        color: var(--gold);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(212, 168, 83, 0.4);
+        padding-bottom: 1px;
+    }
+    .services-cta .services-action a:hover {
+        color: var(--gold-bright);
+        border-bottom-color: var(--gold-bright);
+    }
+    @media (max-width: 600px) {
+        .services-cta { padding: 18px 20px; }
+        .services-cta .services-line { font-size: 16px; }
+    }
+
+</style>
+<link rel="stylesheet" href="/assets/site.css?v=20260905c">
+<script defer src="/assets/site.js?v=20260905c"></script>
 </head>
-<body>
+<body class="bbr-theme bbr-home">
 <a class="skip-nav" href="#main">Skip to main content</a>
 
 <!-- Cross-site nav. Identical block lives on /shop/ and /gallery/ with ../ paths. -->
-<nav class="site-nav" aria-label="Barn Burner Relics surfaces">
-  <a class="site-nav-brand" href="./">
-    <span class="site-nav-brand-mark">BBR</span>
-    <span class="site-nav-brand-text">Barn Burner Relics</span>
-  </a>
-  <div class="site-nav-links">
-    <a href="./"         data-key="sales"   class="active">The Barn</a>
-    <a href="shop/"      data-key="shop"    >The Collection</a>
-    <a href="gallery/"   data-key="gallery" >Auction</a>
-    <a href="show/"      data-key="show"    >Shows</a>
-    <a href="social/"   data-key="social"  >Socials</a>
-  </div>
-</nav>
+<header class="bbr-header">
+<nav class="site-nav" aria-label="Main navigation">
+  <a class="site-nav-brand" href="/" aria-label="Barn Burner Relics home"><span class="site-nav-brand-mark" aria-hidden="true">BBR</span><span class="site-nav-brand-text">Barn Burner Relics</span></a>
+  <div class="site-nav-links"><a href="/" aria-current="page">The Barn</a>
+<a href="/shop/">The Collection</a>
+<a href="/gallery/">Auction</a>
+<a href="/show/">Shows</a>
+<a href="/social/">Socials</a></div>
+</nav></header>
 
-<!-- Postponement banner — TEMPORARY, remove after Sat Sep 5 2026 -->
-<div class="postponement-banner" role="status">
-    <strong>This week's auction is postponed to Saturday, Sep 5.</strong>
-    No Monday Aug 31 sale. 20–40 fresh lots at the usual 5 PM Central.
-    Monday cadence resumes Sep 7.
-</div>
 
-<main id="main">
+<main id="main" tabindex="-1">
 <section class="hero">
     <div class="hero-inner">
         <div class="hero-text">
@@ -1031,17 +1094,7 @@
             </p>
             <a href="shop/" class="btn-inquire">Browse the Collection</a>
 
-            <div class="signature-block">
-                <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
-            </div>
 
-            <div class="hero-video">
-                <a href="https://www.youtube.com/watch?v=Np3t4Zg8ckM" target="_blank" rel="noopener" class="video-link" style="--video-thumb: url('https://i.ytimg.com/vi/Np3t4Zg8ckM/maxresdefault.jpg?v=20260804');" aria-label="Watch the Welcome to Barn Burner Relics video on YouTube">
-                    <span class="video-title">Welcome to the Barn Burner Relics YouTube channel</span>
-                    <span class="video-duration">1:49</span>
-                </a>
-                <div class="video-link-caption"><a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">Subscribe to our new channel →</a></div>
-            </div>
         </div>
 
         <figure class="hero-artifact">
@@ -1055,6 +1108,19 @@
             </figcaption>
         </figure>
     </div>
+<div class="bbr-hero-support">
+            <div class="signature-block">
+                <img src="images/bannerstones/guarantee-plaque.jpg" alt="Lifetime Authenticity Guarantee — Nick Gatses, Founder, Barn Burner Relics" class="plaque-img">
+            </div>
+
+            <div class="hero-video">
+                <a href="https://www.youtube.com/watch?v=Np3t4Zg8ckM" target="_blank" rel="noopener" class="video-link" style="--video-thumb: url('https://i.ytimg.com/vi/Np3t4Zg8ckM/maxresdefault.jpg?v=20260804');" aria-label="Watch the Welcome to Barn Burner Relics video on YouTube">
+                    <span class="video-title">Welcome to the Barn Burner Relics YouTube channel</span>
+                    <span class="video-duration">1:49</span>
+                </a>
+                <div class="video-link-caption"><a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">Subscribe to our new channel →</a></div>
+            </div>
+</div>
 </section>
 
 <!-- ============================================================
@@ -1103,26 +1169,7 @@
      press, show announcements. Newest on top. Popup (below) shows
      the latest bulletin to first-visit (session) visitors.
      ============================================================ -->
-<style>
-    .whats-new { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 64px 20px; }
-    .whats-new .section-header { padding-top: 0; }
-    .bulletin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
-    .bulletin-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
-    .bulletin-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 3px 10px; border-radius: 2px; margin-bottom: 12px; }
-    .bulletin-images { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); }
-    .bulletin-images img { width: 100%; height: 240px; object-fit: cover; display: block; cursor: pointer; }
-    .bulletin-body { padding: 22px 24px 26px; }
-    .bulletin-body h3 { font-family: 'Cinzel', serif; color: var(--ink); font-size: 20px; margin: 0 0 10px; }
-    .bulletin-body p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.65; margin: 0 0 14px; }
-    .bulletin-body p em { color: var(--ink); }
-    .bulletin-cta { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border-hover); background: transparent; padding: 8px 16px; border-radius: 2px; text-decoration: none; transition: background .15s, color .15s; }
-    .bulletin-cta:hover { background: var(--gold); color: var(--bg); }
-    .bulletin-meta { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.5px; margin-top: 14px; }
-    @media (max-width: 600px) {
-        .bulletin-images img { height: 180px; }
-        .whats-new { padding: 48px 16px; }
-    }
-</style>
+
 <section class="whats-new" id="whats-new">
     <div class="section-header">
         <h2>What's New</h2>
@@ -1131,8 +1178,8 @@
     <div class="bulletin-grid">
         <article class="bulletin-card">
             <div class="bulletin-images">
-                <img src="images/whats-new/whos-who-legacy-cover.jpg" alt="Who's Who in Indian Relics — Legacy Edition cover, by Steven R. Cooper" loading="lazy" onclick="openBulletinImage('images/whats-new/whos-who-legacy-cover.jpg')">
-                <img src="images/whats-new/whos-who-nick-spread.jpg" alt="Nick Gatses two-page feature spread — pages 356–357 of the Who's Who Legacy Edition" loading="lazy" onclick="openBulletinImage('images/whats-new/whos-who-nick-spread.jpg')">
+                <a href="images/whats-new/whos-who-legacy-cover.jpg" target="_blank" rel="noopener" aria-label="Open feature image in a new tab"><img src="images/whats-new/whos-who-legacy-cover.jpg" alt="Who's Who in Indian Relics — Legacy Edition cover, by Steven R. Cooper" loading="lazy"></a>
+                <a href="images/whats-new/whos-who-nick-spread.jpg" target="_blank" rel="noopener" aria-label="Open feature image in a new tab"><img src="images/whats-new/whos-who-nick-spread.jpg" alt="Nick Gatses two-page feature spread — pages 356–357 of the Who's Who Legacy Edition" loading="lazy"></a>
             </div>
             <div class="bulletin-body">
                 <span class="bulletin-tag">Press</span>
@@ -1219,54 +1266,7 @@
      Sits in the About section so it reads as part of Nick's stated services,
      not as a banner ad. Same palette as the rest of the site (gold/oxblood)
      but visually muted — italic serif copy, hairline border, no button. -->
-<style>
-    .services-cta {
-        max-width: 720px;
-        margin: 36px auto 0;
-        padding: 22px 28px;
-        background: rgba(26, 20, 16, 0.5);
-        border: 1px solid rgba(212, 168, 83, 0.28);
-        border-left: 3px solid var(--oxblood);
-        border-radius: 4px;
-        text-align: left;
-    }
-    .services-cta .services-line {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-size: 17px;
-        line-height: 1.55;
-        color: var(--cream-dim);
-        font-style: italic;
-        letter-spacing: 0.01em;
-    }
-    .services-cta .services-line strong {
-        color: var(--gold);
-        font-style: normal;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-    }
-    .services-cta .services-action {
-        margin-top: 10px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-        font-size: 12px;
-        color: var(--taupe);
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-    }
-    .services-cta .services-action a {
-        color: var(--gold);
-        text-decoration: none;
-        border-bottom: 1px solid rgba(212, 168, 83, 0.4);
-        padding-bottom: 1px;
-    }
-    .services-cta .services-action a:hover {
-        color: var(--gold-bright);
-        border-bottom-color: var(--gold-bright);
-    }
-    @media (max-width: 600px) {
-        .services-cta { padding: 18px 20px; }
-        .services-cta .services-line { font-size: 16px; }
-    }
-</style>
+
 <div class="services-cta" id="services">
     <div class="services-line">
         <strong>We are looking to buy.</strong> Single pieces, full collections, and estate accumulations —
@@ -1282,7 +1282,7 @@
 
 <div class="product-detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
     <div class="product-detail">
-        <button class="detail-close" onclick="closeDetail()">✕</button>
+        <button aria-label="Close photo details" class="detail-close" onclick="closeDetail()">✕</button>
         <div class="detail-layout">
             <div class="detail-gallery">
                 <img class="main-image" id="detailMainImage" src="" alt="">
@@ -1320,20 +1320,13 @@
 </div>
 
 </main>
-<footer>
-    <div class="links">
-        <a href="./">The Barn</a>
-        <a href="shop/">The Collection</a>
-        <a href="gallery/">Monday Auction</a>
-        <a href="show/">Collinsville Show</a>
-        <a href="social/">Everywhere Else</a>
-        <a href="#about" onclick="closeDetail();">About</a>
-    </div>
-    <div class="links">
-        <a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a>
-        <a href="https://www.youtube.com/@barnburnerrelics" target="_blank" rel="noopener">YouTube</a>
-    </div>
-    <div class="copy">© 2026 Barn Burner Relics Inc. — Manhattan, IL &nbsp;·&nbsp; All artifacts guaranteed authentic for life. &nbsp;·&nbsp; <a href="faq/" style="color:inherit;">FAQ</a> &nbsp;·&nbsp; <a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net" style="color:inherit;">Website problem? Contact the webmaster</a></div>
+<footer class="bbr-footer">
+  <div class="bbr-footer-grid">
+    <div class="bbr-footer-about"><div class="bbr-footer-brand">Barn Burner Relics</div><p>Authentic Native American artifacts. Personally vetted by Nick Gatses, with a lifetime authenticity guarantee.</p><p>Manhattan, Illinois</p></div>
+    <div><h2>Explore</h2><ul><li><a href="/shop/">The Collection</a></li><li><a href="/gallery/">Monday Auction</a></li><li><a href="/show/">Collinsville Show</a></li><li><a href="/shows/">Upcoming events</a></li><li><a href="/#about">About Nick</a></li></ul></div>
+    <div><h2>Stay in touch</h2><ul><li><a href="/contact-us/">Contact us</a></li><li><a href="/faq/">Frequently asked questions</a></li><li><a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a></li><li><a href="/social/">Social channels</a></li><li><a href="/videos/">Videos</a></li></ul></div>
+  </div>
+  <div class="bbr-footer-bottom">© 2026 Barn Burner Relics Inc. · All artifacts guaranteed authentic for life.<br><a href="mailto:bbryoutube@gmail.com?subject=Website%20issue%20—%20barnburnerrelics.net">Website problem? Contact the webmaster</a></div>
 </footer>
 
 <script>
@@ -1376,7 +1369,6 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('messengerOverlay').classList.contains('active')) closeMessenger(); });
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
-<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></scr'ipt><!-- End GoatCounter -->
+<!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- End GoatCounter -->
 </body>
 </html>
-
