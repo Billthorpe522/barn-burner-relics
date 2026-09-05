@@ -7,19 +7,19 @@
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-<title>Monday Auction · Photo Gallery — Barn Burner Relics</title>
-<meta name="description" content="Monday auction preview from Barn Burner Relics — authenticated Native American artifacts: three birdstones, hardstone, pottery, points, and bannerstones. Live every Monday at 5 PM Central.">
+<title>Auction Preview · Photo Gallery — Barn Burner Relics</title>
+<meta name="description" content="Preview the next Barn Burner Relics auction at 5:00 PM Central. See the upcoming date, countdown, and artifact photos below.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
-<meta property="og:title" content="Monday Auction · Photo Gallery — Barn Burner Relics">
-<meta property="og:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. Preview this week's items.">
+<meta property="og:title" content="Auction Preview · Photo Gallery — Barn Burner Relics">
+<meta property="og:description" content="Preview the next Barn Burner Relics auction at 5:00 PM Central. Visit the gallery for the upcoming date and countdown.">
 <meta property="og:image" content="https://barnburnerrelics.net/images/incoming/2026-09-05-saturday-auction/hero-case.jpg">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Barn Burner Relics">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Monday Auction Preview · Barn Burner Relics">
-<meta name="twitter:description" content="Photos from the Barn Burner Relics Monday auction — every Monday, 5:00 PM Central. Preview this week's items.">
+<meta name="twitter:title" content="Auction Preview · Barn Burner Relics">
+<meta name="twitter:description" content="Preview the next Barn Burner Relics auction at 5:00 PM Central. Visit the gallery for the upcoming date and countdown.">
 <meta name="twitter:image" content="https://barnburnerrelics.net/images/incoming/2026-09-05-saturday-auction/hero-case.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -801,7 +801,7 @@
 <a href="/social/">Socials</a></div>
 </nav></header>
 
-<!-- Postponement banner — TEMP_AUCTION_INSTANT cleared; Monday cadence resumes Sep 7 automatically. -->
+<!-- One-off Saturday auction; regular Monday cadence resumes September 7. -->
 
 <main id="main" tabindex="-1">
 <noscript><p style="padding:1.5rem;text-align:center">Enable JavaScript to browse the auction photos. <a href="/contact-us/">Contact us</a> for help.</p></noscript>
@@ -809,8 +809,8 @@
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-eyebrow">Barn Burner Relics · Facebook Live</div>
-      <h1 id="auction-title">Monday<br><em>Auction Preview</em></h1>
-      <p class="hero-date" id="heroDate">Monday · 5:00 PM Central Time</p>
+      <h1 id="auction-title"><span id="auctionDay">Next</span><br><em>Auction Preview</em></h1>
+      <p class="hero-date" id="heroDate">Auctions start at 5:00 PM Central Time</p>
       <p class="hero-note">Browse the overview photos below. Individual lots, descriptions, provenance, and bidding are shared live in our Facebook group.</p>
       <a class="auction-link" href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Join the auction on Facebook</a>
     <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
@@ -956,9 +956,9 @@
         // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
         const AUCTION_DAYS = [1]; // Monday only
 
-        // TEMP_AUCTION_INSTANT — Sat Sep 5 2026 was the one-off Saturday auction.
-        // Now cleared so the regular Monday cadence (AUCTION_DAYS=[1]) takes over.
-        const TEMP_AUCTION_INSTANT = null;
+        // One-off Saturday auction, then Mondays beginning September 7.
+        const TEMP_AUCTION_INSTANT = Date.parse('2026-09-05T17:00:00-05:00');
+        const AUCTION_LIVE_MS = 4 * 3600000;
         const AUCTION_HOUR = 17;  // 5:00 PM in 24h
         const CHICAGO_TZ = 'America/Chicago';
 
@@ -1006,9 +1006,9 @@
     // Return the next auction instant (a UTC ms timestamp) on or after `nowMs`.
         // If today's auction slot hasn't started yet, return today's; otherwise the next.
         function nextAuctionInstant(nowMs) {
-            // TEMP POSTPONEMENT: if the override is set and still in the future, use it.
-            // Falls through to the regular cadence once the override is null or past.
-            if (TEMP_AUCTION_INSTANT !== null && TEMP_AUCTION_INSTANT > nowMs) {
+            // Keep today's auction selected during its existing four-hour live window,
+            // including when a visitor opens or refreshes the page after 5 PM.
+            if (TEMP_AUCTION_INSTANT !== null && nowMs < TEMP_AUCTION_INSTANT + AUCTION_LIVE_MS) {
                 return TEMP_AUCTION_INSTANT;
             }
             const nowParts = chicagoPartsFromInstant(nowMs);
@@ -1020,10 +1020,16 @@
                 let delta = (targetDow - nowParts.weekday + 7) % 7;
                 // Use a temp Date with month-overflow allowed to roll the day forward.
                 const probe = new Date(nowParts.year, nowParts.month, nowParts.day + delta);
-                const probeMs = chicagoWallClockToInstant(
+                let probeMs = chicagoWallClockToInstant(
                     probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
                 );
-                if (probeMs > nowMs && (probeMs - nowMs) < bestDelta) {
+                if (nowMs >= probeMs + AUCTION_LIVE_MS) {
+                    probe.setDate(probe.getDate() + 7);
+                    probeMs = chicagoWallClockToInstant(
+                        probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
+                    );
+                }
+                if ((probeMs - nowMs) < bestDelta) {
                     bestDelta = probeMs - nowMs;
                     bestInstant = probeMs;
                 }
@@ -1057,10 +1063,17 @@
         }).formatToParts(new Date(cdTarget));
         const get = t => parts.find(p => p.type === t).value;
         el.textContent = `${get('weekday')} · ${get('month')} ${get('day')}, ${get('year')} · 5:00 PM Central Time`;
+        document.getElementById('auctionDay').textContent = get('weekday');
     }
     renderHeroDate();
 
     function tickCountdown() {
+        if (Date.now() >= cdTarget + AUCTION_LIVE_MS) {
+            cdTarget = nextAuctionInstant(Date.now());
+            cdEl.classList.remove('live');
+            cdSecs.parentElement.style.display = '';
+            renderHeroDate();
+        }
         let remaining = cdTarget - Date.now();
         if (remaining <= 0) {
             // Auction is live. Hold the LIVE state for 4 hours, then advance
@@ -1071,12 +1084,6 @@
             cdMins.textContent = 'now';
             cdSecs.textContent = '';
             cdSecs.parentElement.style.display = 'none';
-            if (remaining < -4 * 3600000) {
-                cdEl.classList.remove('live');
-                cdSecs.parentElement.style.display = '';
-                cdTarget = nextAuctionInstant(Date.now());
-                renderHeroDate();
-            }
             return;
         }
         const totalSec = Math.floor(remaining / 1000);
