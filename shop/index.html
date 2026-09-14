@@ -1719,7 +1719,12 @@ function closePhotoOverlay() {
 function messageUs(id) {
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
-    const priceText = typeof product.price === 'number' ? `$${product.price.toLocaleString()}` : product.price_display;
+    const priceText = product.tag === 'Sold' || product.price_display === 'Sold'
+        ? 'Sold'
+        : product.price_display === 'Inquire' || product.price === 0
+            ? 'Inquire for price'
+            : product.price_display || (typeof product.price === 'number' && product.price > 0
+                ? `$${product.price.toLocaleString()}` : 'Inquire for price');
     const subject = encodeURIComponent(`BBR — ${product.title} (${priceText})`);
     const body = encodeURIComponent(`Hi — I'm interested in this piece:\n\n${product.title}\n${priceText}\nbarnburnerrelics.net/shop/\n\n`);
     window.location.href = `mailto:${STORE_EMAIL}?subject=${subject}&body=${body}`;
