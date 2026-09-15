@@ -1,0 +1,188 @@
+// Checkout remains off until Nick confirms stock/prices and payment/shipping are verified.
+window.BBR_SHOPIFY = {
+  "enabled": false,
+  "domain": "0fde0c-md.myshopify.com",
+  "products": {
+    "wadlow-knife-howard-mo-20260915": {
+      "variantId": "46186073227311",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "solid-mini-jar-arkansas-20260910": {
+      "variantId": "46186075029551",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "crescent-quarry-dalton-greene-il-20260910": {
+      "variantId": "46186075684911",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "upper-valley-dalton-henry-il-20260910": {
+      "variantId": "46186077650991",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "iowa-slant-groove-madison-20260910": {
+      "variantId": "46186077880367",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "epc-corner-tang-texas-20260910": {
+      "variantId": "46186078535727",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "desert-side-notch-oregon-20260910": {
+      "variantId": "46186079518767",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "quartz-bottle-bannerstone-buchanan-co": {
+      "variantId": "46153437249583",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "butterfly-bannerstone": {
+      "variantId": "46153440067631",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "scottsbluff-knife-washington-co-utah": {
+      "variantId": "46153442295855",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "mississippian-compound-bottle-crittenden-co": {
+      "variantId": "46153444229167",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "caddo-bird-points-frame-001": {
+      "variantId": "46153449078831",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "dalton-pitkin-green-co-ar-001": {
+      "variantId": "46153454813231",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "clovis-chariton-co-mo-001": {
+      "variantId": "46153464873007",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "discoidal-scioto-co-oh-001": {
+      "variantId": "46153473097775",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "copper-indian-head-tube-001": {
+      "variantId": "46153480831023",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "hixton-hardin-bureau-co-001": {
+      "variantId": "46153485975599",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "dover-pinetree-tn-001": {
+      "variantId": "46153490235439",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "diorite-barrel-bannerstone-sold": {
+      "variantId": "46153496100911",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "quartz-banner-cosach-1917-sold": {
+      "variantId": "46153500459055",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "granite-winged-bannerstone": {
+      "variantId": "46153500491823",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "quartz-bannerstone-backlit": {
+      "variantId": "46153500524591",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "mississippian-pottery-jar": {
+      "variantId": "46153500819503",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "animal-effigy-water-bottle": {
+      "variantId": "46153500950575",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "catlinite-effigy-pipe-sold": {
+      "variantId": "46153502883887",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "merch-trucker-hat-black-001": {
+      "variantId": "46153504587823",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "merch-trucker-hat-pink-001": {
+      "variantId": "46153508487215",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "birdstone-pop-eyed-rocking-sold": {
+      "variantId": "46153512124463",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "grooved-axe-iowa-meadows-001": {
+      "variantId": "46153514713135",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "grooved-axe-mo-ia-meadows-002": {
+      "variantId": "46153516417071",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "benton-frame-ms-buetell-001": {
+      "variantId": "46153518121007",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "anchor-pendant-marion-co-in-001": {
+      "variantId": "46153520906287",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "hematite-plummet-spencer-co-in-001": {
+      "variantId": "46153522642991",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "colorful-cobbs-carter-cave-ky-001": {
+      "variantId": "46153524281391",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "agate-basin-cedar-co-ia-001": {
+      "variantId": "46153524412463",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "ovoid-knife-lasalle-co-il-001": {
+      "variantId": "46153524871215",
+      "approvedPrice": null,
+      "ready": false
+    }
+  }
+};
+

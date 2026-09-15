@@ -741,6 +741,7 @@
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "91ef9fde72e242a5b7aa582c478cc55a"}'></script><!-- End Cloudflare Web Analytics -->
 <!-- GoatCounter --><script data-goatcounter="https://bbr.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><!-- End GoatCounter -->
+<script src="/shop/shopify-catalog.js?v=20260915"></script>
 <script>
 const STORE_EMAIL = 'bbryoutube@gmail.com';
 
@@ -1679,7 +1680,7 @@ function renderProducts() {
                     <div class="product-card-category">${safeCategory}</div>
                     <div class="product-card-footer">
                         <span class="product-card-price ${priceClass}">${safePrice}</span>
-                        ${!isSold ? `<button class="reserve-btn" onclick="messageUs('${p.id}')">Message Us</button>` : '<span class="sold-label">Sold</span>'}
+                        ${!isSold ? `<button class="reserve-btn" onclick="purchaseOrInquire('${p.id}')">${getShopifyCheckoutUrl(p) ? 'Buy now' : 'Message Us'}</button>` : '<span class="sold-label">Sold</span>'}
                     </div>
                     <div class="card-reserve-sub">Select photo for full details</div>
                 </div>
@@ -1736,6 +1737,27 @@ function closePhotoOverlay() {
     overlay.classList.remove('active');
     document.body.style.overflow = '';
     photoOverlayPid = null;
+}
+
+// Both the store and this exact listing must be approved before checkout appears.
+function getShopifyCheckoutUrl(product) {
+    const config = window.BBR_SHOPIFY;
+    const item = config && config.products && config.products[product.id];
+    if (!config || config.enabled !== true || !item || item.ready !== true ||
+        config.domain !== '0fde0c-md.myshopify.com' ||
+        !/^\d+$/.test(item.variantId) ||
+        typeof product.price !== 'number' || product.price <= 0 ||
+        product.tag === 'Sold' || product.price_display === 'Sold' ||
+        product.price_display === 'Inquire' || item.approvedPrice !== product.price) return null;
+    return `https://${config.domain}/cart/${item.variantId}:1`;
+}
+
+function purchaseOrInquire(id) {
+    const product = PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+    const checkoutUrl = getShopifyCheckoutUrl(product);
+    if (checkoutUrl) window.location.href = checkoutUrl;
+    else messageUs(id);
 }
 
 function messageUs(id) {
