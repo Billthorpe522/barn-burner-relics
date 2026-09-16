@@ -270,6 +270,17 @@
             cursor: zoom-in;
             overflow: hidden;
         }
+        .collection-number {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: #f0e8d0;
+            color: #211a12;
+            font: 700 20px/1.2 Arial, sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,.4);
+        }
         .product-card-image:focus { outline: 2px solid var(--gold); outline-offset: -2px; }
         .product-card-image img {
             width: 100%;
@@ -746,28 +757,29 @@
 const STORE_EMAIL = 'bbryoutube@gmail.com';
 
 const PRODUCTS = [
-{
-    "id": "wadlow-knife-howard-mo-20260915",
-    "title": "12⅜″ Wadlow Knife — Howard Co., Missouri",
-    "desc": "<p>A 12⅜-inch Wadlow knife from Howard County, Missouri, found by Jim Stubblefield. This example was part of the award-winning Wadlow frame owned by Ben Thompson, according to Nick Gatses.</p><p>Nick describes the large Burlington chert deposits of southwest Illinois and eastern Missouri as the source material that made knives of this scale possible.</p><p><strong>Available — inquire for price.</strong> Lifetime Authenticity Guarantee.</p><p><a href=\"https://www.facebook.com/1140883437/videos/pcb.10243669306845134/1626621675472540\" target=\"_blank\" rel=\"noopener\">Watch Nick’s 25-second video on Facebook →</a></p>",
-    "price": 0,
-    "price_display": "Inquire",
-    "added": "2026-09-15",
-    "category": "Knives",
-    "tag": "New",
-    "photos": [
-        "images/items/wadlow-knife-howard-mo-20260915.jpg"
-    ],
-    "specs": {
-        "Type": "Wadlow knife",
-        "Length": "12⅜ inches",
-        "Origin": "Howard County, Missouri",
-        "Finder": "Jim Stubblefield",
-        "Collection": "Ben Thompson — award-winning Wadlow frame",
-        "Authenticity": "Lifetime Authenticity Guarantee"
+    {
+        "id": "wadlow-knife-howard-mo-20260915",
+        "title": "12⅜″ Wadlow Knife — Howard Co., Missouri",
+        "desc": "<p>A 12⅜-inch Wadlow knife from Howard County, Missouri, found by Jim Stubblefield. This example was part of the award-winning Wadlow frame owned by Ben Thompson, according to Nick Gatses.</p><p>Nick describes the large Burlington chert deposits of southwest Illinois and eastern Missouri as the source material that made knives of this scale possible.</p><p><strong>Available — inquire for price.</strong> Lifetime Authenticity Guarantee.</p><p><a href=\"https://www.facebook.com/1140883437/videos/pcb.10243669306845134/1626621675472540\" target=\"_blank\" rel=\"noopener\">Watch Nick’s 25-second video on Facebook →</a></p>",
+        "price": 0,
+        "price_display": "Inquire",
+        "added": "2026-09-15",
+        "category": "Knives",
+        "tag": "New",
+        "photos": [
+            "images/items/wadlow-knife-howard-mo-20260915.jpg"
+        ],
+        "specs": {
+            "Type": "Wadlow knife",
+            "Length": "12⅜ inches",
+            "Origin": "Howard County, Missouri",
+            "Finder": "Jim Stubblefield",
+            "Collection": "Ben Thompson — award-winning Wadlow frame",
+            "Authenticity": "Lifetime Authenticity Guarantee"
+        },
+        "source": "vault",
+        "collectionNumber": 1
     },
-    "source": "vault"
-},
     {
         "id": "solid-mini-jar-arkansas-20260910",
         "title": "2⅜″ × 2⅛″ Solid Mini Jar — Arkansas",
@@ -787,7 +799,8 @@ const PRODUCTS = [
             "Shipping": "Included in listed price",
             "Authenticity": "Lifetime Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 2
     },
     {
         "id": "crescent-quarry-dalton-greene-il-20260910",
@@ -809,7 +822,8 @@ const PRODUCTS = [
             "Shipping": "Included in listed price",
             "Authenticity": "Lifetime Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 3
     },
     {
         "id": "upper-valley-dalton-henry-il-20260910",
@@ -831,7 +845,8 @@ const PRODUCTS = [
             "Shipping": "Included in listed price",
             "Authenticity": "Lifetime Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 4
     },
     {
         "id": "iowa-slant-groove-madison-20260910",
@@ -853,7 +868,8 @@ const PRODUCTS = [
             "Shipping": "Included in listed price",
             "Authenticity": "Lifetime Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 5
     },
     {
         "id": "epc-corner-tang-texas-20260910",
@@ -875,7 +891,8 @@ const PRODUCTS = [
             "Shipping": "Included in listed price",
             "Authenticity": "Lifetime Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 6
     },
     {
         "id": "desert-side-notch-oregon-20260910",
@@ -897,7 +914,8 @@ const PRODUCTS = [
             "Shipping": "Included in listed price",
             "Authenticity": "Lifetime Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 7
     },
     {
         "id": "quartz-bottle-bannerstone-buchanan-co",
@@ -930,7 +948,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 25
     },
     {
         "id": "butterfly-bannerstone",
@@ -962,7 +981,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 26
     },
     {
         "id": "scottsbluff-knife-washington-co-utah",
@@ -990,7 +1010,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 27
     },
     {
         "id": "mississippian-compound-bottle-crittenden-co",
@@ -1018,7 +1039,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 28
     },
     {
         "id": "caddo-bird-points-frame-001",
@@ -1036,7 +1058,8 @@ const PRODUCTS = [
             "images/items/caddo-bird-points-frame-001-3.jpg"
         ],
         "specs": {},
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 19
     },
     {
         "id": "dalton-pitkin-green-co-ar-001",
@@ -1054,7 +1077,8 @@ const PRODUCTS = [
             "images/items/dalton-pitkin-green-co-ar-001-4.jpg"
         ],
         "specs": {},
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 20
     },
     {
         "id": "clovis-chariton-co-mo-001",
@@ -1073,7 +1097,8 @@ const PRODUCTS = [
             "images/items/clovis-chariton-co-mo-001-4.jpg"
         ],
         "specs": {},
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 21
     },
     {
         "id": "discoidal-scioto-co-oh-001",
@@ -1092,7 +1117,8 @@ const PRODUCTS = [
             "images/items/discoidal-scioto-co-oh-001-4.jpg"
         ],
         "specs": {},
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 22
     },
     {
         "id": "copper-indian-head-tube-001",
@@ -1117,7 +1143,8 @@ const PRODUCTS = [
             "Availability": "18 tubes in stock",
             "Shipping": "Included in price — shipped to your door"
         },
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 18
     },
     {
         "id": "hixton-hardin-bureau-co-001",
@@ -1136,7 +1163,8 @@ const PRODUCTS = [
             "images/items/hixton-hardin-bureau-co-001-4.jpg"
         ],
         "specs": {},
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 23
     },
     {
         "id": "dover-pinetree-tn-001",
@@ -1155,7 +1183,8 @@ const PRODUCTS = [
             "images/items/dover-pinetree-tn-001-4.jpg"
         ],
         "specs": {},
-        "source": "shop"
+        "source": "shop",
+        "collectionNumber": 24
     },
     {
         "id": "diorite-barrel-bannerstone-sold",
@@ -1188,7 +1217,8 @@ const PRODUCTS = [
             "Price": "Sold — shown for reference",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 33
     },
     {
         "id": "quartz-banner-cosach-1917-sold",
@@ -1221,7 +1251,8 @@ const PRODUCTS = [
             "Price": "Sold — shown for reference",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 34
     },
     {
         "id": "granite-winged-bannerstone",
@@ -1248,7 +1279,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 29
     },
     {
         "id": "quartz-bannerstone-backlit",
@@ -1275,7 +1307,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 30
     },
     {
         "id": "mississippian-pottery-jar",
@@ -1302,7 +1335,8 @@ const PRODUCTS = [
             "Price": "Inquire for price",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 31
     },
     {
         "id": "animal-effigy-water-bottle",
@@ -1332,7 +1366,8 @@ const PRODUCTS = [
             "Condition": "Right rear leg partially broken (pre-existing, documented in article)",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 32
     },
     {
         "id": "catlinite-effigy-pipe-sold",
@@ -1358,13 +1393,14 @@ const PRODUCTS = [
             "Condition": "Sold — shown for reference",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 35
     },
     {
         "id": "merch-trucker-hat-black-001",
         "title": "BBR Trucker Hat — Black",
         "desc": "<p><strong>Embroidered BBR logo</strong> on the front panel. Adjustable snapback, one size fits most. $17.50 ships it to anywhere in the U.S.</p><p>Wear the brand. Talk the talk.</p>",
-        "price": 17.50,
+        "price": 17.5,
         "price_display": "$17.50 shipped",
         "added": "2026-08-18",
         "category": "Merch",
@@ -1372,13 +1408,14 @@ const PRODUCTS = [
             "images/items/merch-trucker-hat-black-001-1.jpg"
         ],
         "specs": {},
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 16
     },
     {
         "id": "merch-trucker-hat-pink-001",
         "title": "BBR Trucker Hat — Hot Pink",
         "desc": "<p><strong>Embroidered BBR logo</strong> on the front panel. Adjustable snapback, one size fits most. $17.50 ships it to anywhere in the U.S.</p><p>Wear the brand. Talk the talk.</p>",
-        "price": 17.50,
+        "price": 17.5,
         "price_display": "$17.50 shipped",
         "added": "2026-08-18",
         "category": "Merch",
@@ -1386,7 +1423,8 @@ const PRODUCTS = [
             "images/items/merch-trucker-hat-pink-001-1.jpg"
         ],
         "specs": {},
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 17
     },
     {
         "id": "birdstone-pop-eyed-rocking-sold",
@@ -1412,7 +1450,8 @@ const PRODUCTS = [
             "Condition": "Sold — shown for reference",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 36
     },
     {
         "id": "grooved-axe-iowa-meadows-001",
@@ -1435,7 +1474,8 @@ const PRODUCTS = [
             "Condition": "Excellent",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 8
     },
     {
         "id": "grooved-axe-mo-ia-meadows-002",
@@ -1458,7 +1498,8 @@ const PRODUCTS = [
             "Condition": "Excellent",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 9
     },
     {
         "id": "benton-frame-ms-buetell-001",
@@ -1480,7 +1521,8 @@ const PRODUCTS = [
             "Notes": "Lots of color; provenance on each piece",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 10
     },
     {
         "id": "anchor-pendant-marion-co-in-001",
@@ -1501,7 +1543,8 @@ const PRODUCTS = [
             "Provenance": "B.W Stephens, Ben Thompson, Dale/ Bett Roberts, Perry Hansen",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 11
     },
     {
         "id": "hematite-plummet-spencer-co-in-001",
@@ -1523,7 +1566,8 @@ const PRODUCTS = [
             "Notes": "Fine example",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 12
     },
     {
         "id": "colorful-cobbs-carter-cave-ky-001",
@@ -1545,7 +1589,8 @@ const PRODUCTS = [
             "Provenance": "Major Spessard, Jacky Fuller, Steve Baker",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 13
     },
     {
         "id": "agate-basin-cedar-co-ia-001",
@@ -1567,7 +1612,8 @@ const PRODUCTS = [
             "Provenance": "Major Spessard, Steve Baker, Jacky Fuller",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 14
     },
     {
         "id": "ovoid-knife-lasalle-co-il-001",
@@ -1589,7 +1635,8 @@ const PRODUCTS = [
             "Notes": "Muck stained — gives it good character; great color",
             "Authenticity": "Lifetime Authenticity Guarantee"
         },
-        "source": "vault"
+        "source": "vault",
+        "collectionNumber": 15
     }
 ];
 
@@ -1670,8 +1717,9 @@ function renderProducts() {
         const badgeHtml = p.tag ? `<span class="badge ${p.tag.toLowerCase()}">${p.tag}</span>` : '';
         grid.insertAdjacentHTML('beforeend', `
             <article class="product-card ${cardClass}" data-id="${p.id}" data-category="${safeCategory}">
-                <div class="product-card-image" data-action="open" data-pid="${p.id}" role="button" tabindex="0" aria-label="View ${safeTitle} photos">
+                <div class="product-card-image" data-action="open" data-pid="${p.id}" role="button" tabindex="0" aria-label="View item ${p.collectionNumber}: ${safeTitle} photos">
                     <img src="${hero}" alt="${safeTitle} — hero photo" loading="lazy">
+                    <span class="collection-number">#${p.collectionNumber}</span>
                     ${extraBadge}
                     ${badgeHtml}
                 </div>
@@ -1706,7 +1754,7 @@ function openPhotoOverlay(pid) {
     const thumbs = document.getElementById('photoOverlayThumbs');
     const title = document.getElementById('photoOverlayTitle');
     const desc = document.getElementById('photoOverlayDesc');
-    title.textContent = p.title;
+    title.textContent = `#${p.collectionNumber} · ${p.title}`;
     desc.innerHTML = p.desc || '';
     main.src = p.photos[0];
     main.alt = `${p.title} — photo 1`;
