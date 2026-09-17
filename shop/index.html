@@ -676,7 +676,7 @@
     <p class="hero-tagline">Authentic prehistoric artifacts with documented history — from single points to museum-grade bannerstones. Every piece guaranteed for life.</p>
     <div class="hero-meta">
         <span>✅ <strong>Lifetime Authenticity Guarantee</strong></span>
-        <span>💬 <strong>Message us</strong> to purchase</span>
+        <span>💬 <strong>Email us</strong> to purchase</span>
     </div>
 </section>
 
@@ -1056,7 +1056,7 @@ const PRODUCTS = [
     {
         "id": "caddo-bird-points-frame-001",
         "title": "Whole Frame of Caddo Bird Points",
-        "desc": "114 points in this frame! Mostly Arkansas and Mississippi. Misc. jasper and chert. Certificate of Authenticity by Josh Davis (Stanton, KY) — Certificate #8914, Grade G9. COA included.\\n\\nLifetime Guarantee.<p><strong>$3,250 plus $15 U.S. shipping.</strong></p>",
+        "desc": "114 points in this frame! Mostly Arkansas and Mississippi. Misc. jasper and chert. Certificate of Authenticity by Josh Davis (Stanton, KY) — Certificate #8914, Grade G9. COA included.<br><br>Lifetime Guarantee.<p><strong>$3,250 plus $15 U.S. shipping.</strong></p>",
         "price": 3250,
         "price_display": "$3,250 + $15 shipping",
         "added": "2026-08-12",
@@ -1098,7 +1098,7 @@ const PRODUCTS = [
     {
         "id": "clovis-chariton-co-mo-001",
         "title": "2¹¹⁄₁₆\" Colorful Clovis — Chariton County, MO",
-        "desc": "This piece is from Chariton County, MO! This piece was in the collection of Beau Leach, Dennis Smith, Ken Partain, Ray Arnett. Shows great translucency and color!\\n\\nLifetime Guarantee.<p><strong>$1,650 — U.S. shipping included.</strong></p>",
+        "desc": "This piece is from Chariton County, MO! This piece was in the collection of Beau Leach, Dennis Smith, Ken Partain, Ray Arnett. Shows great translucency and color!<br><br>Lifetime Guarantee.<p><strong>$1,650 — U.S. shipping included.</strong></p>",
         "price": 1650,
         "price_display": "$1,650 shipped",
         "added": "2026-08-12",
@@ -1768,7 +1768,7 @@ function renderProducts() {
                     <div class="product-card-category">${safeCategory}</div>
                     <div class="product-card-footer">
                         <span class="product-card-price ${priceClass}">${safePrice}</span>
-                        ${!isSold ? `<button class="reserve-btn" onclick="purchaseOrInquire('${p.id}')">${getShopifyCheckoutUrl(p) ? 'Buy now' : 'Message Us'}</button>` : '<span class="sold-label">Sold</span>'}
+                        ${!isSold ? `<button class="reserve-btn" onclick="purchaseOrInquire('${p.id}')">${getShopifyCheckoutUrl(p) ? 'Buy now' : 'Email us'}</button>` : '<span class="sold-label">Sold</span>'}
                     </div>
                     <div class="card-reserve-sub">Select photo for full details</div>
                 </div>
@@ -1858,8 +1858,8 @@ function messageUs(id) {
             ? 'Inquire for price'
             : product.price_display || (typeof product.price === 'number' && product.price > 0
                 ? `$${product.price.toLocaleString()}` : 'Inquire for price');
-    const subject = encodeURIComponent(`BBR — ${product.title} (${priceText})`);
-    const body = encodeURIComponent(`Hi — I'm interested in this piece:\n\n${product.title}\n${priceText}\nbarnburnerrelics.net/shop/\n\n`);
+    const subject = encodeURIComponent(`BBR — #${product.collectionNumber} · ${product.title} (${priceText})`);
+    const body = encodeURIComponent(`Hi — I'm interested in this piece:\n\n#${product.collectionNumber} · ${product.title}\n${priceText}\nbarnburnerrelics.net/shop/\n\n`);
     window.location.href = `mailto:${STORE_EMAIL}?subject=${subject}&body=${body}`;
 }
 
