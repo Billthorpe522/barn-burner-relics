@@ -1,9 +1,12 @@
-// Collection availability and prices confirmed September 16, 2026.
+// Catalog mappings updated September 24, 2026. Sold listings remain disabled.
 // Checkout remains off until payment, shipping, and Shopify inventory are verified.
 window.BBR_SHOPIFY = {
   "enabled": false,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "rectangular-gorget-ohio-20260919": {"variantId":"46247883309103","approvedPrice":1350,"ready":false},
+    "granite-celt-illinois-20260919": {"variantId":"46247883341871","approvedPrice":650,"ready":false},
+    "cobbs-knife-ohio-20260919": {"variantId":"46247883374639","approvedPrice":175,"ready":false},
     "wadlow-knife-howard-mo-20260915": {"variantId":"46186073227311","approvedPrice":null,"ready":false},
     "solid-mini-jar-arkansas-20260910": {"variantId":"46186075029551","approvedPrice":395,"ready":false},
     "crescent-quarry-dalton-greene-il-20260910": {"variantId":"46186075684911","approvedPrice":2495,"ready":false},
