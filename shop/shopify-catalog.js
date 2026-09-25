@@ -1,47 +1,287 @@
-// Catalog mappings updated September 24, 2026. Sold listings remain disabled.
-// Checkout enabled for verified, priced listings. Hats and inquiries remain email-only.
+// Verified eBay imports; anchor pendant held for review.
 window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
-    "rectangular-gorget-ohio-20260919": {"variantId":"46247883309103","approvedPrice":1340,"ready":true},
-    "granite-celt-illinois-20260919": {"variantId":"46247883341871","approvedPrice":640,"ready":true},
-    "cobbs-knife-ohio-20260919": {"variantId":"46247883374639","approvedPrice":165,"ready":true},
-    "wadlow-knife-howard-mo-20260915": {"variantId":"46186073227311","approvedPrice":null,"ready":false},
-    "solid-mini-jar-arkansas-20260910": {"variantId":"46186075029551","approvedPrice":395,"ready":false},
-    "crescent-quarry-dalton-greene-il-20260910": {"variantId":"46186075684911","approvedPrice":2495,"ready":false},
-    "upper-valley-dalton-henry-il-20260910": {"variantId":"46186077650991","approvedPrice":1240,"ready":true},
-    "iowa-slant-groove-madison-20260910": {"variantId":"46186077880367","approvedPrice":415,"ready":true},
-    "epc-corner-tang-texas-20260910": {"variantId":"46186078535727","approvedPrice":715,"ready":true},
-    "desert-side-notch-oregon-20260910": {"variantId":"46186079518767","approvedPrice":355,"ready":false},
-    "quartz-bottle-bannerstone-buchanan-co": {"variantId":"46153437249583","approvedPrice":null,"ready":false},
-    "butterfly-bannerstone": {"variantId":"46153440067631","approvedPrice":null,"ready":false},
-    "scottsbluff-knife-washington-co-utah": {"variantId":"46153442295855","approvedPrice":25000,"ready":true},
-    "mississippian-compound-bottle-crittenden-co": {"variantId":"46153444229167","approvedPrice":null,"ready":false},
-    "caddo-bird-points-frame-001": {"variantId":"46153449078831","approvedPrice":3255,"ready":true},
-    "dalton-pitkin-green-co-ar-001": {"variantId":"46153454813231","approvedPrice":null,"ready":false},
-    "clovis-chariton-co-mo-001": {"variantId":"46153464873007","approvedPrice":1650,"ready":false},
-    "discoidal-scioto-co-oh-001": {"variantId":"46153473097775","approvedPrice":null,"ready":false},
-    "copper-indian-head-tube-001": {"variantId":"46153480831023","approvedPrice":135,"ready":true},
-    "hixton-hardin-bureau-co-001": {"variantId":"46153485975599","approvedPrice":null,"ready":false},
-    "dover-pinetree-tn-001": {"variantId":"46153490235439","approvedPrice":null,"ready":false},
-    "diorite-barrel-bannerstone-sold": {"variantId":"46153496100911","approvedPrice":null,"ready":false},
-    "quartz-banner-cosach-1917-sold": {"variantId":"46153500459055","approvedPrice":null,"ready":false},
-    "granite-winged-bannerstone": {"variantId":"46153500491823","approvedPrice":null,"ready":false},
-    "quartz-bannerstone-backlit": {"variantId":"46153500524591","approvedPrice":null,"ready":false},
-    "mississippian-pottery-jar": {"variantId":"46153500819503","approvedPrice":null,"ready":false},
-    "animal-effigy-water-bottle": {"variantId":"46153500950575","approvedPrice":null,"ready":false},
-    "catlinite-effigy-pipe-sold": {"variantId":"46153502883887","approvedPrice":null,"ready":false},
-    "merch-trucker-hat-black-001": {"variantId":"46153504587823","approvedPrice":20,"ready":false},
-    "merch-trucker-hat-pink-001": {"variantId":"46153508487215","approvedPrice":20,"ready":false},
-    "birdstone-pop-eyed-rocking-sold": {"variantId":"46153512124463","approvedPrice":null,"ready":false},
-    "grooved-axe-iowa-meadows-001": {"variantId":"46153514713135","approvedPrice":1485,"ready":true},
-    "grooved-axe-mo-ia-meadows-002": {"variantId":"46153516417071","approvedPrice":1985,"ready":true},
-    "benton-frame-ms-buetell-001": {"variantId":"46153518121007","approvedPrice":null,"ready":false},
-    "anchor-pendant-marion-co-in-001": {"variantId":"46153520906287","approvedPrice":2485,"ready":true},
-    "hematite-plummet-spencer-co-in-001": {"variantId":"46153522642991","approvedPrice":null,"ready":false},
-    "colorful-cobbs-carter-cave-ky-001": {"variantId":"46153524281391","approvedPrice":null,"ready":false},
-    "agate-basin-cedar-co-ia-001": {"variantId":"46153524412463","approvedPrice":null,"ready":false},
-    "ovoid-knife-lasalle-co-il-001": {"variantId":"46153524871215","approvedPrice":null,"ready":false}
+    "rectangular-gorget-ohio-20260919": {
+      "variantId": "46247883309103",
+      "approvedPrice": 1340,
+      "ready": true
+    },
+    "granite-celt-illinois-20260919": {
+      "variantId": "46247883341871",
+      "approvedPrice": 640,
+      "ready": true
+    },
+    "cobbs-knife-ohio-20260919": {
+      "variantId": "46247883374639",
+      "approvedPrice": 165,
+      "ready": true
+    },
+    "wadlow-knife-howard-mo-20260915": {
+      "variantId": "46186073227311",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "solid-mini-jar-arkansas-20260910": {
+      "variantId": "46186075029551",
+      "approvedPrice": 395,
+      "ready": false
+    },
+    "crescent-quarry-dalton-greene-il-20260910": {
+      "variantId": "46186075684911",
+      "approvedPrice": 2495,
+      "ready": false
+    },
+    "upper-valley-dalton-henry-il-20260910": {
+      "variantId": "46186077650991",
+      "approvedPrice": 1240,
+      "ready": true
+    },
+    "iowa-slant-groove-madison-20260910": {
+      "variantId": "46186077880367",
+      "approvedPrice": 415,
+      "ready": true
+    },
+    "epc-corner-tang-texas-20260910": {
+      "variantId": "46186078535727",
+      "approvedPrice": 715,
+      "ready": true
+    },
+    "desert-side-notch-oregon-20260910": {
+      "variantId": "46186079518767",
+      "approvedPrice": 355,
+      "ready": false
+    },
+    "quartz-bottle-bannerstone-buchanan-co": {
+      "variantId": "46153437249583",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "butterfly-bannerstone": {
+      "variantId": "46153440067631",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "scottsbluff-knife-washington-co-utah": {
+      "variantId": "46153442295855",
+      "approvedPrice": 25000,
+      "ready": true
+    },
+    "mississippian-compound-bottle-crittenden-co": {
+      "variantId": "46153444229167",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "caddo-bird-points-frame-001": {
+      "variantId": "46153449078831",
+      "approvedPrice": 3255,
+      "ready": true
+    },
+    "dalton-pitkin-green-co-ar-001": {
+      "variantId": "46153454813231",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "clovis-chariton-co-mo-001": {
+      "variantId": "46153464873007",
+      "approvedPrice": 1650,
+      "ready": false
+    },
+    "discoidal-scioto-co-oh-001": {
+      "variantId": "46153473097775",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "copper-indian-head-tube-001": {
+      "variantId": "46153480831023",
+      "approvedPrice": 135,
+      "ready": true
+    },
+    "hixton-hardin-bureau-co-001": {
+      "variantId": "46153485975599",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "dover-pinetree-tn-001": {
+      "variantId": "46153490235439",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "diorite-barrel-bannerstone-sold": {
+      "variantId": "46153496100911",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "quartz-banner-cosach-1917-sold": {
+      "variantId": "46153500459055",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "granite-winged-bannerstone": {
+      "variantId": "46153500491823",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "quartz-bannerstone-backlit": {
+      "variantId": "46153500524591",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "mississippian-pottery-jar": {
+      "variantId": "46153500819503",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "animal-effigy-water-bottle": {
+      "variantId": "46153500950575",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "catlinite-effigy-pipe-sold": {
+      "variantId": "46153502883887",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "merch-trucker-hat-black-001": {
+      "variantId": "46153504587823",
+      "approvedPrice": 20,
+      "ready": false
+    },
+    "merch-trucker-hat-pink-001": {
+      "variantId": "46153508487215",
+      "approvedPrice": 20,
+      "ready": false
+    },
+    "birdstone-pop-eyed-rocking-sold": {
+      "variantId": "46153512124463",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "grooved-axe-iowa-meadows-001": {
+      "variantId": "46153514713135",
+      "approvedPrice": 1485,
+      "ready": true
+    },
+    "grooved-axe-mo-ia-meadows-002": {
+      "variantId": "46153516417071",
+      "approvedPrice": 1985,
+      "ready": true
+    },
+    "benton-frame-ms-buetell-001": {
+      "variantId": "46153518121007",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "anchor-pendant-marion-co-in-001": {
+      "variantId": "46153520906287",
+      "approvedPrice": 2485,
+      "ready": true
+    },
+    "hematite-plummet-spencer-co-in-001": {
+      "variantId": "46153522642991",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "colorful-cobbs-carter-cave-ky-001": {
+      "variantId": "46153524281391",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "agate-basin-cedar-co-ia-001": {
+      "variantId": "46153524412463",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "ovoid-knife-lasalle-co-il-001": {
+      "variantId": "46153524871215",
+      "approvedPrice": null,
+      "ready": false
+    },
+    "ebay-267794698420": {
+      "variantId": "46248165834799",
+      "approvedPrice": 3500,
+      "ready": true
+    },
+    "ebay-267794712027": {
+      "variantId": "46248165867567",
+      "approvedPrice": 2500,
+      "ready": true
+    },
+    "ebay-267794498461": {
+      "variantId": "46248165900335",
+      "approvedPrice": 7500,
+      "ready": true
+    },
+    "ebay-267794681987": {
+      "variantId": "46248166064175",
+      "approvedPrice": 4000,
+      "ready": true
+    },
+    "ebay-267794482202": {
+      "variantId": "46248166195247",
+      "approvedPrice": 1500,
+      "ready": true
+    },
+    "ebay-267794513676": {
+      "variantId": "46248166228015",
+      "approvedPrice": 8500,
+      "ready": true
+    },
+    "ebay-267794686305": {
+      "variantId": "46248166260783",
+      "approvedPrice": 1800,
+      "ready": true
+    },
+    "ebay-267794622692": {
+      "variantId": "46248166293551",
+      "approvedPrice": 19500,
+      "ready": true
+    },
+    "ebay-267794654413": {
+      "variantId": "46248166326319",
+      "approvedPrice": 1750,
+      "ready": true
+    },
+    "ebay-267794608574": {
+      "variantId": "46248167014447",
+      "approvedPrice": 900,
+      "ready": true
+    },
+    "ebay-267794489687": {
+      "variantId": "46248167079983",
+      "approvedPrice": 3500,
+      "ready": true
+    },
+    "ebay-267794602560": {
+      "variantId": "46248167112751",
+      "approvedPrice": 3500,
+      "ready": true
+    },
+    "ebay-267794573730": {
+      "variantId": "46248167145519",
+      "approvedPrice": 4000,
+      "ready": true
+    },
+    "ebay-267794491423": {
+      "variantId": "46248167342127",
+      "approvedPrice": 3500,
+      "ready": true
+    },
+    "ebay-267538274751": {
+      "variantId": "46248167407663",
+      "approvedPrice": 4000,
+      "ready": true
+    },
+    "ebay-267794747637": {
+      "variantId": "46248167473199",
+      "approvedPrice": 8500,
+      "ready": true
+    },
+    "ebay-267794732060": {
+      "variantId": "46248167637039",
+      "approvedPrice": 5500,
+      "ready": true
+    }
   }
 };
