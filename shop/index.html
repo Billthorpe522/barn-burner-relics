@@ -728,7 +728,7 @@
 </main>
 <footer class="bbr-footer">
   <div class="bbr-footer-grid">
-    <div class="bbr-footer-about"><div class="bbr-footer-brand">Barn Burner Relics</div><p>Authentic Native American artifacts. Personally vetted by Nick Gatses, with a lifetime authenticity guarantee.</p><p>Manhattan, Illinois</p><p>If any piece we sell is ever shown not to be authentic, we refund the full purchase price — no time limit, no fine print. That's the lifetime guarantee. Shipping is listed per item. Prices and shipping costs shown apply to U.S. orders. Ships weekly.</p></div>
+    <div class="bbr-footer-about"><div class="bbr-footer-brand">Barn Burner Relics</div><p>Authentic Native American artifacts. Personally vetted by Nick Gatses, with a lifetime authenticity guarantee.</p><p>Manhattan, Illinois</p><p>If any piece we sell is ever shown not to be authentic, we refund the full purchase price — no time limit, no fine print. That's the lifetime guarantee. Shipping is added at checkout for U.S. orders. Ships weekly.</p></div>
     <div><h2>Explore</h2><ul><li><a href="/shop/">The Collection</a></li><li><a href="/gallery/">Monday Auction</a></li><li><a href="/show/">Collinsville Show</a></li><li><a href="/shows/">Upcoming events</a></li><li><a href="/#about">About Nick</a></li></ul></div>
     <div><h2>Stay in touch</h2><ul><li><a href="/contact-us/">Contact us</a></li><li><a href="/faq/">Frequently asked questions</a></li><li><a href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Facebook Group</a></li><li><a href="/social/">Social channels</a></li><li><a href="/videos/">Videos</a></li></ul></div>
   </div>
@@ -2317,7 +2317,9 @@ function renderProducts() {
     for (const p of filtered) {
         const safeTitle = escapeHtml(p.title);
         const safeCategory = escapeHtml(p.category);
-        const safePrice = escapeHtml(p.price_display);
+        const safePrice = escapeHtml(typeof p.price === 'number' && p.price > 0 && p.tag !== 'Sold' && p.price_display !== 'Sold' && p.price_display !== 'Inquire'
+            ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(p.price).replace(/\.00$/, '')
+            : p.price_display);
         const hero = p.photos && p.photos[0] ? p.photos[0] : '';
         const extra = (p.photos || []).length - 1;
         const extraBadge = extra > 0 ? `<span class="photo-count">+${extra}</span>` : '';
