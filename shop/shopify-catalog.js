@@ -146,12 +146,12 @@ window.BBR_SHOPIFY = {
     "merch-trucker-hat-black-001": {
       "variantId": "46153504587823",
       "approvedPrice": 20,
-      "ready": false
+      "ready": true
     },
     "merch-trucker-hat-pink-001": {
       "variantId": "46153508487215",
       "approvedPrice": 20,
-      "ready": false
+      "ready": true
     },
     "birdstone-pop-eyed-rocking-sold": {
       "variantId": "46153512124463",
