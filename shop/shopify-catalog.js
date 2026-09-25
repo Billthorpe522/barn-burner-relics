@@ -282,6 +282,16 @@ window.BBR_SHOPIFY = {
       "variantId": "46248167637039",
       "approvedPrice": 5500,
       "ready": true
+    },
+    "illinois-popeye-birdstone-banded-stone": {
+      "variantId": "46250926735407",
+      "approvedPrice": 22500,
+      "ready": true
+    },
+    "clermont-county-ohio-birdstone-ex-townsend": {
+      "variantId": "46250982801455",
+      "approvedPrice": 9750,
+      "ready": true
     }
   }
 };
