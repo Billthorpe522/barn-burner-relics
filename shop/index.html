@@ -651,7 +651,15 @@
             .photo-overlay-title { font-size: 18px; }
         }
 
-</style>
+/* Individual item pages use normal browser navigation and document scrolling. */
+        .product-card-image { text-decoration: none; color: inherit; }
+        .photo-overlay.detail-page { position: static; display: flex; flex-direction: column; gap: 24px; background: transparent; backdrop-filter: none; padding: 36px 20px; }
+        .detail-page .photo-overlay-inner { max-height: none; }
+        .collection-back { color: var(--gold); align-self: flex-start; font-size: 18px; }
+        .detail-purchase { display: flex; align-items: center; gap: 24px; font-size: 26px; color: var(--gold); }
+        .detail-page .photo-overlay-desc { overflow: visible; max-height: none; }
+        .bbr-thumb[aria-pressed="true"] img { border-color: var(--gold); }
+    </style>
 <link rel="stylesheet" href="/assets/site.css?v=20260905d">
 <script defer src="/assets/site.js?v=20260905d"></script>
 </head>
@@ -748,7 +756,7 @@
 <div class="photo-overlay" id="photoOverlay" role="dialog" aria-modal="true" aria-labelledby="photoOverlayTitle">
     <button class="photo-overlay-close" type="button" aria-label="Close" onclick="closePhotoOverlay()">×</button>
     <div class="photo-overlay-inner">
-        <h3 class="photo-overlay-title" id="photoOverlayTitle"></h3>
+        <h1 class="photo-overlay-title" id="photoOverlayTitle"></h1>
         <div class="photo-overlay-main-wrap">
             <img class="photo-overlay-main" id="photoOverlayMain" src="" alt="">
         </div>
@@ -2259,6 +2267,7 @@ function sortProducts(mode) {
     document.querySelectorAll('.sort-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.sort === mode);
     });
+    rememberCollectionView();
     renderProducts();
 }
 
@@ -2269,6 +2278,7 @@ function filterCategory(cat) {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.cat === cat);
     });
+    rememberCollectionView();
     renderProducts();
 }
 
@@ -2330,12 +2340,12 @@ function renderProducts() {
         const badgeHtml = p.tag ? `<span class="badge ${p.tag.toLowerCase()}">${p.tag}</span>` : '';
         grid.insertAdjacentHTML('beforeend', `
             <article class="product-card ${cardClass}" data-id="${p.id}" data-category="${safeCategory}">
-                <div class="product-card-image" data-action="open" data-pid="${p.id}" role="button" tabindex="0" aria-label="View item ${p.collectionNumber}: ${safeTitle} photos">
+                <a class="product-card-image" href="${getItemUrl(p.id)}" aria-label="View item ${p.collectionNumber}: ${safeTitle}">
                     <img src="${hero}" alt="${safeTitle} — hero photo" loading="lazy">
                     <span class="collection-number">#${p.collectionNumber}</span>
                     ${extraBadge}
                     ${badgeHtml}
-                </div>
+                </a>
                 <div class="product-card-body">
                     <h3 class="product-card-title">${safeTitle}</h3>
                     <div class="product-card-category">${safeCategory}</div>
@@ -2348,15 +2358,23 @@ function renderProducts() {
             </article>
         `);
     }
-    // Wire up the click-to-open affordance on every photo tile
-    document.querySelectorAll('.product-card-image[data-action="open"]').forEach(el => {
-        el.addEventListener('click', e => openPhotoOverlay(el.dataset.pid));
-        el.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPhotoOverlay(el.dataset.pid); }
-        });
-    });
 }
 
+function getItemUrl(id) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('item', id);
+    return escapeHtml(url.pathname + url.search);
+}
+
+function rememberCollectionView() {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('item')) return;
+    if (currentSort === 'newest') url.searchParams.delete('sort');
+    else url.searchParams.set('sort', currentSort);
+    if (currentCategory === 'all') url.searchParams.delete('category');
+    else url.searchParams.set('category', currentCategory);
+    history.replaceState(null, '', url.pathname + url.search);
+}
 let photoOverlayPid = null;
 function openPhotoOverlay(pid) {
     const p = PRODUCTS.find(x => x.id === pid);
@@ -2390,8 +2408,19 @@ function openPhotoOverlay(pid) {
         });
         thumbs.appendChild(button);
     });
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.title = `${p.title} — Barn Burner Relics`;
+    overlay.classList.add('detail-page');
+    overlay.removeAttribute('role');
+    overlay.removeAttribute('aria-modal');
+    const backUrl = new URL(window.location.href);
+    backUrl.searchParams.delete('item');
+    const back = overlay.querySelector('.photo-overlay-close');
+    back.outerHTML = `<a class="collection-back" href="${escapeHtml(backUrl.pathname + backUrl.search)}">← Back to all listings</a>`;
+    const price = typeof p.price === 'number' && p.price > 0
+        ? '$' + p.price.toLocaleString('en-US') : p.price_display;
+    const sold = p.tag === 'Sold' || p.price_display === 'Sold';
+    desc.insertAdjacentHTML('beforebegin', `<div class="detail-purchase"><strong>${escapeHtml(sold ? 'Sold' : price)}</strong>${sold ? '' : `<button class="reserve-btn" onclick="purchaseOrInquire('${p.id}')">${getShopifyCheckoutUrl(p) ? 'Buy now' : 'Email us'}</button>`}</div>`);
+    document.getElementById('main').replaceChildren(overlay);
 }
 function closePhotoOverlay() {
     const overlay = document.getElementById('photoOverlay');
@@ -2436,19 +2465,19 @@ function messageUs(id) {
     window.location.href = `mailto:${STORE_EMAIL}?subject=${subject}&body=${body}`;
 }
 
+const route = new URLSearchParams(window.location.search);
+const sortMode = route.get('sort');
+if (['newest', 'price-asc', 'price-desc'].includes(sortMode)) currentSort = sortMode;
+const category = route.get('category');
+if (PRODUCTS.some(p => p.category === category)) currentCategory = category;
+document.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b.dataset.sort === currentSort));
+document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === currentCategory));
 renderProducts();
-
-// Esc closes the photo overlay
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('photoOverlay').classList.contains('active')) {
-        closePhotoOverlay();
-    }
-});
-
-// Tap outside the photo card closes the overlay (mobile-friendly)
-document.getElementById('photoOverlay').addEventListener('click', e => {
-    if (e.target === e.currentTarget) closePhotoOverlay();
-});
+if (route.has('item')) {
+    const item = PRODUCTS.find(p => p.id === route.get('item') && p.availability !== 'removed');
+    if (item) openPhotoOverlay(item.id);
+    else document.getElementById('main').innerHTML = '<section class="hero"><h1>Item unavailable</h1><a href="/shop/">Back to all listings</a></section>';
+}
 </script>
 </body>
 </html>
