@@ -1,0 +1,77 @@
+/* Newsletter signup, shared by the homepage and dedicated signup page. */
+.bbr-newsletter {
+  padding: clamp(2.5rem, 6vw, 5rem) var(--bbr-gutter);
+  background: var(--bg-soft);
+  border-block: 1px solid var(--border);
+}
+.bbr-newsletter-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: var(--bbr-width);
+  margin: auto;
+}
+.bbr-newsletter .bbr-newsletter-eyebrow {
+  margin: 0 0 .8rem;
+  color: var(--gold);
+  font: 600 .875rem/1.5 var(--bbr-ui);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.bbr-newsletter :is(h1, h2) { margin: 0 0 1rem; max-width: 15ch; }
+.bbr-newsletter .bbr-newsletter-description {
+  margin: 0;
+  max-width: 47ch;
+  color: var(--cream-dim);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+.bbr-newsletter a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.bbr-newsletter a:hover { color: var(--gold-bright); }
+.bbr-newsletter-signup {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--border-hover);
+  border-radius: 4px;
+  background: var(--bg-card);
+}
+.bbr-newsletter-signup > h2 {
+  margin: 0 0 .4rem;
+  max-width: none;
+  font-size: 1.5rem;
+}
+.bbr-newsletter .bbr-newsletter-free {
+  margin: 0 0 1.25rem;
+  color: var(--cream-dim);
+  font: .9375rem/1.6 var(--bbr-ui);
+}
+.bbr-newsletter .bbr-newsletter-consent,
+.bbr-newsletter .bbr-newsletter-fallback {
+  margin: 1rem 0 0;
+  color: var(--warm-grey);
+  font: .875rem/1.7 var(--bbr-ui);
+}
+.bbr-newsletter-embed { min-height: 100px; }
+.bbr-newsletter-page .bbr-newsletter { border-top: 0; }
+.bbr-newsletter-details {
+  max-width: calc(var(--bbr-width) + 2 * var(--bbr-gutter));
+  padding: 3.5rem var(--bbr-gutter);
+  margin: auto;
+}
+.bbr-newsletter-details > h2 { margin: 0 0 2rem; }
+.bbr-newsletter-topics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.bbr-newsletter-topics article { border-top: 1px solid var(--border); padding-top: 1.25rem; }
+.bbr-newsletter-topics h3 { margin: 0 0 .7rem; color: var(--gold); font-size: 1.25rem; font-weight: 400; }
+.bbr-newsletter-topics p { margin: 0; color: var(--cream-dim); }
+@media (max-width: 760px) {
+  .bbr-newsletter-inner, .bbr-newsletter-topics { grid-template-columns: 1fr; }
+  .bbr-newsletter :is(h1, h2) { max-width: none; }
+}
