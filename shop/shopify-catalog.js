@@ -280,8 +280,8 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794732060": {
       "variantId": "46248167637039",
-      "approvedPrice": 5500,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "illinois-popeye-birdstone-banded-stone": {
       "variantId": "46250926735407",
