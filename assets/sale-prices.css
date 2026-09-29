@@ -1,0 +1,15 @@
+.bbr-theme .sale-price {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .2rem;
+  line-height: 1.25;
+}
+.bbr-theme .sale-original {
+  color: var(--text-dim, #aaa);
+  font-size: .8em;
+  font-weight: 400;
+}
+.bbr-theme .sale-current { color: var(--gold); }
+.bbr-shop .badge.sale { background: var(--gold); color: var(--bg); }
+.bbr-shop .detail-purchase { flex-wrap: wrap; }

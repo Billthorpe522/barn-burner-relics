@@ -200,77 +200,77 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794698420": {
       "variantId": "46248165834799",
-      "approvedPrice": 3500,
+      "approvedPrice": 2800,
       "ready": true
     },
     "ebay-267794712027": {
       "variantId": "46248165867567",
-      "approvedPrice": 2500,
+      "approvedPrice": 2000,
       "ready": true
     },
     "ebay-267794498461": {
       "variantId": "46248165900335",
-      "approvedPrice": 7500,
+      "approvedPrice": 6000,
       "ready": true
     },
     "ebay-267794681987": {
       "variantId": "46248166064175",
-      "approvedPrice": 4000,
+      "approvedPrice": 3200,
       "ready": true
     },
     "ebay-267794482202": {
       "variantId": "46248166195247",
-      "approvedPrice": 1500,
+      "approvedPrice": 1200,
       "ready": true
     },
     "ebay-267794513676": {
       "variantId": "46248166228015",
-      "approvedPrice": 8500,
+      "approvedPrice": 6800,
       "ready": true
     },
     "ebay-267794686305": {
       "variantId": "46248166260783",
-      "approvedPrice": 1800,
+      "approvedPrice": 1440,
       "ready": true
     },
     "ebay-267794622692": {
       "variantId": "46248166293551",
-      "approvedPrice": 19500,
+      "approvedPrice": 15600,
       "ready": true
     },
     "ebay-267794654413": {
       "variantId": "46248166326319",
-      "approvedPrice": 1750,
+      "approvedPrice": 1400,
       "ready": true
     },
     "ebay-267794608574": {
       "variantId": "46248167014447",
-      "approvedPrice": 900,
+      "approvedPrice": 720,
       "ready": true
     },
     "ebay-267794489687": {
       "variantId": "46248167079983",
-      "approvedPrice": 3500,
+      "approvedPrice": 2800,
       "ready": true
     },
     "ebay-267794602560": {
       "variantId": "46248167112751",
-      "approvedPrice": 3500,
+      "approvedPrice": 2800,
       "ready": true
     },
     "ebay-267794573730": {
       "variantId": "46248167145519",
-      "approvedPrice": 4000,
+      "approvedPrice": 3200,
       "ready": true
     },
     "ebay-267794491423": {
       "variantId": "46248167342127",
-      "approvedPrice": 3500,
+      "approvedPrice": 2800,
       "ready": true
     },
     "ebay-267538274751": {
       "variantId": "46248167407663",
-      "approvedPrice": 4000,
+      "approvedPrice": 3200,
       "ready": true
     },
     "ebay-267794747637": {
@@ -295,7 +295,7 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267795458850": {
       "variantId": "46251209097263",
-      "approvedPrice": 30000,
+      "approvedPrice": 24000,
       "ready": true
     }
   }
