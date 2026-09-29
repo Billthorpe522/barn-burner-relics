@@ -2557,7 +2557,12 @@ function getShopifyCheckoutUrl(product) {
         typeof product.price !== 'number' || product.price <= 0 ||
         product.tag === 'Sold' || product.price_display === 'Sold' ||
         product.price_display === 'Inquire' || item.approvedPrice !== product.price) return null;
-    return `https://${config.domain}/cart/${item.variantId}:1`;
+    const checkout = new URL(`https://${config.domain}/cart/${item.variantId}:1`);
+    checkout.searchParams.set('utm_source', 'barnburnerrelics.net');
+    checkout.searchParams.set('utm_medium', 'referral');
+    checkout.searchParams.set('utm_campaign', 'website_store');
+    checkout.searchParams.set('utm_content', product.id);
+    return checkout.href;
 }
 
 function purchaseOrInquire(id) {
