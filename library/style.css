@@ -2,3 +2,10 @@
 
 /* Catalog cards */
 .book-description{font-size:14px;line-height:1.6;color:var(--muted);margin:-12px 0 23px}.book-meta{flex-wrap:wrap;gap:4px 12px}.book h3,.book-bottom>span{overflow-wrap:anywhere}@media(max-width:700px){.book-grid{grid-template-columns:1fr}.book{min-height:170px}.book-bottom{flex-direction:row;align-items:center}.book-bottom>span{max-width:65%}}
+
+/* Main-site navigation, retaining the reading room palette. */
+.masthead{flex-wrap:wrap;gap:16px 28px}
+.library-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 22px}
+.library-nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:15px;color:#d7dfd8;border-bottom:1px solid transparent}
+.library-nav a:hover,.library-nav a[aria-current="page"]{color:var(--paper);border-bottom-color:var(--gold)}
+@media(max-width:700px){.library-nav{width:100%;gap:2px 18px}.library-nav a{font-size:14px}}
