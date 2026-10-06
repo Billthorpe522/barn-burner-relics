@@ -230,8 +230,8 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794686305": {
       "variantId": "46248166260783",
-      "approvedPrice": 1440,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267794622692": {
       "variantId": "46248166293551",
