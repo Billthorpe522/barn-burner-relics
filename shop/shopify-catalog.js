@@ -15,8 +15,8 @@ window.BBR_SHOPIFY = {
     },
     "cobbs-knife-ohio-20260919": {
       "variantId": "46247883374639",
-      "approvedPrice": 165,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "wadlow-knife-howard-mo-20260915": {
       "variantId": "46186073227311",
@@ -200,8 +200,8 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794698420": {
       "variantId": "46248165834799",
-      "approvedPrice": 2800,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267794712027": {
       "variantId": "46248165867567",
@@ -215,13 +215,13 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794681987": {
       "variantId": "46248166064175",
-      "approvedPrice": 3200,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267794482202": {
       "variantId": "46248166195247",
-      "approvedPrice": 1200,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267794513676": {
       "variantId": "46248166228015",
