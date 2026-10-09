@@ -3,6 +3,11 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "facebook-2980071488994714": {
+      "variantId": "46855038402607",
+      "approvedPrice": 2490,
+      "ready": true
+    },
     "rectangular-gorget-ohio-20260919": {
       "variantId": "46247883309103",
       "approvedPrice": 1340,
