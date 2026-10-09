@@ -10,8 +10,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-2981236992211497": {
       "variantId": "46897147150383",
-      "approvedPrice": 415,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2979319019069961": {
       "variantId": "46856494252079",
@@ -65,8 +65,8 @@ window.BBR_SHOPIFY = {
     },
     "epc-corner-tang-texas-20260910": {
       "variantId": "46186078535727",
-      "approvedPrice": 715,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "desert-side-notch-oregon-20260910": {
       "variantId": "46186079518767",
@@ -260,8 +260,8 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794654413": {
       "variantId": "46248166326319",
-      "approvedPrice": 1400,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267794608574": {
       "variantId": "46248167014447",
