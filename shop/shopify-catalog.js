@@ -3,6 +3,16 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "facebook-2981264692208727": {
+      "variantId": "46897145872431",
+      "approvedPrice": 180,
+      "ready": true
+    },
+    "facebook-2981236992211497": {
+      "variantId": "46897147150383",
+      "approvedPrice": 415,
+      "ready": true
+    },
     "facebook-2979319019069961": {
       "variantId": "46856494252079",
       "approvedPrice": 485,
