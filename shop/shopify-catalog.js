@@ -1,4 +1,4 @@
-// Verified eBay imports; anchor pendant held for review.
+// Verified storefront imports; anchor pendant held for review.
 window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
