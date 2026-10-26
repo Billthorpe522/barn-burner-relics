@@ -8,10 +8,10 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Live Auctions — Barn Burner Relics</title>
-<meta name="description" content="Join the Barn Burner Relics Facebook Live auction on Monday, October 19, 2026 at 4 PM Central Time. See tonight's highlight photo and past auction previews.">
+<meta name="description" content="Join the Barn Burner Relics Facebook Live auctions on Monday, October 26 and Tuesday, October 27, 2026. Both auctions start at 4 PM Central Time.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
 <meta property="og:title" content="Live Auctions — Barn Burner Relics">
-<meta property="og:description" content="Join the Barn Burner Relics Facebook Live auction on Monday, October 19, 2026 at 4 PM Central Time. See tonight's highlight photo and past auction previews.">
+<meta property="og:description" content="Join the Barn Burner Relics Facebook Live auctions on Monday, October 26 and Tuesday, October 27, 2026. Both auctions start at 4 PM Central Time.">
 <meta property="og:image" content="https://barnburnerrelics.net/images/incoming/2026-10-19-auction/highlight.jpg">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Live Auctions — Barn Burner Relics">
-<meta name="twitter:description" content="Join the Barn Burner Relics Facebook Live auction on Monday, October 19, 2026 at 4 PM Central Time. See tonight's highlight photo and past auction previews.">
+<meta name="twitter:description" content="Join the Barn Burner Relics Facebook Live auctions on Monday, October 26 and Tuesday, October 27, 2026. Both auctions start at 4 PM Central Time.">
 <meta name="twitter:image" content="https://barnburnerrelics.net/images/incoming/2026-10-19-auction/highlight.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -795,15 +795,15 @@
 <!-- Regular Monday auctions plus individually confirmed special dates. -->
 
 <main id="main" tabindex="-1">
-<noscript><p style="padding:1.5rem;text-align:center">Monday auction: October 19, 2026 at 4 PM Central. The highlight photo is for tonight's auction; the October 12 photos below are kept as an archive and do not indicate current availability. Enable JavaScript for the countdown and remaining photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
+<noscript><p style="padding:1.5rem;text-align:center">Auctions: Monday, October 26 and Tuesday, October 27, 2026, both at 4 PM Central. The highlight photo is from October 19; the archive below is from October 12. These photos do not indicate current availability. Enable JavaScript for the countdown and remaining photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
 <section class="hero" aria-labelledby="auction-title">
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-eyebrow">Barn Burner Relics · Facebook Live</div>
       <h1 id="auction-title"><span id="auctionDay">Monday</span><br><em>Auction</em></h1>
-      <p class="hero-date" id="heroDate">Monday · October 19, 2026 · 4:00 PM Central Time</p>
-      <p class="hero-note" id="auctionScheduleNote">Today’s auction starts at 4 PM Central — an hour earlier than our regular Monday time.</p>
-      <p class="hero-note" id="auctionPhotoNote">Tonight’s highlight photo is shown here. Join our Facebook group for lot details and bidding. The older photos below are from October 12 and do not indicate current availability.</p>
+      <p class="hero-date" id="heroDate">Monday · October 26, 2026 · 4:00 PM Central Time</p>
+      <p class="hero-note" id="auctionScheduleNote">Monday, October 26 and Tuesday, October 27 — both auctions start at 4 PM Central.</p>
+      <p class="hero-note" id="auctionPhotoNote">The highlight photo is from the October 19, 2026 auction; the archive below is from October 12. These photos do not indicate current availability. Check the Facebook group for the next auction’s lots.</p>
       <a class="auction-link" href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Join the auction on Facebook</a>
       <p class="hero-note"><a href="/faq/">New to the auction? Read the FAQ →</a><br><a href="/faq/#payment">Won an item? See invoice and payment details →</a> · <a href="/faq/#shipping">Shipping information →</a></p>
     <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
@@ -1041,9 +1041,12 @@
         // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
         const AUCTION_DAYS = [1]; // Monday only
 
-        // Bill confirmed October 19 at 4 PM Central; this replaces that Monday's 5 PM slot.
-        // Later Mondays retain the regular 5 PM schedule.
-        const TEMP_AUCTION_INSTANT = Date.parse('2026-10-19T16:00:00-05:00');
+        // Bill confirmed October 26 and 27 at 4 PM Central.
+        // The Monday special replaces its regular 5 PM slot; Tuesday is a one-time auction.
+        const SPECIAL_AUCTION_INSTANTS = [
+            Date.parse('2026-10-26T16:00:00-05:00'),
+            Date.parse('2026-10-27T16:00:00-05:00')
+        ];
         const AUCTION_LIVE_MS = 4 * 3600000;
         const AUCTION_HOUR = 17;  // 5:00 PM in 24h
         const CHICAGO_TZ = 'America/Chicago';
@@ -1094,13 +1097,13 @@
         function nextAuctionInstant(nowMs) {
             // Keep today's auction selected during its existing four-hour live window,
             // including when a visitor opens or refreshes the page after its start time.
-            if (TEMP_AUCTION_INSTANT !== null && nowMs < TEMP_AUCTION_INSTANT + AUCTION_LIVE_MS) {
-                return TEMP_AUCTION_INSTANT;
-            }
+            const specialInstant = SPECIAL_AUCTION_INSTANTS
+                .filter(instant => nowMs < instant + AUCTION_LIVE_MS)
+                .sort((a, b) => a - b)[0];
             const nowParts = chicagoPartsFromInstant(nowMs);
             const sortedDays = [...AUCTION_DAYS].sort((a, b) => a - b);
-            let bestDelta = Infinity;
-            let bestInstant = null;
+            let bestInstant = specialInstant ?? null;
+            let bestDelta = bestInstant === null ? Infinity : bestInstant - nowMs;
             for (const targetDow of sortedDays) {
                 // Days forward from today (in Chicago) to the next occurrence of targetDow.
                 let delta = (targetDow - nowParts.weekday + 7) % 7;
@@ -1110,9 +1113,11 @@
                     probe.getFullYear(), probe.getMonth(), probe.getDate(), AUCTION_HOUR
                 );
                 // The special time replaces the regular slot on the same date.
-                const specialDay = chicagoPartsFromInstant(TEMP_AUCTION_INSTANT);
-                const replacesRegularSlot = probe.getFullYear() === specialDay.year &&
-                    probe.getMonth() === specialDay.month && probe.getDate() === specialDay.day;
+                const replacesRegularSlot = SPECIAL_AUCTION_INSTANTS.some(instant => {
+                    const specialDay = chicagoPartsFromInstant(instant);
+                    return probe.getFullYear() === specialDay.year &&
+                        probe.getMonth() === specialDay.month && probe.getDate() === specialDay.day;
+                });
                 if (replacesRegularSlot || nowMs >= probeMs + AUCTION_LIVE_MS) {
                     probe.setDate(probe.getDate() + 7);
                     probeMs = chicagoWallClockToInstant(
@@ -1154,14 +1159,8 @@
         const get = t => parts.find(p => p.type === t).value;
         el.textContent = `${get('weekday')} · ${get('month')} ${get('day')}, ${get('year')} · ${get('hour')}:${get('minute')} ${get('dayPeriod')} Central Time`;
         document.getElementById('auctionDay').textContent = get('weekday');
-        const photoNote = document.getElementById('auctionPhotoNote');
-        if (photoNote) {
-            photoNote.textContent = Date.now() < TEMP_AUCTION_INSTANT + AUCTION_LIVE_MS
-                ? 'Tonight’s highlight photo is shown here. Join our Facebook group for lot details and bidding. The older photos below are from October 12 and do not indicate current availability.'
-                : 'The highlight photo is from the October 19, 2026 auction; the archive below is from October 12. These photos do not indicate current availability. Check the Facebook group for the next auction’s lots.';
-        }
-        document.getElementById('auctionScheduleNote').textContent = cdTarget === TEMP_AUCTION_INSTANT
-            ? 'Today’s auction starts at 4 PM Central — an hour earlier than our regular Monday time.'
+        document.getElementById('auctionScheduleNote').textContent = SPECIAL_AUCTION_INSTANTS.includes(cdTarget)
+            ? 'Monday, October 26 and Tuesday, October 27 — both auctions start at 4 PM Central.'
             : "Join our regular Monday auction at 5 PM Central. Check the Facebook group for this week's lots and any special auction announcements.";
     }
     renderHeroDate();
