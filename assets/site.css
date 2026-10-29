@@ -118,11 +118,18 @@ body.bbr-theme { margin: 0; padding: 0; display: block; min-height: 100vh;
   border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3rem; align-items: center; }
 .bbr-home .bbr-hero-support :is(.signature-block,.hero-video) { width: 100%; max-width: 30rem; margin: 0 auto; text-align: center; }
 .bbr-home .bbr-hero-support .plaque-img { width: 100%; max-width: 26rem; box-shadow: none; }
-.bbr-home .hero-artifact { max-width: none; width: 100%; height: auto; margin: 0; box-shadow: none; border: 1px solid var(--border); }
+.bbr-home .hero-artifact { aspect-ratio: 3/2; max-width: none; width: 100%; height: auto; margin: 0; box-shadow: none; border: 1px solid var(--border); }
 .bbr-home .hero-artifact img { object-fit: contain; }
 .bbr-home .hero-artifact-caption { padding: 1.5rem 1rem .75rem; }
 .bbr-home .featured-image img { object-fit: contain; }
-.bbr-home .about-section { text-align: left; }
+/* Documentary photography keeps the people and objects in their original frames. */
+.bbr-home .about-section { text-align: left; max-width: calc(var(--bbr-width) + 48px);
+  display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(2rem,4vw,4rem); align-items: center; }
+.bbr-home .about-photo { margin: 0; }
+.bbr-home .about-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 3px; }
+.bbr-home .about-photo figcaption { margin-top: .75rem; color: var(--warm-grey); font: .875rem/1.6 var(--bbr-ui); }
+@media (max-width: 700px) { .bbr-home .about-section { grid-template-columns: minmax(0,1fr); }
+  .bbr-home .about-photo { max-width: 30rem; } }
 .bbr-home .hero-video { width: 100%; }
 
 /* Collection: readable cards and controls at every width. */

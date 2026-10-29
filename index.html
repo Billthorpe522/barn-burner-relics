@@ -73,8 +73,8 @@
 }
 </script>
 
-<!-- Preload the hero image for fast LCP. The <picture> element below handles WebP/mobile variants. -->
-<link rel="preload" as="image" href="/images/hero-display-case-collection.webp" type="image/webp" imagesrcset="/images/hero-display-case-collection-mobile.webp 768w, /images/hero-display-case-collection.webp 1280w" imagesizes="(max-width: 768px) 100vw, 1200px" fetchpriority="high">
+<!-- Preload the same responsive birdstone image used in the hero. -->
+<link rel="preload" as="image" href="/images/field-photography/birdstone-detail.webp" type="image/webp" imagesrcset="/images/field-photography/birdstone-detail-768.webp 768w, /images/field-photography/birdstone-detail.webp 1536w" imagesizes="(max-width: 1000px) 90vw, 620px" fetchpriority="high">
 <style>
 
 :root {
@@ -1097,13 +1097,9 @@
         </div>
 
         <figure class="hero-artifact">
-            <picture>
-                <source type="image/webp" media="(max-width: 768px)" srcset="images/hero-display-case-collection-mobile.webp">
-                <source type="image/webp" srcset="images/hero-display-case-collection.webp">
-                <img src="images/hero-display-case-collection.jpg" alt="Curated glass display case holding a working collection of hammerstones, bannerstones, pipes, gorgets, and a framed arrowhead tray from the BBR vault" loading="eager" fetchpriority="high" width="1280" height="720">
-            </picture>
+            <img src="images/field-photography/birdstone-detail.webp" srcset="images/field-photography/birdstone-detail-768.webp 768w, images/field-photography/birdstone-detail.webp 1536w" sizes="(max-width: 1000px) 90vw, 620px" alt="Banded birdstone on an illuminated display stand at Barn Burner Relics" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
             <figcaption class="hero-artifact-caption">
-                <strong>From the vault</strong> · curated collection · available now
+                <strong>A closer look</strong> · birdstone detail
             </figcaption>
         </figure>
     </div>
@@ -1248,14 +1244,14 @@
     </div>
     <div class="wwd-grid">
         <article class="wwd-card">
-            <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/wwd/auctions-showroom-mobile.webp"><source type="image/webp" srcset="images/wwd/auctions-showroom.webp"><img src="images/wwd/auctions-showroom.jpg" alt="Behind the scenes at Barn Burner Relics — Nick inspecting and authenticating points at the appraisal table, with certificates of authenticity and display cases in the background" loading="lazy" width="1280" height="765"></picture></div>
+            <div class="wwd-image"><img src="images/field-photography/collection-display.webp" srcset="images/field-photography/collection-display-768.webp 768w, images/field-photography/collection-display.webp 1536w" sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 300px" alt="Stone points, pipes, and drilled stone artifacts arranged in a velvet-lined display case" loading="lazy" decoding="async" width="1536" height="1024"></div>
             <h3>Weekly Auctions</h3>
             <p>Every Monday on Facebook — 20-40 pieces per week, single points to small collections. Open bidding, photos in the lot, no reserves.</p>
             <a href="gallery/" class="wwd-link">View the Auction Gallery →</a>
         </article>
 
         <article class="wwd-card">
-            <div class="wwd-image"><picture><source type="image/webp" media="(max-width: 768px)" srcset="images/bannerstones/collection-closeup-2026-07-13-mobile.webp"><source type="image/webp" srcset="images/bannerstones/collection-closeup-2026-07-13.webp"><img src="images/bannerstones/collection-closeup-2026-07-13.jpg" alt="Quartz bannerstones from a private offering — higher-end pieces sold quietly with full provenance" loading="lazy" width="1280" height="443"></picture></div>
+            <div class="wwd-image"><img src="images/field-photography/gorget-in-hand.webp" srcset="images/field-photography/gorget-in-hand-768.webp 768w, images/field-photography/gorget-in-hand.webp 1536w" sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 300px" alt="Close view of a dark stone gorget with two drilled holes, held in a hand" loading="lazy" decoding="async" width="1536" height="1024"></div>
             <h3>Private Sales</h3>
             <p>Higher-end pieces, museum-grade material, and named-collection offerings. Sold quietly, with full provenance, to qualified buyers.</p>
             <a href="shop/" class="wwd-link">Browse the Collection →</a>
@@ -1277,8 +1273,13 @@
     </div>
 </section>
 
-<section class="about-section" id="about">
-    <h2>About Barn Burner Relics</h2>
+<section class="about-section" id="about" aria-labelledby="about-heading">
+    <figure class="about-photo">
+        <img src="images/field-photography/pottery-inspection.webp" srcset="images/field-photography/pottery-inspection-768.webp 768w, images/field-photography/pottery-inspection.webp 1024w" sizes="(max-width: 700px) 100vw, 420px" alt="Behind the scenes at Barn Burner Relics: examining a pottery vessel with a phone and inspection light" loading="lazy" decoding="async" width="1024" height="1536">
+        <figcaption>Behind the scenes · a closer look at the details</figcaption>
+    </figure>
+    <div class="about-copy">
+    <h2 id="about-heading">About Barn Burner Relics</h2>
     <p>
         Founded by Nick Gatses in Manhattan, Illinois, Barn Burner Relics has grown into one of the most trusted
         names in the Native American artifact community. Nick's philosophy is simple: authenticity first, story always.
@@ -1296,6 +1297,7 @@
         Nick organizes the <a href="show/" style="color:var(--gold);border-bottom:1px solid var(--oxblood);padding-bottom:2px;text-decoration:none;">Collinsville Prehistoric Artifact Show</a> — among the largest prehistoric artifact shows in the country — and is a regular exhibitor at the annual Starved Rock Native American Artifact Show. His weekly Facebook auctions draw collectors from across the United States.
         </p>
     <div class="signature">— Nick Gatses, Proprietor</div>
+    </div>
 </section>
 
 <!-- Quiet CTA: Nick actively buys collections and does appraisals.
