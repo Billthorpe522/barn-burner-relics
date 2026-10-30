@@ -5,7 +5,7 @@ window.BBR_SHOPIFY = {
   "products": {
     "facebook-3004592183209311": {
       "variantId": "47095650648111",
-      "approvedPrice": 524.6,
+      "approvedPrice": 525,
       "ready": true
     },
     "facebook-2981264692208727": {
@@ -235,7 +235,7 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794498461": {
       "variantId": "46248165900335",
-      "approvedPrice": 7004.6,
+      "approvedPrice": 7005,
       "ready": true
     },
     "ebay-267794681987": {
