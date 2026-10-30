@@ -662,6 +662,7 @@
     </style>
 <link rel="stylesheet" href="/assets/site.css?v=20260905d">
 <link rel="stylesheet" href="/assets/sale-prices.css?v=20260928">
+<link rel="stylesheet" href="/shop/listing-textures.css?v=20261030">
 <script defer src="/assets/site.js?v=20260905d"></script>
 </head>
 <body class="bbr-theme bbr-shop">
@@ -770,6 +771,7 @@
 </div>
 
 <script src="/shop/shopify-catalog.js?v=20261030-rounded"></script>
+<script src="/shop/listing-textures.js?v=20261030"></script>
 <script>
 const STORE_EMAIL = 'bbryoutube@gmail.com';
 
@@ -3089,6 +3091,15 @@ function openPhotoOverlay(pid) {
     back.outerHTML = `<a class="collection-back" href="${escapeHtml(backUrl.pathname + backUrl.search)}">← Back to all listings</a>`;
     const sold = p.tag === 'Sold' || p.price_display === 'Sold';
     desc.insertAdjacentHTML('beforebegin', `<div class="detail-purchase"><strong>${getProductPriceHtml(p)}</strong>${sold ? '' : `<button class="reserve-btn" onclick="purchaseOrInquire('${p.id}')">${getShopifyCheckoutUrl(p) ? 'Buy now' : 'Email us'}</button>`}</div>`);
+    const panel = overlay.querySelector('.photo-overlay-inner');
+    const gallery = document.createElement('div');
+    gallery.className = 'detail-gallery';
+    gallery.append(overlay.querySelector('.photo-overlay-main-wrap'), thumbs);
+    const info = document.createElement('div');
+    info.className = 'detail-info';
+    info.append(overlay.querySelector('.detail-purchase'), desc);
+    panel.append(gallery, info);
+    if (window.applyListingTexture) window.applyListingTexture(panel, p);
     document.getElementById('main').replaceChildren(overlay);
 }
 function closePhotoOverlay() {
