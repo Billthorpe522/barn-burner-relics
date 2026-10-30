@@ -18,3 +18,13 @@
 .library-access p+p{margin-top:7px;color:#4b554d}
 .library-access a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:700px){.library-access-inner{padding:20px 24px}.library-access h2{font-size:22px}}
+
+/* Small source covers keep the reading room easy to scan. */
+.book h3 a{display:flex;align-items:flex-start;gap:14px}
+.book-title{min-width:0}
+.book-cover{display:flex;align-items:flex-start;justify-content:center;flex:0 0 64px;width:64px;min-height:86px}
+.book-cover img{display:block;width:64px;height:86px;object-fit:contain;object-position:top center;filter:drop-shadow(0 2px 2px #21352e22)}
+.book-cover-placeholder{height:86px;position:relative;background:#e8e7dc;border:1px solid #c5cbbd;color:#65715f;align-items:center;flex-direction:column}
+.book-cover-placeholder svg{width:34px;height:46px;stroke:currentColor;stroke-width:1.5}
+.book-cover-placeholder small{font:9px/1 Arial,sans-serif;letter-spacing:.1em;margin-top:5px}
+@media(max-width:700px){.book-cover{flex-basis:60px;width:60px;min-height:80px}.book-cover img{width:60px;height:80px}.book-cover-placeholder{height:80px}.book h3 a{gap:13px}}
