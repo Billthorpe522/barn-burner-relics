@@ -241,10 +241,12 @@ body.bbr-theme { margin: 0; padding: 0; display: block; min-height: 100vh;
   .bbr-theme :is(.featured-grid,.bulletin-grid,.wwd-grid), .bbr-show :is(.cards,.about-grid), .bbr-shows .show-list { grid-template-columns: minmax(0,1fr); }
   .bbr-theme .bbr-footer-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem 1.5rem; }
   .bbr-theme .bbr-footer-about { grid-column: 1/-1; }
-  .bbr-theme .site-nav { gap: .35rem; padding: .875rem var(--bbr-gutter) .5rem; }
-  .bbr-theme .site-nav-links { gap: .1rem 1.15rem; }
-  .bbr-theme .site-nav-brand { min-height: 44px; }
-  .bbr-theme .site-nav-links a { font-size: .9375rem; }
+  .bbr-theme .site-nav { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: .75rem; padding: .5rem .75rem; }
+  .bbr-theme .site-nav-links { display: grid; grid-template-columns: auto auto auto; gap: 0 .5rem; justify-content: stretch; }
+  .bbr-theme .site-nav-brand { min-height: 44px; justify-content: center; }
+  .bbr-theme .site-nav-brand-mark { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; }
+  .bbr-theme .site-nav-brand-text { display: none; }
+  .bbr-theme .site-nav-links a { justify-content: center; font-size: .875rem; white-space: nowrap; }
   .bbr-gallery .section-label { display: block; }
   .bbr-gallery .section-label p { margin-top: .65rem; }
   .bbr-gallery .photo-grid { grid-template-columns: minmax(0,1fr); gap: 1.75rem; }
