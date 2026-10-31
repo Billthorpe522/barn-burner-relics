@@ -30,13 +30,13 @@ window.BBR_SHOPIFY = {
     },
     "rectangular-gorget-ohio-20260919": {
       "variantId": "46247883309103",
-      "approvedPrice": 1340,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "granite-celt-illinois-20260919": {
       "variantId": "46247883341871",
-      "approvedPrice": 640,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "cobbs-knife-ohio-20260919": {
       "variantId": "46247883374639",
@@ -200,8 +200,8 @@ window.BBR_SHOPIFY = {
     },
     "anchor-pendant-marion-co-in-001": {
       "variantId": "46153520906287",
-      "approvedPrice": 2485,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "hematite-plummet-spencer-co-in-001": {
       "variantId": "46153522642991",
@@ -290,13 +290,13 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267794491423": {
       "variantId": "46248167342127",
-      "approvedPrice": 2800,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267538274751": {
       "variantId": "46248167407663",
-      "approvedPrice": 3200,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "ebay-267794747637": {
       "variantId": "46248167473199",
@@ -345,13 +345,13 @@ window.BBR_SHOPIFY = {
     },
     "facebook-2988063578195505": {
       "variantId": "46993735581743",
-      "approvedPrice": 715,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2988057271529469": {
       "variantId": "46993735614511",
-      "approvedPrice": 740,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2988048978196965": {
       "variantId": "46993735647279",
@@ -360,8 +360,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-2988044341530762": {
       "variantId": "46993735680047",
-      "approvedPrice": 1740,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2988036831531513": {
       "variantId": "46993735712815",
@@ -370,8 +370,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-2988031738198689": {
       "variantId": "46993735745583",
-      "approvedPrice": 345,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2981439402191256": {
       "variantId": "46993735778351",
@@ -380,8 +380,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-2981259988875864": {
       "variantId": "46993735811119",
-      "approvedPrice": 2485,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2981262098875653": {
       "variantId": "46993735843887",
