@@ -8,10 +8,10 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Live Auctions — Barn Burner Relics</title>
-<meta name="description" content="Preview all 31 photos for the Barn Burner Relics Facebook Live auction on Monday, November 2, 2026 at 5 PM Central Time.">
+<meta name="description" content="Preview all 31 photos for the Barn Burner Relics Facebook Live auction on Saturday, November 7, 2026 at 4 PM Central Time.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
 <meta property="og:title" content="Live Auctions — Barn Burner Relics">
-<meta property="og:description" content="Preview all 31 photos for the Barn Burner Relics Facebook Live auction on Monday, November 2, 2026 at 5 PM Central Time.">
+<meta property="og:description" content="Preview all 31 photos for the Barn Burner Relics Facebook Live auction on Saturday, November 7, 2026 at 4 PM Central Time.">
 <meta property="og:image" content="https://barnburnerrelics.net/gallery/img/2026-11-02/hero.jpg">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Live Auctions — Barn Burner Relics">
-<meta name="twitter:description" content="Preview all 31 photos for the Barn Burner Relics Facebook Live auction on Monday, November 2, 2026 at 5 PM Central Time.">
+<meta name="twitter:description" content="Preview all 31 photos for the Barn Burner Relics Facebook Live auction on Saturday, November 7, 2026 at 4 PM Central Time.">
 <meta name="twitter:image" content="https://barnburnerrelics.net/gallery/img/2026-11-02/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -797,15 +797,15 @@
 <!-- Regular Monday auctions plus individually confirmed special dates. -->
 
 <main id="main" tabindex="-1">
-<noscript><p style="padding:1.5rem;text-align:center">Auction: Monday, November 2, 2026 at 5 PM Central. Preview photos for the November 2 auction are shown below. Join our Facebook group for lot details and bidding. Enable JavaScript for the countdown and remaining photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
+<noscript><p style="padding:1.5rem;text-align:center">Auction: Saturday, November 7, 2026 at 4 PM Central. Current preview photos are shown below. Join our Facebook group for lot details and bidding. Enable JavaScript for the countdown and remaining photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
 <section class="hero" aria-labelledby="auction-title">
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-eyebrow">Barn Burner Relics · Facebook Live</div>
-      <h1 id="auction-title"><span id="auctionDay">Monday</span><br><em>Auction</em></h1>
-      <p class="hero-date" id="heroDate">Monday · November 2, 2026 · 5:00 PM Central Time</p>
-      <p class="hero-note" id="auctionScheduleNote">Monday, November 2 — auction starts at 5 PM Central.</p>
-      <p class="hero-note" id="auctionPhotoNote">Preview the November 2 auction photos below. Join our Facebook group for lot details and bidding.</p>
+      <h1 id="auction-title"><span id="auctionDay">Saturday</span><br><em>Auction</em></h1>
+      <p class="hero-date" id="heroDate">Saturday · November 7, 2026 · 4:00 PM Central Time</p>
+      <p class="hero-note" id="auctionScheduleNote">Saturday, November 7 — auction starts at 4 PM Central.</p>
+      <p class="hero-note" id="auctionPhotoNote">Browse the current auction preview photos below. Join our Facebook group for lot details and bidding.</p>
       <a class="auction-link" href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Join the auction on Facebook</a>
       <p class="hero-note"><a href="/faq/">New to the auction? Read the FAQ →</a><br><a href="/faq/#payment">Won an item? See invoice and payment details →</a> · <a href="/faq/#shipping">Shipping information →</a></p>
     <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
@@ -828,7 +828,7 @@
     </div>
     </div>
     <div class="hero-image-wrap">
-        <a href="/gallery/img/2026-11-02/06.jpg" target="_blank" rel="noopener" aria-label="Open the November 2 auction highlight photo at full size">
+        <a href="/gallery/img/2026-11-02/06.jpg" target="_blank" rel="noopener" aria-label="Open the auction highlight photo at full size">
             <img class="hero-image" src="/gallery/img/2026-11-02/hero.jpg" alt="Auction overview with stone points, blades, a patterned bowl and accompanying paperwork" loading="eager" fetchpriority="high" width="1600" height="1067">
         </a>
     </div>
@@ -836,8 +836,8 @@
 </section>
 
 <div class="section-label">
-    <h2>Auction Preview · November 2, 2026</h2>
-    <p>31 photos of the relics featured in the November 2 auction. Select a photo to open the full-size image.</p>
+    <h2>Auction Preview · November 7, 2026</h2>
+    <p>31 preview photos. Select a photo to open the full-size image.</p>
 </div>
 
 <div class="photo-grid" id="photoGrid"></div>
@@ -1178,8 +1178,8 @@
         // 'now' is read in Chicago via Intl.DateTimeFormat so DST switchover is handled.
         const AUCTION_DAYS = [1]; // Monday only
 
-        // Regular Monday schedule; no special dates for this preview.
-        const SPECIAL_AUCTION_INSTANTS = [];
+        // Confirmed Saturday auction, followed by the regular Monday schedule.
+        const SPECIAL_AUCTION_INSTANTS = [Date.parse('2026-11-07T16:00:00-06:00')];
         const AUCTION_LIVE_MS = 4 * 3600000;
         const AUCTION_HOUR = 17;  // 5:00 PM in 24h
         const CHICAGO_TZ = 'America/Chicago';
@@ -1293,7 +1293,7 @@
         el.textContent = `${get('weekday')} · ${get('month')} ${get('day')}, ${get('year')} · ${get('hour')}:${get('minute')} ${get('dayPeriod')} Central Time`;
         document.getElementById('auctionDay').textContent = get('weekday');
         document.getElementById('auctionScheduleNote').textContent = SPECIAL_AUCTION_INSTANTS.includes(cdTarget)
-            ? 'Monday, November 2 — auction starts at 5 PM Central.'
+            ? 'Saturday, November 7 — auction starts at 4 PM Central.'
             : "Join our regular Monday auction at 5 PM Central. Check the Facebook group for this week's lots and any special auction announcements.";
     }
     renderHeroDate();
