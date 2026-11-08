@@ -8,10 +8,10 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <title>Live Auctions — Barn Burner Relics</title>
-<meta name="description" content="Preview the pieces in the Barn Burner Relics Facebook Live auction on Saturday, November 7, 2026 at 4 PM Central Time.">
+<meta name="description" content="Thank you for an amazing six-plus-hour auction Saturday night! No auction Monday, November 9. Auctions resume next week. See the Kentucky Dam show details and flyer.">
 <link rel="canonical" href="https://barnburnerrelics.net/gallery/">
 <meta property="og:title" content="Live Auctions — Barn Burner Relics">
-<meta property="og:description" content="Preview the pieces in the Barn Burner Relics Facebook Live auction on Saturday, November 7, 2026 at 4 PM Central Time.">
+<meta property="og:description" content="Thank you for an amazing six-plus-hour auction Saturday night! No auction Monday, November 9. Auctions resume next week. See the Kentucky Dam show details and flyer.">
 <meta property="og:image" content="https://barnburnerrelics.net/gallery/img/2026-11-07/8626.jpg">
 <meta property="og:url" content="https://barnburnerrelics.net/gallery/">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Live Auctions — Barn Burner Relics">
-<meta name="twitter:description" content="Preview the pieces in the Barn Burner Relics Facebook Live auction on Saturday, November 7, 2026 at 4 PM Central Time.">
+<meta name="twitter:description" content="Thank you for an amazing six-plus-hour auction Saturday night! No auction Monday, November 9. Auctions resume next week. See the Kentucky Dam show details and flyer.">
 <meta name="twitter:image" content="https://barnburnerrelics.net/gallery/img/2026-11-07/8626.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -794,21 +794,21 @@
 <a href="/social/">Socials</a></div>
 </nav></header>
 
-<!-- Regular Monday auctions plus individually confirmed special dates. -->
+<!-- November 9 auction canceled; schedule and countdown paused until the next auction is confirmed. -->
 
 <main id="main" tabindex="-1">
-<noscript><p style="padding:1.5rem;text-align:center">Auction: Saturday, November 7, 2026 at 4 PM Central. Current preview photos are shown below. Join our Facebook group for lot details and bidding. Enable JavaScript for the countdown and remaining photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
+<noscript><p style="padding:1.5rem;text-align:center">Thank you for an amazing six-plus-hour auction Saturday night! No auction Monday, November 9. Auctions resume next week. Enable JavaScript to browse all of Saturday’s photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
 <section class="hero" aria-labelledby="auction-title">
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-eyebrow">Barn Burner Relics · Facebook Live</div>
-      <h1 id="auction-title"><span id="auctionDay">Saturday</span><br><em>Auction</em></h1>
-      <p class="hero-date" id="heroDate">Saturday · November 7, 2026 · 4:00 PM Central Time</p>
-      <p class="hero-note" id="auctionScheduleNote">Saturday, November 7 — auction starts at 4 PM Central.</p>
-      <p class="hero-note" id="auctionPhotoNote">Browse the pieces in today’s auction. Join our Facebook group for lot details and bidding.</p>
-      <a class="auction-link" href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Join the auction on Facebook</a>
+      <h1 id="auction-title">Thank you for<br><em>an amazing night.</em></h1>
+      <p class="hero-date" id="heroDate">No auction Monday, November 9</p>
+      <p class="hero-note" id="auctionScheduleNote">Thank you to everyone who joined us for an amazing six-plus-hour auction Saturday night! We’re taking Monday off and will resume auctions next week.</p>
+      <p class="hero-note" id="auctionPhotoNote" style="margin-top:1rem">In the meantime, come see Nick and Cam at the Kentucky Dam show. <a href="/shows/#kentucky-dam-2026" style="color:var(--gold);text-decoration:underline;text-underline-offset:3px">View the show details and flyer →</a></p>
+      <a class="auction-link" href="https://www.facebook.com/groups/910205539314663/" target="_blank" rel="noopener">Visit our Facebook group</a>
       <p class="hero-note"><a href="/faq/">New to the auction? Read the FAQ →</a><br><a href="/faq/#payment">Won an item? See invoice and payment details →</a> · <a href="/faq/#shipping">Shipping information →</a></p>
-    <div class="countdown" id="countdown" aria-label="Countdown to the next auction">
+    <div class="countdown" id="countdown" aria-label="Countdown to the next auction" hidden style="display:none">
         <div class="cd-cell">
             <span class="cd-num" id="cdDays">--</span>
             <span class="cd-lbl">Days</span>
@@ -836,7 +836,7 @@
 </section>
 
 <div class="section-label">
-    <h2>Auction Preview · November 7, 2026</h2>
+    <h2>Saturday’s Auction Photos · November 7, 2026</h2>
     <p>Select a photo to open the full-size image.</p>
 </div>
 
@@ -1088,6 +1088,8 @@
         if (e.key === 'Escape') closeLightbox();
     });
 
+    // No countdown or automatic date replacement while the auction schedule is paused.
+    if (!document.getElementById('countdown').hidden) {
     // ========== Countdown to next auction ==========
         // AUCTION_DAYS controls which weekdays host auctions. JS weekday: 0=Sun..6=Sat.
         //   Normal weekly: Monday only — [1]
@@ -1250,6 +1252,7 @@
 
     tickCountdown();
     setInterval(tickCountdown, 1000);
+    }
 </script>
 
 </body>
