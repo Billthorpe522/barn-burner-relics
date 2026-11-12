@@ -82,6 +82,34 @@
         img { max-width: 100%; display: block; cursor: pointer; }
         a { color: inherit; text-decoration: none; }
 
+        /* A quiet thank-you and review invitation above the auction preview. */
+        .bbr-gallery .review-note {
+            background: rgba(212, 168, 83, 0.04);
+            border-bottom: 1px solid var(--border);
+            padding: 12px var(--bbr-gutter, 24px);
+            color: var(--warm-grey);
+            font: .875rem/1.6 var(--bbr-ui, Arial, sans-serif);
+        }
+        .bbr-gallery .review-note-inner {
+            max-width: var(--bbr-width, 1200px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px 24px;
+        }
+        .bbr-gallery .review-note p { margin: 0; flex: 1 1 32rem; }
+        .bbr-gallery .review-note a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: var(--gold);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .bbr-gallery .review-note a:hover { color: var(--cream); }
+
         /* === HERO === */
         .hero {
         background: linear-gradient(135deg, var(--bg-card) 0%, #2c1f14 50%, var(--bg-card) 100%);
@@ -797,6 +825,12 @@
 <!-- Kentucky Dam auction — Saturday, November 14, 2026 at 4 PM Central. -->
 
 <main id="main" tabindex="-1">
+<aside class="review-note" aria-label="Support Barn Burner Relics with a review">
+  <div class="review-note-inner">
+    <p>Purchased from us? An honest Google review helps other collectors find Barn Burner Relics. Thanks for your support!</p>
+    <a href="https://search.google.com/local/writereview?placeid=ChIJuUYzSklDDogRI0Op4fbieyY" target="_blank" rel="noopener noreferrer" aria-label="Leave a Google review for Barn Burner Relics (opens in a new tab)">Leave a Google review <span aria-hidden="true">&nbsp;→</span></a>
+  </div>
+</aside>
 <noscript><p style="padding:1.5rem;text-align:center">Our next auction is Saturday, November 14, 2026 at 4 PM Central, live from Kentucky Dam. Enable JavaScript to browse 19 selected auction photos. <a href="https://barnburnerrelics.myshopify.com/pages/contact">Contact us</a> for help.</p></noscript>
 <section class="hero" aria-labelledby="auction-title">
   <div class="hero-inner">
