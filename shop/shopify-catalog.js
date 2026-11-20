@@ -35,8 +35,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-3032948017040394": {
         "variantId": "47239299006511",
-        "approvedPrice": 310,
-        "ready": true
+        "approvedPrice": null,
+        "ready": false
     },
     "facebook-3032945113707351": {
         "variantId": "47239299235887",
@@ -100,8 +100,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-3011632755838587": {
       "variantId": "47129891045423",
-      "approvedPrice": 1065,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-3011627335839129": {
       "variantId": "47129891110959",
@@ -115,8 +115,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-3004592183209311": {
       "variantId": "47095650648111",
-      "approvedPrice": 525,
-      "ready": true
+      "approvedPrice": null,
+      "ready": false
     },
     "facebook-2981264692208727": {
       "variantId": "46897145872431",
