@@ -3,6 +3,36 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "facebook-3033078450360684": {
+        "variantId": "47239366836271",
+        "approvedPrice": 2905,
+        "ready": true
+    },
+    "facebook-3033072227027973": {
+        "variantId": "47239366869039",
+        "approvedPrice": 1450,
+        "ready": true
+    },
+    "facebook-3033070480361481": {
+        "variantId": "47239366901807",
+        "approvedPrice": 1505,
+        "ready": true
+    },
+    "facebook-3033055007029695": {
+        "variantId": "47239366934575",
+        "approvedPrice": 420,
+        "ready": true
+    },
+    "facebook-3032969620371567": {
+        "variantId": "47239366967343",
+        "approvedPrice": 1500,
+        "ready": true
+    },
+    "facebook-3032953173706545": {
+        "variantId": "47239367000111",
+        "approvedPrice": 960,
+        "ready": true
+    },
     "facebook-3032948017040394": {
         "variantId": "47239299006511",
         "approvedPrice": 310,
