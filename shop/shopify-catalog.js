@@ -3,6 +3,66 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "facebook-3032948017040394": {
+        "variantId": "47239299006511",
+        "approvedPrice": 310,
+        "ready": true
+    },
+    "facebook-3032945113707351": {
+        "variantId": "47239299235887",
+        "approvedPrice": 2685,
+        "ready": true
+    },
+    "facebook-3032938890374640": {
+        "variantId": "47239299268655",
+        "approvedPrice": 8360,
+        "ready": true
+    },
+    "facebook-3032925693709293": {
+        "variantId": "47239299301423",
+        "approvedPrice": 695,
+        "ready": true
+    },
+    "facebook-3032914770377052": {
+        "variantId": "47239299334191",
+        "approvedPrice": 745,
+        "ready": true
+    },
+    "facebook-3032908790377650": {
+        "variantId": "47239299366959",
+        "approvedPrice": 7765,
+        "ready": true
+    },
+    "facebook-3030558417279354": {
+        "variantId": "47239299399727",
+        "approvedPrice": 10785,
+        "ready": true
+    },
+    "facebook-3030279243973938": {
+        "variantId": "47239299432495",
+        "approvedPrice": 180,
+        "ready": true
+    },
+    "facebook-3030276697307526": {
+        "variantId": "47239299498031",
+        "approvedPrice": 1930,
+        "ready": true
+    },
+    "facebook-3016511992017330": {
+        "variantId": "47239300087855",
+        "approvedPrice": 1065,
+        "ready": true
+    },
+    "facebook-3012812012387328": {
+        "variantId": "47239300284463",
+        "approvedPrice": 1605,
+        "ready": true
+    },
+    "facebook-3012805459054650": {
+        "variantId": "47239300481071",
+        "approvedPrice": 525,
+        "ready": true
+    },
     "facebook-3011641629171033": {
       "variantId": "47129890717743",
       "approvedPrice": 480,
