@@ -20,8 +20,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-3033055007029695": {
         "variantId": "47239366934575",
-        "approvedPrice": 420,
-        "ready": true
+        "approvedPrice": null,
+        "ready": false
     },
     "facebook-3032969620371567": {
         "variantId": "47239366967343",
@@ -40,8 +40,8 @@ window.BBR_SHOPIFY = {
     },
     "facebook-3032945113707351": {
         "variantId": "47239299235887",
-        "approvedPrice": 2685,
-        "ready": true
+        "approvedPrice": null,
+        "ready": false
     },
     "facebook-3032938890374640": {
         "variantId": "47239299268655",
