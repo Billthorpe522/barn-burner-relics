@@ -13,11 +13,6 @@ window.BBR_SHOPIFY = {
         "approvedPrice": 2905,
         "ready": true
     },
-    "facebook-3033072227027973": {
-        "variantId": "47239366869039",
-        "approvedPrice": null,
-        "ready": false
-    },
     "facebook-3033070480361481": {
         "variantId": "47239366901807",
         "approvedPrice": 1505,
@@ -117,11 +112,6 @@ window.BBR_SHOPIFY = {
       "variantId": "47129891176495",
       "approvedPrice": 960,
       "ready": true
-    },
-    "facebook-3004592183209311": {
-      "variantId": "47095650648111",
-      "approvedPrice": null,
-      "ready": false
     },
     "facebook-2981264692208727": {
       "variantId": "46897145872431",
@@ -410,11 +400,6 @@ window.BBR_SHOPIFY = {
     },
     "ebay-267538274751": {
       "variantId": "46248167407663",
-      "approvedPrice": null,
-      "ready": false
-    },
-    "ebay-267794747637": {
-      "variantId": "46248167473199",
       "approvedPrice": null,
       "ready": false
     },
