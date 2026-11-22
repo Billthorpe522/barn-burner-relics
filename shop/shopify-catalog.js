@@ -3,6 +3,11 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "frame-st-lawrence-island-001": {
+        "variantId": "47242688593967",
+        "approvedPrice": 3500,
+        "ready": true
+    },
     "facebook-3033078450360684": {
         "variantId": "47239366836271",
         "approvedPrice": 2905,
