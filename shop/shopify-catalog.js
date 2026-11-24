@@ -3,6 +3,36 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "book-archaic-bannerstone-lutz-2000": {
+        "variantId": "47256586649647",
+        "approvedPrice": 195,
+        "ready": true
+    },
+    "book-birth-of-a-culture-putty-ham-2003": {
+        "variantId": "47256586682415",
+        "approvedPrice": 150,
+        "ready": true
+    },
+    "book-legends-prehistoric-art-vol-1-onken-2000": {
+        "variantId": "47256586715183",
+        "approvedPrice": 95,
+        "ready": true
+    },
+    "book-keokuk-axes-filbrandt-1997": {
+        "variantId": "47256586747951",
+        "approvedPrice": 150,
+        "ready": true
+    },
+    "book-art-gerber-story-2007": {
+        "variantId": "47256586780719",
+        "approvedPrice": 175,
+        "ready": true
+    },
+    "book-selected-preforms-points-knives-perino-vol-1-1985": {
+        "variantId": "47256586813487",
+        "approvedPrice": 195,
+        "ready": true
+    },
     "frame-st-lawrence-island-001": {
         "variantId": "47242688593967",
         "approvedPrice": 3500,
