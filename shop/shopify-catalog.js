@@ -25,12 +25,12 @@ window.BBR_SHOPIFY = {
     },
     "book-art-gerber-story-2007": {
         "variantId": "47256586780719",
-        "approvedPrice": 175,
+        "approvedPrice": 250,
         "ready": true
     },
     "book-selected-preforms-points-knives-perino-vol-1-1985": {
         "variantId": "47256586813487",
-        "approvedPrice": 195,
+        "approvedPrice": 250,
         "ready": true
     },
     "frame-st-lawrence-island-001": {
