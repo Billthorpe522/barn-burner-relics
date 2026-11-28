@@ -3,6 +3,56 @@ window.BBR_SHOPIFY = {
   "enabled": true,
   "domain": "0fde0c-md.myshopify.com",
   "products": {
+    "facebook-3043546415980554": {
+        "variantId": "47282372575279",
+        "approvedPrice": 1600,
+        "ready": true
+    },
+    "facebook-3043539749314554": {
+        "variantId": "47282372608047",
+        "approvedPrice": 1500,
+        "ready": true
+    },
+    "facebook-3043524122649450": {
+        "variantId": "47282372640815",
+        "approvedPrice": 235,
+        "ready": true
+    },
+    "facebook-3043520645983131": {
+        "variantId": "47282372673583",
+        "approvedPrice": 310,
+        "ready": true
+    },
+    "facebook-3043517775983418": {
+        "variantId": "47282372706351",
+        "approvedPrice": 1605,
+        "ready": true
+    },
+    "facebook-3043514415983754": {
+        "variantId": "47282372870191",
+        "approvedPrice": 635,
+        "ready": true
+    },
+    "facebook-3043508625984333": {
+        "variantId": "47282372902959",
+        "approvedPrice": 8900,
+        "ready": true
+    },
+    "facebook-3043505492651313": {
+        "variantId": "47282372935727",
+        "approvedPrice": 9165,
+        "ready": true
+    },
+    "facebook-3043492722652590": {
+        "variantId": "47282372968495",
+        "approvedPrice": 580,
+        "ready": true
+    },
+    "facebook-3043484149320114": {
+        "variantId": "47282373001263",
+        "approvedPrice": 180,
+        "ready": true
+    },
     "book-archaic-bannerstone-lutz-2000": {
         "variantId": "47256586649647",
         "approvedPrice": 195,
